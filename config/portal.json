@@ -19,8 +19,17 @@
       "zadano": true
     },
     {
+      "id": "dof2021",
+      "naziv": "Ortofoto 2021. (DGU) – cijela općina",
+      "tip": "wms",
+      "url": "https://geoportal.dgu.hr/services/inspire/orthophoto_2021/wms",
+      "wmsSlojevi": "OI.OrthoimageCoverage",
+      "projekcija": "EPSG:3765",
+      "atribucija": "© Državna geodetska uprava (DOF 2021), otvorena dozvola"
+    },
+    {
       "id": "dof2023",
-      "naziv": "Ortofoto 2023. (DGU)",
+      "naziv": "Ortofoto 2023. (DGU) – samo zapadni dio",
       "tip": "wms",
       "url": "https://geoportal.dgu.hr/services/inspire/orthophoto_2023/wms",
       "wmsSlojevi": "OI.OrthoimageCoverage",
