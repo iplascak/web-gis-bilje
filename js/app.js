@@ -242,16 +242,23 @@
       for (const def of slojeviGrupe) {
         const zapis = stanje.slojevi[def.id];
         if (!zapis) continue;
+        const legenda = napraviLegendu(def);
+        // legenda se prikazuje samo dok je sloj uključen
+        if (legenda) legenda.hidden = !def.vidljivo;
         const kvacica = el('input', {
           type: 'checkbox', checked: !!def.vidljivo,
-          onchange: (e) => { zapis.olSloj.setVisible(e.target.checked); zatvoriSkocni(); }
+          onchange: (e) => {
+            zapis.olSloj.setVisible(e.target.checked);
+            if (legenda) legenda.hidden = !e.target.checked;
+            zatvoriSkocni();
+          }
         });
         const red = el('div', { class: 'sloj-red' },
           el('label', {}, kvacica, el('span', {}, def.naziv,
             def.minZoom ? el('span', { class: 'napomena' }, ' (uvećajte kartu)') : null)),
           el('button', { class: 'gumb-info', title: 'Podaci o sloju', 'aria-label': 'Podaci o sloju ' + def.naziv,
             onclick: () => prikaziMetapodatke(def) }, 'i'));
-        det.append(el('div', { class: 'sloj' }, red, napraviLegendu(def)));
+        det.append(el('div', { class: 'sloj' }, red, legenda));
       }
       div.append(det);
     }

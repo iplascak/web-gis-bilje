@@ -59,6 +59,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; }
 .gumb-info:hover { color: var(--boja-naglasak); border-color: var(--boja-naglasak); }
 
 .legenda { margin: 4px 0 0 26px; font-size: 12px; color: var(--tekst-2); }
+.legenda[hidden] { display: none; }
 .legenda-wms img { max-width: 100%; display: block; }
 .legenda div { display: flex; align-items: center; gap: 6px; padding: 1px 0; }
 .znak { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; }
