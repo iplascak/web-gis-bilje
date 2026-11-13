@@ -51,5 +51,96 @@
     "naselja": "data/naselja.geojson",
     "ulice": "data/ulice.geojson"
   },
-  "wfsBbox": "671000,5046000,694000,5069000,EPSG:3765"
+  "wfsBbox": "671000,5046000,694000,5069000,EPSG:3765",
+  "lokacija": {
+    "katastar": {
+      "url": "https://api.uredjenazemlja.hr/services/inspire/cp_wms/wms",
+      "sloj": "CP.CadastralParcel",
+      "katastarskeOpcine": {
+        "300055": "Bilje",
+        "300209": "Kopačevo",
+        "300241": "Lug",
+        "300322": "Vardarac"
+      }
+    },
+    "provjere": [
+      {
+        "naslov": "Opasnost od poplava (Hrvatske vode, 2019.)",
+        "stavke": [
+          {
+            "vrsta": "wmsPiksel",
+            "sloj": "poplave_vv",
+            "oznaka": "Velika vjerojatnost"
+          },
+          {
+            "vrsta": "wmsPiksel",
+            "sloj": "poplave_sv",
+            "oznaka": "Srednja vjerojatnost (100 god.)"
+          },
+          {
+            "vrsta": "wmsPiksel",
+            "sloj": "poplave_mv",
+            "oznaka": "Mala vjerojatnost"
+          }
+        ]
+      },
+      {
+        "naslov": "Zaštita prirode",
+        "stavke": [
+          {
+            "vrsta": "poligon",
+            "sloj": "zasticena_podrucja",
+            "polje": "Naziv",
+            "dodatno": "Kategorija"
+          },
+          {
+            "vrsta": "poligon",
+            "sloj": "natura_pop",
+            "polje": "Naziv",
+            "dodatno": "SITECODE"
+          },
+          {
+            "vrsta": "poligon",
+            "sloj": "natura_povs",
+            "polje": "Naziv",
+            "dodatno": "SITECODE"
+          }
+        ]
+      },
+      {
+        "naslov": "Vode",
+        "stavke": [
+          {
+            "vrsta": "poligon",
+            "sloj": "sanitarna_zastita",
+            "polje": "Izvorište",
+            "dodatno": "zona",
+            "dodatnoPrefiks": "zona "
+          }
+        ]
+      },
+      {
+        "naslov": "Kulturna baština i krajobraz",
+        "stavke": [
+          {
+            "vrsta": "poligon",
+            "sloj": "bastina_registar",
+            "polje": "Naziv"
+          },
+          {
+            "vrsta": "poligon",
+            "sloj": "kulturna_dobra",
+            "polje": "naziv",
+            "dodatno": "kategorija"
+          },
+          {
+            "vrsta": "poligon",
+            "sloj": "krajobraz",
+            "polje": "naziv",
+            "neutralno": true
+          }
+        ]
+      }
+    ]
+  }
 }

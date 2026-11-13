@@ -38,7 +38,8 @@
       "opis": "Administrativna granica Općine Bilje.",
       "izvor": "Državna geodetska uprava – Registar prostornih jedinica",
       "azurirano": "2017.",
-      "klik": false
+      "klik": false,
+      "detaljno": "Prikazuje službenu administrativnu granicu Općine Bilje iz Registra prostornih jedinica Državne geodetske uprave. Općina obuhvaća naselja Bilje, Kopačevo, Kozjak, Lug, Podunavlje, Tikveš, Vardarac i Zlatnu Gredu. Zlatna Greda je odvojena od ostatka općine (enklava) na sjeveru.\n\nGranica je informativna. Službeni podatak o pripadnosti neke čestice općini daje katastar."
     },
     {
       "id": "naselja",
@@ -58,7 +59,8 @@
       "opis": "Granice naselja Općine Bilje.",
       "izvor": "Državna geodetska uprava – Registar prostornih jedinica",
       "azurirano": "2017.",
-      "klik": false
+      "klik": false,
+      "detaljno": "Granice naselja iz Registra prostornih jedinica DGU-a. Naziv naselja prikazuje se na karti, a u kartici \"Što je na ovoj lokaciji?\" naselje se određuje prema ovom sloju.\n\nGranica naselja nije isto što i granica građevinskog područja naselja. Gdje se smije graditi određuje prostorni plan."
     },
     {
       "id": "ulice",
@@ -86,7 +88,8 @@
       },
       "opis": "Ulice iz registra prostornih jedinica.",
       "izvor": "Državna geodetska uprava – Registar prostornih jedinica",
-      "azurirano": "2017."
+      "azurirano": "2017.",
+      "detaljno": "Ulice iz Registra prostornih jedinica DGU-a (stanje 2017.), ukupno 101. Nazivi se prikazuju kad dovoljno uvećate kartu. Pretraga na vrhu panela pronalazi ulice i kućne brojeve iz istog registra.\n\nNovije ulice i kućni brojevi, dodani nakon 2017., možda još nisu prikazani."
     },
     {
       "id": "katastar",
@@ -103,7 +106,8 @@
       "izvor": "Državna geodetska uprava – INSPIRE WMS",
       "licenca": "Korištenje uz prihvaćanje uvjeta korištenja DGU-a",
       "azurirano": "uživo s DGU servisa",
-      "legenda": false
+      "legenda": false,
+      "detaljno": "Granice i brojevi katastarskih čestica, učitani uživo sa servisa Državne geodetske uprave. Zbog količine podataka sloj se prikazuje tek kod većeg uvećanja.\n\nBroj čestice za bilo koju točku dobit ćete i klikom na kartu, pa \"Što je na ovoj lokaciji?\".\n\nPrikaz je informativan. Službeni podaci (vlasništvo, površina, način uporabe) nalaze se u Zajedničkom informacijskom sustavu zemljišnih knjiga i katastra (OSS)."
     },
     {
       "id": "poplave_vv",
@@ -119,7 +123,8 @@
       "izvor": "Hrvatske vode – Karte opasnosti od poplava 2019. (WMS)",
       "licenca": "Hrvatske vode – javni WMS servis",
       "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
-      "atribucija": "© Hrvatske vode"
+      "atribucija": "© Hrvatske vode",
+      "detaljno": "Područja koja bi bila poplavljena pri čestim, manjim velikim vodama. Boja označava očekivanu dubinu vode: od manje od 0,5 m (najsvjetlija) do više od 2,5 m (najtamnija). Tamnoplavo su stalne vodene površine.\n\nKarte su izradile Hrvatske vode 2019. u sklopu Plana upravljanja rizicima od poplava. Pretpostavljaju da obrambeni sustav (nasipi) radi. Karte su pokazatelj opasnosti, a ne točna prognoza za pojedinu kuću."
     },
     {
       "id": "poplave_sv",
@@ -135,7 +140,8 @@
       "izvor": "Hrvatske vode – Karte opasnosti od poplava 2019. (WMS)",
       "licenca": "Hrvatske vode – javni WMS servis",
       "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
-      "atribucija": "© Hrvatske vode"
+      "atribucija": "© Hrvatske vode",
+      "detaljno": "Područja koja bi bila poplavljena pri velikoj vodi s povratnim razdobljem od 100 godina, odnosno vjerojatnošću od 1 % u svakoj godini. To je najčešće korišten scenarij u prostornom planiranju i osiguranju. Boja označava očekivanu dubinu vode.\n\nIzvor: Hrvatske vode, karte opasnosti od poplava 2019."
     },
     {
       "id": "poplave_mv",
@@ -151,7 +157,8 @@
       "izvor": "Hrvatske vode – Karte opasnosti od poplava 2019. (WMS)",
       "licenca": "Hrvatske vode – javni WMS servis",
       "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
-      "atribucija": "© Hrvatske vode"
+      "atribucija": "© Hrvatske vode",
+      "detaljno": "Područja koja bi bila poplavljena pri rijetkim, ekstremnim događajima, uključujući moguće otkazivanje obrambenih građevina. Ovaj scenarij pokazuje najveći mogući obuhvat i važan je za planiranje zaštite i spašavanja.\n\nIzvor: Hrvatske vode, karte opasnosti od poplava 2019."
     },
     {
       "id": "nasipi",
@@ -176,7 +183,8 @@
       },
       "opis": "Obrambeni nasipi uz Dravu i Dunav.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.), izvorno Hrvatske vode",
-      "azurirano": "2016."
+      "azurirano": "2016.",
+      "detaljno": "Obrambeni nasipi uz Dravu i Dunav koji štite naselja i poljoprivredne površine od velikih voda. Podaci potječu iz Inventarizacije okolišnih resursa Općine Bilje (izvorno Hrvatske vode, 2016.).\n\nZa stanje nasipa i radove na njima nadležne su Hrvatske vode."
     },
     {
       "id": "hidro_postaje",
@@ -212,7 +220,8 @@
       },
       "opis": "Hidrološke postaje DHMZ-a na Dravi i Dunavu u okolici općine. Trenutni vodostaji dostupni su na stranici DHMZ-a.",
       "izvor": "DHMZ (preko Inventarizacije okolišnih resursa, 2017.)",
-      "azurirano": "2016."
+      "azurirano": "2016.",
+      "detaljno": "Hidrološke postaje Državnog hidrometeorološkog zavoda na Dravi i Dunavu u okolici općine (Osijek, Aljmaš, Batina, Bijelo Brdo, Belišće). Na njima se prate vodostaji i protoci.\n\nKlik na postaju daje poveznicu na stranicu DHMZ-a s trenutnim vodostajima. Kod porasta Dunava najvažnija je postaja Batina, a kod Drave Osijek."
     },
     {
       "id": "sanitarna_zastita",
@@ -255,7 +264,8 @@
       },
       "opis": "Zone sanitarne zaštite izvorišta pitke vode (npr. Bilje – Konkološ). U zonama vrijede ograničenja gradnje i korištenja zemljišta.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda"
+      "azurirano": "uživo s Hrvatskih voda",
+      "detaljno": "Zone sanitarne zaštite izvorišta pitke vode, uživo iz Registra zaštićenih područja Hrvatskih voda. Na području općine to je izvorište Bilje – Konkološ.\n\nI. zona je najstroža i obuhvaća neposredno područje zahvata vode. U II. i III. zoni vrijede ograničenja gradnje i djelatnosti, npr. skladištenja opasnih tvari, gnojidbe i sabirnih jama. Točna ograničenja propisuje odluka o zonama sanitarne zaštite."
     },
     {
       "id": "kupalista",
@@ -278,7 +288,8 @@
       },
       "opis": "Službena kupališta na kopnenim vodama u okolici općine.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda"
+      "azurirano": "uživo s Hrvatskih voda",
+      "detaljno": "Službena kupališta na kopnenim vodama iz Registra zaštićenih područja Hrvatskih voda. Na njima se tijekom sezone prati kakvoća vode za kupanje."
     },
     {
       "id": "zasticena_podrucja",
@@ -325,7 +336,8 @@
       },
       "opis": "Zaštićena područja prema Zakonu o zaštiti prirode: Park prirode Kopački rit, posebni rezervat i Regionalni park Mura–Drava.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda"
+      "azurirano": "uživo s Hrvatskih voda",
+      "detaljno": "Područja zaštićena Zakonom o zaštiti prirode, uživo iz registra Hrvatskih voda:\n• Park prirode Kopački rit, jedna od najvećih očuvanih poplavnih nizina u Europi\n• posebni zoološki rezervat unutar parka, s najstrožim režimom zaštite\n• Regionalni park Mura–Drava\n\nU zaštićenim područjima za mnoge zahvate potrebni su uvjeti zaštite prirode. Informacije daje Javna ustanova Park prirode Kopački rit."
     },
     {
       "id": "natura_pop",
@@ -353,7 +365,8 @@
       },
       "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za ptice.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda"
+      "azurirano": "uživo s Hrvatskih voda",
+      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje ptica (POP). Područje \"Podunavlje i donje Podravlje\" obuhvaća velik dio općine.\n\nZa zahvate koji bi mogli utjecati na ciljeve očuvanja provodi se ocjena prihvatljivosti za ekološku mrežu. Natura 2000 nije zabrana: poljoprivreda i uobičajene djelatnosti se nastavljaju."
     },
     {
       "id": "natura_povs",
@@ -381,7 +394,8 @@
       },
       "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za vrste i stanišne tipove.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda"
+      "azurirano": "uživo s Hrvatskih voda",
+      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje vrsta i stanišnih tipova (POVS), npr. Kopački rit, Donji tok Drave i Dunav. Za zahvate koji bi mogli utjecati na ta područja provodi se ocjena prihvatljivosti za ekološku mrežu."
     },
     {
       "id": "bastina_registar",
@@ -403,7 +417,8 @@
       },
       "opis": "Zaštićena područja kulturne baštine iz registra: dvorac Tikveš, pustara Zlatna Greda.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda"
+      "azurirano": "uživo s Hrvatskih voda",
+      "detaljno": "Zaštićena područja kulturne baštine iz registra zaštićenih područja Hrvatskih voda: kompleks dvorca Tikveš i pustara Zlatna Greda. Zahvati na zaštićenim kulturnim dobrima zahtijevaju uvjete nadležnog konzervatorskog odjela."
     },
     {
       "id": "kulturna_dobra",
@@ -445,7 +460,8 @@
       },
       "opis": "Kulturna dobra i arheološki lokaliteti prema prostornom planu općine.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
-      "azurirano": "2017."
+      "azurirano": "2017.",
+      "detaljno": "Kulturna dobra i arheološki lokaliteti prema prostornom planu općine, preuzeto iz Inventarizacije okolišnih resursa (2017.). Graditeljska baština prikazana je kao područja po naseljima s brojem građevina, a arheološki lokaliteti pojedinačno (npr. Rimska cesta, Mali Sakadaš, Kenderfeld).\n\nStatus: zaštićeno (u Registru kulturnih dobara), preventivno zaštićeno ili evidentirano (preporuka zaštite prostornim planom)."
     },
     {
       "id": "krajobraz",
@@ -495,7 +511,8 @@
       },
       "opis": "Krajobrazna područja općine.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
-      "azurirano": "2017."
+      "azurirano": "2017.",
+      "detaljno": "Podjela općine na krajobrazna područja prema Inventarizaciji okolišnih resursa (2017.): plato Brestovac, sustav naselja sa sitnom parcelacijom, niža meliorirana područja Baranje, doprirodno područje uz Dravu i Kopački rit.\n\nKorisno kao podloga za planiranje turizma, sadnje i uređenja prostora."
     },
     {
       "id": "vizure",
@@ -537,7 +554,8 @@
       },
       "opis": "Kvaliteta pogleda iz točaka gledišta.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
-      "azurirano": "2017."
+      "azurirano": "2017.",
+      "detaljno": "Procjena kvalitete pogleda iz točaka gledišta, iz Inventarizacije okolišnih resursa (2017.). Zelenom su označene odlične vizure, uglavnom prema Kopačkom ritu. Dobro je to imati na umu pri planiranju vidikovaca, biciklističkih staza i izbjegavanju gradnje koja zaklanja vrijedne poglede."
     },
     {
       "id": "tocke_gledista",
@@ -554,7 +572,8 @@
       "klik": false,
       "opis": "Točke iz kojih su procijenjene vizure.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
-      "azurirano": "2017."
+      "azurirano": "2017.",
+      "detaljno": "Točke iz kojih su u Inventarizaciji okolišnih resursa (2017.) procijenjene vizure. Mogu poslužiti kao početni prijedlog lokacija za vidikovce."
     },
     {
       "id": "projekti",
@@ -637,7 +656,8 @@
       },
       "opis": "Projekti koje provodi ili planira Općina Bilje, s izvorima financiranja i fazom.",
       "izvor": "Općina Bilje",
-      "azurirano": "PRIMJER – trenutno izmišljeni podaci"
+      "azurirano": "PRIMJER – trenutno izmišljeni podaci",
+      "detaljno": "Projekti koje provodi ili planira Općina Bilje: lokacija, faza, vrijednost i izvori financiranja (EU fondovi, državni i općinski proračun).\n\nTrenutno su prikazani izmišljeni primjeri. Uskoro će biti zamijenjeni stvarnim projektima."
     }
   ]
 }

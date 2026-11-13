@@ -1,0 +1,53 @@
+name: Tjedna provjera servisa
+
+# Svakog ponedjeljka u 6:17 UTC provjerava sve vanjske servise i lokalne podatke portala.
+# Ako nešto ne radi, otvara (ili dopunjuje) issue u repozitoriju, a GitHub o tome šalje e-mail vlasniku.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  provjera:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Provjera servisa
+        id: provjera
+        continue-on-error: true
+        run: python3 scripts/provjera_servisa.py
+
+      - name: Sažetak
+        if: always()
+        run: cat izvjestaj_provjere.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Prijava problema (issue)
+        if: steps.provjera.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create provjera-servisa --color D93F0B --description "Automatska provjera servisa" 2>/dev/null || true
+          BROJ=$(gh issue list --label provjera-servisa --state open --json number --jq '.[0].number')
+          if [ -n "$BROJ" ]; then
+            gh issue comment "$BROJ" --body-file izvjestaj_provjere.md
+          else
+            gh issue create --title "Neki servisi portala ne rade" --label provjera-servisa --body-file izvjestaj_provjere.md
+          fi
+
+      - name: Zatvaranje riješenog problema
+        if: steps.provjera.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for BROJ in $(gh issue list --label provjera-servisa --state open --json number --jq '.[].number'); do
+            gh issue close "$BROJ" --comment "Sve provjere ponovno prolaze – zatvaram automatski."
+          done
+
+      - name: Neuspjeh
+        if: steps.provjera.outcome == 'failure'
+        run: exit 1

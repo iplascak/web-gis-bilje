@@ -172,6 +172,15 @@
     return 156543.03392804097 / Math.pow(2, zoom);
   }
 
+  function wfsUrl(def) {
+    const p = new URLSearchParams({
+      service: 'WFS', version: def.verzija || '1.1.0', request: 'GetFeature',
+      typeName: def.typeName, outputFormat: 'application/json', srsName: 'EPSG:3857',
+      bbox: def.bbox || stanje.portal.wfsBbox
+    });
+    return def.url + '?' + p.toString();
+  }
+
   function napraviOlSloj(def) {
     const zajednicko = {
       visible: !!def.vidljivo,
@@ -193,13 +202,8 @@
 
     if (def.tip === 'wfs') {
       // WFS: vektorski objekti uživo sa servisa (samo za područje općine)
-      const p = new URLSearchParams({
-        service: 'WFS', version: def.verzija || '1.1.0', request: 'GetFeature',
-        typeName: def.typeName, outputFormat: 'application/json', srsName: 'EPSG:3857',
-        bbox: def.bbox || stanje.portal.wfsBbox
-      });
       const izvor = new ol.source.Vector({
-        url: def.url + '?' + p.toString(),
+        url: wfsUrl(def),
         format: new ol.format.GeoJSON({ dataProjection: 'EPSG:3857', featureProjection: 'EPSG:3857' }),
         attributions: def.atribucija
       });
@@ -302,11 +306,12 @@
   function prikaziMetapodatke(def) {
     const dl = el('dl');
     const dodaj = (k, v) => { if (v) dl.append(el('dt', {}, k), el('dd', {}, v)); };
-    dodaj('Opis', def.opis);
     dodaj('Izvor', def.izvor);
     dodaj('Licenca', def.licenca);
     dodaj('Ažurirano', def.azurirano);
-    otvoriDijalog(el('h3', {}, def.naziv), dl);
+    const tekst = String(def.detaljno || def.opis || '').split(/\n\n+/).filter(Boolean)
+      .map(o => el('p', {}, ...o.split('\n').flatMap((r, i) => i ? [el('br'), r] : [r])));
+    otvoriDijalog(el('h3', {}, def.naziv), ...tekst, el('h4', {}, 'Podaci o sloju'), dl);
   }
 
   // ---------- skočni prozor (klik na objekt) ----------
@@ -340,23 +345,219 @@
     return [el('h3', {}, naslov), tablica, el('div', { class: 'vise' }, 'Sloj: ' + def.naziv)];
   }
 
+  function gumbLokacija(koordinata) {
+    if (!stanje.portal.lokacija) return null;
+    return el('button', { class: 'gumb-lokacija', onclick: () => { zatvoriSkocni(); izvjestajLokacije(koordinata); } },
+      'Što je na ovoj lokaciji?');
+  }
+
   function naKlik(evt) {
     const pogoci = [];
     stanje.karta.forEachFeatureAtPixel(evt.pixel, (f, sloj) => {
       if (sloj && sloj.get('upitni') && sloj.get('defId') !== 'granica') pogoci.push([f, sloj]);
     }, { hitTolerance: 5 });
 
-    if (!pogoci.length) { zatvoriSkocni(); return; }
+    const s = document.getElementById('skocni');
+    if (!pogoci.length) {
+      // prazno mjesto: ponudi izvještaj o lokaciji
+      if (!stanje.portal.lokacija) { zatvoriSkocni(); return; }
+      const [x, y] = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:3765');
+      s.querySelector('.skocni-sadrzaj').replaceChildren(
+        el('h3', {}, 'Odabrana lokacija'),
+        el('div', { class: 'vise' }, 'HTRS96/TM  E ' + x.toFixed(0) + '  N ' + y.toFixed(0)),
+        gumbLokacija(evt.coordinate));
+      stanje.odabranaKoordinata = evt.coordinate;
+      s.hidden = false;
+      pozicionirajSkocni();
+      return;
+    }
     const [f, sloj] = pogoci[0];
     const def = stanje.slojevi[sloj.get('defId')].def;
-    const s = document.getElementById('skocni');
     const sadrzaj = sadrzajZaObjekt(f, def);
     if (pogoci.length > 1) sadrzaj.push(el('div', { class: 'vise' }, 'Na ovom mjestu ima još ' + (pogoci.length - 1) + ' objekata – uvećajte kartu.'));
+    const g = gumbLokacija(evt.coordinate);
+    if (g) sadrzaj.push(g);
     s.querySelector('.skocni-sadrzaj').replaceChildren(...sadrzaj);
     const geom = f.getGeometry();
     stanje.odabranaKoordinata = geom.getType() === 'Point' ? geom.getCoordinates() : evt.coordinate;
     s.hidden = false;
     pozicionirajSkocni();
+  }
+
+
+  // ---------- "Što je na ovoj lokaciji?" ----------
+  // Sve provjere opisane su u config/portal.json -> "lokacija". Vrste provjera:
+  //   "poligon"   – nalazi li se točka unutar objekta nekog sloja (geojson ili wfs)
+  //   "wmsPiksel" – razred iz WMS karte očitan iz boje piksela prema legendi servisa
+  //   katastar    – broj čestice i k.o. preko WMS GetFeatureInfo DGU-a
+
+  const predmemorija = new Map();
+
+  function dohvatiObjekte(def) {
+    if (predmemorija.has(def.id)) return predmemorija.get(def.id);
+    const url = def.tip === 'wfs' ? wfsUrl(def) : def.url;
+    const projekcija = def.tip === 'wfs' ? 'EPSG:3857' : 'EPSG:4326';
+    const obecanje = fetch(url).then(o => { if (!o.ok) throw new Error(o.status); return o.json(); })
+      .then(j => new ol.format.GeoJSON({ dataProjection: projekcija, featureProjection: 'EPSG:3857' }).readFeatures(j));
+    obecanje.catch(() => predmemorija.delete(def.id));
+    predmemorija.set(def.id, obecanje);
+    return obecanje;
+  }
+
+  async function legendaBoja(def) {
+    const kljuc = 'legenda:' + def.id;
+    if (!predmemorija.has(kljuc)) {
+      const url = def.url + '?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&FORMAT=application/json&LAYER=' + encodeURIComponent(def.wmsSlojevi);
+      predmemorija.set(kljuc, fetch(url).then(o => o.json()).then(j => {
+        const sim = j.Legend[0].rules[0].symbolizers[0];
+        return (sim.Raster ? sim.Raster.colormap.entries : []).map(e => ({
+          oznaka: e.label.trim(),
+          rgb: [1, 3, 5].map(i => parseInt(e.color.slice(i, i + 2), 16))
+        }));
+      }));
+    }
+    return predmemorija.get(kljuc);
+  }
+
+  async function ocitajPiksel(def, koord) {
+    // mali isječak karte (~10 m/piksel) oko točke; čita se središnji piksel
+    const h = 250, w = 51;
+    const p = new URLSearchParams({
+      SERVICE: 'WMS', VERSION: '1.3.0', REQUEST: 'GetMap', LAYERS: def.wmsSlojevi, STYLES: '',
+      CRS: 'EPSG:3857', BBOX: [koord[0] - h, koord[1] - h, koord[0] + h, koord[1] + h].join(','),
+      WIDTH: w, HEIGHT: w, FORMAT: 'image/png', TRANSPARENT: 'true'
+    });
+    const [boje, slika] = await Promise.all([
+      legendaBoja(def),
+      fetch(def.url + '?' + p.toString()).then(o => o.blob()).then(b => createImageBitmap(b))
+    ]);
+    const c = document.createElement('canvas');
+    c.width = c.height = w;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(slika, 0, 0);
+    const [r, g, b, a] = ctx.getImageData(Math.floor(w / 2), Math.floor(w / 2), 1, 1).data;
+    if (a < 100) return null;
+    let najbolja = null, min = Infinity;
+    for (const e of boje) {
+      const d = (e.rgb[0] - r) ** 2 + (e.rgb[1] - g) ** 2 + (e.rgb[2] - b) ** 2;
+      if (d < min) { min = d; najbolja = e; }
+    }
+    return najbolja ? najbolja.oznaka : 'u zoni';
+  }
+
+  async function katastarskaCestica(cfg, koord) {
+    const [x, y] = ol.proj.transform(koord, 'EPSG:3857', 'EPSG:3765');
+    const p = new URLSearchParams({
+      SERVICE: 'WMS', VERSION: '1.3.0', REQUEST: 'GetFeatureInfo', LAYERS: cfg.sloj, QUERY_LAYERS: cfg.sloj,
+      STYLES: '', CRS: 'EPSG:3765', BBOX: [x - 10, y - 10, x + 10, y + 10].join(','),
+      WIDTH: 101, HEIGHT: 101, I: 50, J: 50, INFO_FORMAT: 'text/plain', FEATURE_COUNT: 1
+    });
+    const t = await fetch(cfg.url + '?' + p.toString()).then(o => o.text());
+    const broj = (/BROJ_CESTICE\s*=\s*(\S+)/.exec(t) || [])[1];
+    const ko = (/MATICNI_BROJ_KO\s*=\s*(\S+)/.exec(t) || [])[1];
+    if (!broj) return null;
+    return { broj, ko, koNaziv: (cfg.katastarskeOpcine || {})[ko] };
+  }
+
+  function najblizaAdresa(koord) {
+    if (!stanje.adrese) return null;
+    const ll = ol.proj.toLonLat(koord);
+    let naj = null, min = Infinity;
+    for (const a of stanje.adrese) {
+      const d = ol.sphere.getDistance(ll, [a[3], a[4]]);
+      if (d < min) { min = d; naj = a; }
+    }
+    return naj && min <= 75 ? { tekst: naj[0] + ' ' + naj[1] + ', ' + naj[2], udaljenost: Math.round(min) } : null;
+  }
+
+  function oznakaLokacije(koord) {
+    if (!stanje.slojOznakeLokacije) {
+      stanje.slojOznakeLokacije = new ol.layer.Vector({
+        source: new ol.source.Vector(), zIndex: 1001,
+        style: new ol.style.Style({ image: new ol.style.RegularShape({
+          points: 4, radius: 11, angle: Math.PI / 4,
+          stroke: new ol.style.Stroke({ color: '#111827', width: 3 }) }) })
+      });
+      stanje.karta.addLayer(stanje.slojOznakeLokacije);
+    }
+    const izvor = stanje.slojOznakeLokacije.getSource();
+    izvor.clear();
+    izvor.addFeature(new ol.Feature(new ol.geom.Point(koord)));
+  }
+
+  function red(oznaka) {
+    const vrijednost = el('td', { class: 'ucitava' }, 'provjeravam…');
+    return { tr: el('tr', {}, el('th', {}, oznaka), vrijednost), vrijednost };
+  }
+
+  function postavi(td, tekst, stanjeOznake) {
+    td.className = stanjeOznake || '';
+    td.replaceChildren(...[].concat(tekst));
+  }
+
+  async function izvjestajLokacije(koord) {
+    const cfg = stanje.portal.lokacija;
+    oznakaLokacije(koord);
+    const [x, y] = ol.proj.transform(koord, 'EPSG:3857', 'EPSG:3765');
+    const [lon, lat] = ol.proj.toLonLat(koord);
+    const dijelovi = [el('h3', {}, 'Što je na ovoj lokaciji?')];
+
+    // osnovno
+    const osnovno = el('table', { class: 'izvjestaj' });
+    const rNaselje = red('Naselje'), rAdresa = red('Najbliža adresa'), rCestica = red('Katastarska čestica');
+    osnovno.append(rNaselje.tr, rAdresa.tr, rCestica.tr,
+      el('tr', {}, el('th', {}, 'Koordinate'), el('td', {}, 'HTRS96/TM E ' + x.toFixed(0) + ', N ' + y.toFixed(0),
+        el('br'), el('span', { class: 'sitno' }, 'WGS84 ' + lat.toFixed(5) + ', ' + lon.toFixed(5)))));
+    dijelovi.push(el('h4', {}, 'Osnovno'), osnovno);
+
+    const naselja = stanje.slojevi.naselja;
+    (naselja ? dohvatiObjekte(naselja.def) : Promise.resolve([])).then(fs => {
+      const f = fs.find(f => f.getGeometry().intersectsCoordinate(koord));
+      postavi(rNaselje.vrijednost, f ? f.get('naziv') : 'izvan općine');
+    }).catch(() => postavi(rNaselje.vrijednost, 'nije dostupno', 'greska'));
+
+    const adr = najblizaAdresa(koord);
+    postavi(rAdresa.vrijednost, adr ? adr.tekst + (adr.udaljenost > 15 ? ' (≈' + adr.udaljenost + ' m)' : '') : 'nema adrese u blizini');
+
+    if (cfg.katastar) {
+      katastarskaCestica(cfg.katastar, koord).then(c => {
+        postavi(rCestica.vrijednost, c ? 'k.č. ' + c.broj + ', k.o. ' + (c.koNaziv || c.ko) : 'nije pronađena');
+      }).catch(() => postavi(rCestica.vrijednost, 'servis DGU-a trenutno nije dostupan', 'greska'));
+    } else rCestica.tr.remove();
+
+    // provjere iz konfiguracije
+    for (const odjeljak of cfg.provjere || []) {
+      const t = el('table', { class: 'izvjestaj' });
+      dijelovi.push(el('h4', {}, odjeljak.naslov), t);
+      for (const st of odjeljak.stavke) {
+        const zapis = stanje.slojevi[st.sloj];
+        if (!zapis) continue;
+        const def = zapis.def;
+        const r = red(st.oznaka || def.naziv);
+        t.append(r.tr);
+        if (st.vrsta === 'wmsPiksel') {
+          ocitajPiksel(def, koord)
+            .then(v => v ? postavi(r.vrijednost, 'DA – ' + v, 'da') : postavi(r.vrijednost, 'ne', 'ne'))
+            .catch(() => postavi(r.vrijednost, 'servis nije dostupan', 'greska'));
+        } else {
+          dohvatiObjekte(def).then(fs => {
+            const pogoci = fs.filter(f => f.getGeometry() && f.getGeometry().intersectsCoordinate(koord));
+            if (!pogoci.length) return postavi(r.vrijednost, 'ne', 'ne');
+            const nazivi = [...new Set(pogoci.map(f => {
+              let n = f.get(st.polje) || def.naziv;
+              if (st.dodatno && f.get(st.dodatno)) n += ' (' + (st.dodatnoPrefiks || '') + f.get(st.dodatno) + ')';
+              return n;
+            }))];
+            if (st.neutralno) postavi(r.vrijednost, nazivi.join('; '));
+            else postavi(r.vrijednost, 'DA – ' + nazivi.join('; '), 'da');
+          }).catch(() => postavi(r.vrijednost, 'servis nije dostupan', 'greska'));
+        }
+      }
+    }
+
+    dijelovi.push(el('p', { class: 'napomena-izvjestaj' },
+      'Informativni podaci iz javnih servisa DGU-a, Hrvatskih voda i podataka općine. Nemaju pravnu snagu; za službene podatke obratite se nadležnim tijelima (katastar, zemljišne knjige, Jedinstveni upravni odjel Općine Bilje).'));
+    otvoriDijalog(...dijelovi);
   }
 
   // ---------- pretraga (adrese, ulice, naselja) ----------
@@ -393,6 +594,7 @@
         zapisi.push({ vrsta: 'Ulica', tekst: f.get('naziv') + ', ' + f.get('naselje'), extent: ext, red: 1 });
       }
     }
+    if (adrese) stanje.adrese = adrese.adrese;
     if (adrese) for (const [ulica, broj, naselje, lon, lat] of adrese.adrese) {
       zapisi.push({ vrsta: 'Adresa', tekst: ulica + ' ' + broj + ', ' + naselje, tocka: ol.proj.fromLonLat([lon, lat]), red: 2 });
     }
