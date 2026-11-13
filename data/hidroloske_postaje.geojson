@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "hidroloske_postaje",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"xy_coordinate_resolution": 1e-06,
+"features": [
+{ "type": "Feature", "properties": { "naziv": "Osijek", "vrsta": "Hidrološka postaja DHMZ", "sifra": 5053, "vodostaji": "https://hidro.dhz.hr/" }, "geometry": { "type": "Point", "coordinates": [ 18.701667, 45.560833 ] } },
+{ "type": "Feature", "properties": { "naziv": "Aljmaš", "vrsta": "Hidrološka postaja DHMZ", "sifra": 5001, "vodostaji": "https://hidro.dhz.hr/" }, "geometry": { "type": "Point", "coordinates": [ 18.951056, 45.531194 ] } },
+{ "type": "Feature", "properties": { "naziv": "Batina", "vrsta": "Hidrološka postaja DHMZ", "sifra": 5170, "vodostaji": "https://hidro.dhz.hr/" }, "geometry": { "type": "Point", "coordinates": [ 18.854722, 45.845778 ] } },
+{ "type": "Feature", "properties": { "naziv": "Bijelo Brdo", "vrsta": "Hidrološka postaja DHMZ", "sifra": 5007, "vodostaji": "https://hidro.dhz.hr/" }, "geometry": { "type": "Point", "coordinates": [ 18.917278, 45.544361 ] } },
+{ "type": "Feature", "properties": { "naziv": "Belišće", "vrsta": "Hidrološka postaja DHMZ", "sifra": 5005, "vodostaji": "https://hidro.dhz.hr/" }, "geometry": { "type": "Point", "coordinates": [ 18.417889, 45.689 ] } }
+]
+}

@@ -106,6 +106,7 @@
         fill: new ol.style.Fill({ color: '#1f2937' }),
         stroke: new ol.style.Stroke({ color: 'rgba(255,255,255,0.9)', width: 3 }),
         placement: geom === 'linija' ? 'line' : 'point',
+        offsetY: geom === 'tocka' ? -15 : 0,
         overflow: geom === 'poligon'
       })
     }) : null;
@@ -125,6 +126,15 @@
   }
 
   function napraviLegendu(def) {
+    if (def.tip === 'wms' && def.legenda !== false) {
+      // legenda koju daje sam WMS servis (GetLegendGraphic)
+      const sloj = String(def.wmsSlojevi).split(',')[0];
+      const url = def.url + (def.url.includes('?') ? '&' : '?') +
+        'SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=' + encodeURIComponent(sloj);
+      const img = el('img', { src: url, alt: 'Legenda: ' + def.naziv, loading: 'lazy' });
+      img.addEventListener('error', () => img.remove());
+      return el('div', { class: 'legenda legenda-wms' }, img);
+    }
     const stil = def.stil;
     if (!stil) return null;
     const geom = stil.geometrija || 'poligon';

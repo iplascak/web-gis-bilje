@@ -6,6 +6,11 @@
       "otvoreno": true
     },
     {
+      "id": "poplave",
+      "naziv": "Poplave i vode",
+      "otvoreno": false
+    },
+    {
       "id": "projekti",
       "naziv": "Projekti općine",
       "otvoreno": true
@@ -92,7 +97,117 @@
       "opis": "Granice i brojevi katastarskih čestica. Vidljivo tek kod većeg uvećanja.",
       "izvor": "Državna geodetska uprava – INSPIRE WMS",
       "licenca": "Korištenje uz prihvaćanje uvjeta korištenja DGU-a",
-      "azurirano": "uživo s DGU servisa"
+      "azurirano": "uživo s DGU servisa",
+      "legenda": false
+    },
+    {
+      "id": "poplave_vv",
+      "naziv": "Poplave – velika vjerojatnost",
+      "grupa": "poplave",
+      "tip": "wms",
+      "url": "https://servisi.voda.hr/wms",
+      "wmsSlojevi": "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-velika-vjerojatnost_2019",
+      "projekcija": "EPSG:3857",
+      "vidljivo": false,
+      "neprozirnost": 0.75,
+      "opis": "Područja koja se plave često. Boja označava očekivanu dubinu vode.",
+      "izvor": "Hrvatske vode – Karte opasnosti od poplava 2019. (WMS)",
+      "licenca": "Hrvatske vode – javni WMS servis",
+      "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
+      "atribucija": "© Hrvatske vode"
+    },
+    {
+      "id": "poplave_sv",
+      "naziv": "Poplave – srednja vjerojatnost (100 god.)",
+      "grupa": "poplave",
+      "tip": "wms",
+      "url": "https://servisi.voda.hr/wms",
+      "wmsSlojevi": "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-srednja-vjerojatnost_2019",
+      "projekcija": "EPSG:3857",
+      "vidljivo": false,
+      "neprozirnost": 0.75,
+      "opis": "Poplava s povratnim razdobljem od 100 godina. Boja označava očekivanu dubinu vode.",
+      "izvor": "Hrvatske vode – Karte opasnosti od poplava 2019. (WMS)",
+      "licenca": "Hrvatske vode – javni WMS servis",
+      "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
+      "atribucija": "© Hrvatske vode"
+    },
+    {
+      "id": "poplave_mv",
+      "naziv": "Poplave – mala vjerojatnost",
+      "grupa": "poplave",
+      "tip": "wms",
+      "url": "https://servisi.voda.hr/wms",
+      "wmsSlojevi": "poplave_opasnosti_2019:hr.fd.opasnost-od-poplave-mala-vjerojatnost_2019",
+      "projekcija": "EPSG:3857",
+      "vidljivo": false,
+      "neprozirnost": 0.75,
+      "opis": "Rijetki, ekstremni poplavni događaji. Boja označava očekivanu dubinu vode.",
+      "izvor": "Hrvatske vode – Karte opasnosti od poplava 2019. (WMS)",
+      "licenca": "Hrvatske vode – javni WMS servis",
+      "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
+      "atribucija": "© Hrvatske vode"
+    },
+    {
+      "id": "nasipi",
+      "naziv": "Nasipi",
+      "grupa": "poplave",
+      "tip": "geojson",
+      "url": "data/nasipi.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "linija",
+        "boja": "#78350f",
+        "debljina": 4
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "duljina_km",
+            "oznaka": "Duljina dionice (km)"
+          }
+        ]
+      },
+      "opis": "Obrambeni nasipi uz Dravu i Dunav.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.), izvorno Hrvatske vode",
+      "azurirano": "2016."
+    },
+    {
+      "id": "hidro_postaje",
+      "naziv": "Hidrološke postaje (vodostaji)",
+      "grupa": "poplave",
+      "tip": "geojson",
+      "url": "data/hidroloske_postaje.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "boja": "#0369a1",
+        "velicina": 7,
+        "natpis": "naziv",
+        "natpisMinZoom": 10
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "sifra",
+            "oznaka": "Šifra postaje"
+          },
+          {
+            "polje": "vodostaji",
+            "oznaka": "Trenutni vodostaji",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Hidrološke postaje DHMZ-a na Dravi i Dunavu u okolici općine. Trenutni vodostaji dostupni su na stranici DHMZ-a.",
+      "izvor": "DHMZ (preko Inventarizacije okolišnih resursa, 2017.)",
+      "azurirano": "2016."
     },
     {
       "id": "projekti",
