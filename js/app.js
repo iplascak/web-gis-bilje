@@ -252,14 +252,20 @@
 
   // ---------- sučelje: podloge i slojevi ----------
 
+  function postaviPodlogu(idPodloge) {
+    if (!stanje.podloge[idPodloge]) return;
+    for (const [id, s] of Object.entries(stanje.podloge)) s.setVisible(id === idPodloge);
+    const r = document.querySelector('input[name=podloga][value="' + idPodloge + '"]');
+    if (r) r.checked = true;
+    stanje.podloga = idPodloge;
+  }
+
   function prikaziPodloge() {
     const div = document.getElementById('podloge');
     for (const def of stanje.portal.podloge) {
       const unos = el('input', {
         type: 'radio', name: 'podloga', value: def.id, checked: !!def.zadano,
-        onchange: () => {
-          for (const [id, s] of Object.entries(stanje.podloge)) s.setVisible(id === def.id);
-        }
+        onchange: () => postaviPodlogu(def.id)
       });
       div.append(el('label', {}, unos, def.naziv));
     }
@@ -285,6 +291,13 @@
             zatvoriSkocni();
           }
         });
+        zapis.postaviVidljivost = (v) => {
+          kvacica.checked = v;
+          zapis.olSloj.setVisible(v);
+          if (legenda) legenda.hidden = !v;
+          // otvori grupu da se uključeni sloj vidi u panelu
+          if (v) det.open = true;
+        };
         const red = el('div', { class: 'sloj-red' },
           el('label', {}, kvacica, el('span', {}, def.naziv,
             def.minZoom ? el('span', { class: 'napomena' }, ' (uvećajte kartu)') : null)),
@@ -542,7 +555,7 @@
         } else {
           dohvatiObjekte(def).then(fs => {
             const pogoci = fs.filter(f => f.getGeometry() && f.getGeometry().intersectsCoordinate(koord));
-            if (!pogoci.length) return postavi(r.vrijednost, 'ne', 'ne');
+            if (!pogoci.length) return postavi(r.vrijednost, st.inace || 'ne', st.inace ? '' : 'ne');
             const nazivi = [...new Set(pogoci.map(f => {
               let n = f.get(st.polje) || def.naziv;
               if (st.dodatno && f.get(st.dodatno)) n += ' (' + (st.dodatnoPrefiks || '') + f.get(st.dodatno) + ')';
@@ -555,9 +568,68 @@
       }
     }
 
+    const gumbDijeli = el('button', { class: 'gumb-lokacija', onclick: () => podijeli(koord, gumbDijeli) }, 'Podijeli ovu lokaciju');
+    dijelovi.push(gumbDijeli);
     dijelovi.push(el('p', { class: 'napomena-izvjestaj' },
       'Informativni podaci iz javnih servisa DGU-a, Hrvatskih voda i podataka općine. Nemaju pravnu snagu; za službene podatke obratite se nadležnim tijelima (katastar, zemljišne knjige, Jedinstveni upravni odjel Općine Bilje).'));
     otvoriDijalog(...dijelovi);
+  }
+
+
+  // ---------- dijeljenje poveznice ----------
+  // Format: #v=zoom/lon/lat&p=podloga&s=sloj1,sloj2&l=lon,lat  (l = otvoreni izvještaj o lokaciji)
+
+  function napraviPoveznicu(koordLokacije) {
+    const view = stanje.karta.getView();
+    const [lon, lat] = ol.proj.toLonLat(view.getCenter());
+    const dio = ['v=' + view.getZoom().toFixed(2) + '/' + lon.toFixed(5) + '/' + lat.toFixed(5)];
+    const podloga = stanje.podloga || (stanje.portal.podloge.find(p => p.zadano) || {}).id;
+    if (podloga) dio.push('p=' + podloga);
+    const ukljuceni = Object.entries(stanje.slojevi).filter(([, z]) => z.olSloj.getVisible()).map(([id]) => id);
+    dio.push('s=' + ukljuceni.join(','));
+    if (koordLokacije) {
+      const [x, y] = ol.proj.toLonLat(koordLokacije);
+      dio.push('l=' + x.toFixed(6) + ',' + y.toFixed(6));
+    }
+    return location.origin + location.pathname + '#' + dio.join('&');
+  }
+
+  async function podijeli(koordLokacije, gumb) {
+    const url = napraviPoveznicu(koordLokacije);
+    const naslov = koordLokacije ? 'Lokacija – ' + stanje.portal.naslov : stanje.portal.naslov;
+    try {
+      if (navigator.share && /Android|iPhone|iPad/i.test(navigator.userAgent)) {
+        await navigator.share({ title: naslov, url });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      if (gumb) { const t = gumb.textContent; gumb.textContent = 'Poveznica kopirana ✓'; setTimeout(() => { gumb.textContent = t; }, 2500); }
+    } catch (g) {
+      // rezerva: prikaži poveznicu za ručno kopiranje
+      const polje = el('input', { class: 'poveznica-polje', value: url, readonly: true });
+      otvoriDijalog(el('h3', {}, 'Poveznica za dijeljenje'), el('p', {}, 'Kopirajte poveznicu:'), polje);
+      polje.select();
+    }
+  }
+
+  function primijeniPoveznicu() {
+    const h = new URLSearchParams(location.hash.slice(1));
+    if (![...h.keys()].length) return false;
+    const view = stanje.karta.getView();
+    if (h.get('v')) {
+      const [z, lon, lat] = h.get('v').split('/').map(Number);
+      if ([z, lon, lat].every(isFinite)) { view.setCenter(ol.proj.fromLonLat([lon, lat])); view.setZoom(z); }
+    }
+    if (h.get('p')) postaviPodlogu(h.get('p'));
+    if (h.has('s')) {
+      const ukljuceni = new Set(h.get('s').split(',').filter(Boolean));
+      for (const [id, z] of Object.entries(stanje.slojevi)) if (z.postaviVidljivost) z.postaviVidljivost(ukljuceni.has(id));
+    }
+    if (h.get('l') && stanje.portal.lokacija) {
+      const [lon, lat] = h.get('l').split(',').map(Number);
+      if (isFinite(lon) && isFinite(lat)) setTimeout(() => izvjestajLokacije(ol.proj.fromLonLat([lon, lat])), 300);
+    }
+    return !!h.get('v');
   }
 
   // ---------- pretraga (adrese, ulice, naselja) ----------
@@ -703,6 +775,7 @@
     prikaziPodloge();
     prikaziSlojeve();
     postaviPretragu(portal.pretraga).catch((g) => console.warn('Pretraga nije dostupna:', g));
+    stanje.prikazIzPoveznice = primijeniPoveznicu();
 
     // granica općine – za gumb "Cijela općina"
     const granica = stanje.slojevi.granica;
@@ -710,8 +783,8 @@
       const izvor = granica.olSloj.getSource();
       izvor.once('featuresloadend', () => {
         stanje.granicaExtent = izvor.getExtent();
-        // na početku prikaži cijelu općinu (radi i na mobitelu)
-        view.fit(stanje.granicaExtent, { padding: [30, 30, 30, 30] });
+        // na početku prikaži cijelu općinu (radi i na mobitelu), osim ako poveznica određuje prikaz
+        if (!stanje.prikazIzPoveznice) view.fit(stanje.granicaExtent, { padding: [30, 30, 30, 30] });
       });
     }
     document.getElementById('gumbOpcina').addEventListener('click', () => {
@@ -745,6 +818,8 @@
     if (window.innerWidth <= 720) document.getElementById('panel').classList.add('skriven');
     const dijalog = document.getElementById('dijalog');
     dijalog.querySelector('.zatvori').addEventListener('click', () => dijalog.close());
+    const gumbPodijeli = document.getElementById('gumbPodijeli');
+    gumbPodijeli.addEventListener('click', () => podijeli(null, gumbPodijeli));
     document.getElementById('gumbOPortalu').addEventListener('click', () =>
       otvoriDijalog(el('h3', {}, portal.naslov), el('p', {}, portal.oPortalu || '')));
   }

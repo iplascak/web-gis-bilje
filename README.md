@@ -92,3 +92,25 @@ Portal je informativnog karaktera i nema pravnu snagu.
 ## Licenca
 
 Kod: MIT (vidi LICENSE). Podaci: prema uvjetima pojedinog izvora.
+
+## Projekti (tablica)
+
+Projekti se uređuju u `data/izvori/projekti.csv` (Excel → Spremi kao CSV UTF-8, razdjelnik `;`).
+Nakon izmjene pokrenite `python scripts/projekti.py`, koji izrađuje `data/projekti.geojson`.
+Za točnu lokaciju upišite stupce `lon` i `lat`; inače se projekt smješta u središte naselja.
+
+## "Što je na ovoj lokaciji?"
+
+Provjere u izvještaju definirane su u `config/portal.json` → `lokacija.provjere`.
+Vrste: `poligon` (točka unutar objekta sloja) i `wmsPiksel` (razred iz WMS karte prema legendi).
+
+## Poveznice
+
+Gumb **Podijeli** kopira poveznicu oblika `#v=zoom/lon/lat&p=podloga&s=sloj1,sloj2&l=lon,lat`
+(`l` otvara izvještaj o lokaciji).
+
+## Tjedna provjera servisa
+
+`.github/workflows/provjera-servisa.yml` svakog ponedjeljka pokreće `scripts/provjera_servisa.py`.
+Ako neki izvor ne radi, otvara se issue s oznakom `provjera-servisa` (GitHub šalje e-mail).
+Ručno pokretanje: Actions → Tjedna provjera servisa → Run workflow.

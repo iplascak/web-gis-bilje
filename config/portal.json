@@ -65,6 +65,19 @@
     },
     "provjere": [
       {
+        "naslov": "Prostorni plan (PPUO, stanje 2017. – nije aktualno)",
+        "stavke": [
+          {
+            "vrsta": "poligon",
+            "sloj": "gradevinska_podrucja",
+            "polje": "namjena",
+            "oznaka": "Građevinsko područje",
+            "neutralno": true,
+            "inace": "izvan građevinskog područja (prema planu iz 2017.)"
+          }
+        ]
+      },
+      {
         "naslov": "Opasnost od poplava (Hrvatske vode, 2019.)",
         "stavke": [
           {

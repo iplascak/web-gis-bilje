@@ -6,6 +6,11 @@
       "otvoreno": true
     },
     {
+      "id": "prostor",
+      "naziv": "Prostorni plan",
+      "otvoreno": false
+    },
+    {
       "id": "poplave",
       "naziv": "Poplave i vode",
       "otvoreno": false
@@ -108,6 +113,73 @@
       "azurirano": "uživo s DGU servisa",
       "legenda": false,
       "detaljno": "Granice i brojevi katastarskih čestica, učitani uživo sa servisa Državne geodetske uprave. Zbog količine podataka sloj se prikazuje tek kod većeg uvećanja.\n\nBroj čestice za bilo koju točku dobit ćete i klikom na kartu, pa \"Što je na ovoj lokaciji?\".\n\nPrikaz je informativan. Službeni podaci (vlasništvo, površina, način uporabe) nalaze se u Zajedničkom informacijskom sustavu zemljišnih knjiga i katastra (OSS)."
+    },
+    {
+      "id": "gradevinska_podrucja",
+      "naziv": "Građevinska područja (PPUO, stanje 2017.)",
+      "grupa": "prostor",
+      "tip": "geojson",
+      "url": "data/gradevinska_podrucja.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1,
+        "ispunaProzirnost": 0.35,
+        "kategorije": {
+          "polje": "kategorija",
+          "vrijednosti": {
+            "naselje_izgr": {
+              "boja": "#dc2626",
+              "oznaka": "Naselje – izgrađeni dio"
+            },
+            "naselje_neizgr": {
+              "boja": "#fb923c",
+              "oznaka": "Naselje – neizgrađeni dio"
+            },
+            "turisticka": {
+              "boja": "#c026d3",
+              "oznaka": "Ugostiteljsko-turistička namjena"
+            },
+            "gospodarska": {
+              "boja": "#7c3aed",
+              "oznaka": "Gospodarska namjena"
+            },
+            "sport": {
+              "boja": "#16a34a",
+              "oznaka": "Sport i rekreacija"
+            },
+            "posebni_uvjeti": {
+              "boja": "#0d9488",
+              "oznaka": "Posebni uvjeti (PPPP Kopački rit)"
+            },
+            "groblje": {
+              "boja": "#6b7280",
+              "oznaka": "Groblje"
+            },
+            "ostalo": {
+              "boja": "#a16207",
+              "oznaka": "Ostalo (mineralne sirovine, reciklažno dvorište)"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "namjena",
+        "polja": [
+          {
+            "polje": "stanje",
+            "oznaka": "Stanje"
+          },
+          {
+            "polje": "povrsina_ha",
+            "oznaka": "Površina (ha)"
+          }
+        ]
+      },
+      "opis": "Građevinska područja i izdvojene namjene prema PPUO Bilje, stanje 2017. NIJE AKTUALNO – plan je od tada mijenjan.",
+      "detaljno": "Granice građevinskih područja naselja i izdvojenih građevinskih područja (turizam, gospodarstvo, sport i rekreacija, groblja) prema Prostornom planu uređenja Općine Bilje, u stanju iz 2017. godine (iz Inventarizacije okolišnih resursa).\n\nVAŽNO: plan je nakon toga više puta mijenjan (II. izmjene 2022., III. 2023., IV. 2024., a u tijeku su i nove izmjene). Granice na ovoj karti zato mogu odstupati od važećeg plana. Za bilo kakvu odluku o gradnji ili kupnji zemljišta mjerodavan je važeći plan, objavljen na stranici općine u rubrici \"Prostorno planska dokumentacija\", odnosno lokacijska informacija koju izdaje nadležni upravni odjel.",
+      "izvor": "PPUO Bilje preko Inventarizacije okolišnih resursa Općine Bilje",
+      "azurirano": "2017. (zastarjelo – plan mijenjan 2022., 2023. i 2024.)"
     },
     {
       "id": "poplave_vv",
@@ -577,32 +649,40 @@
     },
     {
       "id": "projekti",
-      "naziv": "Projekti (EU i općinski)",
+      "naziv": "Razvojni projekti (Strateški program 2030)",
       "grupa": "projekti",
       "tip": "geojson",
       "url": "data/projekti.geojson",
       "vidljivo": true,
       "stil": {
         "geometrija": "tocka",
-        "velicina": 8,
+        "velicina": 7,
         "kategorije": {
-          "polje": "faza",
+          "polje": "spremnost",
           "vrijednosti": {
-            "planiran": {
-              "boja": "#94a3b8",
-              "oznaka": "Planiran"
-            },
-            "u_pripremi": {
-              "boja": "#f59e0b",
-              "oznaka": "U pripremi"
-            },
-            "u_tijeku": {
-              "boja": "#2563eb",
-              "oznaka": "U tijeku"
-            },
             "zavrsen": {
               "boja": "#16a34a",
               "oznaka": "Završen"
+            },
+            "u_provedbi": {
+              "boja": "#2563eb",
+              "oznaka": "U provedbi (2021.)"
+            },
+            "eu": {
+              "boja": "#0891b2",
+              "oznaka": "EU projekt (bilje.hr)"
+            },
+            "visoka": {
+              "boja": "#f59e0b",
+              "oznaka": "Visoka spremnost"
+            },
+            "srednja": {
+              "boja": "#f97316",
+              "oznaka": "Srednja spremnost"
+            },
+            "niska": {
+              "boja": "#94a3b8",
+              "oznaka": "Niska spremnost / planiranje"
             }
           }
         }
@@ -611,17 +691,13 @@
         "naslov": "naziv",
         "polja": [
           {
-            "polje": "opis",
-            "oznaka": "Opis"
-          },
-          {
-            "polje": "faza",
-            "oznaka": "Faza",
+            "polje": "spremnost",
+            "oznaka": "Spremnost (2021.)",
             "format": "kategorija"
           },
           {
             "polje": "vrijednost_eur",
-            "oznaka": "Vrijednost",
+            "oznaka": "Procijenjena vrijednost",
             "format": "eur"
           },
           {
@@ -629,35 +705,27 @@
             "oznaka": "Izvor financiranja"
           },
           {
-            "polje": "udio_eu_eur",
-            "oznaka": "Iznos EU sredstava",
-            "format": "eur"
+            "polje": "naselja",
+            "oznaka": "Naselja"
           },
           {
-            "polje": "pocetak",
-            "oznaka": "Početak",
-            "format": "datum"
+            "polje": "napomena",
+            "oznaka": "Napomena"
           },
           {
-            "polje": "zavrsetak",
-            "oznaka": "Završetak",
-            "format": "datum"
+            "polje": "lokacija_tocnost",
+            "oznaka": "Lokacija"
           },
           {
-            "polje": "naselje",
-            "oznaka": "Naselje"
-          },
-          {
-            "polje": "poveznica",
-            "oznaka": "Više informacija",
-            "format": "poveznica"
+            "polje": "izvor",
+            "oznaka": "Izvor"
           }
         ]
       },
-      "opis": "Projekti koje provodi ili planira Općina Bilje, s izvorima financiranja i fazom.",
-      "izvor": "Općina Bilje",
-      "azurirano": "PRIMJER – trenutno izmišljeni podaci",
-      "detaljno": "Projekti koje provodi ili planira Općina Bilje: lokacija, faza, vrijednost i izvori financiranja (EU fondovi, državni i općinski proračun).\n\nTrenutno su prikazani izmišljeni primjeri. Uskoro će biti zamijenjeni stvarnim projektima."
+      "opis": "Razvojni projekti Općine Bilje prema Strateškom razvojnom programu do 2030.",
+      "izvor": "Strateški razvojni program Općine Bilje do 2030.; bilje.hr (EU projekti)",
+      "azurirano": "stanje 2021. (dokument); lokacije približne",
+      "detaljno": "31 projekt iz Strateškog razvojnog programa Općine Bilje do 2030. (tablica 17., stanje 2021.), ukupne procijenjene vrijednosti oko 59 milijuna eura (444,3 milijuna kuna). Dodana su i dva projekta s popisa EU projekata na bilje.hr.\n\nBoja označava spremnost projekta u trenutku izrade programa (2021.): u provedbi, visoka spremnost (spreman za prijavu), srednja (u pripremi dokumentacije) i niska (u fazi planiranja). Trenutno stanje pojedinog projekta može biti drugačije.\n\nLokacije su približne, na razini naselja, osim projekata vezanih uz poznatu ulicu ili površinu. Projekti koji obuhvaćaju više naselja (npr. javna rasvjeta, mobilna ambulanta) prikazani su točkom u svakom naselju. Iznosi su preračunati u eure fiksnim tečajem 7,53450.\n\nPodaci se uređuju u tablici data/izvori/projekti.csv (može se otvoriti u Excelu)."
     }
   ]
 }
