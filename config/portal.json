@@ -1,0 +1,37 @@
+{
+  "naslov": "Web GIS Općine Bilje",
+  "podnaslov": "Prostorni podaci za mještane, posjetitelje i općinske službe",
+  "pocetniPrikaz": {
+    "centar": [18.79, 45.63],
+    "zoom": 11.5
+  },
+  "minZoom": 9,
+  "maxZoom": 20,
+  "granicaOpcine": "data/granica_opcine.geojson",
+  "projekcije": {
+    "EPSG:3765": "+proj=tmerc +lat_0=0 +lon_0=16.5 +k=0.9999 +x_0=500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+  },
+  "podloge": [
+    {
+      "id": "osm",
+      "naziv": "Karta (OpenStreetMap)",
+      "tip": "osm",
+      "zadano": true
+    },
+    {
+      "id": "dof2023",
+      "naziv": "Ortofoto 2023. (DGU)",
+      "tip": "wms",
+      "url": "https://geoportal.dgu.hr/services/inspire/orthophoto_2023/wms",
+      "wmsSlojevi": "OI.OrthoimageCoverage",
+      "projekcija": "EPSG:3765",
+      "atribucija": "© Državna geodetska uprava (DOF 2023), otvorena dozvola"
+    },
+    {
+      "id": "bez",
+      "naziv": "Bez podloge",
+      "tip": "prazno"
+    }
+  ],
+  "oPortalu": "Portal je informativnog karaktera i nema pravnu snagu. Za službene podatke (katastar, prostorni planovi) obratite se nadležnim tijelima ili Jedinstvenom upravnom odjelu Općine Bilje. Portal je izrađen volonterski, isključivo s besplatnim alatima otvorenog koda."
+}

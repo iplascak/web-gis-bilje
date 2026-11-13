@@ -1,0 +1,74 @@
+{
+  "grupe": [
+    { "id": "osnovno", "naziv": "Osnovni podaci", "otvoreno": true },
+    { "id": "projekti", "naziv": "Projekti općine", "otvoreno": true }
+  ],
+  "slojevi": [
+    {
+      "id": "granica",
+      "naziv": "Granica općine",
+      "grupa": "osnovno",
+      "tip": "geojson",
+      "url": "data/granica_opcine.geojson",
+      "vidljivo": true,
+      "stil": { "geometrija": "poligon", "rub": "#b91c1c", "debljina": 2.5, "ispuna": "rgba(185,28,28,0.03)" },
+      "opis": "Administrativna granica Općine Bilje.",
+      "izvor": "geoBoundaries (CC BY 4.0) – privremeno, zamijeniti službenom granicom DGU-a",
+      "azurirano": "2026-11"
+    },
+    {
+      "id": "katastar",
+      "naziv": "Katastarske čestice",
+      "grupa": "osnovno",
+      "tip": "wms",
+      "url": "https://api.uredjenazemlja.hr/services/inspire/cp_wms/wms",
+      "wmsSlojevi": "CP.CadastralParcel",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "minZoom": 15,
+      "neprozirnost": 0.9,
+      "opis": "Granice i brojevi katastarskih čestica. Vidljivo tek kod većeg uvećanja.",
+      "izvor": "Državna geodetska uprava – INSPIRE WMS",
+      "licenca": "Korištenje uz prihvaćanje uvjeta korištenja DGU-a",
+      "azurirano": "uživo s DGU servisa"
+    },
+    {
+      "id": "projekti",
+      "naziv": "Projekti (EU i općinski)",
+      "grupa": "projekti",
+      "tip": "geojson",
+      "url": "data/projekti.geojson",
+      "vidljivo": true,
+      "stil": {
+        "geometrija": "tocka",
+        "velicina": 8,
+        "kategorije": {
+          "polje": "faza",
+          "vrijednosti": {
+            "planiran":   { "boja": "#94a3b8", "oznaka": "Planiran" },
+            "u_pripremi": { "boja": "#f59e0b", "oznaka": "U pripremi" },
+            "u_tijeku":   { "boja": "#2563eb", "oznaka": "U tijeku" },
+            "zavrsen":    { "boja": "#16a34a", "oznaka": "Završen" }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          { "polje": "opis", "oznaka": "Opis" },
+          { "polje": "faza", "oznaka": "Faza", "format": "kategorija" },
+          { "polje": "vrijednost_eur", "oznaka": "Vrijednost", "format": "eur" },
+          { "polje": "izvor_financiranja", "oznaka": "Izvor financiranja" },
+          { "polje": "udio_eu_eur", "oznaka": "Iznos EU sredstava", "format": "eur" },
+          { "polje": "pocetak", "oznaka": "Početak", "format": "datum" },
+          { "polje": "zavrsetak", "oznaka": "Završetak", "format": "datum" },
+          { "polje": "naselje", "oznaka": "Naselje" },
+          { "polje": "poveznica", "oznaka": "Više informacija", "format": "poveznica" }
+        ]
+      },
+      "opis": "Projekti koje provodi ili planira Općina Bilje, s izvorima financiranja i fazom.",
+      "izvor": "Općina Bilje",
+      "azurirano": "PRIMJER – trenutno izmišljeni podaci"
+    }
+  ]
+}

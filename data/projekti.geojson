@@ -1,0 +1,55 @@
+{
+  "type": "FeatureCollection",
+  "name": "projekti",
+  "napomena": "PRIMJER – izmišljeni podaci samo za demonstraciju. Zamijeniti stvarnim projektima općine.",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "naziv": "PRIMJER: Rekonstrukcija društvenog doma",
+        "opis": "Ilustrativni primjer – nije stvarni projekt.",
+        "faza": "u_tijeku",
+        "vrijednost_eur": 450000,
+        "izvor_financiranja": "Program ruralnog razvoja (primjer)",
+        "udio_eu_eur": 380000,
+        "pocetak": "2026-03-01",
+        "zavrsetak": "2027-06-30",
+        "naselje": "Bilje",
+        "poveznica": ""
+      },
+      "geometry": { "type": "Point", "coordinates": [18.7425, 45.6065] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "naziv": "PRIMJER: Biciklistička staza",
+        "opis": "Ilustrativni primjer – nije stvarni projekt.",
+        "faza": "u_pripremi",
+        "vrijednost_eur": 1200000,
+        "izvor_financiranja": "ITU / EU fondovi (primjer)",
+        "udio_eu_eur": 1020000,
+        "pocetak": "2027-01-01",
+        "zavrsetak": "",
+        "naselje": "Bilje",
+        "poveznica": ""
+      },
+      "geometry": { "type": "Point", "coordinates": [18.76, 45.595] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "naziv": "PRIMJER: Dječje igralište",
+        "opis": "Ilustrativni primjer – nije stvarni projekt.",
+        "faza": "zavrsen",
+        "vrijednost_eur": 60000,
+        "izvor_financiranja": "Proračun Općine Bilje (primjer)",
+        "udio_eu_eur": 0,
+        "pocetak": "2025-04-01",
+        "zavrsetak": "2025-09-15",
+        "naselje": "Bilje",
+        "poveznica": ""
+      },
+      "geometry": { "type": "Point", "coordinates": [18.745, 45.6] }
+    }
+  ]
+}

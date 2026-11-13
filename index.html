@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web GIS Općine Bilje</title>
+  <meta name="description" content="Interaktivna karta Općine Bilje – prostorni podaci za mještane i posjetitelje.">
+  <link rel="stylesheet" href="lib/ol/ol.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="zaglavlje">
+    <button id="gumbPanel" class="gumb-ikona" aria-label="Prikaži ili sakrij slojeve" title="Slojevi">☰</button>
+    <div class="naslovi">
+      <h1 id="naslov">Web GIS Općine Bilje</h1>
+      <p id="podnaslov"></p>
+    </div>
+    <button id="gumbOPortalu" class="gumb-tekst">O portalu</button>
+  </header>
+
+  <main class="sadrzaj">
+    <aside id="panel" class="panel" aria-label="Slojevi i legenda">
+      <section>
+        <h2>Podloga</h2>
+        <div id="podloge" class="podloge"></div>
+      </section>
+      <section>
+        <h2>Slojevi</h2>
+        <div id="slojevi"></div>
+      </section>
+    </aside>
+
+    <div id="karta" class="karta" tabindex="0" aria-label="Karta"></div>
+  </main>
+
+  <div id="koordinate" class="koordinate" title="Koordinate u HTRS96/TM"></div>
+  <button id="gumbOpcina" class="gumb-opcina" title="Prikaži cijelu općinu">⌂ Cijela općina</button>
+
+  <div id="skocni" class="skocni" hidden>
+    <button class="zatvori" aria-label="Zatvori">×</button>
+    <div class="skocni-sadrzaj"></div>
+  </div>
+
+  <dialog id="dijalog" class="dijalog">
+    <button class="zatvori" aria-label="Zatvori">×</button>
+    <div class="dijalog-sadrzaj"></div>
+  </dialog>
+
+  <script src="lib/proj4/proj4.js"></script>
+  <script src="lib/ol/ol.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
