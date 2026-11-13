@@ -70,6 +70,11 @@
 
   // ---------- stilovi ----------
 
+  function hexURgba(hex, alfa) {
+    const m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
+    return m ? `rgba(${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)},${alfa})` : hex;
+  }
+
   function napraviStil(stil) {
     stil = stil || {};
     const geom = stil.geometrija || 'poligon';
@@ -87,11 +92,12 @@
           })
         });
       } else if (geom === 'linija') {
-        s = new ol.style.Style({ stroke: new ol.style.Stroke({ color: boja, width: stil.debljina || 3 }) });
+        s = new ol.style.Style({ stroke: new ol.style.Stroke({ color: boja, width: stil.debljina || 3, lineDash: stil.isprekidano ? [8, 6] : undefined }) });
       } else {
+        const ispuna = stil.ispuna || (stil.ispunaProzirnost ? hexURgba(boja, stil.ispunaProzirnost) : 'rgba(0,0,0,0)');
         s = new ol.style.Style({
-          stroke: new ol.style.Stroke({ color: stil.rub || boja, width: stil.debljina || 2 }),
-          fill: new ol.style.Fill({ color: stil.ispuna || 'rgba(0,0,0,0)' })
+          stroke: new ol.style.Stroke({ color: stil.rub || boja, width: stil.debljina || 2, lineDash: stil.isprekidano ? [8, 6] : undefined }),
+          fill: new ol.style.Fill({ color: ispuna })
         });
       }
       kesh[boja] = s;
@@ -140,7 +146,11 @@
     const geom = stil.geometrija || 'poligon';
     const znak = (boja) => {
       const z = el('span', { class: 'znak ' + geom });
-      if (geom === 'poligon') { z.style.borderColor = stil.rub || boja; z.style.background = stil.ispuna || 'transparent'; }
+      if (geom === 'poligon') {
+        z.style.borderColor = stil.rub || boja;
+        z.style.background = stil.ispuna || (stil.ispunaProzirnost ? hexURgba(boja, Math.max(stil.ispunaProzirnost, 0.3)) : 'transparent');
+        if (stil.isprekidano) z.style.borderStyle = 'dashed';
+      }
       else z.style.background = boja;
       return z;
     };
@@ -176,6 +186,24 @@
         format: new ol.format.GeoJSON({ dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' })
       });
       izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju sloja', def.id));
+      const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil) }, zajednicko));
+      sloj.set('upitni', def.klik !== false);
+      return sloj;
+    }
+
+    if (def.tip === 'wfs') {
+      // WFS: vektorski objekti uživo sa servisa (samo za područje općine)
+      const p = new URLSearchParams({
+        service: 'WFS', version: def.verzija || '1.1.0', request: 'GetFeature',
+        typeName: def.typeName, outputFormat: 'application/json', srsName: 'EPSG:3857',
+        bbox: def.bbox || stanje.portal.wfsBbox
+      });
+      const izvor = new ol.source.Vector({
+        url: def.url + '?' + p.toString(),
+        format: new ol.format.GeoJSON({ dataProjection: 'EPSG:3857', featureProjection: 'EPSG:3857' }),
+        attributions: def.atribucija
+      });
+      izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju WFS sloja', def.id));
       const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil) }, zajednicko));
       sloj.set('upitni', def.klik !== false);
       return sloj;

@@ -50,5 +50,6 @@
     "adrese": "data/adrese.json",
     "naselja": "data/naselja.geojson",
     "ulice": "data/ulice.geojson"
-  }
+  },
+  "wfsBbox": "671000,5046000,694000,5069000,EPSG:3765"
 }

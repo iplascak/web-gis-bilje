@@ -11,6 +11,11 @@
       "otvoreno": false
     },
     {
+      "id": "priroda",
+      "naziv": "Priroda i baština",
+      "otvoreno": false
+    },
+    {
       "id": "projekti",
       "naziv": "Projekti općine",
       "otvoreno": true
@@ -208,6 +213,348 @@
       "opis": "Hidrološke postaje DHMZ-a na Dravi i Dunavu u okolici općine. Trenutni vodostaji dostupni su na stranici DHMZ-a.",
       "izvor": "DHMZ (preko Inventarizacije okolišnih resursa, 2017.)",
       "azurirano": "2016."
+    },
+    {
+      "id": "sanitarna_zastita",
+      "naziv": "Zone sanitarne zaštite izvorišta",
+      "grupa": "poplave",
+      "tip": "wfs",
+      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
+      "typeName": "zasticena_podrucja:hr.rzp.a_zone-sanitarne-zastite-izvorista",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "kategorije": {
+          "polje": "zona",
+          "vrijednosti": {
+            "I": {
+              "boja": "#7f1d1d",
+              "oznaka": "I. zona"
+            },
+            "II": {
+              "boja": "#dc2626",
+              "oznaka": "II. zona"
+            },
+            "III": {
+              "boja": "#f87171",
+              "oznaka": "III. zona"
+            }
+          }
+        },
+        "ispunaProzirnost": 0.2
+      },
+      "skocniProzor": {
+        "naslov": "Izvorište",
+        "polja": [
+          {
+            "polje": "zona",
+            "oznaka": "Zona zaštite"
+          }
+        ]
+      },
+      "opis": "Zone sanitarne zaštite izvorišta pitke vode (npr. Bilje – Konkološ). U zonama vrijede ograničenja gradnje i korištenja zemljišta.",
+      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
+      "azurirano": "uživo s Hrvatskih voda"
+    },
+    {
+      "id": "kupalista",
+      "naziv": "Kupališta",
+      "grupa": "poplave",
+      "tip": "wfs",
+      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
+      "typeName": "zasticena_podrucja:hr.rzp.c_kupalista-na-kopnenim-povrsinskim-vodama",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "boja": "#0ea5e9",
+        "velicina": 7,
+        "natpis": "Naziv",
+        "natpisMinZoom": 12
+      },
+      "skocniProzor": {
+        "naslov": "Naziv",
+        "polja": []
+      },
+      "opis": "Službena kupališta na kopnenim vodama u okolici općine.",
+      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
+      "azurirano": "uživo s Hrvatskih voda"
+    },
+    {
+      "id": "zasticena_podrucja",
+      "naziv": "Zaštićena područja prirode",
+      "grupa": "priroda",
+      "tip": "wfs",
+      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
+      "typeName": "zasticena_podrucja:hr.rzp.e_zasticene-prirodne-vrijednosti-poligoni",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 2,
+        "kategorije": {
+          "polje": "Kategorija",
+          "vrijednosti": {
+            "park prirode": {
+              "boja": "#15803d",
+              "oznaka": "Park prirode"
+            },
+            "posebni rezervat": {
+              "boja": "#14532d",
+              "oznaka": "Posebni rezervat"
+            },
+            "regionalni park": {
+              "boja": "#65a30d",
+              "oznaka": "Regionalni park"
+            }
+          }
+        },
+        "ispunaProzirnost": 0.15
+      },
+      "skocniProzor": {
+        "naslov": "Naziv",
+        "polja": [
+          {
+            "polje": "Kategorija",
+            "oznaka": "Kategorija"
+          },
+          {
+            "polje": "CDDA_kod",
+            "oznaka": "CDDA kod"
+          }
+        ]
+      },
+      "opis": "Zaštićena područja prema Zakonu o zaštiti prirode: Park prirode Kopački rit, posebni rezervat i Regionalni park Mura–Drava.",
+      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
+      "azurirano": "uživo s Hrvatskih voda"
+    },
+    {
+      "id": "natura_pop",
+      "naziv": "Natura 2000 – ptice (POP)",
+      "grupa": "priroda",
+      "tip": "wfs",
+      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
+      "typeName": "zasticena_podrucja:hr.rzp.e_ekoloska-mreza-NATURA-2000-podrucja-ocuvanja-znacajna-za-ptice",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "rub": "#c2410c",
+        "debljina": 2,
+        "isprekidano": true,
+        "ispuna": "rgba(194,65,12,0.06)"
+      },
+      "skocniProzor": {
+        "naslov": "Naziv",
+        "polja": [
+          {
+            "polje": "SITECODE",
+            "oznaka": "Šifra područja"
+          }
+        ]
+      },
+      "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za ptice.",
+      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
+      "azurirano": "uživo s Hrvatskih voda"
+    },
+    {
+      "id": "natura_povs",
+      "naziv": "Natura 2000 – vrste i staništa (POVS)",
+      "grupa": "priroda",
+      "tip": "wfs",
+      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
+      "typeName": "zasticena_podrucja:hr.rzp.e_ekoloska-mreza-NATURA2000-podrucja-ocuvanja-znacajna-za-vrste-i-stanisne-tipove",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "rub": "#1d4ed8",
+        "debljina": 2,
+        "isprekidano": true,
+        "ispuna": "rgba(29,78,216,0.06)"
+      },
+      "skocniProzor": {
+        "naslov": "Naziv",
+        "polja": [
+          {
+            "polje": "SITECODE",
+            "oznaka": "Šifra područja"
+          }
+        ]
+      },
+      "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za vrste i stanišne tipove.",
+      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
+      "azurirano": "uživo s Hrvatskih voda"
+    },
+    {
+      "id": "bastina_registar",
+      "naziv": "Kulturna baština (registar)",
+      "grupa": "priroda",
+      "tip": "wfs",
+      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
+      "typeName": "zasticena_podrucja:hr.rzp.g_podrucja-kulturne-bastine",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "rub": "#9d174d",
+        "debljina": 2,
+        "ispuna": "rgba(157,23,77,0.15)"
+      },
+      "skocniProzor": {
+        "naslov": "Naziv",
+        "polja": []
+      },
+      "opis": "Zaštićena područja kulturne baštine iz registra: dvorac Tikveš, pustara Zlatna Greda.",
+      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
+      "azurirano": "uživo s Hrvatskih voda"
+    },
+    {
+      "id": "kulturna_dobra",
+      "naziv": "Kulturna dobra i arheološki lokaliteti",
+      "grupa": "priroda",
+      "tip": "geojson",
+      "url": "data/kulturna_dobra.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "kategorije": {
+          "polje": "vrsta",
+          "vrijednosti": {
+            "graditeljska baština": {
+              "boja": "#be185d",
+              "oznaka": "Graditeljska baština"
+            },
+            "arheološki lokalitet": {
+              "boja": "#a16207",
+              "oznaka": "Arheološki lokalitet"
+            }
+          }
+        },
+        "ispunaProzirnost": 0.2
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "naselje",
+            "oznaka": "Naselje / lokacija"
+          },
+          {
+            "polje": "kategorija",
+            "oznaka": "Status zaštite"
+          }
+        ]
+      },
+      "opis": "Kulturna dobra i arheološki lokaliteti prema prostornom planu općine.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017."
+    },
+    {
+      "id": "krajobraz",
+      "naziv": "Krajobrazna područja",
+      "grupa": "priroda",
+      "tip": "geojson",
+      "url": "data/krajobrazna_podrucja.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "kategorije": {
+          "polje": "oznaka",
+          "vrijednosti": {
+            "A": {
+              "boja": "#ca8a04",
+              "oznaka": "Plato Brestovac – poljoprivredne površine"
+            },
+            "B": {
+              "boja": "#ea580c",
+              "oznaka": "Naselja sa sitnijom parcelacijom"
+            },
+            "C": {
+              "boja": "#65a30d",
+              "oznaka": "Niža meliorirana područja Baranje"
+            },
+            "D": {
+              "boja": "#0891b2",
+              "oznaka": "Doprirodno područje uz Dravu"
+            },
+            "E": {
+              "boja": "#047857",
+              "oznaka": "Kopački rit"
+            }
+          }
+        },
+        "ispunaProzirnost": 0.2
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "tip",
+            "oznaka": "Tip krajobraza"
+          }
+        ]
+      },
+      "opis": "Krajobrazna područja općine.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017."
+    },
+    {
+      "id": "vizure",
+      "naziv": "Vizure",
+      "grupa": "priroda",
+      "tip": "geojson",
+      "url": "data/vizure.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1,
+        "kategorije": {
+          "polje": "kategorija",
+          "vrijednosti": {
+            "odlična vizura": {
+              "boja": "#16a34a",
+              "oznaka": "Odlična vizura"
+            },
+            "srednje dobra vizura": {
+              "boja": "#eab308",
+              "oznaka": "Srednje dobra vizura"
+            },
+            "loša vizura": {
+              "boja": "#9ca3af",
+              "oznaka": "Loša vizura"
+            }
+          }
+        },
+        "ispunaProzirnost": 0.3
+      },
+      "skocniProzor": {
+        "naslov": "kategorija",
+        "polja": [
+          {
+            "polje": "opis",
+            "oznaka": "Opis"
+          }
+        ]
+      },
+      "opis": "Kvaliteta pogleda iz točaka gledišta.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017."
+    },
+    {
+      "id": "tocke_gledista",
+      "naziv": "Točke gledišta",
+      "grupa": "priroda",
+      "tip": "geojson",
+      "url": "data/tocke_gledista.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "boja": "#7c2d12",
+        "velicina": 6
+      },
+      "klik": false,
+      "opis": "Točke iz kojih su procijenjene vizure.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017."
     },
     {
       "id": "projekti",
