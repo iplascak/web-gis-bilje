@@ -75,7 +75,7 @@
     const geom = stil.geometrija || 'poligon';
     const kesh = {};
 
-    function stilZaBoju(boja) {
+    function osnovniStil(boja) {
       if (kesh[boja]) return kesh[boja];
       let s;
       if (geom === 'tocka') {
@@ -98,15 +98,30 @@
       return s;
     }
 
-    if (stil.kategorije) {
-      const { polje, vrijednosti } = stil.kategorije;
-      const zadana = stil.boja || '#6b7280';
-      return function (f) {
-        const k = vrijednosti[f.get(polje)];
-        return stilZaBoju(k ? k.boja : zadana);
-      };
-    }
-    return stilZaBoju(stil.boja || stil.rub || '#2563eb');
+    // natpis (npr. naziv naselja ili ulice) – prikazuje se tek od zadanog zooma
+    const natpisMaxRez = stil.natpisMinZoom !== undefined ? zoomURezoluciju(stil.natpisMinZoom) : Infinity;
+    const natpisStil = stil.natpis ? new ol.style.Style({
+      text: new ol.style.Text({
+        font: (geom === 'poligon' ? '600 13px' : '12px') + ' system-ui, sans-serif',
+        fill: new ol.style.Fill({ color: '#1f2937' }),
+        stroke: new ol.style.Stroke({ color: 'rgba(255,255,255,0.9)', width: 3 }),
+        placement: geom === 'linija' ? 'line' : 'point',
+        overflow: geom === 'poligon'
+      })
+    }) : null;
+
+    const zadana = stil.boja || stil.rub || '#2563eb';
+    return function (f, rezolucija) {
+      let boja = zadana;
+      if (stil.kategorije) {
+        const k = stil.kategorije.vrijednosti[f.get(stil.kategorije.polje)];
+        if (k) boja = k.boja;
+      }
+      const osnovni = osnovniStil(boja);
+      if (!natpisStil || rezolucija > natpisMaxRez) return osnovni;
+      natpisStil.getText().setText(String(f.get(stil.natpis) || ''));
+      return [osnovni, natpisStil];
+    };
   }
 
   function napraviLegendu(def) {
@@ -152,7 +167,7 @@
       });
       izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju sloja', def.id));
       const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil) }, zajednicko));
-      sloj.set('upitni', true);
+      sloj.set('upitni', def.klik !== false);
       return sloj;
     }
 
@@ -299,6 +314,102 @@
     pozicionirajSkocni();
   }
 
+  // ---------- pretraga (adrese, ulice, naselja) ----------
+
+  function normaliziraj(t) {
+    return String(t).toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[.,]/g, ' ');
+  }
+
+  async function postaviPretragu(cfg) {
+    const unos = document.getElementById('pretraga');
+    const lista = document.getElementById('pretragaRezultati');
+    if (!cfg) { unos.parentElement.hidden = true; return; }
+    const format = new ol.format.GeoJSON({ dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' });
+    const zapisi = [];
+
+    const [adrese, naselja, ulice] = await Promise.all([
+      cfg.adrese ? ucitajJSON(cfg.adrese) : null,
+      cfg.naselja ? ucitajJSON(cfg.naselja) : null,
+      cfg.ulice ? ucitajJSON(cfg.ulice) : null
+    ]);
+    if (naselja) for (const f of format.readFeatures(naselja)) {
+      zapisi.push({ vrsta: 'Naselje', tekst: f.get('naziv'), geom: f.getGeometry(), red: 0 });
+    }
+    if (ulice) {
+      const poUlici = new Map();
+      for (const f of format.readFeatures(ulice)) {
+        if (!f.getGeometry()) continue;
+        const k = f.get('naziv') + '|' + f.get('naselje');
+        const ext = f.getGeometry().getExtent();
+        if (poUlici.has(k)) ol.extent.extend(poUlici.get(k).ext, ext);
+        else poUlici.set(k, { f, ext });
+      }
+      for (const { f, ext } of poUlici.values()) {
+        zapisi.push({ vrsta: 'Ulica', tekst: f.get('naziv') + ', ' + f.get('naselje'), extent: ext, red: 1 });
+      }
+    }
+    if (adrese) for (const [ulica, broj, naselje, lon, lat] of adrese.adrese) {
+      zapisi.push({ vrsta: 'Adresa', tekst: ulica + ' ' + broj + ', ' + naselje, tocka: ol.proj.fromLonLat([lon, lat]), red: 2 });
+    }
+    for (const z of zapisi) z.kljuc = normaliziraj(z.tekst);
+
+    // sloj za oznaku pronađene lokacije
+    const izvorOznake = new ol.source.Vector();
+    const slojOznake = new ol.layer.Vector({
+      source: izvorOznake, zIndex: 1000,
+      style: new ol.style.Style({
+        image: new ol.style.Circle({ radius: 9, fill: new ol.style.Fill({ color: 'rgba(220,38,38,0.85)' }), stroke: new ol.style.Stroke({ color: '#fff', width: 3 }) }),
+        stroke: new ol.style.Stroke({ color: 'rgba(220,38,38,0.9)', width: 4 })
+      })
+    });
+    stanje.karta.addLayer(slojOznake);
+
+    let rezultati = [], aktivni = -1;
+
+    function odaberi(z) {
+      const view = stanje.karta.getView();
+      izvorOznake.clear();
+      if (z.tocka) {
+        izvorOznake.addFeature(new ol.Feature(new ol.geom.Point(z.tocka)));
+        view.animate({ center: z.tocka, zoom: 18, duration: 500 });
+      } else if (z.extent) {
+        view.fit(z.extent, { padding: [60, 60, 60, 60], maxZoom: 18, duration: 500 });
+      } else if (z.geom) {
+        view.fit(z.geom, { padding: [40, 40, 40, 40], duration: 500 });
+      }
+      unos.value = z.tekst;
+      lista.hidden = true;
+      if (window.innerWidth <= 720) document.getElementById('panel').classList.add('skriven');
+    }
+
+    function prikazi() {
+      lista.replaceChildren(...rezultati.map((z, i) => el('li', {
+        class: i === aktivni ? 'aktivan' : '', role: 'option',
+        onmousedown: (e) => { e.preventDefault(); odaberi(z); }
+      }, el('span', { class: 'vrsta' }, z.vrsta), z.tekst)));
+      lista.hidden = rezultati.length === 0;
+    }
+
+    unos.addEventListener('input', () => {
+      const rijeci = normaliziraj(unos.value).split(/\s+/).filter(Boolean);
+      aktivni = -1;
+      if (!rijeci.length) { rezultati = []; prikazi(); return; }
+      rezultati = zapisi
+        .filter(z => rijeci.every(r => z.kljuc.includes(r)))
+        .sort((a, b) => a.red - b.red || a.kljuc.length - b.kljuc.length)
+        .slice(0, 12);
+      prikazi();
+    });
+    unos.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { aktivni = Math.min(aktivni + 1, rezultati.length - 1); prikazi(); e.preventDefault(); }
+      else if (e.key === 'ArrowUp') { aktivni = Math.max(aktivni - 1, 0); prikazi(); e.preventDefault(); }
+      else if (e.key === 'Enter' && rezultati.length) { odaberi(rezultati[Math.max(aktivni, 0)]); }
+      else if (e.key === 'Escape') { lista.hidden = true; }
+    });
+    unos.addEventListener('blur', () => setTimeout(() => { lista.hidden = true; }, 150));
+    unos.addEventListener('focus', () => { if (rezultati.length) lista.hidden = false; });
+  }
+
   // ---------- pokretanje ----------
 
   async function pokreni() {
@@ -344,6 +455,7 @@
 
     prikaziPodloge();
     prikaziSlojeve();
+    postaviPretragu(portal.pretraga).catch((g) => console.warn('Pretraga nije dostupna:', g));
 
     // granica općine – za gumb "Cijela općina"
     const granica = stanje.slojevi.granica;

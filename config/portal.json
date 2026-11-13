@@ -2,7 +2,10 @@
   "naslov": "Web GIS Općine Bilje",
   "podnaslov": "Prostorni podaci za mještane, posjetitelje i općinske službe",
   "pocetniPrikaz": {
-    "centar": [18.79, 45.63],
+    "centar": [
+      18.79,
+      45.63
+    ],
     "zoom": 11.5
   },
   "minZoom": 9,
@@ -42,5 +45,10 @@
       "tip": "prazno"
     }
   ],
-  "oPortalu": "Portal je informativnog karaktera i nema pravnu snagu. Za službene podatke (katastar, prostorni planovi) obratite se nadležnim tijelima ili Jedinstvenom upravnom odjelu Općine Bilje. Portal je izrađen volonterski, isključivo s besplatnim alatima otvorenog koda."
+  "oPortalu": "Portal je informativnog karaktera i nema pravnu snagu. Za službene podatke (katastar, prostorni planovi) obratite se nadležnim tijelima ili Jedinstvenom upravnom odjelu Općine Bilje. Portal je izrađen volonterski, isključivo s besplatnim alatima otvorenog koda.",
+  "pretraga": {
+    "adrese": "data/adrese.json",
+    "naselja": "data/naselja.geojson",
+    "ulice": "data/ulice.geojson"
+  }
 }
