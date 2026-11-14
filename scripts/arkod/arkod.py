@@ -33,7 +33,7 @@ def obradi(url, oznaka, proba=False):
     if proba:
         print(info[:4000]); return
     import re as _r
-    sloj = _r.search(r"^\d+: ([^ ]+)", subprocess.run(["ogrinfo", "-q", put], capture_output=True, text=True).stdout, _r.M).group(1)
+    sloj = _r.search(r"^\d+: (\S+)", subprocess.run(["ogrinfo", "-q", put], capture_output=True, text=True).stdout, _r.M).group(1)
     tmp = "/tmp/izrez.geojson"
     if os.path.exists(tmp): os.remove(tmp)
     # granica u koordinatnom sustavu izvora (HTRS96/TM) – izbjegava zabunu s redoslijedom osi kod EPSG:4326
