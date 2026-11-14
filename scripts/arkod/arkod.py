@@ -41,8 +41,8 @@ def obradi(url, oznaka, proba=False):
     polja = list(d["features"][0]["properties"]) if d["features"] else []
     print(oznaka, len(d["features"]), "parcela, polja:", polja)
     nadji = lambda *imena: next((p for p in polja if p.lower() in imena), None)
-    p_id = nadji("arkod_id", "id_arkod", "id", "parcela_id", "lpis_id", "fid")
-    p_vr = nadji("vrsta_uporabe", "vrsta_upor", "land_use", "uporaba", "vrsta", "landuse_code", "lu_code", "vrsta_uporabe_sifra", "vu_sifra")
+    p_id = nadji("arkod_id", "id_arkod", "id", "jpaid", "parcela_id", "lpis_id")
+    p_vr = nadji("land_use_id", "vrsta_uporabe", "vrsta_upor", "land_use", "uporaba", "vrsta", "landuse_code", "lu_code", "vrsta_uporabe_sifra", "vu_sifra")
     p_pov = nadji("povrsina", "area", "povrsina_ha", "pov", "area_ha")
     print("  koristim:", p_id, p_vr, p_pov)
     znacajke = []
@@ -56,7 +56,8 @@ def obradi(url, oznaka, proba=False):
             pov = None
         znacajke.append({"type": "Feature", "geometry": f["geometry"],
                          "properties": {"arkod_id": pr.get(p_id) if p_id else None, "arkod_vrsta": sifra,
-                                        "kultura": VRSTE.get(sifra, "vrsta " + sifra if sifra else "nepoznato"), "povrsina_ha": pov}})
+                                        "kultura": VRSTE.get(sifra, "vrsta " + sifra if sifra else "nepoznato"), "povrsina_ha": pov,
+                                        "navodnjavanje": 1 if pr.get("irrigation") in (1, "1") else 0}})
     os.makedirs(IZLAZ, exist_ok=True)
     json.dump({"type": "FeatureCollection", "stanje": oznaka, "features": znacajke}, open(f"{IZLAZ}/arkod_{oznaka}.geojson", "w"),
               ensure_ascii=False, separators=(",", ":"))
@@ -73,6 +74,7 @@ def main():
         a, b = (arg.split("-") + [arg])[:2]
         for g in range(int(a), int(b) + 1):
             obradi(ARHIVA_2019 if g == 2019 else ARHIVA.format(g=g), str(g))
+    if os.environ.get("BEZ_POPISA"): return
     # popis dostupnih stanja za portal
     stanja = sorted(f[6:-8] for f in os.listdir(IZLAZ) if f.startswith("arkod_") and f.endswith(".geojson"))
     json.dump({"stanja": stanja}, open(f"{IZLAZ}/popis.json", "w"))

@@ -1,30 +1,58 @@
 name: ARKOD parcele (APPRRR)
 
 # Preuzima ARKOD GeoPackage s apprrr.hr (trenutno stanje + arhiva 31.12.), izrezuje na Općinu Bilje
-# i sprema samo vrstu uporabe i površinu (bez podataka o korisnicima).
+# i sprema samo vrstu uporabe, površinu i navodnjavanje (bez podataka o korisnicima).
+# Mjesečno: trenutno stanje. Ručno: godine arhive (svaka godina u zasebnom poslu, ~860 MB po datoteci).
 on:
   schedule:
-    - cron: "17 3 5 * *"   # mjesečno: trenutno stanje
+    - cron: "17 3 5 * *"
   workflow_dispatch:
     inputs:
       godine:
-        description: "Godine arhive (npr. 2013-2025) ili 'trenutno' ili 'proba'"
-        default: "trenutno"
+        description: "JSON popis, npr. [\"trenutno\"] ili [\"2013\",\"2014\"]"
+        default: "[\"trenutno\"]"
 
 permissions:
   contents: write
 
 jobs:
-  arkod:
+  godina:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        g: ${{ fromJSON(github.event.inputs.godine || '["trenutno"]') }}
     steps:
       - uses: actions/checkout@v5
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq gdal-bin python3-gdal > /dev/null
-      - run: python3 scripts/arkod/arkod.py "${{ github.event.inputs.godine || 'trenutno' }}"
-      - name: Spremanje
+        with:
+          sparse-checkout: |
+            scripts/arkod
+            data/granica_opcine.geojson
+          sparse-checkout-cone-mode: false
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq gdal-bin > /dev/null
+      - run: BEZ_POPISA=1 python3 scripts/arkod/arkod.py "${{ matrix.g }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: arkod-${{ matrix.g }}
+          path: data/poljoprivreda/arkod/
+          retention-days: 3
+  spremi:
+    needs: godina
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: arkod-*
+          path: data/poljoprivreda/arkod/
+          merge-multiple: true
+      - name: Popis i spremanje
         run: |
+          python3 -c "import json,os;d='data/poljoprivreda/arkod';s=sorted(f[6:-8] for f in os.listdir(d) if f.startswith('arkod_') and f.endswith('.geojson'));json.dump({'stanja':s},open(d+'/popis.json','w'));print(s)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/poljoprivreda/arkod || true
+          git add data/poljoprivreda/arkod
           git diff --cached --quiet || (git commit -qm "ARKOD: osvježeni podaci" && git pull -q --rebase && git push -q)
