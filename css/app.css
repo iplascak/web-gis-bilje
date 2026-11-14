@@ -62,9 +62,9 @@ button { font-family: inherit; }
   height: var(--visina-zaglavlja);
   display: flex; align-items: center; gap: 12px;
   padding: 0 14px;
-  background: var(--zuta);
+  background: #1c1d1f;
   border-bottom: 3px solid var(--zuta-jaka);
-  color: var(--tamna);
+  color: #f5f5f3;
   position: relative; z-index: 25;
 }
 .grb { display: flex; align-items: center; flex-shrink: 0; }
@@ -74,19 +74,19 @@ button { font-family: inherit; }
   margin: 0; font-size: 19px; font-weight: 700; letter-spacing: -.01em; line-height: 1.15;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.naslovi p { margin: 2px 0 0; font-size: 12.5px; color: #5b5320; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.naslovi p { margin: 2px 0 0; font-size: 12.5px; color: #b9bbbf; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .gumb-ikona, .gumb-tekst {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   height: 38px; border: 0; cursor: pointer; font-size: 14px; font-weight: 600;
-  color: var(--tamna); background: rgba(255, 255, 255, .55); border-radius: 999px;
+  color: #f5f5f3; background: rgba(255, 255, 255, .12); border-radius: 999px;
   transition: background .15s, transform .05s;
 }
 .gumb-ikona { width: 38px; padding: 0; }
 .gumb-tekst { padding: 0 16px; }
-.gumb-ikona:hover, .gumb-tekst:hover { background: #fff; }
+.gumb-ikona:hover, .gumb-tekst:hover { background: var(--zuta); color: var(--tamna); }
 .gumb-ikona:active, .gumb-tekst:active { transform: translateY(1px); }
-.gumb-ikona:focus-visible, .gumb-tekst:focus-visible { outline: 2px solid var(--tamna); outline-offset: 2px; }
+.gumb-ikona:focus-visible, .gumb-tekst:focus-visible { outline: 2px solid var(--zuta); outline-offset: 2px; }
 
 /* ---------- raspored ---------- */
 .sadrzaj { display: flex; height: calc(100% - var(--visina-zaglavlja)); position: relative; }
@@ -179,12 +179,29 @@ button { font-family: inherit; }
   background: rgba(255,255,255,.9); padding: 3px 8px; border-radius: 999px; font-size: 11px; color: var(--tekst-2);
   font-variant-numeric: tabular-nums; box-shadow: var(--sjena);
 }
-.gumb-opcina {
+.gumbi-karte {
   position: fixed; right: 10px; top: calc(var(--visina-zaglavlja) + 12px); z-index: 5;
+  display: flex; gap: 8px;
+}
+.gumb-karte {
+  display: inline-flex; align-items: center; gap: 6px;
   background: #fff; border: 0; border-radius: 999px; padding: 9px 14px; cursor: pointer; font-size: 13px; font-weight: 600;
   color: var(--tamna); box-shadow: var(--sjena);
 }
-.gumb-opcina:hover { background: var(--zuta); }
+.gumb-karte:hover { background: var(--zuta); }
+.gumb-karte.aktivan { background: var(--tamna); color: #fff; }
+.karta.nacin-lokacije, .karta.nacin-lokacije canvas { cursor: crosshair !important; }
+
+/* podloga: crno-bijeli prikaz (filter samo na podlozi, ne na slojevima) */
+.karta.podloga-siva .podloga { filter: grayscale(1) contrast(.95); }
+.postavke-podloge { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--rub); display: grid; gap: 8px; font-size: 13px; }
+.postavke-podloge .klizac { display: grid; gap: 4px; color: var(--tekst-2); }
+.postavke-podloge input[type=range] { width: 100%; accent-color: var(--zelena); }
+.postavke-podloge .kvacica { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+/* kategorije u legendi s kvačicama */
+.legenda .kategorija { display: flex; align-items: center; gap: 7px; padding: 1.5px 0; cursor: pointer; }
+.legenda .kategorija input { margin: 0; accent-color: var(--zelena); }
 
 .karta .ol-zoom { top: 12px; left: 12px; background: none; }
 .karta .ol-zoom button, .karta .ol-rotate button {
@@ -268,6 +285,7 @@ button { font-family: inherit; }
   .grb img { height: 38px; }
   .naslovi h1 { font-size: 16px; }
   .naslovi p { display: none; }
+  .gumb-karte span { display: none; }
   .gumb-tekst span { display: none; }
   .gumb-tekst { width: 38px; padding: 0; }
   #gumbOPortalu::before { content: "i"; font-style: italic; font-weight: 700; font-size: 16px; }

@@ -50,11 +50,17 @@
       </footer>
     </aside>
 
-    <div id="karta" class="karta" tabindex="0" aria-label="Karta"></div>
+    <div id="karta" class="karta" aria-label="Karta"></div>
   </main>
 
   <div id="koordinate" class="koordinate" title="Koordinate u HTRS96/TM"></div>
-  <button id="gumbOpcina" class="gumb-opcina" title="Prikaži cijelu općinu">⌂ Cijela općina</button>
+  <div class="gumbi-karte">
+    <button id="gumbOvdje" class="gumb-karte" title="Kliknite pa odaberite mjesto na karti (ili desni klik / dugi pritisak bilo gdje)">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg>
+      <span>Što je ovdje?</span>
+    </button>
+    <button id="gumbOpcina" class="gumb-karte" title="Prikaži cijelu općinu">⌂ <span>Cijela općina</span></button>
+  </div>
 
   <div id="skocni" class="skocni" hidden>
     <button class="zatvori" aria-label="Zatvori">×</button>

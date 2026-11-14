@@ -19,7 +19,11 @@
     slojevi: {},      // id -> { def, olSloj }
     podloge: {},      // id -> olSloj
     granicaExtent: null,
-    odabranaKoordinata: null
+    odabranaKoordinata: null,
+    skriveneKategorije: {},
+    nacinLokacije: false,
+    intenzitetPodloge: 0.75,
+    sivaPodloga: false
   };
 
   // ---------- pomoćne funkcije ----------
@@ -75,7 +79,7 @@
     return m ? `rgba(${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)},${alfa})` : hex;
   }
 
-  function napraviStil(stil) {
+  function napraviStil(stil, idSloja) {
     stil = stil || {};
     const geom = stil.geometrija || 'poligon';
     const kesh = {};
@@ -121,7 +125,11 @@
     return function (f, rezolucija) {
       let boja = zadana;
       if (stil.kategorije) {
-        const k = stil.kategorije.vrijednosti[f.get(stil.kategorije.polje)];
+        const vrijednost = f.get(stil.kategorije.polje);
+        // kategorija isključena u legendi -> objekt se ne crta (i ne može se kliknuti)
+        const skrivene = idSloja && stanje.skriveneKategorije[idSloja];
+        if (skrivene && skrivene.has(String(vrijednost))) return null;
+        const k = stil.kategorije.vrijednosti[vrijednost];
         if (k) boja = k.boja;
       }
       const osnovni = osnovniStil(boja);
@@ -165,7 +173,19 @@
     };
     const l = el('div', { class: 'legenda' });
     if (stil.kategorije) {
-      for (const k of Object.values(stil.kategorije.vrijednosti)) l.append(el('div', {}, znak(k.boja), k.oznaka));
+      // svaka kategorija ima vlastitu kvačicu za uključivanje/isključivanje
+      const skrivene = stanje.skriveneKategorije[def.id] || (stanje.skriveneKategorije[def.id] = new Set());
+      for (const [vrijednost, k] of Object.entries(stil.kategorije.vrijednosti)) {
+        const kv = el('input', { type: 'checkbox', checked: !skrivene.has(vrijednost), 'aria-label': k.oznaka,
+          onchange: (e) => {
+            if (e.target.checked) skrivene.delete(vrijednost); else skrivene.add(vrijednost);
+            const z = stanje.slojevi[def.id];
+            if (z) z.olSloj.changed();
+            zatvoriSkocni();
+          } });
+        l.append(el('label', { class: 'kategorija' }, kv, znak(k.boja), k.oznaka));
+      }
+      l.classList.add('legenda-kategorije');
     } else if (geom !== 'poligon' || stil.ispuna) {
       l.append(el('div', {}, znak(stil.boja || stil.rub || '#2563eb'), def.naziv));
     } else {
@@ -204,7 +224,7 @@
         format: new ol.format.GeoJSON({ dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' })
       });
       izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju sloja', def.id));
-      const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil) }, zajednicko));
+      const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil, def.id) }, zajednicko));
       sloj.set('upitni', def.klik !== false);
       return sloj;
     }
@@ -217,7 +237,7 @@
         attributions: def.atribucija
       });
       izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju WFS sloja', def.id));
-      const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil) }, zajednicko));
+      const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil, def.id) }, zajednicko));
       sloj.set('upitni', def.klik !== false);
       return sloj;
     }
@@ -248,9 +268,10 @@
   function napraviPodlogu(def) {
     let sloj;
     if (def.tip === 'osm') {
-      sloj = new ol.layer.Tile({ source: new ol.source.OSM() });
+      sloj = new ol.layer.Tile({ source: new ol.source.OSM(), className: 'podloga' });
     } else if (def.tip === 'wms') {
       sloj = new ol.layer.Image({
+        className: 'podloga',
         source: new ol.source.ImageWMS({
           url: def.url,
           params: { LAYERS: def.wmsSlojevi, FORMAT: def.format || 'image/jpeg', VERSION: '1.3.0' },
@@ -264,7 +285,20 @@
     }
     sloj.setVisible(!!def.zadano);
     sloj.setZIndex(-100);
+    sloj.setOpacity(stanje.intenzitetPodloge);
     return sloj;
+  }
+
+  function procitajPostavku(kljuc, zadano) {
+    try { const v = localStorage.getItem('webgis.' + kljuc); return v === null ? zadano : JSON.parse(v); } catch (g) { return zadano; }
+  }
+  function spremiPostavku(kljuc, v) {
+    try { localStorage.setItem('webgis.' + kljuc, JSON.stringify(v)); } catch (g) { /* nije važno */ }
+  }
+
+  function postaviIzgledPodloge() {
+    for (const s of Object.values(stanje.podloge)) s.setOpacity(stanje.intenzitetPodloge);
+    stanje.karta.getTargetElement().classList.toggle('podloga-siva', stanje.sivaPodloga);
   }
 
   // ---------- sučelje: podloge i slojevi ----------
@@ -286,6 +320,15 @@
       });
       div.append(el('label', {}, unos, def.naziv));
     }
+    // intenzitet i crno-bijeli prikaz podloge (da se slojevi bolje vide)
+    const klizac = el('input', { type: 'range', min: 15, max: 100, step: 5, value: Math.round(stanje.intenzitetPodloge * 100),
+      'aria-label': 'Intenzitet podloge',
+      oninput: (e) => { stanje.intenzitetPodloge = e.target.value / 100; postaviIzgledPodloge(); spremiPostavku('intenzitet', stanje.intenzitetPodloge); } });
+    const siva = el('input', { type: 'checkbox', checked: stanje.sivaPodloga,
+      onchange: (e) => { stanje.sivaPodloga = e.target.checked; postaviIzgledPodloge(); spremiPostavku('siva', stanje.sivaPodloga); } });
+    div.parentElement.append(el('div', { class: 'postavke-podloge' },
+      el('label', { class: 'klizac' }, el('span', {}, 'Intenzitet podloge'), klizac),
+      el('label', { class: 'kvacica' }, siva, 'Crno-bijela podloga')));
   }
 
   function prikaziSlojeve() {
@@ -388,19 +431,14 @@
     }, { hitTolerance: 5 });
 
     const s = document.getElementById('skocni');
-    if (!pogoci.length) {
-      // prazno mjesto: ponudi izvještaj o lokaciji
-      if (!stanje.portal.lokacija) { zatvoriSkocni(); return; }
-      const [x, y] = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:3765');
-      s.querySelector('.skocni-sadrzaj').replaceChildren(
-        el('h3', {}, 'Odabrana lokacija'),
-        el('div', { class: 'vise' }, 'HTRS96/TM  E ' + x.toFixed(0) + '  N ' + y.toFixed(0)),
-        gumbLokacija(evt.coordinate));
-      stanje.odabranaKoordinata = evt.coordinate;
-      s.hidden = false;
-      pozicionirajSkocni();
+    if (stanje.nacinLokacije) {
+      // uključen način "Što je ovdje?": klik otvara izvještaj o lokaciji
+      postaviNacinLokacije(false);
+      zatvoriSkocni();
+      izvjestajLokacije(evt.coordinate);
       return;
     }
+    if (!pogoci.length) { zatvoriSkocni(); return; }
     const [f, sloj] = pogoci[0];
     const def = stanje.slojevi[sloj.get('defId')].def;
     const sadrzaj = sadrzajZaObjekt(f, def);
@@ -414,6 +452,13 @@
     pozicionirajSkocni();
   }
 
+
+  function postaviNacinLokacije(ukljuceno) {
+    stanje.nacinLokacije = ukljuceno;
+    const g = document.getElementById('gumbOvdje');
+    if (g) g.classList.toggle('aktivan', ukljuceno);
+    stanje.karta.getTargetElement().classList.toggle('nacin-lokacije', ukljuceno);
+  }
 
   // ---------- "Što je na ovoj lokaciji?" ----------
   // Sve provjere opisane su u config/portal.json -> "lokacija". Vrste provjera:
@@ -810,6 +855,8 @@
     const [portal, konfig] = await Promise.all([ucitajJSON('config/portal.json'), ucitajJSON('config/layers.json')]);
     stanje.portal = portal;
     stanje.konfig = konfig;
+    stanje.intenzitetPodloge = procitajPostavku('intenzitet', portal.intenzitetPodloge || 0.75);
+    stanje.sivaPodloga = procitajPostavku('siva', false);
     try {
       dodajNepogode(await ucitajJSON('config/nepogode.json'), konfig, portal);
     } catch (g) { console.warn('Nepogode nisu učitane:', g); }
@@ -833,6 +880,7 @@
 
     const karta = new ol.Map({ target: 'karta', view });
     stanje.karta = karta;
+    window.webgis = stanje; // za otklanjanje grešaka iz konzole preglednika
     karta.addControl(new ol.control.ScaleLine());
 
     for (const def of portal.podloge) {
@@ -851,6 +899,7 @@
     });
 
     prikaziPodloge();
+    postaviIzgledPodloge();
     prikaziSlojeve();
     postaviPretragu(portal.pretraga).catch((g) => console.warn('Pretraga nije dostupna:', g));
     stanje.prikazIzPoveznice = primijeniPoveznicu();
@@ -882,10 +931,20 @@
       const imaObjekt = karta.hasFeatureAtPixel(e.pixel, {
         layerFilter: (l) => l.get('upitni') && l.get('defId') !== 'granica', hitTolerance: 5
       });
-      karta.getTargetElement().style.cursor = imaObjekt ? 'pointer' : '';
+      karta.getTargetElement().style.cursor = stanje.nacinLokacije ? 'crosshair' : (imaObjekt ? 'pointer' : '');
     });
 
     karta.on('singleclick', naKlik);
+    // desni klik (na mobitelu dugi pritisak) odmah otvara izvještaj o lokaciji
+    karta.getViewport().addEventListener('contextmenu', (e) => {
+      if (!portal.lokacija) return;
+      e.preventDefault();
+      zatvoriSkocni();
+      izvjestajLokacije(karta.getEventCoordinate(e));
+    });
+    const gumbOvdje = document.getElementById('gumbOvdje');
+    if (gumbOvdje && portal.lokacija) gumbOvdje.addEventListener('click', () => postaviNacinLokacije(!stanje.nacinLokacije));
+    else if (gumbOvdje) gumbOvdje.hidden = true;
     karta.on('postrender', pozicionirajSkocni);
     document.querySelector('#skocni .zatvori').addEventListener('click', zatvoriSkocni);
 

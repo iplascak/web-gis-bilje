@@ -22,6 +22,16 @@
       "zadano": true
     },
     {
+      "id": "tk25",
+      "naziv": "Topografska karta TK25 (DGU)",
+      "tip": "wms",
+      "url": "https://geoportal.dgu.hr/services/tk/wms",
+      "wmsSlojevi": "TK25_NOVI",
+      "projekcija": "EPSG:3765",
+      "format": "image/png",
+      "atribucija": "© Državna geodetska uprava (TK25)"
+    },
+    {
       "id": "dof2021",
       "naziv": "Ortofoto 2021. (DGU) – cijela općina",
       "tip": "wms",
@@ -177,5 +187,6 @@
         ]
       }
     ]
-  }
+  },
+  "intenzitetPodloge": 0.75
 }
