@@ -651,3 +651,17 @@ button { font-family: inherit; }
 .savjet.upozorenje { background: #fff4e5; } .savjet.upozorenje .savjet-oznaka { background: #d97706; }
 .savjet.oprez .savjet-oznaka { background: #ca8a04; }
 .savjet.dobro { background: var(--zelena-svijetla); } .savjet.dobro .savjet-oznaka { background: #3f8f2f; }
+/* vođene priče */
+.prica { position: absolute; left: 16px; bottom: 16px; width: min(380px, calc(100% - 32px)); z-index: 30; background: var(--ugljen, #1b1e1d); color: #eef2ec; border-radius: 16px; padding: 16px 18px; box-shadow: 0 12px 40px rgba(0,0,0,.35); border-top: 3px solid var(--kivi, #9ccc3c); }
+.prica-zaglavlje { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.prica-oznaka { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--kivi, #9ccc3c); }
+.prica .gumb-zatvori { background: none; border: 0; color: inherit; cursor: pointer; padding: 4px; }
+.prica-korak { font-size: 12px; color: #aab3a7; margin-top: 8px; }
+.prica h3 { margin: 4px 0 6px; font-size: 18px; }
+.prica p { margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: #dfe5dc; }
+.prica-dno { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.prica-tocke { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+.prica-tocka { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: #4b524a; cursor: pointer; }
+.prica-tocka.aktivna { background: var(--kivi, #9ccc3c); width: 18px; border-radius: 4px; }
+.prica .gumb-mali:disabled { opacity: .4; }
+@media (max-width: 720px) { .prica { left: 8px; right: 8px; bottom: 8px; width: auto; } }

@@ -1,32 +1,458 @@
 {
-  "_opis": "Pametna pretraga: pojmovi i sinonimi (bez AI). Svaki unos: pojmovi (početci riječi, bez kvačica), naslov, opis, slojevi koje uključuje i/ili akcija (vrijeme, agro, prijava, pokojnik, sjecanje). Urednik može dodavati unose.",
-  "unosi": [
-    {"pojmovi": ["staklo", "boce", "papir", "karton", "plastik", "ambalaz", "reciklaz", "otpad", "smece", "kant", "odvoz", "baciti", "glomazn", "zeleni otok"], "naslov": "Otpad i reciklaža", "opis": "odvoz po ulicama i mobilno reciklažno dvorište", "slojevi": ["odvoz_otpada", "mobilno_reciklazno"]},
-    {"pojmovi": ["rupa", "udarn", "rasvjet", "lampa", "ne svijetli", "kvar", "problem", "prijav", "ostecen", "divlje odlag", "pokosit", "kosnj"], "naslov": "Prijavi komunalni problem", "opis": "rupa na cesti, rasvjeta, otpad, zelenilo", "akcija": "prijava", "slojevi": ["prijave"]},
-    {"pojmovi": ["vrijeme", "prognoz", "kisa", "temperatur", "vjetar", "mraz", "oluj", "snijeg"], "naslov": "Vremenska prognoza", "opis": "7 dana, sat po sat", "akcija": "vrijeme"},
-    {"pojmovi": ["prskan", "sjetv", "sijati", "zetv", "berb", "gnojid", "ET0", "isparavan", "navodnjav", "vlaga tla", "temperatura tla", "agro"], "naslov": "Vrijeme za poljoprivrednike", "opis": "bilanca vode, tlo, mraz, rokovi radova", "akcija": "agro"},
-    {"pojmovi": ["arkod", "parcel", "oranic", "njiv", "polje", "zemlj", "kultur", "usjev", "poljopriv", "bonitet", "tlo", "pedolo"], "naslov": "Poljoprivreda", "opis": "ARKOD parcele, bonitet i tip tla", "slojevi": ["arkod_uporaba", "bonitet", "pedoloska_karta"]},
-    {"pojmovi": ["paprik"], "naslov": "Pogodnost za papriku", "opis": "gdje paprika najbolje uspijeva", "slojevi": ["paprika_pogodnost"]},
-    {"pojmovi": ["poplav", "nasip", "visok vod", "dunav", "drava", "vodostaj", "izlijev"], "naslov": "Poplave i nasipi", "opis": "opasnost od poplava, nasipi, vodomjerne postaje", "slojevi": ["poplave_sv", "nasipi", "hidro_postaje"]},
-    {"pojmovi": ["groblj", "grob", "pokojn", "umrl", "preminul", "sahran", "pokop"], "naslov": "Tražilica pokojnika", "opis": "pronađite grobno mjesto po imenu", "akcija": "pokojnik", "slojevi": ["groblja", "groblja_dron"]},
-    {"pojmovi": ["zrak", "prasin", "cestic", "PM10", "ozon", "smog", "onecisc"], "naslov": "Kvaliteta zraka", "opis": "postaje DHMZ, svaki sat", "slojevi": ["kvaliteta_zraka"]},
-    {"pojmovi": ["skol", "vrtic", "jaslic", "ambulant", "doktor", "lijecnik", "ljekarn", "apotek", "posta", "banka", "bankomat", "trgovin", "ducan", "market"], "naslov": "Javni sadržaji", "opis": "škole, vrtići, zdravstvo, trgovine", "slojevi": ["javni_sadrzaji"]},
-    {"pojmovi": ["igralist", "park", "sport", "nogomet", "teren", "setnic", "rekreac", "djeca"], "naslov": "Slobodno vrijeme", "opis": "igrališta, sport, parkovi", "slojevi": ["slobodno_vrijeme"]},
-    {"pojmovi": ["autobus", "bus", "stajalist", "prijevoz", "linij"], "naslov": "Autobusna stajališta", "opis": "javni prijevoz", "slojevi": ["bus_stajalista"]},
-    {"pojmovi": ["bicikl", "biciklist", "staza"], "naslov": "Biciklističke staze i projekti", "opis": "postojeće i planirane staze", "slojevi": ["projekti_baza"]},
-    {"pojmovi": ["projekt", "investic", "eu fond", "eu projekt", "gradnj", "izgradnj", "rekonstrukc", "proracun"], "naslov": "Projekti općine", "opis": "provedeni, u provedbi i planirani", "slojevi": ["projekti_baza"]},
-    {"pojmovi": ["kopacki rit", "park prirode", "priroda", "zastic", "natura", "ptic", "stanist"], "naslov": "Priroda i zaštićena područja", "opis": "Kopački rit, Natura 2000, staništa", "slojevi": ["zasticena_podrucja", "natura_povs", "stanista"]},
-    {"pojmovi": ["lov", "lovist", "divljac"], "naslov": "Lovišta", "opis": "granice lovišta", "slojevi": ["lovista"]},
-    {"pojmovi": ["ribolov", "ribnjak", "pecan", "riba"], "naslov": "Ribolovne vode", "opis": "ciprinidne vode, kanali, bare", "slojevi": ["ciprinidne_vode", "vodotoci_kanali", "jezera_bare"]},
-    {"pojmovi": ["kupal", "kupanj", "plaz"], "naslov": "Kupališta", "opis": "", "slojevi": ["kupalista"]},
-    {"pojmovi": ["sum", "drvo", "drva", "stabl"], "naslov": "Šume", "opis": "", "slojevi": ["sume"]},
-    {"pojmovi": ["dvorac", "bastin", "spomenik", "kultur", "crkv", "povijes", "staro"], "naslov": "Kulturna baština", "opis": "kulturna dobra i spomenici", "slojevi": ["kulturna_dobra", "bastina_registar"]},
-    {"pojmovi": ["stara fotograf", "stare slike", "toponim", "sjecanj", "nekad", "uspomen"], "naslov": "Sjećanja mještana", "opis": "stare fotografije i narodni nazivi – dodajte svoje", "akcija": "sjecanje", "slojevi": ["doprinosi"]},
-    {"pojmovi": ["vidikov", "pogled", "vizur", "krajobraz"], "naslov": "Vizure i točke gledišta", "opis": "", "slojevi": ["vizure", "tocke_gledista"]},
-    {"pojmovi": ["katastar", "cestic", "k.c.", "kc ", "vlasnis", "gruntovn"], "naslov": "Katastar", "opis": "katastarske čestice (DGU)", "slojevi": ["katastar"]},
-    {"pojmovi": ["gradit", "gradevin", "kuc", "prostorni plan", "namjen", "zona"], "naslov": "Gradnja i prostorni plan", "opis": "građevinska područja", "slojevi": ["gradevinska_podrucja", "katastar"]},
-    {"pojmovi": ["opcin", "nacelnik", "uprava", "ured", "krc", "turisticka zajednic", "institucij"], "naslov": "Institucije", "opis": "Općina, KRC, TZ i ustanove", "slojevi": ["institucije"]},
-    {"pojmovi": ["imovin", "opcinsk zemlj", "nekretnin"], "naslov": "Općinska imovina", "opis": "", "slojevi": ["imovina_opcine"]},
-    {"pojmovi": ["struja", "dalekovod", "plin", "plinovod", "vodovod", "kanalizac", "komunaln"], "naslov": "Komunalna infrastruktura", "opis": "vodovod, plin, struja", "slojevi": ["komunalna", "dalekovodi", "plinovod"]}
-  ]
+ "_opis": "Pametna pretraga: pojmovi i sinonimi (bez AI). Svaki unos: pojmovi (početci riječi, bez kvačica), naslov, opis, slojevi koje uključuje i/ili akcija (vrijeme, agro, prijava, pokojnik, sjecanje). Urednik može dodavati unose.",
+ "unosi": [
+  {
+   "pojmovi": [
+    "staklo",
+    "boce",
+    "papir",
+    "karton",
+    "plastik",
+    "ambalaz",
+    "reciklaz",
+    "otpad",
+    "smece",
+    "kant",
+    "odvoz",
+    "baciti",
+    "glomazn",
+    "zeleni otok"
+   ],
+   "naslov": "Otpad i reciklaža",
+   "opis": "odvoz po ulicama i mobilno reciklažno dvorište",
+   "slojevi": [
+    "odvoz_otpada",
+    "mobilno_reciklazno"
+   ]
+  },
+  {
+   "pojmovi": [
+    "rupa",
+    "udarn",
+    "rasvjet",
+    "lampa",
+    "ne svijetli",
+    "kvar",
+    "problem",
+    "prijav",
+    "ostecen",
+    "divlje odlag",
+    "pokosit",
+    "kosnj"
+   ],
+   "naslov": "Prijavi komunalni problem",
+   "opis": "rupa na cesti, rasvjeta, otpad, zelenilo",
+   "akcija": "prijava",
+   "slojevi": [
+    "prijave"
+   ]
+  },
+  {
+   "pojmovi": [
+    "vrijeme",
+    "prognoz",
+    "kisa",
+    "temperatur",
+    "vjetar",
+    "mraz",
+    "oluj",
+    "snijeg"
+   ],
+   "naslov": "Vremenska prognoza",
+   "opis": "7 dana, sat po sat",
+   "akcija": "vrijeme"
+  },
+  {
+   "pojmovi": [
+    "prskan",
+    "sjetv",
+    "sijati",
+    "zetv",
+    "berb",
+    "gnojid",
+    "ET0",
+    "isparavan",
+    "navodnjav",
+    "vlaga tla",
+    "temperatura tla",
+    "agro"
+   ],
+   "naslov": "Vrijeme za poljoprivrednike",
+   "opis": "bilanca vode, tlo, mraz, rokovi radova",
+   "akcija": "agro"
+  },
+  {
+   "pojmovi": [
+    "arkod",
+    "parcel",
+    "oranic",
+    "njiv",
+    "polje",
+    "zemlj",
+    "kultur",
+    "usjev",
+    "poljopriv",
+    "bonitet",
+    "tlo",
+    "pedolo"
+   ],
+   "naslov": "Poljoprivreda",
+   "opis": "ARKOD parcele, bonitet i tip tla",
+   "slojevi": [
+    "arkod_uporaba",
+    "bonitet",
+    "pedoloska_karta"
+   ]
+  },
+  {
+   "pojmovi": [
+    "paprik"
+   ],
+   "naslov": "Pogodnost za papriku",
+   "opis": "gdje paprika najbolje uspijeva",
+   "slojevi": [
+    "paprika_pogodnost"
+   ]
+  },
+  {
+   "pojmovi": [
+    "poplav",
+    "nasip",
+    "visok vod",
+    "dunav",
+    "drava",
+    "vodostaj",
+    "izlijev"
+   ],
+   "naslov": "Poplave i nasipi",
+   "opis": "opasnost od poplava, nasipi, vodomjerne postaje",
+   "slojevi": [
+    "poplave_sv",
+    "nasipi",
+    "hidro_postaje"
+   ]
+  },
+  {
+   "pojmovi": [
+    "groblj",
+    "grob",
+    "pokojn",
+    "umrl",
+    "preminul",
+    "sahran",
+    "pokop"
+   ],
+   "naslov": "Tražilica pokojnika",
+   "opis": "pronađite grobno mjesto po imenu",
+   "akcija": "pokojnik",
+   "slojevi": [
+    "groblja",
+    "groblja_dron"
+   ]
+  },
+  {
+   "pojmovi": [
+    "zrak",
+    "prasin",
+    "cestic",
+    "PM10",
+    "ozon",
+    "smog",
+    "onecisc"
+   ],
+   "naslov": "Kvaliteta zraka",
+   "opis": "postaje DHMZ, svaki sat",
+   "slojevi": [
+    "kvaliteta_zraka"
+   ]
+  },
+  {
+   "pojmovi": [
+    "skol",
+    "vrtic",
+    "jaslic",
+    "ambulant",
+    "doktor",
+    "lijecnik",
+    "ljekarn",
+    "apotek",
+    "posta",
+    "banka",
+    "bankomat",
+    "trgovin",
+    "ducan",
+    "market"
+   ],
+   "naslov": "Javni sadržaji",
+   "opis": "škole, vrtići, zdravstvo, trgovine",
+   "slojevi": [
+    "javni_sadrzaji"
+   ]
+  },
+  {
+   "pojmovi": [
+    "igralist",
+    "park",
+    "sport",
+    "nogomet",
+    "teren",
+    "setnic",
+    "rekreac",
+    "djeca"
+   ],
+   "naslov": "Slobodno vrijeme",
+   "opis": "igrališta, sport, parkovi",
+   "slojevi": [
+    "slobodno_vrijeme"
+   ]
+  },
+  {
+   "pojmovi": [
+    "autobus",
+    "bus",
+    "stajalist",
+    "prijevoz",
+    "linij"
+   ],
+   "naslov": "Autobusna stajališta",
+   "opis": "javni prijevoz",
+   "slojevi": [
+    "bus_stajalista"
+   ]
+  },
+  {
+   "pojmovi": [
+    "bicikl",
+    "biciklist",
+    "staza"
+   ],
+   "naslov": "Biciklističke staze i projekti",
+   "opis": "postojeće i planirane staze",
+   "slojevi": [
+    "projekti_baza"
+   ]
+  },
+  {
+   "pojmovi": [
+    "projekt",
+    "investic",
+    "eu fond",
+    "eu projekt",
+    "gradnj",
+    "izgradnj",
+    "rekonstrukc",
+    "proracun"
+   ],
+   "naslov": "Projekti općine",
+   "opis": "provedeni, u provedbi i planirani",
+   "slojevi": [
+    "projekti_baza"
+   ]
+  },
+  {
+   "pojmovi": [
+    "kopacki rit",
+    "park prirode",
+    "priroda",
+    "zastic",
+    "natura",
+    "ptic",
+    "stanist"
+   ],
+   "naslov": "Priroda i zaštićena područja",
+   "opis": "Kopački rit, Natura 2000, staništa",
+   "slojevi": [
+    "zasticena_podrucja",
+    "natura_povs",
+    "stanista"
+   ]
+  },
+  {
+   "pojmovi": [
+    "lov",
+    "lovist",
+    "divljac"
+   ],
+   "naslov": "Lovišta",
+   "opis": "granice lovišta",
+   "slojevi": [
+    "lovista"
+   ]
+  },
+  {
+   "pojmovi": [
+    "ribolov",
+    "ribnjak",
+    "pecan",
+    "riba"
+   ],
+   "naslov": "Ribolovne vode",
+   "opis": "ciprinidne vode, kanali, bare",
+   "slojevi": [
+    "ciprinidne_vode",
+    "vodotoci_kanali",
+    "jezera_bare"
+   ]
+  },
+  {
+   "pojmovi": [
+    "kupal",
+    "kupanj",
+    "plaz"
+   ],
+   "naslov": "Kupališta",
+   "opis": "",
+   "slojevi": [
+    "kupalista"
+   ]
+  },
+  {
+   "pojmovi": [
+    "sum",
+    "drvo",
+    "drva",
+    "stabl"
+   ],
+   "naslov": "Šume",
+   "opis": "",
+   "slojevi": [
+    "sume"
+   ]
+  },
+  {
+   "pojmovi": [
+    "dvorac",
+    "bastin",
+    "spomenik",
+    "kultur",
+    "crkv",
+    "povijes",
+    "staro"
+   ],
+   "naslov": "Kulturna baština",
+   "opis": "kulturna dobra i spomenici",
+   "slojevi": [
+    "kulturna_dobra",
+    "bastina_registar"
+   ]
+  },
+  {
+   "pojmovi": [
+    "stara fotograf",
+    "stare slike",
+    "toponim",
+    "sjecanj",
+    "nekad",
+    "uspomen"
+   ],
+   "naslov": "Sjećanja mještana",
+   "opis": "stare fotografije i narodni nazivi – dodajte svoje",
+   "akcija": "sjecanje",
+   "slojevi": [
+    "doprinosi"
+   ]
+  },
+  {
+   "pojmovi": [
+    "vidikov",
+    "pogled",
+    "vizur",
+    "krajobraz"
+   ],
+   "naslov": "Vizure i točke gledišta",
+   "opis": "",
+   "slojevi": [
+    "vizure",
+    "tocke_gledista"
+   ]
+  },
+  {
+   "pojmovi": [
+    "katastar",
+    "cestic",
+    "k.c.",
+    "kc ",
+    "vlasnis",
+    "gruntovn"
+   ],
+   "naslov": "Katastar",
+   "opis": "katastarske čestice (DGU)",
+   "slojevi": [
+    "katastar"
+   ]
+  },
+  {
+   "pojmovi": [
+    "gradit",
+    "gradevin",
+    "kuc",
+    "prostorni plan",
+    "namjen",
+    "zona"
+   ],
+   "naslov": "Gradnja i prostorni plan",
+   "opis": "građevinska područja",
+   "slojevi": [
+    "gradevinska_podrucja",
+    "katastar"
+   ]
+  },
+  {
+   "pojmovi": [
+    "opcin",
+    "nacelnik",
+    "uprava",
+    "ured",
+    "krc",
+    "turisticka zajednic",
+    "institucij"
+   ],
+   "naslov": "Institucije",
+   "opis": "Općina, KRC, TZ i ustanove",
+   "slojevi": [
+    "institucije"
+   ]
+  },
+  {
+   "pojmovi": [
+    "imovin",
+    "opcinsk zemlj",
+    "nekretnin"
+   ],
+   "naslov": "Općinska imovina",
+   "opis": "",
+   "slojevi": [
+    "imovina_opcine"
+   ]
+  },
+  {
+   "pojmovi": [
+    "struja",
+    "dalekovod",
+    "plin",
+    "plinovod",
+    "vodovod",
+    "kanalizac",
+    "komunaln"
+   ],
+   "naslov": "Komunalna infrastruktura",
+   "opis": "vodovod, plin, struja",
+   "slojevi": [
+    "komunalna",
+    "dalekovodi",
+    "plinovod"
+   ]
+  },
+  {
+   "pojmovi": [
+    "prica",
+    "vodic",
+    "upoznaj",
+    "poljoprivredna godina"
+   ],
+   "naslov": "Vođena priča: poljoprivreda",
+   "opis": "tla, parcele, voda i vrijeme korak po korak",
+   "akcija": "prica_poljo"
+  }
+ ]
 }
