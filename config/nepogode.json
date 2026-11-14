@@ -101,22 +101,22 @@
           }
         ],
         "statistika_ha": {
-          "izrazito_ispod": 1465.0,
-          "znatno_ispod": 643.5,
-          "blago_ispod": 335.9,
-          "uobicajeno": 1223.6,
-          "blago_iznad": 932.2,
-          "iznad": 1498.8
+          "izrazito_ispod": 1456.8,
+          "znatno_ispod": 592.7,
+          "blago_ispod": 334.0,
+          "uobicajeno": 1255.9,
+          "blago_iznad": 761.5,
+          "iznad": 1698.2
         },
         "statistika_udio": {
-          "izrazito_ispod": 0.24,
-          "znatno_ispod": 0.106,
+          "izrazito_ispod": 0.239,
+          "znatno_ispod": 0.097,
           "blago_ispod": 0.055,
-          "uobicajeno": 0.201,
-          "blago_iznad": 0.153,
-          "iznad": 0.246
+          "uobicajeno": 0.206,
+          "blago_iznad": 0.125,
+          "iznad": 0.278
         },
-        "srednje_odstupanje_parcela": -0.042,
+        "srednje_odstupanje_parcela": -0.039,
         "datum_obrade": "2026-11-14"
       }
     }
