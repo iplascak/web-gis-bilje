@@ -581,6 +581,52 @@
     return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
   }
 
+  // ---- izvoz sloja (javni vektorski slojevi; sadržaj je ono što korisnik ionako vidi na karti) ----
+  function mozeIzvoz(def, olSloj) {
+    if (def.izvoz === false) return false;
+    const izvor = olSloj && olSloj.getSource && olSloj.getSource();
+    return !!(izvor && izvor.getFeatures);
+  }
+  function preuzmiDatoteku(ime, sadrzaj, vrsta) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([sadrzaj], { type: vrsta }));
+    a.download = ime; document.body.append(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+  function uCsv(redovi) {
+    if (!redovi.length) return '';
+    const stupci = [...new Set(redovi.flatMap(r => Object.keys(r)))];
+    const k = (v) => { if (v === null || v === undefined) return ''; if (typeof v === 'object') v = JSON.stringify(v); v = String(v); return /[";\n,]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; };
+    // BOM + ';' kao razdjelnik da hrvatski Excel ispravno otvori datoteku
+    return '﻿' + [stupci.join(';'), ...redovi.map(r => stupci.map(c => k(r[c])).join(';'))].join('\n');
+  }
+  function izvozSloja(def, olSloj) {
+    const znacajke = olSloj.getSource().getFeatures().filter(f => !f.get('features'));
+    if (!znacajke.length) { alert('Sloj još nema učitanih podataka. Uključite ga i pokušajte ponovno.'); return; }
+    const fmt = new ol.format.GeoJSON();
+    const opcije = { featureProjection: stanje.karta.getView().getProjection(), dataProjection: 'EPSG:4326', decimals: 7 };
+    const datum = new Date().toISOString().slice(0, 10);
+    const tijelo = el('div', {},
+      el('p', {}, 'Sloj „' + def.naziv + '“ – ' + znacajke.length + ' objekata.'),
+      el('p', { class: 'sitno-siva' }, 'Izvor: ' + (def.izvor || 'Općina Bilje') + '. Pri korištenju navedite izvor podataka.'),
+      el('div', { class: 'detalji-gumbi' },
+        el('button', { class: 'gumb', onclick: () => preuzmiDatoteku(def.id + '_' + datum + '.geojson', fmt.writeFeatures(znacajke, opcije), 'application/geo+json') }, 'GeoJSON (QGIS, GIS)'),
+        el('button', { class: 'gumb', onclick: () => {
+          const redovi = znacajke.map(f => {
+            const p = Object.assign({}, f.getProperties()); delete p.geometry;
+            const g = f.getGeometry();
+            if (g) {
+              const t = g.getType() === 'Point' ? g.getCoordinates() : ol.extent.getCenter(g.getExtent());
+              const ll = ol.proj.toLonLat(t, stanje.karta.getView().getProjection());
+              p.lon = +ll[0].toFixed(6); p.lat = +ll[1].toFixed(6);
+            }
+            return p;
+          });
+          preuzmiDatoteku(def.id + '_' + datum + '.csv', uCsv(redovi), 'text/csv;charset=utf-8');
+        } }, 'CSV (Excel)')));
+    otvoriDijalog(el('h3', {}, 'Preuzimanje podataka'), tijelo);
+  }
+
   function napraviRedSloja(def, otvoriGrupu, osvjeziBrojac) {
     const zapis = stanje.slojevi[def.id];
     const legenda = napraviLegendu(def);
@@ -603,7 +649,9 @@
         el('label', { class: 'klizac' }, el('span', {}, 'Neprozirnost'), prozirnost),
         el('div', { class: 'detalji-gumbi' },
           el('button', { class: 'gumb-mali', onclick: () => { postavi(true); pribliziSloju(Object.assign({}, def), zapis.olSloj, true); } }, ikona('cilj', 14), ' Približi'),
-          el('button', { class: 'gumb-mali', onclick: () => prikaziMetapodatke(def) }, ikona('info', 14), ' O sloju')),
+          el('button', { class: 'gumb-mali', onclick: () => prikaziMetapodatke(def) }, ikona('info', 14), ' O sloju'),
+          mozeIzvoz(def, zapis.olSloj) ? el('button', { class: 'gumb-mali', title: 'Preuzmi podatke sloja (GeoJSON za GIS, CSV za Excel)',
+            onclick: () => izvozSloja(def, zapis.olSloj) }, ikona('strelica', 14), ' Preuzmi') : ''),
         legenda && !kategorije ? legenda : '');
       if (legenda && !kategorije) legenda.hidden = false;
       detalji.hidden = false;
@@ -1454,7 +1502,7 @@
   }
 
   // sučelje za module
-  stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
+  stanje.api = { el, otvoriDijalog, preuzmiDatoteku, uCsv, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
 
   pokreni().then(() => {
     if (!location.hash || location.hash.length < 3) setTimeout(() => prikaziUpute(false), 600);

@@ -637,3 +637,5 @@ button { font-family: inherit; }
 .zrak-tocka { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
 .iskrica { width: 90px; height: 20px; vertical-align: middle; }
 .iskrica polyline { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: .8; }
+.izvoz-stavka { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(127,127,127,.18); }
+.izvoz-stavka p { margin: 2px 0 0; }

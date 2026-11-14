@@ -25,6 +25,9 @@ language sql stable security definer set search_path = public as $$
 $$;
 
 -- =====================================================================
+grant execute on function public.vodi_groblja() to authenticated;
+grant execute on function public.je_urednik() to authenticated;
+
 -- PROJEKTI
 -- =====================================================================
 create table if not exists public.projekti (
