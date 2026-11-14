@@ -80,7 +80,7 @@ def obradi(url, oznaka, proba=False):
                          capture_output=True, text=True)
     print("  WKT uzorak:", wkt.stdout[:400], wkt.stderr[-300:])
     r = subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e,
-                        "-t_srs", "EPSG:4326", "-nlt", "CONVERT_TO_LINEAR", "-nlt", "PROMOTE_TO_MULTI", "-makevalid", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
+                        "-s_srs", "EPSG:3765", "-t_srs", "EPSG:4326", "-nlt", "CONVERT_TO_LINEAR", "-nlt", "PROMOTE_TO_MULTI", "-makevalid", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
                        capture_output=True, text=True)
     print("  ogr2ogr:", r.returncode, r.stderr[-1500:])
     d = json.load(open(tmp))
