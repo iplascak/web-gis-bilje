@@ -23,6 +23,28 @@ def preuzmi(url, put):
     print("preuzeto", url, os.path.getsize(put) // 1e6, "MB", flush=True)
 
 
+GRANICA = []
+for _f in json.load(open("data/granica_opcine.geojson"))["features"]:
+    _g = _f["geometry"]
+    for _p in (_g["coordinates"] if _g["type"] == "MultiPolygon" else [_g["coordinates"]]):
+        GRANICA.append(_p[0])
+
+
+def srediste(g):
+    t = g["coordinates"]
+    while isinstance(t[0][0], list): t = [q for x in t for q in x]
+    return sum(x for x, _ in t) / len(t), sum(y for _, y in t) / len(t)
+
+
+def unutar(pt):
+    x, y = pt; ima = False
+    for prsten in GRANICA:
+        for (x1, y1), (x2, y2) in zip(prsten, prsten[1:]):
+            if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+                ima = not ima
+    return ima
+
+
 def obradi(url, oznaka, proba=False):
     put = "/tmp/arkod.gpkg"
     try:
@@ -47,11 +69,13 @@ def obradi(url, oznaka, proba=False):
     print("  sloj:", repr(sloj))
     prov = subprocess.run(["ogrinfo", "-so", put, sloj, "-spat", *e], capture_output=True, text=True)
     print("  u obuhvatu:", [r for r in prov.stdout.split("\n") if "Feature Count" in r], prov.stderr[-500:])
-    r = subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e, "-clipsrc", gr,
-                        "-t_srs", "EPSG:4326", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
+    r = subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e,
+                        "-t_srs", "EPSG:4326", "-nlt", "CONVERT_TO_LINEAR", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
                        capture_output=True, text=True)
     print("  ogr2ogr:", r.returncode, r.stderr[-1500:])
     d = json.load(open(tmp))
+    # zadrži parcele čije je središte unutar granice općine (bez dodatnih biblioteka)
+    d["features"] = [f for f in d["features"] if f.get("geometry") and unutar(srediste(f["geometry"]))]
     polja = list(d["features"][0]["properties"]) if d["features"] else []
     print(oznaka, len(d["features"]), "parcela, polja:", polja)
     nadji = lambda *imena: next((p for p in polja if p.lower() in imena), None)
