@@ -891,6 +891,125 @@
       "azurirano": "2017. (zastarjelo – plan mijenjan 2022., 2023. i 2024.)"
     },
     {
+      "id": "osjetljivost_solar",
+      "tip": "wms",
+      "url": "https://services.bioportal.hr/wms",
+      "wmsSlojevi": "ocjena_priroda_solar",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Osjetljivost prirode za sunčane elektrane",
+      "grupa": "prostor",
+      "podgrupa": "Obnovljivi izvori energije",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Gdje bi sunčane elektrane najmanje ugrozile prirodu (TNC i EIHP za MZOZT).",
+      "detaljno": "Karta osjetljivosti prirode za razvoj sunčanih elektrana, izrađena za Ministarstvo zaštite okoliša i zelene tranzicije (The Nature Conservancy i Energetski institut Hrvoje Požar). Pomaže u planiranju: gdje je sukob s prirodom najmanji. Razrede objašnjava legenda; prije svakog zahvata potrebna je propisana ocjena."
+    },
+    {
+      "id": "osjetljivost_vjetar",
+      "tip": "wms",
+      "url": "https://services.bioportal.hr/wms",
+      "wmsSlojevi": "ocjena_priroda_vjetar",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Osjetljivost prirode za vjetroelektrane",
+      "grupa": "prostor",
+      "podgrupa": "Obnovljivi izvori energije",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Osjetljivost prirode za vjetroelektrane (ptice, šišmiši, staništa).",
+      "detaljno": "Karta osjetljivosti prirode za vjetroelektrane (MZOZT, TNC, EIHP)."
+    },
+    {
+      "id": "pogodnost_solar",
+      "tip": "wms",
+      "url": "https://services.bioportal.hr/wms",
+      "wmsSlojevi": "pogodnost_solar",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Tehnička pogodnost za sunčane elektrane",
+      "grupa": "prostor",
+      "podgrupa": "Obnovljivi izvori energije",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Tehnička pogodnost prostora za sunčane elektrane.",
+      "detaljno": "Tehnička pogodnost (zračenje, nagib, pristup mreži i sl.) za sunčane elektrane, iz istog skupa karata MZOZT-a."
+    },
+    {
+      "id": "corine_2018",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "clc2018",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "CORINE pokrov zemljišta 2018.",
+      "grupa": "prostor",
+      "podgrupa": "Pokrov zemljišta",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Europska karta pokrova zemljišta (CORINE), stanje 2018.",
+      "detaljno": "CORINE Land Cover – europski standard za pokrov zemljišta, mjerilo 1:100 000. Pogodan za usporedbu s drugim krajevima i kroz vrijeme."
+    },
+    {
+      "id": "corine_1980",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "corine_1980",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "CORINE pokrov zemljišta 1980.",
+      "grupa": "prostor",
+      "podgrupa": "Pokrov zemljišta",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Pokrov zemljišta 1980. – usporedite s 2018. alatom za usporedbu.",
+      "detaljno": "CORINE pokrov zemljišta za referentnu 1980. godinu. Alatom „usporedba” (klizač) usporedite s 2018. i vidite kako su se mijenjale šume, oranice i naselja."
+    },
+    {
+      "id": "corine_promjene",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "cha1218",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "CORINE promjene pokrova 2012.–2018.",
+      "grupa": "prostor",
+      "podgrupa": "Pokrov zemljišta",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Gdje se pokrov zemljišta promijenio između 2012. i 2018.",
+      "detaljno": "Površine na kojima se pokrov zemljišta promijenio između 2012. i 2018. (npr. sječa, nova izgradnja, prenamjena poljoprivrednog zemljišta)."
+    },
+    {
+      "id": "izgradenost_promjena",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "imc_2021_2024",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Promjena izgrađenosti 2021.–2024.",
+      "grupa": "prostor",
+      "podgrupa": "Pokrov zemljišta",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Nove izgrađene površine prema satelitskim snimkama (Copernicus).",
+      "detaljno": "Promjena udjela izgrađenih (nepropusnih) površina između 2021. i 2024. prema satelitskom servisu Copernicus. Pomaže pratiti širenje naselja."
+    },
+    {
       "id": "bonitet",
       "naziv": "Vrijednost (bonitet) tla",
       "grupa": "poljoprivreda",
@@ -1199,6 +1318,57 @@
       "vidljivo": false
     },
     {
+      "id": "tlo_org_ugljik",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "org_c_u_tlu_0_30",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Organski ugljik u tlu (0–30 cm)",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Tlo",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Sadržaj organskog ugljika u oraničnom sloju – pokazatelj plodnosti i zdravlja tla.",
+      "detaljno": "Organski ugljik u tlu (0–30 cm) prema nacionalnom praćenju stanja tla. Više organskog ugljika znači bolju strukturu tla, više vode i hraniva na raspolaganju. Mjerilo je regionalno – za pojedinu parcelu vrijedi analiza tla."
+    },
+    {
+      "id": "tlo_dusik",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "n_2016_u_tlu_0_10",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Ukupni dušik u tlu (0–10 cm)",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Tlo",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Ukupni dušik u površinskom sloju tla (praćenje 2016.).",
+      "detaljno": "Ukupni dušik (mg/kg) u sloju 0–10 cm prema praćenju stanja tla 2016. Regionalni prikaz; za gnojidbu pojedine parcele potrebna je analiza tla."
+    },
+    {
+      "id": "tlo_cn",
+      "tip": "wms",
+      "url": "https://servisi.azo.hr/tlo/wms",
+      "wmsSlojevi": "c_n_2016_u_tlu_0_30",
+      "projekcija": "EPSG:3765",
+      "vidljivo": false,
+      "neprozirnost": 0.7,
+      "azurirano": "uživo sa servisa",
+      "naziv": "Odnos C/N u tlu (0–30 cm)",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Tlo",
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – servisi.azo.hr (CORINE, tlo)",
+      "licenca": "Nema uvjeta za pristup i korištenje (NIPP)",
+      "opis": "Odnos ugljika i dušika – brzina razgradnje organske tvari.",
+      "detaljno": "Odnos ugljika i dušika u tlu (0–30 cm). Pokazuje koliko se brzo razgrađuje organska tvar i oslobađa dušik."
+    },
+    {
       "id": "poplave_vv",
       "naziv": "Poplave – velika vjerojatnost",
       "grupa": "poplave",
@@ -1464,113 +1634,183 @@
       "podgrupa": "Voda za ljude"
     },
     {
+      "id": "prepreke_vodotoci",
+      "tip": "geojson",
+      "url": "data/bioportal/prepreke_vodotoci.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Prepreke na vodotocima",
+      "grupa": "poplave",
+      "podgrupa": "Vode",
+      "stil": {
+        "geometrija": "tocka",
+        "boja": "#475569",
+        "velicina": 5
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Izvor"
+          },
+          {
+            "polje": "rijeka",
+            "oznaka": "Vodotok"
+          },
+          {
+            "polje": "naziv_rije",
+            "oznaka": "Vodotok"
+          },
+          {
+            "polje": "tip_pregra",
+            "oznaka": "Tip"
+          },
+          {
+            "polje": "hymo_type1",
+            "oznaka": "Tip (engl.)"
+          }
+        ]
+      },
+      "opis": "Ustave, crpne stanice, pera i pragovi koji prekidaju tok riječnih i kanalskih voda.",
+      "detaljno": "Baza prepreka na vodotocima (MZOZT, 2026. i ranija baza): ustave, crpne stanice, pera i pragovi. Važno za ribe, obnovu rukavaca i upravljanje vodama u Kopačkom ritu i kanalskoj mreži."
+    },
+    {
       "id": "zasticena_podrucja",
+      "tip": "geojson",
+      "url": "data/bioportal/zasticena_podrucja.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
       "naziv": "Zaštićena područja prirode",
       "grupa": "priroda",
-      "tip": "wfs",
-      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
-      "typeName": "zasticena_podrucja:hr.rzp.e_zasticene-prirodne-vrijednosti-poligoni",
-      "vidljivo": false,
+      "podgrupa": "Zaštita prirode",
       "stil": {
         "geometrija": "poligon",
         "debljina": 2,
+        "ispunaProzirnost": 0.15,
         "kategorije": {
-          "polje": "Kategorija",
+          "polje": "kategorija_zastite",
           "vrijednosti": {
-            "park prirode": {
+            "Park prirode": {
               "boja": "#15803d",
-              "oznaka": "Park prirode"
+              "oznaka": "park prirode"
             },
-            "posebni rezervat": {
+            "Posebni rezervat": {
               "boja": "#14532d",
-              "oznaka": "Posebni rezervat"
+              "oznaka": "posebni rezervat"
             },
-            "regionalni park": {
+            "Regionalni park": {
               "boja": "#65a30d",
-              "oznaka": "Regionalni park"
+              "oznaka": "regionalni park"
+            },
+            "Spomenik prirode": {
+              "boja": "#a16207",
+              "oznaka": "spomenik prirode"
+            },
+            "Spomenik parkovne arhitekture": {
+              "boja": "#b45309",
+              "oznaka": "spomenik parkovne arhitekture"
+            },
+            "Značajni krajobraz": {
+              "boja": "#4d7c0f",
+              "oznaka": "značajni krajobraz"
             }
           }
-        },
-        "ispunaProzirnost": 0.15
+        }
       },
       "skocniProzor": {
-        "naslov": "Naziv",
+        "naslov": "naziv",
         "polja": [
           {
-            "polje": "Kategorija",
+            "polje": "kategorija_zastite",
             "oznaka": "Kategorija"
           },
           {
-            "polje": "CDDA_kod",
-            "oznaka": "CDDA kod"
+            "polje": "podkategorija_zastite",
+            "oznaka": "Podkategorija"
+          },
+          {
+            "polje": "naziv_akt",
+            "oznaka": "Naziv u aktu"
           }
         ]
       },
-      "opis": "Zaštićena područja prema Zakonu o zaštiti prirode: Park prirode Kopački rit, posebni rezervat i Regionalni park Mura–Drava.",
-      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Područja zaštićena Zakonom o zaštiti prirode, uživo iz registra Hrvatskih voda:\n• Park prirode Kopački rit, jedna od najvećih očuvanih poplavnih nizina u Europi\n• posebni zoološki rezervat unutar parka, s najstrožim režimom zaštite\n• Regionalni park Mura–Drava\n\nU zaštićenim područjima za mnoge zahvate potrebni su uvjeti zaštite prirode. Informacije daje Javna ustanova Park prirode Kopački rit.",
-      "podgrupa": "Zaštita prirode"
+      "opis": "Zaštićena područja prema Zakonu o zaštiti prirode (službeni upisnik, Bioportal).",
+      "detaljno": "Područja zaštićena prema Zakonu o zaštiti prirode iz službenog Upisnika zaštićenih područja: Park prirode Kopački rit s posebnim rezervatom, Regionalni park Mura–Drava i druga. Granice su izrezane na područje općine."
     },
     {
       "id": "natura_pop",
-      "naziv": "Natura 2000 – ptice (POP)",
-      "grupa": "priroda",
-      "tip": "wfs",
-      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
-      "typeName": "zasticena_podrucja:hr.rzp.e_ekoloska-mreza-NATURA-2000-podrucja-ocuvanja-znacajna-za-ptice",
+      "tip": "geojson",
+      "url": "data/bioportal/natura_ptice.geojson",
       "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Natura 2000 – područja za ptice (POP)",
+      "grupa": "priroda",
+      "podgrupa": "Zaštita prirode",
       "stil": {
         "geometrija": "poligon",
-        "rub": "#c2410c",
-        "debljina": 2,
-        "isprekidano": true,
-        "ispuna": "rgba(194,65,12,0.06)"
+        "boja": "#2563eb",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.1,
+        "isprekidano": true
       },
       "skocniProzor": {
-        "naslov": "Naziv",
+        "naslov": "naziv",
         "polja": [
           {
-            "polje": "SITECODE",
-            "oznaka": "Šifra područja"
+            "polje": "sitecode",
+            "oznaka": "Kod područja"
+          },
+          {
+            "polje": "url",
+            "oznaka": "Više",
+            "format": "poveznica"
           }
         ]
       },
-      "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za ptice.",
-      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje ptica (POP). Područje \"Podunavlje i donje Podravlje\" obuhvaća velik dio općine.\n\nZa zahvate koji bi mogli utjecati na ciljeve očuvanja provodi se ocjena prihvatljivosti za ekološku mrežu. Natura 2000 nije zabrana: poljoprivreda i uobičajene djelatnosti se nastavljaju.",
-      "podgrupa": "Natura 2000"
+      "opis": "Područja ekološke mreže Natura 2000 važna za ptice.",
+      "detaljno": "Područja ekološke mreže Natura 2000 prema Direktivi o pticama (Uredba o ekološkoj mreži). Klikom na područje otvara se službeni opis s ciljnim vrstama. Za zahvate u ovim područjima provodi se ocjena prihvatljivosti za ekološku mrežu."
     },
     {
       "id": "natura_povs",
-      "naziv": "Natura 2000 – vrste i staništa (POVS)",
-      "grupa": "priroda",
-      "tip": "wfs",
-      "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
-      "typeName": "zasticena_podrucja:hr.rzp.e_ekoloska-mreza-NATURA2000-podrucja-ocuvanja-znacajna-za-vrste-i-stanisne-tipove",
+      "tip": "geojson",
+      "url": "data/bioportal/natura_stanista.geojson",
       "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Natura 2000 – područja za vrste i staništa (POVS)",
+      "grupa": "priroda",
+      "podgrupa": "Zaštita prirode",
       "stil": {
         "geometrija": "poligon",
-        "rub": "#1d4ed8",
-        "debljina": 2,
-        "isprekidano": true,
-        "ispuna": "rgba(29,78,216,0.06)"
+        "boja": "#0d9488",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.1,
+        "isprekidano": true
       },
       "skocniProzor": {
-        "naslov": "Naziv",
+        "naslov": "naziv",
         "polja": [
           {
-            "polje": "SITECODE",
-            "oznaka": "Šifra područja"
+            "polje": "sitecode",
+            "oznaka": "Kod područja"
+          },
+          {
+            "polje": "url",
+            "oznaka": "Više",
+            "format": "poveznica"
           }
         ]
       },
-      "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za vrste i stanišne tipove.",
-      "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
-      "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje vrsta i stanišnih tipova (POVS), npr. Kopački rit, Donji tok Drave i Dunav. Za zahvate koji bi mogli utjecati na ta područja provodi se ocjena prihvatljivosti za ekološku mrežu.",
-      "podgrupa": "Natura 2000"
+      "opis": "Područja ekološke mreže Natura 2000 važna za vrste i stanišne tipove.",
+      "detaljno": "Područja očuvanja značajna za vrste i stanišne tipove (Direktiva o staništima). Klikom se otvara službeni opis s ciljnim vrstama i staništima."
     },
     {
       "id": "stanista",
@@ -1806,6 +2046,382 @@
       "azurirano": "2017.",
       "tip": "geojson",
       "vidljivo": false
+    },
+    {
+      "id": "ramsar",
+      "tip": "geojson",
+      "url": "data/bioportal/ramsar.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Ramsarsko područje (močvara međunarodne važnosti)",
+      "grupa": "priroda",
+      "podgrupa": "Zaštita prirode",
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#0369a1",
+        "debljina": 2,
+        "ispunaProzirnost": 0.06
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "datum_dez",
+            "oznaka": "Upisano"
+          },
+          {
+            "polje": "url",
+            "oznaka": "Više",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Kopački rit – močvara od međunarodne važnosti prema Ramsarskoj konvenciji.",
+      "detaljno": "Kopački rit upisan je na Ramsarski popis močvarnih područja od međunarodne važnosti 1993. godine."
+    },
+    {
+      "id": "rezervat_biosfere",
+      "tip": "geojson",
+      "url": "data/bioportal/rezervat_biosfere.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "UNESCO rezervat biosfere Mura–Drava–Dunav",
+      "grupa": "priroda",
+      "podgrupa": "Zaštita prirode",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.12,
+        "kategorije": {
+          "polje": "zona",
+          "vrijednosti": {
+            "Core Area/Područje jezgre": {
+              "boja": "#166534",
+              "oznaka": "područje jezgre"
+            },
+            "Buffer Zone/Zaštitna zona": {
+              "boja": "#65a30d",
+              "oznaka": "zaštitna zona"
+            },
+            "Transition Area/Prijelazno područje": {
+              "boja": "#bef264",
+              "oznaka": "prijelazno područje"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "zona",
+            "oznaka": "Zona"
+          },
+          {
+            "polje": "dat_a",
+            "oznaka": "Proglašen"
+          }
+        ]
+      },
+      "opis": "Prekogranični rezervat biosfere uz Muru, Dravu i Dunav (UNESCO, program Čovjek i biosfera).",
+      "detaljno": "Dio prekograničnog rezervata biosfere „Mura–Drava–Dunav” (UNESCO MAB, 2012.). Područje jezgre i zaštitna zona štite riječne i poplavne ekosustave, a u prijelaznom području potiče se održivi razvoj – poljoprivreda, turizam i život u skladu s prirodom."
+    },
+    {
+      "id": "upravljacke_zone",
+      "tip": "geojson",
+      "url": "data/bioportal/upravljacke_zone.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Zone upravljanja zaštićenim područjima",
+      "grupa": "priroda",
+      "podgrupa": "Zaštita prirode",
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#7c3aed",
+        "debljina": 1,
+        "ispunaProzirnost": 0.1
+      },
+      "skocniProzor": {
+        "naslov": "naz_podz",
+        "polja": [
+          {
+            "polje": "naziv",
+            "oznaka": "Zaštićeno područje"
+          },
+          {
+            "polje": "kat_zp_em",
+            "oznaka": "Kategorija"
+          },
+          {
+            "polje": "upravljac",
+            "oznaka": "Upravitelj"
+          },
+          {
+            "polje": "usvojena_u",
+            "oznaka": "Plan upravljanja"
+          },
+          {
+            "polje": "url",
+            "oznaka": "Više",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Zone i podzone iz planova upravljanja (npr. Kopački rit, Mura–Drava, Biljsko groblje).",
+      "detaljno": "Zonacija iz planova upravljanja zaštićenim područjima: zone stroge i usmjerene zaštite, podzone posjetiteljske infrastrukture, poljoprivrede, šuma i drugo. Pokazuje koji režim vrijedi na određenom mjestu. Poveznica vodi na plan upravljanja."
+    },
+    {
+      "id": "stanista_2016",
+      "tip": "geojson",
+      "url": "data/bioportal/stanista_2016.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Karta kopnenih nešumskih staništa 2016.",
+      "grupa": "priroda",
+      "podgrupa": "Staništa i šume",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.4,
+        "ispunaProzirnost": 0.45,
+        "kategorije": {
+          "polje": "nks_razred",
+          "vrijednosti": {
+            "A": {
+              "boja": "#4fa3d1",
+              "oznaka": "A – površinske vode i močvare"
+            },
+            "B": {
+              "boja": "#d6d3c4",
+              "oznaka": "B – neobrasle površine"
+            },
+            "C": {
+              "boja": "#a5d16b",
+              "oznaka": "C – travnjaci, cretovi"
+            },
+            "D": {
+              "boja": "#7d9f4f",
+              "oznaka": "D – šikare"
+            },
+            "E": {
+              "boja": "#2e6b30",
+              "oznaka": "E – šume"
+            },
+            "I": {
+              "boja": "#e8d38b",
+              "oznaka": "I – kultivirane površine"
+            },
+            "J": {
+              "boja": "#bdbdbd",
+              "oznaka": "J – izgrađena staništa"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "nks_komb",
+            "oznaka": "NKS kod"
+          },
+          {
+            "polje": "nks1_znan",
+            "oznaka": "Znanstveni naziv"
+          },
+          {
+            "polje": "area_ha",
+            "oznaka": "Površina (ha)"
+          }
+        ]
+      },
+      "opis": "Službena karta staništa (Nacionalna klasifikacija staništa), 2016.",
+      "detaljno": "Karta kopnenih nešumskih staništa Republike Hrvatske iz 2016. (MZOZT). Prikazuje tipove staništa prema Nacionalnoj klasifikaciji staništa; šume su prikazane kao jedna skupina. Starija karta staništa iz inventarizacije općine ostaje dostupna radi usporedbe."
+    },
+    {
+      "id": "obnova_prirode",
+      "tip": "geojson",
+      "url": "data/bioportal/obnova_prirode.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Prijedlozi obnove prirode",
+      "grupa": "priroda",
+      "podgrupa": "Staništa i šume",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.2,
+        "kategorije": {
+          "polje": "vrsta",
+          "vrijednosti": {
+            "obnova staništa": {
+              "boja": "#0f766e",
+              "oznaka": "obnova staništa"
+            },
+            "obnova za vrste": {
+              "boja": "#9333ea",
+              "oznaka": "obnova za vrste"
+            },
+            "povezanost rijeka": {
+              "boja": "#0284c7",
+              "oznaka": "povezanost rijeka"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "vrsta",
+        "polja": [
+          {
+            "polje": "mjera_opis",
+            "oznaka": "Mjera"
+          },
+          {
+            "polje": "institucij",
+            "oznaka": "Predložio"
+          },
+          {
+            "polje": "zakljucak",
+            "oznaka": "Status"
+          }
+        ]
+      },
+      "opis": "Područja i mjere predložene za nacionalni plan obnove prirode.",
+      "detaljno": "Područja i mjere obnove predložene za Nacionalni plan obnove prirode (EU Uredba o obnovi prirode): obnova staništa, mjere za vrste i ponovno povezivanje rukavaca i kanala s rijekom. Prijedlozi su u razmatranju i nisu konačni."
+    },
+    {
+      "id": "posjetitelji_tocke",
+      "tip": "geojson",
+      "url": "data/bioportal/posjetitelji_tocke.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Posjetiteljski sadržaji u prirodi",
+      "grupa": "priroda",
+      "podgrupa": "Izleti i posjeti",
+      "stil": {
+        "geometrija": "tocka",
+        "kategorije": {
+          "polje": "vrsta",
+          "vrijednosti": {
+            "atrakcija": {
+              "boja": "#b45309",
+              "oznaka": "atrakcija",
+              "simbol": "bastina"
+            },
+            "info centar": {
+              "boja": "#0369a1",
+              "oznaka": "info centar",
+              "simbol": "turizam"
+            },
+            "poučna ploča": {
+              "boja": "#4d7c0f",
+              "oznaka": "poučna ploča",
+              "simbol": "priroda"
+            },
+            "promatranje životinja": {
+              "boja": "#15803d",
+              "oznaka": "promatranje životinja",
+              "simbol": "priroda"
+            },
+            "ribolov": {
+              "boja": "#0e7490",
+              "oznaka": "ribolov",
+              "simbol": "odmor"
+            },
+            "ugostiteljstvo i smještaj": {
+              "boja": "#be185d",
+              "oznaka": "ugostiteljstvo i smještaj",
+              "simbol": "ugostiteljstvo"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "kategorija",
+            "oznaka": "Kategorija"
+          },
+          {
+            "polje": "nazivju",
+            "oznaka": "Upravitelj"
+          }
+        ]
+      },
+      "opis": "Atrakcije, info centri, poučne ploče, promatranje ptica, ribolov i ugostiteljstvo u parku prirode.",
+      "detaljno": "Posjetiteljska infrastruktura zaštićenih područja koju vode javne ustanove (Park prirode Kopački rit i dr.)."
+    },
+    {
+      "id": "posjetitelji_linije",
+      "tip": "geojson",
+      "url": "data/bioportal/posjetitelji_linije.geojson",
+      "vidljivo": false,
+      "izvor": "Ministarstvo zaštite okoliša i zelene tranzicije – Bioportal (bioportal.hr)",
+      "licenca": "Bez uvjeta za pristup i korištenje (NIPP)",
+      "azurirano": "mjesečno s Bioportala",
+      "naziv": "Staze u prirodi",
+      "grupa": "priroda",
+      "podgrupa": "Izleti i posjeti",
+      "stil": {
+        "geometrija": "linija",
+        "debljina": 3,
+        "kategorije": {
+          "polje": "vrsta",
+          "vrijednosti": {
+            "biciklistička staza": {
+              "boja": "#dc2626",
+              "oznaka": "biciklistička staza"
+            },
+            "šetnica / atrakcija": {
+              "boja": "#b45309",
+              "oznaka": "šetnica"
+            },
+            "poučna staza": {
+              "boja": "#4d7c0f",
+              "oznaka": "poučna staza"
+            },
+            "ribolovna voda": {
+              "boja": "#0e7490",
+              "oznaka": "ribolovna voda"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "duljina",
+            "oznaka": "Duljina (km)"
+          },
+          {
+            "polje": "nazivju",
+            "oznaka": "Upravitelj"
+          }
+        ]
+      },
+      "opis": "Biciklističke i poučne staze, šetnice i ribolovne vode u parku prirode.",
+      "detaljno": "Staze koje održavaju javne ustanove za upravljanje zaštićenim područjima, uključujući Panonski put mira i šetnicu bijelog lopoča."
     },
     {
       "id": "bastina_registar",
