@@ -391,7 +391,10 @@
     kuca: 'M3 11 12 4l9 7M5 10v10h14V10M10 20v-6h4v6',
     stablo: 'M12 21v-6m0 0-4-4m4 4 4-4M12 3a6 6 0 0 0-6 6 6 6 0 0 0 12 0 6 6 0 0 0-6-6z',
     kljuc: 'M14.7 3.3a5 5 0 0 0-5.9 6.6l-5.5 5.5a1.6 1.6 0 0 0 0 2.3l3 3a1.6 1.6 0 0 0 2.3 0l5.5-5.5a5 5 0 0 0 6.6-5.9l-3 3-2.8-.7-.7-2.8z',
-    strelica: 'm9 6 6 6-6 6'
+    strelica: 'm9 6 6 6-6 6',
+    povrsina: 'M4 4h16v16H4zM4 9h3M4 14h3M9 4v3M14 4v3',
+    usporedba: 'M12 3v18M4 6h5v12H4zm11 0h5v12h-5z',
+    olovka: 'M4 20l4-1L19 8a2.1 2.1 0 0 0-3-3L5 16zM14 7l3 3'
   };
   function ikona(ime, velicina = 18) {
     const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -843,6 +846,7 @@
     }, { hitTolerance: 5 });
 
     const s = document.getElementById('skocni');
+    if (stanje.alatAktivan) return;   // mjerenje ili crtanje bilješki
     if (stanje.odabirTocke) {
       // modul je zatražio odabir mjesta na karti (npr. prijava problema)
       const povratni = stanje.odabirTocke;
@@ -1428,7 +1432,7 @@
   }
 
   // sučelje za module
-  stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije };
+  stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
 
   pokreni().then(() => {
     for (const m of window.webgisModuli || []) {
