@@ -28,7 +28,7 @@
     for (const [k, v] of Object.entries(STATUSI)) vr[k] = v;
     konfig.slojevi.push({
       id: 'projekti_baza', naziv: 'Projekti općine (2013. – danas)', grupa: 'projekti', tip: 'geojson',
-      url: rpc('projekti_geojson'), zaglavlja: { apikey: cfg.supabaseKljuc }, vidljivo: false,
+      url: rpc('projekti_geojson'), zaglavlja: { apikey: cfg.supabaseKljuc }, rezerva: 'data/projekti/nacrt.geojson', vidljivo: false,
       stil: { geometrija: 'tocka', debljina: 4, kategorije: { polje: 'status', vrijednosti: vr } },
       skocniProzor: { naslov: 'naziv', polja: [
         { polje: 'status', oznaka: 'Status', format: 'kategorija' }, { polje: 'razdoblje', oznaka: 'Razdoblje' },
@@ -212,6 +212,8 @@
   async function pokreni(s) {
     stanje = s; el = s.api.el;
     if (!cfg || !s.baza) return;
+    s.akcije.pokojnik = () => trazilicaPokojnika();
+    s.akcije.sjecanje = () => dodajDoprinos();
     s.skocniDodaci.doprinos = (f) => f.get('fotografija') ? el('img', { class: 'prijava-foto', alt: f.get('naslov'),
       src: s.baza.sb.storage.from('doprinosi').getPublicUrl(f.get('fotografija')).data.publicUrl }) : null;
     s.baza.kartice.push({ naziv: 'Projekti', vidljivo: s.baza.jeUrednik, prikazi: uredniciProjekti });

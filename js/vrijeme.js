@@ -167,6 +167,8 @@
 
   function pokreni(s) {
     stanje = s; el = s.api.el;
+    s.akcije.vrijeme = () => otvori();
+    s.akcije.agro = () => { otvori(); setTimeout(() => { const g = document.querySelector('#dijalog [data-k="agro"]'); if (g) g.click(); }, 400); };
     const okvir = document.querySelector('.gumbi-karte');
     if (!okvir) return;
     const gumb = el('button', { id: 'gumbVrijeme', class: 'gumb-karte gumb-vrijeme', title: 'Vremenska prognoza', onclick: otvori },

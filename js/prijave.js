@@ -98,6 +98,7 @@
     if (!cfg || !cfg.supabaseUrl || !window.supabase) return;
     stanje = s;
     el = s.api.el;
+    s.akcije.prijava = () => zapocniPrijavu();
     sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKljuc, {
       auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
     });

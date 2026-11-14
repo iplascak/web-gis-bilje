@@ -24,6 +24,7 @@
     nacinLokacije: false,
     odabirTocke: null,
     skocniDodaci: {},
+    akcije: {}, // moduli prijavljuju radnje za pametnu pretragu (vrijeme, prijava, pokojnik…)
     preklopi: {},
     intenzitetPodloge: 0.75,
     sivaPodloga: false
@@ -267,8 +268,13 @@
         loader: (extent, res, proj, uspjeh, neuspjeh) => {
           fetch(def.url, { headers: def.zaglavlja })
             .then(o => { if (!o.ok) throw new Error(o.status); return o.json(); })
-            .then(j => { const f = format.readFeatures(j); izvor.clear(true); izvor.addFeatures(f); uspjeh(f); })
-            .catch(() => { izvor.dispatchEvent('featuresloaderror'); neuspjeh(); });
+            .then(j => { if (def.rezerva && !(j && j.features && j.features.length)) throw new Error('prazno'); const f = format.readFeatures(j); izvor.clear(true); izvor.addFeatures(f); uspjeh(f); })
+            .catch(() => {
+              // rezervni izvor (npr. nacrt u repozitoriju dok baza nije napunjena)
+              if (!def.rezerva) { izvor.dispatchEvent('featuresloaderror'); neuspjeh(); return; }
+              fetch(def.rezerva).then(o => o.json()).then(j => { const f = format.readFeatures(j); izvor.clear(true); izvor.addFeatures(f); uspjeh(f); })
+                .catch(() => { izvor.dispatchEvent('featuresloaderror'); neuspjeh(); });
+            });
         }
       } : { url: def.url, format });
       izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju sloja', def.id));
@@ -1220,6 +1226,22 @@
     }
     for (const z of zapisi) z.kljuc = normaliziraj(z.tekst);
 
+    // pametna pretraga: rječnik pojmova i sinonima (config/pojmovi.json), bez AI-ja
+    let pojmovi = [];
+    try { pojmovi = ((await ucitajJSON('config/pojmovi.json')).unosi || []).map(u => Object.assign({}, u, { kljucevi: u.pojmovi.map(normaliziraj) })); } catch (g) { /* nije obavezno */ }
+    function prijedlozi(upit) {
+      const n = ' ' + normaliziraj(upit) + ' ', rijeci = n.trim().split(/\s+/).filter(r => r.length >= 3);
+      return pojmovi.map(u => {
+        let bod = 0;
+        for (const k of u.kljucevi) {
+          if (k.includes(' ') ? n.includes(k) : rijeci.some(r => r.startsWith(k) || (r.length >= 4 && k.startsWith(r)))) bod++;
+        }
+        return { u, bod };
+      }).filter(x => x.bod > 0 && ((x.u.slojevi || []).some(id => stanje.slojevi[id]) || (x.u.akcija && stanje.akcije[x.u.akcija])))
+        .sort((a, b) => b.bod - a.bod).slice(0, 3)
+        .map(({ u }) => ({ vrsta: 'Prijedlog', tekst: u.naslov + (u.opis ? ' – ' + u.opis : ''), pojam: u, red: -1 }));
+    }
+
     // sloj za oznaku pronađene lokacije
     const izvorOznake = new ol.source.Vector();
     const slojOznake = new ol.layer.Vector({
@@ -1235,6 +1257,19 @@
 
     function odaberi(z) {
       const view = stanje.karta.getView();
+      if (z.pojam) {
+        unos.value = ''; lista.hidden = true; rezultati = [];
+        let prvi = null;
+        for (const id of z.pojam.slojevi || []) {
+          const zap = stanje.slojevi[id];
+          if (zap && zap.postaviVidljivost) { zap.postaviVidljivost(true); if (!prvi) prvi = zap; }
+        }
+        if (prvi && prvi.def && prvi.olSloj && !z.pojam.akcija) pribliziSloju(prvi.def, prvi.olSloj);
+        const radnja = z.pojam.akcija && stanje.akcije[z.pojam.akcija];
+        if (radnja) radnja();
+        if (window.innerWidth <= 720 && !radnja) document.getElementById('panel').classList.add('skriven');
+        return;
+      }
       izvorOznake.clear();
       if (z.tocka) {
         izvorOznake.addFeature(new ol.Feature(new ol.geom.Point(z.tocka)));
@@ -1267,6 +1302,7 @@
         .filter(z => rijeci.every(r => z.kljuc.includes(r)))
         .sort((a, b) => a.red - b.red || a.kljuc.length - b.kljuc.length)
         .slice(0, 12);
+      rezultati = [...prijedlozi(unos.value), ...rezultati].slice(0, 14);
       prikazi();
     });
     unos.addEventListener('keydown', (e) => {

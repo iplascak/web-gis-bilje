@@ -85,6 +85,7 @@
     try { raspored = await (await fetch('data/otpad/raspored.json')).json(); } catch (g) { console.warn('Raspored odvoza nije učitan'); return; }
     s.skocniDodaci.otpad = (f) => {
       const okvir = el('div', {}, prikazOdvoza(f.get('zona_otpada'), el));
+      if (f.get('napomena_odvoz')) okvir.prepend(el('p', { class: 'sitno-siva' }, f.get('napomena_odvoz')));
       okvir.append(el('details', { class: 'odvoz-napomene' }, el('summary', {}, 'Glomazni otpad, reciklažno dvorište…'),
         ...raspored.napomene.map(n => el('p', {}, n))));
       return okvir;
