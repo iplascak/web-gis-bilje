@@ -5,34 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web GIS Općine Bilje</title>
   <meta name="description" content="Interaktivna karta Općine Bilje – prostorni podaci za mještane i posjetitelje.">
+  <meta name="theme-color" content="#F5D654">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/favicon-180.png">
   <link rel="stylesheet" href="lib/ol/ol.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <header class="zaglavlje">
-    <button id="gumbPanel" class="gumb-ikona" aria-label="Prikaži ili sakrij slojeve" title="Slojevi">☰</button>
+    <button id="gumbPanel" class="gumb-ikona" aria-label="Prikaži ili sakrij slojeve" title="Slojevi">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <a class="grb" href="https://bilje.hr/" title="Općina Bilje – službena stranica" target="_blank" rel="noopener">
+      <img src="assets/grb.png" alt="Grb Općine Bilje" onerror="this.parentElement.hidden=true">
+    </a>
     <div class="naslovi">
       <h1 id="naslov">Web GIS Općine Bilje</h1>
       <p id="podnaslov"></p>
     </div>
-    <button id="gumbPodijeli" class="gumb-tekst" title="Kopiraj poveznicu na ovaj prikaz">Podijeli</button>
-    <button id="gumbOPortalu" class="gumb-tekst">O portalu</button>
+    <button id="gumbPodijeli" class="gumb-tekst" title="Kopiraj poveznicu na ovaj prikaz">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4M18 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm9 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>Podijeli</span>
+    </button>
+    <button id="gumbOPortalu" class="gumb-tekst"><span>O portalu</span></button>
   </header>
 
   <main class="sadrzaj">
     <aside id="panel" class="panel" aria-label="Slojevi i legenda">
       <section class="pretraga-okvir">
+        <svg class="ikona-pretrage" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <input id="pretraga" type="search" placeholder="Traži adresu, ulicu ili naselje…" autocomplete="off" aria-label="Pretraga">
         <ul id="pretragaRezultati" class="pretraga-rezultati" role="listbox" hidden></ul>
       </section>
-      <section>
+      <section class="kartica">
         <h2>Podloga</h2>
         <div id="podloge" class="podloge"></div>
       </section>
-      <section>
+      <section class="kartica">
         <h2>Slojevi</h2>
         <div id="slojevi"></div>
       </section>
+      <footer class="podnozje-panela">
+        Izrađeno s alatima otvorenog koda · <a href="https://bilje.hr/" target="_blank" rel="noopener">bilje.hr</a>
+      </footer>
     </aside>
 
     <div id="karta" class="karta" tabindex="0" aria-label="Karta"></div>

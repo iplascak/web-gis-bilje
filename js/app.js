@@ -900,7 +900,16 @@
     const gumbPodijeli = document.getElementById('gumbPodijeli');
     gumbPodijeli.addEventListener('click', () => podijeli(null, gumbPodijeli));
     document.getElementById('gumbOPortalu').addEventListener('click', () =>
-      otvoriDijalog(el('h3', {}, portal.naslov), el('p', {}, portal.oPortalu || '')));
+      otvoriDijalog(
+        el('div', { class: 'o-portalu-zaglavlje' },
+          el('img', { src: 'assets/grb.png', alt: 'Grb Općine Bilje', class: 'grb-dijalog' }),
+          el('div', {}, el('h3', {}, portal.naslov), el('p', { class: 'sitno-siva' }, portal.podnaslov || ''))),
+        el('p', {}, portal.oPortalu || ''),
+        el('h4', {}, 'Poveznice'),
+        el('p', {},
+          el('a', { href: 'https://bilje.hr/', target: '_blank', rel: 'noopener' }, 'Službena stranica Općine Bilje'), el('br'),
+          el('a', { href: 'https://bilje.hr/prostorno-planska-dokumentacija/', target: '_blank', rel: 'noopener' }, 'Važeća prostorno-planska dokumentacija'), el('br'),
+          el('a', { href: 'https://github.com/iplascak/web-gis-bilje', target: '_blank', rel: 'noopener' }, 'Izvorni kod portala (otvoreni kod)'))));
   }
 
   pokreni().catch((g) => {
