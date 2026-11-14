@@ -163,17 +163,20 @@ def main():
     im["vrsta"] = im.podportfelj.map(lambda t: ocisti(t).capitalize() or "Ostalo")
 
     def skupina(r):
-        t = (r.podportfelj + " " + r.portfelj + " " + r.naziv).upper()
-        if "STAN" in t or "KUĆA" in t:
-            return "stanovi"
-        if "POSLOVN" in t:
-            return "poslovni"
-        if "DOM" in t or "KULTURN" in t or "VRTIĆ" in t or "OBRAZOVN" in t or "ŠKOL" in t:
-            return "drustveni"
-        if "NEIZGRAĐENA GRAĐEVINSK" in t:
+        pp = (r.podportfelj + " " + r.portfelj).upper()
+        n = r.naziv.upper()
+        if "NEIZGRAĐEN" in pp:
             return "gradjevinsko"
-        if "POLJOPRIVREDN" in t or "ORANICA" in t:
+        if "STAN" in pp:
+            return "stanovi"
+        if "POSLOVN" in pp:
+            return "poslovni"
+        if any(k in pp for k in ("DOM", "KULTURN", "VRTIĆ", "OBRAZOVN")):
+            return "drustveni"
+        if "POLJOPRIVREDN" in pp:
             return "poljoprivredno"
+        if any(k in n for k in ("DOM ", "DOM,", "VRTIĆ", "ŠKOL")):
+            return "drustveni"
         return "ostalo"
     im["skupina"] = im.apply(skupina, axis=1)
     im["ko"] = im.ko_mb.map(KO_NAZIVI)
