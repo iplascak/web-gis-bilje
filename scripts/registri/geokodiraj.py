@@ -62,12 +62,28 @@ def cestice_ko(ko, url):
         if not slojevi:
             raise RuntimeError(f"k.o. {ko}: u ZIP-u nema čitljivog GML-a")
         g = max(slojevi, key=len)  # sloj čestica je najveći
-    # broj čestice: 'label' ili kraj 'nationalCadastralReference'
-    if "label" in g.columns:
-        broj = g["label"].astype(str)
-    else:
-        ref = next(c for c in g.columns if "nationalcadastralreference" in c.lower())
-        broj = g[ref].astype(str).str.split(r"[-:]").str[-1]
+    # broj čestice: stupac čije vrijednosti izgledaju kao "123" ili "123/4"
+    print(f"  k.o. {ko}: stupci {list(g.columns)}", flush=True)
+    print("  primjer:", g.drop(columns="geometry").head(2).to_dict("records"), flush=True)
+    obrazac = r"^\d+(/\d+)?$"
+    kandidati = [c for c in g.columns if c != "geometry"]
+    prednost = [c for c in kandidati if c.lower() in ("label", "broj_cestice", "broj", "parcelnumber")]
+    broj = None
+    for c in prednost + kandidati:
+        v = g[c].astype(str).str.strip()
+        if v.str.match(obrazac).mean() > 0.8:
+            broj = v
+            print(f"  broj čestice iz stupca '{c}'", flush=True)
+            break
+    if broj is None:
+        for c in kandidati:  # npr. nationalCadastralReference "300055-442/3"
+            v = g[c].astype(str).str.split(r"[-:.]").str[-1].str.strip()
+            if v.str.match(obrazac).mean() > 0.8:
+                broj = v
+                print(f"  broj čestice iz kraja stupca '{c}'", flush=True)
+                break
+    if broj is None:
+        raise RuntimeError(f"k.o. {ko}: ne mogu prepoznati stupac s brojem čestice")
     g = g.assign(kc=broj.str.strip(), ko_mb=ko)[["kc", "ko_mb", "geometry"]]
     if g.crs is None:
         g = g.set_crs(3765)
