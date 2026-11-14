@@ -108,7 +108,8 @@ def main():
                 print("  greška", it.id, g, flush=True); continue
             with np.errstate(divide="ignore", invalid="ignore"):
                 a = (nir - red) / (nir + red); b = (nir - sw) / (nir + sw)
-            ok &= np.isfinite(a) & (nir > 0)
+            # nakon BOA pomaka tamni pikseli (voda, sjena) mogu imati refleksiju ≤ 0 – takvi se ne koriste
+            ok &= np.isfinite(a) & (nir > 0.01) & (red > 0.001) & (sw > 0.001) & (np.abs(a) <= 1) & (np.abs(b) <= 1)
             ndvi[ok] = a[ok]; ndmi[ok] = b[ok]
         cisto = np.isfinite(ndvi) & (lab > 0)
         if cisto.sum() == 0:

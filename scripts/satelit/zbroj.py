@@ -24,7 +24,7 @@ for put in sorted(glob.glob(f"{IZVOR}/niz_*.json.gz")):
     g = r["godina"]; godine.append(g)
     doy = [dt.date.fromisoformat(d).timetuple().tm_yday for d in r["datumi"]]
     for pid, obs in r["v"].items():
-        o = [[doy[i], a, b, c] for i, a, b, c in obs]
+        o = [[doy[i], a, b, c] for i, a, b, c in obs if -1 <= a <= 1 and -1 <= b <= 1]
         # uklanjanje šiljaka (neprepoznati rubovi oblaka, magla): točka koja odstupa > 0,3 od oba susjeda unutar 20 dana
         cisto = []
         for k, x in enumerate(o):
@@ -110,17 +110,29 @@ for f in jed:
     p = dict(f["properties"])
     if obs:
         d, nd, nm, sd = obs[-1]
-        prijasnje = [interp(s[str(g)], d) for g in godine if g != tek and str(g) in s]
+        mj = (dt.date(tek, 1, 1) + dt.timedelta(days=d - 1)).month
+        def vrh(o): 
+            o = [x for x in o if 90 <= x[0] <= 280]
+            return max((x[1] for x in o), default=None)
+        if 4 <= mj <= 9:
+            # u vegetaciji: zadnja snimka prema istom dobu prethodnih sezona
+            prijasnje = [interp(s[str(g)], d) for g in godine if g != tek and str(g) in s]
+            usporedba, vr = "zadnja snimka", nd
+        else:
+            # izvan vegetacije: vrhunac ove sezone prema vrhuncima prethodnih
+            prijasnje = [vrh(s[str(g)]) for g in godine if g != tek and str(g) in s]
+            usporedba, vr = "vrhunac sezone", vrh(obs)
         prijasnje = [x for x in prijasnje if x is not None]
         ref = float(np.median(prijasnje)) if len(prijasnje) >= 2 else None
-        razlika = round(nd - ref, 2) if ref is not None else None
+        razlika = round(vr - ref, 2) if (ref is not None and vr is not None) else None
         if razlika is None: stanje = "nema usporedbe"
-        elif nd < 0.3 and ref < 0.3: stanje = "golo tlo / mirovanje"
+        elif usporedba == "zadnja snimka" and vr < 0.3 and ref < 0.3: stanje = "golo tlo / mirovanje"
         elif razlika <= -0.15: stanje = "znatno slabije"
         elif razlika <= -0.07: stanje = "slabije"
         elif razlika >= 0.07: stanje = "bujnije"
         else: stanje = "uobičajeno"
         p.update({"zadnji_datum": (dt.date(tek, 1, 1) + dt.timedelta(days=d - 1)).isoformat(), "ndvi": nd, "ndmi": nm, "ndvi_sd": sd,
+                  "usporedba": usporedba, "vrijednost": round(vr, 2) if vr is not None else None,
                   "ndvi_uobicajeno": round(ref, 2) if ref is not None else None, "razlika": razlika, "stanje": stanje})
     else:
         p["stanje"] = "nema snimke"
