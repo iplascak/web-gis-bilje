@@ -83,6 +83,10 @@ def main():
                           query={"eo:cloud_cover": {"lt": 70}}, max_items=2000)
     po_datumu = {}
     for it in pretraga.items():
+        # samo pločice u UTM zoni 34 (isti koordinatni sustav kao mreža); pločice zone 33 (npr. 33TYL) se preskaču
+        epsg = it.properties.get("proj:epsg") or (it.properties.get("proj:code") or "").replace("EPSG:", "")
+        if str(epsg) not in ("32634",) and "_34T" not in it.id:
+            continue
         po_datumu.setdefault(it.datetime.strftime("%Y-%m-%d"), []).append(it)
     datumi = sorted(po_datumu)
     print(GODINA, "datuma sa snimkama:", len(datumi), flush=True)

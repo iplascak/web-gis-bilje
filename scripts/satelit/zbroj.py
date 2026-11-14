@@ -24,7 +24,16 @@ for put in sorted(glob.glob(f"{IZVOR}/niz_*.json.gz")):
     g = r["godina"]; godine.append(g)
     doy = [dt.date.fromisoformat(d).timetuple().tm_yday for d in r["datumi"]]
     for pid, obs in r["v"].items():
-        nizovi.setdefault(pid, {})[str(g)] = [[doy[i], a, b, c] for i, a, b, c in obs]
+        o = [[doy[i], a, b, c] for i, a, b, c in obs]
+        # uklanjanje šiljaka (neprepoznati rubovi oblaka, magla): točka koja odstupa > 0,3 od oba susjeda unutar 20 dana
+        cisto = []
+        for k, x in enumerate(o):
+            if 0 < k < len(o) - 1:
+                a_, b_ = o[k - 1], o[k + 1]
+                if b_[0] - a_[0] <= 20 and abs(x[1] - a_[1]) > 0.3 and abs(x[1] - b_[1]) > 0.3 and (x[1] - a_[1]) * (x[1] - b_[1]) > 0:
+                    continue
+            cisto.append(x)
+        nizovi.setdefault(pid, {})[str(g)] = cisto
 godine.sort()
 tek = godine[-1] if godine else dt.date.today().year
 zadnji = None
