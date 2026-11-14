@@ -32,7 +32,8 @@ def obradi(url, oznaka, proba=False):
     info = subprocess.run(["ogrinfo", "-so", "-al", put], capture_output=True, text=True).stdout
     if proba:
         print(info[:4000]); return
-    sloj = subprocess.run(["ogrinfo", "-q", put], capture_output=True, text=True).stdout.split("\n")[0].split(":")[1].split("(")[0].strip()
+    import re as _r
+    sloj = _r.search(r"^\d+: ([^ ]+)", subprocess.run(["ogrinfo", "-q", put], capture_output=True, text=True).stdout, _r.M).group(1)
     tmp = "/tmp/izrez.geojson"
     if os.path.exists(tmp): os.remove(tmp)
     # granica u koordinatnom sustavu izvora (HTRS96/TM) – izbjegava zabunu s redoslijedom osi kod EPSG:4326
@@ -43,8 +44,13 @@ def obradi(url, oznaka, proba=False):
     import re as _re
     e = _re.search(r"Extent: \(([-\d.]+), ([-\d.]+)\) - \(([-\d.]+), ([-\d.]+)\)", ext).groups()
     print("  obuhvat (HTRS96):", e)
-    subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e, "-clipsrc", gr,
-                    "-t_srs", "EPSG:4326", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"], check=True)
+    print("  sloj:", repr(sloj))
+    prov = subprocess.run(["ogrinfo", "-so", put, sloj, "-spat", *e], capture_output=True, text=True)
+    print("  u obuhvatu:", [r for r in prov.stdout.split("\n") if "Feature Count" in r], prov.stderr[-500:])
+    r = subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e, "-clipsrc", gr,
+                        "-t_srs", "EPSG:4326", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
+                       capture_output=True, text=True)
+    print("  ogr2ogr:", r.returncode, r.stderr[-1500:])
     d = json.load(open(tmp))
     polja = list(d["features"][0]["properties"]) if d["features"] else []
     print(oznaka, len(d["features"]), "parcela, polja:", polja)
