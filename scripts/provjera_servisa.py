@@ -85,6 +85,15 @@ def provjeri_osm():
     return "pločica dohvaćena"
 
 
+def provjeri_prijave(cfg):
+    """Baza prijava (Supabase): upit ujedno sprječava uspavljivanje besplatnog projekta."""
+    url = cfg["supabaseUrl"].rstrip("/") + "/rest/v1/rpc/prijave_geojson"
+    zahtjev = urllib.request.Request(url, headers={**ZAGLAVLJA, "apikey": cfg["supabaseKljuc"]})
+    with urllib.request.urlopen(zahtjev, timeout=60) as o:
+        j = json.loads(o.read())
+    return f"{len(j.get('features', []))} objavljenih prijava"
+
+
 def provjeri_lokalno(putanja):
     podaci = json.loads((KORIJEN / putanja).read_text(encoding="utf-8"))
     n = len(podaci.get("features", podaci.get("adrese", [])))
@@ -118,6 +127,8 @@ def main():
         provjere.append(("Lokacija: katastarska čestica (DGU)", lambda: provjeri_katastar(lok["katastar"])))
     if portal.get("pretraga", {}).get("adrese"):
         provjere.append(("Pretraga: adrese", lambda: provjeri_lokalno(portal["pretraga"]["adrese"])))
+    if portal.get("prijave", {}).get("supabaseUrl"):
+        provjere.append(("Prijave mještana (Supabase)", lambda: provjeri_prijave(portal["prijave"])))
 
     redovi, greske = [], 0
     for naziv, fn in provjere:

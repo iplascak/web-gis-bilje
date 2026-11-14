@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" href="assets/favicon-180.png">
   <link rel="stylesheet" href="lib/ol/ol.css">
-  <link rel="stylesheet" href="css/app.css?v=20261114d">
+  <link rel="stylesheet" href="css/app.css?v=20261114e">
 </head>
 <body>
   <header class="zaglavlje">
@@ -23,6 +23,14 @@
       <h1 id="naslov">Web GIS Općine Bilje</h1>
       <p id="podnaslov"></p>
     </div>
+    <button id="gumbPrijavi" class="gumb-tekst gumb-naglaseni" data-prijave hidden title="Prijavite komunalni problem općini">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3l10 18H2L12 3zm0 6v5m0 3v.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Prijavi problem</span>
+    </button>
+    <button id="gumbRacun" class="gumb-tekst" data-prijave hidden title="Prijava na portal i moje prijave">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>Prijava</span>
+    </button>
     <button id="gumbPodijeli" class="gumb-tekst" title="Kopiraj poveznicu na ovaj prikaz">
       <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4M18 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm9 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       <span>Podijeli</span>
@@ -74,6 +82,8 @@
 
   <script src="lib/proj4/proj4.js"></script>
   <script src="lib/ol/ol.js"></script>
-  <script src="js/app.js?v=20261114d"></script>
+  <script src="lib/supabase/supabase.js"></script>
+  <script src="js/prijave.js?v=20261114e"></script>
+  <script src="js/app.js?v=20261114e"></script>
 </body>
 </html>

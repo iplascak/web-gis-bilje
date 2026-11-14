@@ -22,6 +22,8 @@
     odabranaKoordinata: null,
     skriveneKategorije: {},
     nacinLokacije: false,
+    odabirTocke: null,
+    skocniDodaci: {},
     intenzitetPodloge: 0.75,
     sivaPodloga: false
   };
@@ -219,10 +221,16 @@
     };
 
     if (def.tip === 'geojson') {
-      const izvor = new ol.source.Vector({
-        url: def.url,
-        format: new ol.format.GeoJSON({ dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' })
-      });
+      const format = new ol.format.GeoJSON({ dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' });
+      const izvor = new ol.source.Vector(def.zaglavlja ? {
+        // izvor koji traži zaglavlja (npr. ključ baze) – vlastito učitavanje
+        loader: (extent, res, proj, uspjeh, neuspjeh) => {
+          fetch(def.url, { headers: def.zaglavlja })
+            .then(o => { if (!o.ok) throw new Error(o.status); return o.json(); })
+            .then(j => { const f = format.readFeatures(j); izvor.clear(true); izvor.addFeatures(f); uspjeh(f); })
+            .catch(() => { izvor.dispatchEvent('featuresloaderror'); neuspjeh(); });
+        }
+      } : { url: def.url, format });
       izvor.on('featuresloaderror', () => console.warn('Greška pri učitavanju sloja', def.id));
       const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil, def.id) }, zajednicko));
       sloj.set('upitni', def.klik !== false);
@@ -417,7 +425,12 @@
       if (v === null) continue;
       tablica.append(el('tr', {}, el('th', {}, p.oznaka), el('td', {}, v)));
     }
-    return [el('h3', {}, naslov), tablica, el('div', { class: 'vise' }, 'Sloj: ' + def.naziv)];
+    const rezultat = [el('h3', {}, naslov), tablica];
+    // moduli mogu dodati vlastiti sadržaj u skočni prozor (npr. fotografiju, uređivanje)
+    const dodatak = def.skocniDodatak && stanje.skocniDodaci[def.skocniDodatak];
+    if (dodatak) rezultat.push(...[].concat(dodatak(f, def) || []));
+    rezultat.push(el('div', { class: 'vise' }, 'Sloj: ' + def.naziv));
+    return rezultat;
   }
 
   function gumbLokacija(koordinata) {
@@ -433,6 +446,14 @@
     }, { hitTolerance: 5 });
 
     const s = document.getElementById('skocni');
+    if (stanje.odabirTocke) {
+      // modul je zatražio odabir mjesta na karti (npr. prijava problema)
+      const povratni = stanje.odabirTocke;
+      odaberiTocku(null);
+      zatvoriSkocni();
+      povratni(evt.coordinate);
+      return;
+    }
     if (stanje.nacinLokacije) {
       // uključen način "Što je ovdje?": klik otvara izvještaj o lokaciji
       postaviNacinLokacije(false);
@@ -454,6 +475,20 @@
     pozicionirajSkocni();
   }
 
+
+  // odabir točke na karti za module: odaberiTocku(fn) – sljedeći klik poziva fn(koordinata)
+  function odaberiTocku(povratni, poruka) {
+    stanje.odabirTocke = povratni;
+    stanje.karta.getTargetElement().classList.toggle('nacin-lokacije', !!povratni);
+    let traka = document.getElementById('trakaOdabira');
+    if (!povratni) { if (traka) traka.remove(); return; }
+    if (!traka) {
+      traka = el('div', { id: 'trakaOdabira', class: 'traka-odabira' });
+      document.body.append(traka);
+    }
+    traka.replaceChildren(el('span', {}, poruka || 'Kliknite na kartu'),
+      el('button', { onclick: () => odaberiTocku(null) }, 'Odustani'));
+  }
 
   function postaviNacinLokacije(ukljuceno) {
     stanje.nacinLokacije = ukljuceno;
@@ -872,6 +907,11 @@
     try {
       dodajNepogode(await ucitajJSON('config/nepogode.json'), konfig, portal);
     } catch (g) { console.warn('Nepogode nisu učitane:', g); }
+    // dodatni moduli (js/*.js) prijavljuju se u window.webgisModuli
+    const moduli = window.webgisModuli || [];
+    for (const m of moduli) {
+      try { if (m.pripremi) m.pripremi(konfig, portal); } catch (g) { console.warn('Modul', m.naziv, g); }
+    }
 
     document.title = portal.naslov;
     document.getElementById('naslov').textContent = portal.naslov;
@@ -943,7 +983,7 @@
       const imaObjekt = karta.hasFeatureAtPixel(e.pixel, {
         layerFilter: (l) => l.get('upitni') && l.get('defId') !== 'granica', hitTolerance: 5
       });
-      karta.getTargetElement().style.cursor = stanje.nacinLokacije ? 'crosshair' : (imaObjekt ? 'pointer' : '');
+      karta.getTargetElement().style.cursor = (stanje.nacinLokacije || stanje.odabirTocke) ? 'crosshair' : (imaObjekt ? 'pointer' : '');
     });
 
     karta.on('singleclick', naKlik);
@@ -983,7 +1023,14 @@
           el('a', { href: 'https://github.com/iplascak/web-gis-bilje', target: '_blank', rel: 'noopener' }, 'Izvorni kod portala (otvoreni kod)'))));
   }
 
-  pokreni().catch((g) => {
+  // sučelje za module
+  stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj };
+
+  pokreni().then(() => {
+    for (const m of window.webgisModuli || []) {
+      try { if (m.pokreni) m.pokreni(stanje); } catch (g) { console.warn('Modul', m.naziv, g); }
+    }
+  }).catch((g) => {
     console.error(g);
     document.getElementById('karta').append(
       el('p', { style: 'padding:20px;color:#b91c1c' }, 'Greška pri pokretanju portala: ' + g.message));

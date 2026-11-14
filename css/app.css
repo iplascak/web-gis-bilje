@@ -293,3 +293,46 @@ button { font-family: inherit; }
   .skocni { position: fixed; left: 8px !important; right: 8px; bottom: 8px; top: auto !important; transform: none; max-width: none; }
   .skocni::after { display: none; }
 }
+
+/* ---------- prijave mještana ---------- */
+.gumb-naglaseni { background: var(--zuta); color: var(--tamna); }
+.gumb-naglaseni:hover { background: #fff; }
+#gumbRacun.prijavljen { box-shadow: inset 0 0 0 2px var(--zuta); }
+.traka-odabira {
+  position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 30;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--tamna); color: #fff; padding: 10px 12px 10px 18px; border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25); font-size: 14px; font-weight: 600;
+}
+.traka-odabira button { border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-weight: 600; background: rgba(255,255,255,.15); color: #fff; }
+.obrazac { display: grid; gap: 12px; }
+.polje { display: grid; gap: 5px; font-size: 13px; }
+.polje > span { font-weight: 600; color: var(--tekst-2); }
+.polje input, .polje select, .polje textarea {
+  font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--rub); border-radius: 8px; background: #fff; width: 100%;
+}
+.polje textarea { resize: vertical; }
+.polje-redak { grid-template-columns: auto 1fr; align-items: center; margin-bottom: 8px; }
+.obrazac .kvacica { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; cursor: pointer; }
+.obrazac .kvacica input { margin-top: 2px; accent-color: var(--zelena); }
+.gumb-primarni, .gumb-sekundarni, .gumb-mali {
+  border: 0; border-radius: 999px; cursor: pointer; font-weight: 600; font-family: inherit;
+}
+.gumb-primarni { background: var(--zelena); color: #fff; padding: 10px 18px; font-size: 14px; justify-self: start; }
+.gumb-primarni:disabled { opacity: .6; cursor: wait; }
+.gumb-sekundarni { background: var(--pozadina-2); color: var(--tamna); padding: 8px 16px; font-size: 13px; }
+.gumb-mali { background: var(--pozadina-2); color: var(--tamna); padding: 5px 10px; font-size: 12px; }
+.gumb-mali:hover, .gumb-sekundarni:hover { background: var(--zuta); }
+.poruka { margin: 4px 0; font-size: 13px; }
+.poruka.greska { color: #b91c1c; }
+.poruka.uspjeh { color: var(--zelena); }
+.tablica-okvir { max-height: 55vh; overflow: auto; }
+.tablica-prijava { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tablica-prijava th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--tekst-2); padding: 4px 6px; position: sticky; top: 0; background: #fff; }
+.tablica-prijava td { padding: 7px 6px; border-top: 1px solid var(--rub); vertical-align: top; }
+.status-oznaka { display: inline-block; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.prijava-foto { display: block; max-width: 100%; max-height: 220px; border-radius: 8px; margin: 6px 0; object-fit: cover; }
+@media (max-width: 720px) {
+  #gumbPrijavi span, #gumbRacun span { display: none; }
+  #gumbPrijavi, #gumbRacun { width: 38px; padding: 0; }
+}

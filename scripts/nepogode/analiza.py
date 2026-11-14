@@ -355,7 +355,7 @@ def analiza_s1(nepogoda, granica, parcele, izlaz_dir, manifest):
     rez = a.get("rezolucija_m", 20)
     prag = float(a.get("prag_db", -18.0))
     min_udio = float(a.get("udio_snimaka", 0.5))
-    bbox = list(granica.to_crs(4326).buffer(0.01).total_bounds)
+    bbox = list(granica.to_crs(3765).buffer(500).to_crs(4326).total_bounds)
     manifest.update({"stac": PC_STAC, "kolekcija": S1_KOLEKCIJA, "prag_db": prag,
                      "udio_snimaka_za_vodu": min_udio, "filtar_suma": "medijan 5x5 po snimci"})
 
