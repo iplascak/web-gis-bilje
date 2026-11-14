@@ -7,7 +7,7 @@ Podaci su izvorni, nekontrolirani podaci DHMZ-a (kako ih DHMZ i objavljuje).
 """
 import datetime as dt, html, json, re, sys, time, urllib.parse, urllib.request
 
-POSTAJE = {"Kopački rit": (45.698028, 18.834639), "Osijek 1": None, "Osijek 2": None}
+POSTAJE = {"Kopački rit": (45.698028, 18.834639), "Osijek 1": (45.558819, 18.698683), "Osijek 2": (45.557667, 18.730778)}
 PRATI = {"PM10": ["lebdece cestice (<10um)", "lebdeće čestice (<10µm)"], "PM2.5": ["lebdece cestice (<2.5um)", "lebdeće čestice (<2.5µm)"],
          "O3": ["ozon"], "NO2": ["dušikov dioksid", "dusikov dioksid"], "SO2": ["sumporov dioksid"]}
 # granice razreda (µg/m³) – pojednostavljeni europski indeks kvalitete zraka (satne vrijednosti)
@@ -41,8 +41,7 @@ def main():
         h = dohvati({"section": "podaci_kz", "post": ime})
         stavke = re.findall(r'title="([^"]*)" href="/kvaliteta_zraka\.php\?section=podaci_kz&(?:amp;)?post=[^&]*&(?:amp;)?id_komp=(\d+)&(?:amp;)?komp=([^"]+)"', h)
         komp = {html.unescape(t).strip().lower(): (i, html.unescape(k)) for t, i, k in stavke}
-        lat = re.search(r"Geografska širina:\s*([\d.]+)", h); lon = re.search(r"Geografska dužina:\s*([\d.]+)", h)
-        postaja = {"naziv": ime, "lat": float(lat.group(1)) if lat else None, "lon": float(lon.group(1)) if lon else None,
+        postaja = {"naziv": ime, "lat": POSTAJE[ime][0], "lon": POSTAJE[ime][1],
                    "url": BAZA + "?" + urllib.parse.urlencode({"section": "podaci_kz", "post": ime}), "mjerenja": {}}
         for par, naslovi in PRATI.items():
             kljuc = next((k for k in komp if any(n.lower() in k for n in naslovi)), None)
@@ -57,7 +56,18 @@ def main():
                                         "niz": [v for _, v in niz[-24:]], "jedinica": "µg/m³"}
         print(ime, {k: v["vrijednost"] for k, v in postaja["mjerenja"].items()})
         izlaz["postaje"].append(postaja)
-    json.dump(izlaz, open(sys.argv[1] if len(sys.argv) > 1 else "zrak.json", "w"), ensure_ascii=False)
+    # GeoJSON za kartu: razred postaje = najlošiji razred među praćenim onečišćujućim tvarima
+    znacajke = []
+    for p in izlaz["postaje"]:
+        razredi = [m["razred"] for m in p["mjerenja"].values() if m["razred"] is not None]
+        r = max(razredi) if razredi else None
+        znacajke.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [p["lon"], p["lat"]]},
+                         "properties": {"naziv": p["naziv"], "razred": str(r) if r is not None else "nema",
+                                        "kvaliteta": NAZIVI[r] if r is not None else "nema podataka",
+                                        "vrijeme": max((m["vrijeme"] for m in p["mjerenja"].values()), default=""),
+                                        "url": p["url"], "mjerenja": p["mjerenja"], "preuzeto": izlaz["vrijeme"]}})
+    json.dump({"type": "FeatureCollection", "features": znacajke, "izvor": izlaz["izvor"]},
+              open(sys.argv[1] if len(sys.argv) > 1 else "zrak.geojson", "w"), ensure_ascii=False)
 
 
 if __name__ == "__main__":
