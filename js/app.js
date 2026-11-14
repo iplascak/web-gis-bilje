@@ -718,7 +718,9 @@
     const premalen = povrsina(ukupno) < 0.01 * povrsina(prikaz);
     const minZ = def.minZoom;
     const premaloUvecano = minZ !== undefined && view.getZoom() < minZ;
-    if (!uvijek && udioVidljivo >= 0.5 && !premalen && !premaloUvecano) return;
+    // sloj koji već prekriva većinu prikaza (npr. veća snimka) također se već vidi
+    const pokrivaPrikaz = ol.extent.isEmpty(presjek) ? 0 : povrsina(presjek) / povrsina(prikaz);
+    if (!uvijek && (udioVidljivo >= 0.5 || pokrivaPrikaz >= 0.5) && !premalen && !premaloUvecano) return;
 
     const sredina = view.getCenter();
     let cilj = ukupno;
