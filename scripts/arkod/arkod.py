@@ -76,8 +76,11 @@ def obradi(url, oznaka, proba=False):
     print("  sloj:", repr(sloj))
     prov = subprocess.run(["ogrinfo", "-so", put, sloj, "-spat", *e], capture_output=True, text=True)
     print("  u obuhvatu:", [r for r in prov.stdout.split("\n") if "Feature Count" in r], prov.stderr[-500:])
+    wkt = subprocess.run(["ogr2ogr", "-f", "CSV", "/vsistdout/", put, sloj, "-spat", *e, "-limit", "1", "-lco", "GEOMETRY=AS_WKT", "-select", "land_use_id"],
+                         capture_output=True, text=True)
+    print("  WKT uzorak:", wkt.stdout[:400], wkt.stderr[-300:])
     r = subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e,
-                        "-t_srs", "EPSG:4326", "-nlt", "CONVERT_TO_LINEAR", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
+                        "-t_srs", "EPSG:4326", "-nlt", "CONVERT_TO_LINEAR", "-nlt", "PROMOTE_TO_MULTI", "-makevalid", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"],
                        capture_output=True, text=True)
     print("  ogr2ogr:", r.returncode, r.stderr[-1500:])
     d = json.load(open(tmp))
