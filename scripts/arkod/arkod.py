@@ -107,6 +107,8 @@ def obradi(url, oznaka, proba=False):
                                         "kultura": VRSTE.get(sifra, "vrsta " + sifra if sifra else "nepoznato"), "povrsina_ha": pov,
                                         "navodnjavanje": 1 if pr.get("irrigation") in (1, "1") else 0}})
     os.makedirs(IZLAZ, exist_ok=True)
+    if not znacajke:
+        print("  NEMA parcela – datoteka se ne sprema"); os.remove(put); return
     json.dump({"type": "FeatureCollection", "stanje": oznaka, "features": znacajke}, open(f"{IZLAZ}/arkod_{oznaka}.geojson", "w"),
               ensure_ascii=False, separators=(",", ":"))
     os.remove(put)
