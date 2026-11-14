@@ -32,7 +32,7 @@
   };
   const OSOBLJE = ['zaposlenik', 'direktor', 'nacelnik', 'admin'];
   const NAZIVI_ULOGA = {
-    gost: 'mještanin', zaposlenik: 'obrađuje prijave', direktor: 'direktor/ica (nadzor)',
+    gost: 'mještanin', urednik: 'urednik (projekti, doprinosi)', zaposlenik: 'obrađuje prijave', direktor: 'direktor/ica (nadzor)',
     nacelnik: 'načelnik', admin: 'administrator'
   };
   const ORGANIZACIJE = ['Općina Bilje', 'Komunalno - Bilje d.o.o.'];
@@ -102,6 +102,12 @@
       auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
     });
     s.skocniDodaci.prijava = dodatakSkocnom;
+    // zajedničko sučelje za druge module (projekti, pokojnici, doprinosi, izvoz)
+    s.baza = {
+      sb, korisnik: () => korisnik, prijava: (nakon) => prijavaKorisnika(nakon),
+      jeUrednik: () => korisnik && ['urednik', 'nacelnik', 'admin'].includes(korisnik.uloga),
+      jeOsoblje, poruka, kartice: [] // moduli dodaju kartice u dijalog računa: { naziv, vidljivo(), prikazi(sadrzaj) }
+    };
 
     document.getElementById('gumbPrijavi').addEventListener('click', zapocniPrijavu);
     document.getElementById('gumbRacun').addEventListener('click', () => korisnik ? prikaziRacun() : prijavaKorisnika());
@@ -125,7 +131,7 @@
 
   function azurirajGumbRacuna() {
     const g = document.getElementById('gumbRacun');
-    g.querySelector('span').textContent = korisnik ? (jeOsoblje() ? 'Općina' : 'Moje prijave') : 'Prijava';
+    g.querySelector('span').textContent = korisnik ? (jeOsoblje() || ['urednik'].includes(korisnik.uloga) ? 'Općina' : 'Moj račun') : 'Prijava';
     g.classList.toggle('prijavljen', !!korisnik);
   }
 
@@ -295,9 +301,11 @@
       stanje.api.otvoriDijalog(el('h3', {}, 'Račun je obrisan'),
         el('p', {}, 'Vaša e-adresa i račun su obrisani. Vaše dosadašnje prijave ostaju sačuvane, ali bez podataka o vama.'));
     }, 'gumb-sekundarni');
-    const kartice = jeAdmin() ? el('div', { class: 'kartice-dijaloga' },
-      el('button', { class: 'aktivna', onclick: (e) => { odaberi(e.target); prikaziPopisPrijava(sadrzaj); } }, 'Prijave'),
-      el('button', { onclick: (e) => { odaberi(e.target); prikaziKorisnike(sadrzaj); } }, 'Korisnici i uloge')) : '';
+    const dodatne = (stanje.baza.kartice || []).filter(k => k.vidljivo());
+    const kartice = (jeAdmin() || dodatne.length) ? el('div', { class: 'kartice-dijaloga' },
+      el('button', { class: 'aktivna', onclick: (e) => { odaberi(e.target); prikaziPopisPrijava(sadrzaj); } }, jeOsoblje() ? 'Prijave' : 'Moje prijave'),
+      ...dodatne.map(k => el('button', { onclick: (e) => { odaberi(e.target); k.prikazi(sadrzaj); } }, k.naziv)),
+      jeAdmin() ? el('button', { onclick: (e) => { odaberi(e.target); prikaziKorisnike(sadrzaj); } }, 'Korisnici i uloge') : '') : '';
     function odaberi(g) { for (const b of g.parentElement.children) b.classList.toggle('aktivna', b === g); }
     stanje.api.otvoriDijalog(
       el('h3', {}, jeOsoblje() ? 'Prijave mještana' : 'Moje prijave'),

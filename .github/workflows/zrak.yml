@@ -1,0 +1,34 @@
+name: Kvaliteta zraka (DHMZ)
+
+# Svaki sat preuzima zadnja mjerenja s postaja Kopački rit, Osijek 1 i Osijek 2.
+# Rezultat se sprema na granu 'podaci-uzivo' kao jedan commit (povijest ne raste).
+on:
+  schedule:
+    - cron: "21 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: zrak
+  cancel-in-progress: true
+
+jobs:
+  zrak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: scripts/zrak
+      - run: python3 scripts/zrak/meteo_hr.py /tmp/zrak.json
+      - name: Objava na grani podaci-uzivo
+        run: |
+          mkdir /tmp/objava && cd /tmp/objava
+          git init -q -b podaci-uzivo
+          cp /tmp/zrak.json .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add zrak.json && git commit -qm "Kvaliteta zraka $(date -u +%FT%H:%MZ)"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" podaci-uzivo
