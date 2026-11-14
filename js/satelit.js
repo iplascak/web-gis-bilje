@@ -56,7 +56,15 @@
       else if (r >= 0.07) s.push(['dobro', 'Usjev je bujniji nego obično', 'Bujnost ' + zaok(nd) + ' prema uobičajenih ' + zaok(uobicajeno) + '. Dobar znak; u gustom sklopu pazite na polijeganje i bolesti lista.']);
       else s.push(['dobro', 'Usjev je u uobičajenom stanju za ovo doba godine', 'Bujnost ' + zaok(nd) + ', što odgovara prosjeku prethodnih sezona na ovoj parceli.']);
     } else if (!vegetacija) {
-      s.push(['info', 'Izvan glavne vegetacije', 'Zadnja čista snimka ' + datumIzDoy(tek, d) + ' – bujnost ' + zaok(nd) + '. Usporedbe imaju najviše smisla od travnja do rujna.']);
+      const ovaj = obs.filter(o => o[0] >= 90 && o[0] <= 280).reduce((m, o) => o[1] > m[1] ? o : m, [0, -1]);
+      if (ovaj[1] > 0 && vrhVr != null) {
+        const r = ovaj[1] - vrhVr;
+        const ocjena = r <= -0.15 ? ['upozorenje', 'Ova sezona bila je osjetno slabija nego inače'] : r <= -0.07 ? ['oprez', 'Ova sezona bila je nešto slabija nego inače'] :
+          r >= 0.07 ? ['dobro', 'Ova sezona bila je bolja nego inače'] : ['dobro', 'Ova sezona bila je uobičajena'];
+        s.push([ocjena[0], ocjena[1], 'Najveća bujnost ' + zaok(ovaj[1]) + ' (' + datumIzDoy(tek, ovaj[0]) + ') prema uobičajenih ' + zaok(vrhVr) +
+          ' u prethodnim sezonama. Razlika može biti i zbog druge kulture u plodoredu – usporedite s onim što ste sijali.']);
+      }
+      s.push(['info', 'Izvan glavne vegetacije', 'Zadnja čista snimka ' + datumIzDoy(tek, d) + ' – bujnost ' + zaok(nd) + (nd >= 0.35 ? ' (ozimi usjev ili pokrov je nikao).' : ' (tlo uglavnom bez zelenog pokrova).')]);
     }
     // voda u biljci
     if (mj >= 5 && mj <= 8 && nd > 0.45) {
@@ -144,10 +152,11 @@
       id: 'stanje_usjeva', naziv: 'Stanje usjeva sa satelita', grupa: 'poljoprivreda', podgrupa: 'Satelit', tip: 'geojson',
       url: BAZA + 'stanje.geojson', vidljivo: false, minZoom: 11,
       stil: { geometrija: 'poligon', debljina: 0.6, ispunaProzirnost: 0.55, kategorije: { polje: 'stanje', vrijednosti: vr } },
-      skocniProzor: { naslov: 'kultura', polja: [{ polje: 'povrsina_ha', oznaka: 'Površina (ha)' }, { polje: 'zadnji_datum', oznaka: 'Zadnja čista snimka', format: 'datum' }] },
+      skocniProzor: { naslov: 'kultura', polja: [{ polje: 'povrsina_ha', oznaka: 'Površina (ha)' }, { polje: 'zadnji_datum', oznaka: 'Zadnja čista snimka', format: 'datum' },
+        { polje: 'usporedba', oznaka: 'Uspoređuje se' }, { polje: 'vrijednost', oznaka: 'Bujnost (NDVI)' }, { polje: 'ndvi_uobicajeno', oznaka: 'Uobičajeno' }] },
       skocniDodatak: 'satelit',
       opis: 'Je li usjev bujniji ili slabiji nego prethodnih godina u isto doba – po parceli, sa satelita.',
-      detaljno: 'Svaka poljoprivredna parcela uspoređuje se sama sa sobom: zadnja čista snimka Sentinel-2 satelita uspoređuje se s istim dobom godine u prethodnim sezonama. Klikom na parcelu vidite krivulje svih sezona, vodu u biljci i preporuke.\n\nPodaci se osvježavaju dvaput tjedno. Satelit pokazuje gdje treba pogledati – razlog (sjetva, kultura, voda, šteta) utvrđuje se na terenu.',
+      detaljno: 'Svaka poljoprivredna parcela uspoređuje se sama sa sobom. Od travnja do rujna zadnja čista snimka Sentinel-2 satelita uspoređuje se s istim dobom godine u prethodnim sezonama (od 2018.), a izvan vegetacije vrhunac ove sezone s vrhuncima prethodnih. Klikom na parcelu vidite krivulje svih sezona, vodu u biljci i preporuke.\n\nPodaci se osvježavaju dvaput tjedno. Satelit pokazuje gdje treba pogledati – razlog (sjetva, kultura, voda, šteta) utvrđuje se na terenu.',
       izvor: 'Copernicus Sentinel-2 (ESA/EU), obrada: portal (Earth Search STAC)', licenca: 'Copernicus – slobodno korištenje uz navođenje izvora', azurirano: 'dvaput tjedno'
     }, {
       id: 'zone_parcela', naziv: 'Zone unutar parcela (višegodišnje)', grupa: 'poljoprivreda', podgrupa: 'Satelit', tip: 'slika',
