@@ -1,0 +1,1066 @@
+{
+"type": "FeatureCollection",
+"izvor": "© OpenStreetMap suradnici (ODbL)",
+"features": [
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.864294,
+45.721164
+]
+},
+"properties": {
+"naziv": "Dječje igralište",
+"kategorija": "igra",
+"vrsta": "dječje igralište",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/4223561003"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.789627,
+45.607693
+]
+},
+"properties": {
+"naziv": "Dječje igralište",
+"kategorija": "igra",
+"vrsta": "dječje igralište",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/13041177399"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.738797,
+45.608383
+]
+},
+"properties": {
+"naziv": "Igraliste",
+"kategorija": "igra",
+"vrsta": "dječje igralište",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/59747536"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743118,
+45.610045
+]
+},
+"properties": {
+"naziv": "Dječji vrtić Grlica – Bilje",
+"kategorija": "obrazovanje",
+"vrsta": "dječji vrtić",
+"adresa": "Ulica Biljske satnije ZNG RH 11a, Bilje",
+"radno_vrijeme": null,
+"telefon": "031 750 144",
+"web": "https://dv-grlica.hr/",
+"osm": "https://www.openstreetmap.org/way/1281950081"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.746969,
+45.608442
+]
+},
+"properties": {
+"naziv": "Osnovna škola Bilje",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://os-bilje.skole.hr/",
+"osm": "https://www.openstreetmap.org/way/1186084073"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.771659,
+45.659737
+]
+},
+"properties": {
+"naziv": "Osnovna škola Lug",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": "Školska ulica 6, Lug",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://os-lug.skole.hr/",
+"osm": "https://www.openstreetmap.org/way/1187843342"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.789089,
+45.600384
+]
+},
+"properties": {
+"naziv": "Područna škola Kopačevo",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": "Ulica Šandora Petefija 8",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "Osnovna škola Lug - Laskói Általános Iskola",
+"osm": "https://www.openstreetmap.org/node/699870623"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.773501,
+45.625941
+]
+},
+"properties": {
+"naziv": "Područna škola Vardarac",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": "Školska ulica 30, Vardarac",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://os-lug.skole.hr/",
+"osm": "https://www.openstreetmap.org/way/1198109697"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.73162,
+45.601202
+]
+},
+"properties": {
+"naziv": "Reciklažno dvorište Bilje",
+"kategorija": "otpad",
+"vrsta": "reciklažno dvorište",
+"adresa": "Dunavska ulica 61, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1480655493"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.787926,
+45.599142
+]
+},
+"properties": {
+"naziv": "Zeleni otok (spremnici za reciklažu)",
+"kategorija": "otpad",
+"vrsta": "zeleni otok (spremnici za reciklažu)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870605"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.770678,
+45.62373
+]
+},
+"properties": {
+"naziv": "Zeleni otok (spremnici za reciklažu)",
+"kategorija": "otpad",
+"vrsta": "zeleni otok (spremnici za reciklažu)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870683"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.741457,
+45.604786
+]
+},
+"properties": {
+"naziv": "DVD Bilje",
+"kategorija": "sigurnost",
+"vrsta": "vatrogasci (DVD)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": "750-693",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/498851706"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.78678,
+45.599072
+]
+},
+"properties": {
+"naziv": "DVD Kopačevo",
+"kategorija": "sigurnost",
+"vrsta": "vatrogasci (DVD)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870595"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.770424,
+45.624697
+]
+},
+"properties": {
+"naziv": "DVD Vardarac",
+"kategorija": "sigurnost",
+"vrsta": "vatrogasci (DVD)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1129716421"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.745878,
+45.601085
+]
+},
+"properties": {
+"naziv": "HNK Bilje",
+"kategorija": "sport",
+"vrsta": "sportski teren – nogomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/59746720"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.969775,
+45.664487
+]
+},
+"properties": {
+"naziv": "Sportski centar",
+"kategorija": "sport",
+"vrsta": "sportski centar",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/7923633044"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.746808,
+45.60845
+]
+},
+"properties": {
+"naziv": "Sportski teren – košarka",
+"kategorija": "sport",
+"vrsta": "sportski teren – košarka",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1186084074"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.773533,
+45.625745
+]
+},
+"properties": {
+"naziv": "Sportski teren – košarka",
+"kategorija": "sport",
+"vrsta": "sportski teren – košarka",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1198109696"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.772599,
+45.661601
+]
+},
+"properties": {
+"naziv": "Sportski teren – nogomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – nogomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/237209381"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.784931,
+45.604128
+]
+},
+"properties": {
+"naziv": "Sportski teren – nogomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – nogomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/306938053"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.746802,
+45.601097
+]
+},
+"properties": {
+"naziv": "Sportski teren – nogomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – nogomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/542774817"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.767053,
+45.631572
+]
+},
+"properties": {
+"naziv": "Sportski teren – nogomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – nogomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1242851287"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.786134,
+45.604765
+]
+},
+"properties": {
+"naziv": "Sportski teren – rukomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – rukomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/306938054"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.746649,
+45.608054
+]
+},
+"properties": {
+"naziv": "Sportski teren – rukomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – rukomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1186084075"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.772133,
+45.660099
+]
+},
+"properties": {
+"naziv": "Sportski teren – rukomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – rukomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1187843411"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.773534,
+45.625742
+]
+},
+"properties": {
+"naziv": "Sportski teren – rukomet",
+"kategorija": "sport",
+"vrsta": "sportski teren – rukomet",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1198109695"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.767961,
+45.663289
+]
+},
+"properties": {
+"naziv": "Sportski teren – tenis",
+"kategorija": "sport",
+"vrsta": "sportski teren – tenis",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/381838245"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.767943,
+45.662973
+]
+},
+"properties": {
+"naziv": "Sportski teren – tenis",
+"kategorija": "sport",
+"vrsta": "sportski teren – tenis",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/381838246"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.738541,
+45.607914
+]
+},
+"properties": {
+"naziv": "Alucel elektromaterijal",
+"kategorija": "trgovine",
+"vrsta": "trgovina",
+"adresa": "Dubrovačka ulica 41",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741588230"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743136,
+45.600786
+]
+},
+"properties": {
+"naziv": "Frizerski salon Ana",
+"kategorija": "trgovine",
+"vrsta": "frizer",
+"adresa": "Kralja Zvonimira",
+"radno_vrijeme": null,
+"telefon": "750-222",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578084"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742513,
+45.600899
+]
+},
+"properties": {
+"naziv": "Konzum",
+"kategorija": "trgovine",
+"vrsta": "supermarket",
+"adresa": "Ulica kralja Zvonimira 28, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/672157387"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74076,
+45.600383
+]
+},
+"properties": {
+"naziv": "Moto-nautika d.o.o.",
+"kategorija": "trgovine",
+"vrsta": "trgovina",
+"adresa": "Blatna ulica 48, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1226141829"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.770466,
+45.624377
+]
+},
+"properties": {
+"naziv": "NTL",
+"kategorija": "trgovine",
+"vrsta": "trgovina mješovitom robom",
+"adresa": "Ulica Šandora Petefija 114, Vardarac",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870665"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742591,
+45.60474
+]
+},
+"properties": {
+"naziv": "NTL",
+"kategorija": "trgovine",
+"vrsta": "supermarket",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1573971203"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.738699,
+45.605581
+]
+},
+"properties": {
+"naziv": "PVC stolarija HIT",
+"kategorija": "trgovine",
+"vrsta": "trgovina",
+"adresa": "Dubrovačka ulica 31, Bilje",
+"radno_vrijeme": null,
+"telefon": "750-205",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741588222"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743797,
+45.60318
+]
+},
+"properties": {
+"naziv": "Pekara Dva Goluba",
+"kategorija": "trgovine",
+"vrsta": "pekara",
+"adresa": "Kralja Zvonimira 6",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578089"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743948,
+45.601685
+]
+},
+"properties": {
+"naziv": "Poljoprivredna ljekarna Jakić",
+"kategorija": "trgovine",
+"vrsta": "drogerija / ljekarna za bilje",
+"adresa": "Kralja Zvonimira 5c",
+"radno_vrijeme": null,
+"telefon": "750-388",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578086"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.787542,
+45.59906
+]
+},
+"properties": {
+"naziv": "Slavonija Bošković",
+"kategorija": "trgovine",
+"vrsta": "supermarket",
+"adresa": null,
+"radno_vrijeme": "Mo-Sa 06:30-20:00; Su 08:00-13:00",
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870616"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.832069,
+45.697379
+]
+},
+"properties": {
+"naziv": "Suveniri",
+"kategorija": "trgovine",
+"vrsta": "suveniri",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/7077873954"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743826,
+45.602941
+]
+},
+"properties": {
+"naziv": "31327 Bilje",
+"kategorija": "usluge",
+"vrsta": "pošta",
+"adresa": "Ulica kralja Zvonimira 10, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578087"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74369,
+45.603562
+]
+},
+"properties": {
+"naziv": "Bankomat",
+"kategorija": "usluge",
+"vrsta": "bankomat",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1342429731"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743602,
+45.603768
+]
+},
+"properties": {
+"naziv": "Bankomat",
+"kategorija": "usluge",
+"vrsta": "bankomat",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1342429816"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742715,
+45.600966
+]
+},
+"properties": {
+"naziv": "Bankomat",
+"kategorija": "usluge",
+"vrsta": "bankomat",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1999063345"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.744162,
+45.603544
+]
+},
+"properties": {
+"naziv": "INA Bilje",
+"kategorija": "usluge",
+"vrsta": "benzinska postaja",
+"adresa": "Kralja Zvonimira 1C, Bilje",
+"radno_vrijeme": "Mo-Sa 06:00-20:00; Su 06:00-13:00",
+"telefon": "+385 91 4971 084",
+"web": null,
+"osm": "https://www.openstreetmap.org/way/324706111"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743647,
+45.603658
+]
+},
+"properties": {
+"naziv": "Općina Bilje",
+"kategorija": "usluge",
+"vrsta": "općina",
+"adresa": "Ulica kralja Zvonimira 2, Bilje",
+"radno_vrijeme": null,
+"telefon": "+385 (0)31 751-400",
+"web": "https://www.bilje.hr/",
+"osm": "https://www.openstreetmap.org/node/14220066817"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.788405,
+45.599738
+]
+},
+"properties": {
+"naziv": "Reformatska kršćanska crkva",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1242785023"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.745202,
+45.603782
+]
+},
+"properties": {
+"naziv": "Reformirana crkva Bilje",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Ulica Šandora Petefija 4a, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559233830"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.774605,
+45.663702
+]
+},
+"properties": {
+"naziv": "Reformirana crkva Lug",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Crkvena ulica 6, Lug",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/237209385"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.773357,
+45.624797
+]
+},
+"properties": {
+"naziv": "Reformirana crkva Vardarac",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Ulica Lajoša Košuta 71A, Vardarac",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1129678947"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74323,
+45.603894
+]
+},
+"properties": {
+"naziv": "crkva Bezgrešnog začeća Blažene Djevice Marije",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Trg Josipa bana Jelačića 1, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/97557564"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.834833,
+45.697111
+]
+},
+"properties": {
+"naziv": "kapela papinskog blagoslova",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559267431"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.749941,
+45.606578
+]
+},
+"properties": {
+"naziv": "Ambulanta",
+"kategorija": "zdravlje",
+"vrsta": "ambulanta / liječnik",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/97557551"
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74973,
+45.606468
+]
+},
+"properties": {
+"naziv": "Ljekarna",
+"kategorija": "zdravlje",
+"vrsta": "ljekarna",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/686562707"
+}
+}
+]
+}
