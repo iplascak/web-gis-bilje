@@ -31,12 +31,15 @@ for _f in json.load(open("data/granica_opcine.geojson"))["features"]:
 
 
 def srediste(g):
-    t = g["coordinates"]
-    while isinstance(t[0][0], list): t = [q for x in t for q in x]
-    return sum(x for x, _ in t) / len(t), sum(y for _, y in t) / len(t)
+    t = g.get("coordinates") or []
+    while t and isinstance(t[0], list) and t[0] and isinstance(t[0][0], list): t = [q for x in t for q in x]
+    t = [p for p in t if isinstance(p, list) and len(p) >= 2]
+    if not t: return None
+    return sum(p[0] for p in t) / len(t), sum(p[1] for p in t) / len(t)
 
 
 def unutar(pt):
+    if pt is None: return False
     x, y = pt; ima = False
     for prsten in GRANICA:
         for (x1, y1), (x2, y2) in zip(prsten, prsten[1:]):
