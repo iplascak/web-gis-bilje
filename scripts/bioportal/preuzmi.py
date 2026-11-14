@@ -20,8 +20,6 @@ SLOJEVI = {
     "posjetitelji_linije": ["biciklizam", "atrakcije_linije", "poucna_staza", "ribolov_linije"],
     "obnova_prirode": ["prijedlozi_obnove_stanisnih_tipova2", "prijedlozi_obnove_za_vrste_v2", "prijedlozi_obnove_prirodne_povezanosti_rijeka"],
     "prepreke_vodotoci": ["baza_prepreka_2026", "prepreke_rh_05"],
-    "osjetljivost_solar": ["ocjena_priroda_solar"],
-    "osjetljivost_vjetar": ["ocjena_priroda_vjetar"],
 }
 VRSTA = {"atrakcije_tocke": "atrakcija", "info_objekt": "info centar", "poucna_info_ploca": "poučna ploča", "promatranje_zivotinja": "promatranje životinja",
          "ribolov": "ribolov", "ugostiteljstvo_i_smjestaj": "ugostiteljstvo i smještaj", "biciklizam": "biciklistička staza", "atrakcije_linije": "šetnica / atrakcija",
@@ -106,6 +104,8 @@ def main():
                     if isinstance(p[k], str): p[k] = p[k].strip()
                 p["naziv"] = next((p[k] for k in NAZIV_POLJA if p.get(k)), p.get("naziv"))
                 if s in VRSTA: p["vrsta"] = VRSTA[s]
+                if p.get("nks_komb"): p["nks_razred"] = str(p["nks_komb"])[:1]
+                for k in ("opis_granice", "shp_sta", "shp_stl", "areab"): p.pop(k, None)
                 sve.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
             print(f"{ime} <- {s}: {len(zn)} u obuhvatu")
         json.dump({"type": "FeatureCollection", "features": sve}, open(f"{IZLAZ}/{ime}.geojson", "w"), ensure_ascii=False, separators=(",", ":"))

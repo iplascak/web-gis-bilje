@@ -16,9 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: python3 scripts/bioportal/preuzmi.py
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq gdal-bin > /dev/null && scripts/bioportal/izrezi.sh
       - name: Spremanje
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bioportal
+          git add -A data/bioportal
           git diff --cached --quiet || (git commit -qm "Bioportal: osvježeni slojevi" && git pull -q --rebase && git push -q)
