@@ -92,6 +92,19 @@
     u_obradi: 'M14.7 3.3a5 5 0 0 0-5.9 6.6l-5.5 5.5a1.6 1.6 0 0 0 0 2.3l3 3a1.6 1.6 0 0 0 2.3 0l5.5-5.5a5 5 0 0 0 6.6-5.9l-3 3-2.8-.7-.7-2.8z',
     rijeseno: 'M9.5 16.2 4.8 11.5 3.2 13.1l6.3 6.3L21 7.9l-1.6-1.6z',
     odbijeno: 'M6.4 4.8 12 10.4l5.6-5.6 1.6 1.6-5.6 5.6 5.6 5.6-1.6 1.6-5.6-5.6-5.6 5.6-1.6-1.6 5.6-5.6-5.6-5.6z',
+    zdravlje: 'M9.5 4h5v5.5H20v5h-5.5V20h-5v-5.5H4v-5h5.5z',
+    skola: 'M12 4 2 9l10 5 8-4v6h2V9zM6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5l-6 3z',
+    trgovina: 'M6 8h12l-1 12H7zM9 8a3 3 0 0 1 6 0',
+    igra: 'M5 20V8l7-4 7 4v12h-2v-5H7v5zM9 13h6',
+    sport: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 3.2 2.8 2-1 3.3h-3.6l-1-3.3zM5.6 11l2.3 1.5.9 3-1.6 2.1A6.8 6.8 0 0 1 5.6 11zm12.8 0a6.8 6.8 0 0 1-1.6 6.6l-1.6-2.1.9-3z',
+    sigurnost: 'M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-3.8 2.5-5 .3 1.5 1 2.3 2 2.5C11 8 11.5 5.5 12 3z',
+    vjera: 'M11 3h2v3h3v2h-3v2l5 3v8h-5v-4h-2v4H6v-8l5-3V8H8V6h3z',
+    ugostiteljstvo: 'M5 8h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zm11 1.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3m3-3v3',
+    smjestaj: 'M3 18V7h2v6h6V9h7a3 3 0 0 1 3 3v6h-2v-2H5v2zM7.5 9a2 2 0 1 1 0 4 2 2 0 0 1 0-4z',
+    priroda: 'M5 19h14M7 19V11m-3 0 3-6 3 6zm10 8v-9m-3.5 0L17 6l3.5 4z',
+    odmor: 'M4 13h16v2H4zM6 15v4m12-4v4M6 13V9h12v4',
+    bastina: 'M4 21V9l2-2 2 2v3h2V7l2-3 2 3v5h2V9l2-2 2 2v12z',
+    usluge: 'M4 7h16v12H4zm0 0 8 6 8-6',
     reciklaza: 'M7.5 9.5 10 5.2a2 2 0 0 1 3.5 0l1.3 2.2 1.8-1 .2 4.6-4.1-2.1 1.8-1-1-1.7-2.2 3.8zM16.8 11l2.5 4.3a2 2 0 0 1-1.7 3H15v2l-3.9-2.6 3.9-2.4v2h2.6l-2.2-3.8zM9.6 18.3H4.6a2 2 0 0 1-1.7-3l1.3-2.2-1.8-1 4-2.5.2 4.6-1.8-1-1 1.7h4.4z',
     komunalno: 'M2 7h11v8.5H2z M13.5 10H18l3 3.2v2.3h-7.5z M6 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z M17 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z'
   };
@@ -1151,7 +1164,7 @@
     }
     if (adrese) stanje.adrese = adrese.adrese;
     if (adrese) for (const [ulica, broj, naselje, lon, lat] of adrese.adrese) {
-      zapisi.push({ vrsta: 'Adresa', tekst: ulica + ' ' + broj + ', ' + naselje, tocka: ol.proj.fromLonLat([lon, lat]), red: 2 });
+      zapisi.push({ vrsta: 'Adresa', tekst: ulica + ' ' + broj + ', ' + naselje, tocka: ol.proj.fromLonLat([lon, lat]), red: 2, adresa: { ulica, broj, naselje, lon, lat } });
     }
     for (const z of zapisi) z.kljuc = normaliziraj(z.tekst);
 
@@ -1181,6 +1194,8 @@
       }
       unos.value = z.tekst;
       lista.hidden = true;
+      // "Moja adresa": kartica sa svime što se tiče odabrane adrese
+      if (z.adresa && stanje.mojaAdresa) stanje.mojaAdresa(z.adresa);
       if (window.innerWidth <= 720) document.getElementById('panel').classList.add('skriven');
     }
 
@@ -1413,7 +1428,7 @@
   }
 
   // sučelje za module
-  stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj };
+  stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije };
 
   pokreni().then(() => {
     for (const m of window.webgisModuli || []) {

@@ -306,5 +306,77 @@
         "institucije"
       ]
     }
-  ]
+  ],
+  "mojaAdresa": {
+    "najblize": [
+      {
+        "oznaka": "Autobusno stajalište",
+        "url": "data/autobusna_stajalista.geojson"
+      },
+      {
+        "oznaka": "Dječji vrtić",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "vrsta",
+          "vrijednost": "dječji vrtić"
+        }
+      },
+      {
+        "oznaka": "Škola",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "vrsta",
+          "vrijednost": "škola"
+        }
+      },
+      {
+        "oznaka": "Ambulanta",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "vrsta",
+          "vrijednost": "ambulanta / liječnik"
+        }
+      },
+      {
+        "oznaka": "Ljekarna",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "vrsta",
+          "vrijednost": "ljekarna"
+        }
+      },
+      {
+        "oznaka": "Trgovina",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "kategorija",
+          "vrijednost": "trgovine"
+        }
+      },
+      {
+        "oznaka": "Dječje igralište",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "vrsta",
+          "vrijednost": "dječje igralište"
+        }
+      },
+      {
+        "oznaka": "Zeleni otok / reciklaža",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "kategorija",
+          "vrijednost": "otpad"
+        }
+      },
+      {
+        "oznaka": "Defibrilator (AED)",
+        "url": "data/sadrzaji/javni.geojson",
+        "filtar": {
+          "polje": "vrsta",
+          "vrijednost": "defibrilator (AED)"
+        }
+      }
+    ]
+  }
 }

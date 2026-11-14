@@ -58,7 +58,7 @@
     }
     const vrijednosti = {};
     for (const [k, v] of Object.entries(BOJE_ZONA)) vrijednosti[k] = v;
-    konfig.slojevi.push({
+    konfig.slojevi.unshift({
       id: 'odvoz_otpada', naziv: 'Odvoz otpada po ulicama', grupa: 'svakodnevica', podgrupa: 'Otpad', tip: 'geojson',
       url: 'data/otpad/ulice_odvoz.geojson', vidljivo: false,
       stil: { geometrija: 'linija', debljina: 4, kategorije: { polje: 'zona_otpada', vrijednosti } },
@@ -68,7 +68,7 @@
       detaljno: 'Raspored odvoza miješanog komunalnog otpada, papira, plastike i stakla po ulicama, prema rasporedu koji objavljuje Unikom d.o.o. za Općinu Bilje. Klikom na ulicu vidite sljedeće datume odvoza i možete preuzeti kalendar s podsjetnikom večer prije (radi na mobitelu i računalu).\n\nMobilno reciklažno dvorište i glomazni otpad: vidi napomene u kartici ulice.\n\nZa ulice označene sivo raspored ih ne navodi – provjerite na besplatnom telefonu Unikoma 0800 200 025.',
       izvor: 'Unikom d.o.o., raspored za 2026.', azurirano: '2026.'
     });
-    konfig.slojevi.push({
+    konfig.slojevi.splice(1, 0, {
       id: 'mobilno_reciklazno', naziv: 'Mobilno reciklažno dvorište', grupa: 'svakodnevica', podgrupa: 'Otpad', tip: 'geojson',
       url: 'data/otpad/mobilno_reciklazno.geojson', vidljivo: false,
       stil: { geometrija: 'tocka', boja: '#287856', simbol: 'reciklaza', natpis: 'naselje', natpisMinZoom: 12 },

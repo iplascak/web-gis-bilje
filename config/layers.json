@@ -7,6 +7,12 @@
       "otvoreno": true
     },
     {
+      "id": "svakodnevica",
+      "naziv": "Svakodnevica",
+      "ikona": "kanta",
+      "otvoreno": false
+    },
+    {
       "id": "imovina",
       "naziv": "Imovina i komunalno",
       "ikona": "zgrada",
@@ -220,6 +226,186 @@
       "legenda": false,
       "detaljno": "Granice i brojevi katastarskih čestica, učitani uživo sa servisa Državne geodetske uprave. Zbog količine podataka sloj se prikazuje tek kod većeg uvećanja.\n\nBroj čestice za bilo koju točku dobit ćete i klikom na kartu, pa \"Što je na ovoj lokaciji?\".\n\nPrikaz je informativan. Službeni podaci (vlasništvo, površina, način uporabe) nalaze se u Zajedničkom informacijskom sustavu zemljišnih knjiga i katastra (OSS).",
       "podgrupa": "Adrese i čestice"
+    },
+    {
+      "id": "javni_sadrzaji",
+      "naziv": "Javni sadržaji i usluge",
+      "grupa": "svakodnevica",
+      "podgrupa": "Javni sadržaji",
+      "tip": "geojson",
+      "url": "data/sadrzaji/javni.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "natpis": "naziv",
+        "natpisMinZoom": 17,
+        "kategorije": {
+          "polje": "kategorija",
+          "vrijednosti": {
+            "zdravlje": {
+              "boja": "#d62839",
+              "oznaka": "Zdravlje (ljekarna, ambulanta, AED)",
+              "simbol": "zdravlje"
+            },
+            "obrazovanje": {
+              "boja": "#7b2cbf",
+              "oznaka": "Vrtić, škola, knjižnica",
+              "simbol": "skola"
+            },
+            "usluge": {
+              "boja": "#1d4ed8",
+              "oznaka": "Pošta, banke, gorivo, punionice",
+              "simbol": "usluge"
+            },
+            "trgovine": {
+              "boja": "#e85d04",
+              "oznaka": "Trgovine",
+              "simbol": "trgovina"
+            },
+            "igra": {
+              "boja": "#f59e0b",
+              "oznaka": "Dječja igrališta",
+              "simbol": "igra"
+            },
+            "sport": {
+              "boja": "#0f766e",
+              "oznaka": "Sport",
+              "simbol": "sport"
+            },
+            "otpad": {
+              "boja": "#287856",
+              "oznaka": "Reciklaža i pitka voda",
+              "simbol": "reciklaza"
+            },
+            "sigurnost": {
+              "boja": "#b91c1c",
+              "oznaka": "Vatrogasci i policija",
+              "simbol": "sigurnost"
+            },
+            "vjera": {
+              "boja": "#6b7280",
+              "oznaka": "Crkve",
+              "simbol": "vjera"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "adresa",
+            "oznaka": "Adresa"
+          },
+          {
+            "polje": "radno_vrijeme",
+            "oznaka": "Radno vrijeme"
+          },
+          {
+            "polje": "telefon",
+            "oznaka": "Telefon"
+          },
+          {
+            "polje": "web",
+            "oznaka": "Web",
+            "format": "poveznica"
+          },
+          {
+            "polje": "osm",
+            "oznaka": "Uredi u OSM-u",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Ljekarne, ambulante, vrtići, škole, trgovine, igrališta, sport, reciklaža, pošta, bankomati…",
+      "detaljno": "Javni sadržaji preuzeti iz OpenStreetMapa i osvježavaju se automatski jednom mjesečno – svaki ispravak ili dopunu u OpenStreetMapu (gumb \"Uredi u OSM-u\") portal preuzima sam.\n\nNEDOSTAJE (treba nadopuniti – općina ili mještani u OpenStreetMapu): lokacije defibrilatora (AED), zelenih otoka u svim naseljima, javnih slavina s pitkom vodom, punionica za električna vozila, dječjih igrališta i sprava (ima li hlada i ograde), parkova za pse te radna vremena ambulanti i ljekarni.",
+      "izvor": "© OpenStreetMap suradnici (ODbL)",
+      "azurirano": "automatski, mjesečno",
+      "atribucija": "© OpenStreetMap suradnici"
+    },
+    {
+      "id": "slobodno_vrijeme",
+      "naziv": "Ugostiteljstvo, smještaj i znamenitosti",
+      "grupa": "svakodnevica",
+      "podgrupa": "Slobodno vrijeme",
+      "tip": "geojson",
+      "url": "data/sadrzaji/slobodno.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "natpis": "naziv",
+        "natpisMinZoom": 17,
+        "kategorije": {
+          "polje": "kategorija",
+          "vrijednosti": {
+            "ugostiteljstvo": {
+              "boja": "#c2410c",
+              "oznaka": "Restorani i kafići",
+              "simbol": "ugostiteljstvo"
+            },
+            "smjestaj": {
+              "boja": "#0369a1",
+              "oznaka": "Smještaj",
+              "simbol": "smjestaj"
+            },
+            "priroda": {
+              "boja": "#15803d",
+              "oznaka": "Vidikovci i priroda",
+              "simbol": "priroda"
+            },
+            "odmor": {
+              "boja": "#65a30d",
+              "oznaka": "Parkovi, izletišta, WC",
+              "simbol": "odmor"
+            },
+            "bastina": {
+              "boja": "#7c2d12",
+              "oznaka": "Znamenitosti",
+              "simbol": "bastina"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "adresa",
+            "oznaka": "Adresa"
+          },
+          {
+            "polje": "radno_vrijeme",
+            "oznaka": "Radno vrijeme"
+          },
+          {
+            "polje": "telefon",
+            "oznaka": "Telefon"
+          },
+          {
+            "polje": "web",
+            "oznaka": "Web",
+            "format": "poveznica"
+          },
+          {
+            "polje": "osm",
+            "oznaka": "Uredi u OSM-u",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Restorani, kafići, smještaj, vidikovci, parkovi, dvorci i spomenici.",
+      "detaljno": "Iz OpenStreetMapa, osvježava se mjesečno. Turistička zajednica i ugostitelji mogu sami dopuniti podatke (radno vrijeme, telefon, web) u OpenStreetMapu.\n\nNEDOSTAJE: biciklističke i pješačke staze s podlogom i duljinom, mjesta za odmor uz staze, ribolovna mjesta.",
+      "izvor": "© OpenStreetMap suradnici (ODbL)",
+      "azurirano": "automatski, mjesečno",
+      "atribucija": "© OpenStreetMap suradnici"
     },
     {
       "id": "imovina_opcine",

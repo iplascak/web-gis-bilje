@@ -492,3 +492,51 @@ button { font-family: inherit; }
 .odvoz-napomene { font-size: 12px; color: var(--tekst-2); margin-top: 6px; }
 .odvoz-napomene summary { cursor: pointer; font-weight: 600; }
 .odvoz-napomene p { margin: 4px 0; }
+/* vremenska prognoza */
+.gumb-vrijeme { gap: 4px; }
+.gumb-vrijeme .vrijeme-ikona { font-size: 15px; line-height: 1; }
+.vrijeme-sada { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 4px 0 12px; }
+.vrijeme-velika-ikona { font-size: 44px; line-height: 1; }
+.vrijeme-velika-temp { font-size: 30px; font-weight: 700; line-height: 1.1; }
+.vrijeme-detalji { margin-left: auto; font-size: 13px; color: var(--tekst-2); display: grid; gap: 2px; }
+.vrijeme-dani { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.vrijeme-dan { text-align: center; background: var(--pozadina-2); border-radius: 10px; padding: 8px 2px; font-size: 12px; display: grid; gap: 3px; }
+.dan-naziv { font-weight: 700; color: var(--tekst-2); }
+.dan-ikona { font-size: 22px; }
+.dan-temp span { color: var(--tekst-2); }
+.dan-kisa { color: var(--tekst-2); }
+.dan-kisa.ima { color: #1565c0; font-weight: 700; }
+.dan-vjetar { color: #8a8f96; font-size: 11px; }
+.agro-mreza { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.agro-kartica { background: var(--pozadina-2); border-radius: 12px; padding: 10px 12px; }
+.agro-kartica.upozorenje { background: #fff4e5; box-shadow: inset 3px 0 0 #f59e0b; }
+.agro-kartica.dobro { background: var(--zelena-svijetla); }
+.agro-naslov { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--tekst-2); }
+.agro-vrijednost { font-size: 20px; font-weight: 700; margin: 2px 0; }
+.agro-dodatak { font-size: 12px; color: var(--tekst-2); }
+.agro-prskanje { margin-top: 12px; }
+.prskanje-traka { display: grid; grid-template-columns: repeat(48, 1fr); gap: 1px; height: 22px; margin-top: 6px; border-radius: 6px; overflow: hidden; }
+.prskanje-traka .sat.dobro { background: #2e7d32; }
+.prskanje-traka .sat.oprez { background: #f9c74f; }
+.prskanje-traka .sat.lose { background: #e5e7eb; }
+.prskanje-oznake { display: flex; justify-content: space-between; font-size: 11px; color: #8a8f96; }
+@media (max-width: 720px) {
+  .vrijeme-dani { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .agro-mreza { grid-template-columns: 1fr; }
+  .gumb-vrijeme .vrijeme-temp { display: inline; }
+}
+/* moja adresa */
+.kartica-adrese { position: fixed; right: 12px; top: calc(var(--visina-zaglavlja) + 60px); z-index: 7; width: 340px; max-height: calc(100vh - var(--visina-zaglavlja) - 90px);
+  overflow: auto; background: var(--staklo); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,.6);
+  border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.18); padding: 14px 16px; animation: izbornik .25s var(--meko); }
+.adresa-zaglavlje { display: flex; justify-content: space-between; gap: 10px; }
+.adresa-zaglavlje h3 { margin: 2px 0 0; font-size: 19px; }
+.adresa-oznaka { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--zelena); }
+.kartica-adrese .zatvori { border: 0; background: rgba(0,0,0,.05); width: 30px; height: 30px; border-radius: 50%; font-size: 18px; cursor: pointer; flex-shrink: 0; }
+.adresa-tijelo section { border-top: 1px solid var(--staklo-rub); padding: 10px 0; }
+.adresa-tijelo h4 { margin: 0 0 6px; font-size: 13px; }
+.adresa-popis { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 13px; }
+.adresa-popis li { display: grid; }
+.adresa-gumbi { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 10px; border-top: 1px solid var(--staklo-rub); }
+.tost { position: fixed; left: 50%; bottom: 30px; transform: translateX(-50%); background: var(--tamna); color: #fff; padding: 8px 14px; border-radius: 999px; z-index: 50; font-size: 13px; }
+@media (max-width: 720px) { .kartica-adrese { left: 8px; right: 8px; width: auto; top: auto; bottom: 8px; max-height: 60vh; } }
