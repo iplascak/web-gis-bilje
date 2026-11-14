@@ -161,10 +161,25 @@ def main():
     im = im[im.geometry.notna()].copy()
     im["naziv"] = im.naziv.map(lambda t: ocisti(t))
     im["vrsta"] = im.podportfelj.map(lambda t: ocisti(t).capitalize() or "Ostalo")
+
+    def skupina(r):
+        t = (r.podportfelj + " " + r.portfelj + " " + r.naziv).upper()
+        if "STAN" in t or "KUĆA" in t:
+            return "stanovi"
+        if "POSLOVN" in t:
+            return "poslovni"
+        if "DOM" in t or "KULTURN" in t or "VRTIĆ" in t or "OBRAZOVN" in t or "ŠKOL" in t:
+            return "drustveni"
+        if "NEIZGRAĐENA GRAĐEVINSK" in t:
+            return "gradjevinsko"
+        if "POLJOPRIVREDN" in t or "ORANICA" in t:
+            return "poljoprivredno"
+        return "ostalo"
+    im["skupina"] = im.apply(skupina, axis=1)
     im["ko"] = im.ko_mb.map(KO_NAZIVI)
     im["povrsina_m2"] = pd.to_numeric(im.kolicina.str.replace(".", "", regex=False).str.replace(",", ".", regex=False), errors="coerce")
     im["vrijednost_eur"] = pd.to_numeric(im.vrijednost_eur.str.replace(",", "", regex=False), errors="coerce")
-    im[["rb", "naziv", "vrsta", "portfelj", "adresa", "ko", "kc", "povrsina_m2", "vrijednost_eur", "geometry"]] \
+    im[["rb", "naziv", "skupina", "vrsta", "portfelj", "adresa", "ko", "kc", "povrsina_m2", "vrijednost_eur", "geometry"]] \
         .to_file(KORIJEN / "data/opcinska_imovina.geojson", driver="GeoJSON", COORDINATE_PRECISION=6)
 
     # --- komunalna infrastruktura ---

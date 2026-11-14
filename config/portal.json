@@ -78,6 +78,28 @@
         ]
       },
       {
+        "naslov": "Općinska imovina i infrastruktura",
+        "stavke": [
+          {
+            "vrsta": "poligon",
+            "sloj": "imovina_opcine",
+            "polje": "naziv",
+            "oznaka": "Nekretnina općine",
+            "neutralno": true,
+            "inace": "ne"
+          },
+          {
+            "vrsta": "poligon",
+            "sloj": "komunalna",
+            "polje": "naziv",
+            "dodatno": "kategorija",
+            "oznaka": "Komunalna infrastruktura",
+            "neutralno": true,
+            "inace": "ne"
+          }
+        ]
+      },
+      {
         "naslov": "Opasnost od poplava (Hrvatske vode, 2019.)",
         "stavke": [
           {

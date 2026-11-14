@@ -26,6 +26,11 @@
       "otvoreno": false
     },
     {
+      "id": "imovina",
+      "naziv": "Imovina i komunalna infrastruktura",
+      "otvoreno": false
+    },
+    {
       "id": "projekti",
       "naziv": "Projekti općine",
       "otvoreno": true
@@ -684,6 +689,157 @@
       "detaljno": "Gradski prijevoz između Osijeka i Bilja ponovno vozi od rujna 2026.: 19 polazaka u svakom smjeru od ponedjeljka do subote i 11 nedjeljom. Prema shemi linija GPP-a 2026. linija 6 u Bilju staje na stajalištima Okretište, Ind. zona, Ul. kralja Tomislava, Centar i Ul. kralja Zvonimira.\n\nPoložaji stajališta preuzeti su iz OpenStreetMapa. Stajalište Okretište još nije ucrtano jer mu točan položaj nije potvrđen.",
       "izvor": "GPP Osijek – shema linija 2026.; položaji © OpenStreetMap suradnici (ODbL)",
       "azurirano": "studeni 2026."
+    },
+    {
+      "id": "komunalna",
+      "naziv": "Komunalna infrastruktura",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/komunalna_infrastruktura.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.2,
+        "ispunaProzirnost": 0.45,
+        "kategorije": {
+          "polje": "kategorija",
+          "vrijednosti": {
+            "Nerazvrstane ceste": {
+              "boja": "#ea580c",
+              "oznaka": "Nerazvrstane ceste"
+            },
+            "Javna rasvjeta": {
+              "boja": "#eab308",
+              "oznaka": "Javna rasvjeta (čestice)"
+            },
+            "Javne zelene površine": {
+              "boja": "#16a34a",
+              "oznaka": "Javne zelene površine"
+            },
+            "Građevine i uređaji javne namjene": {
+              "boja": "#7c3aed",
+              "oznaka": "Građevine i uređaji javne namjene"
+            },
+            "Javna parkirališta": {
+              "boja": "#2563eb",
+              "oznaka": "Javna parkirališta"
+            },
+            "Groblja": {
+              "boja": "#6b7280",
+              "oznaka": "Groblja"
+            },
+            "Javno prometne površine bez prometa motornih vozila": {
+              "boja": "#db2777",
+              "oznaka": "Pješačke i druge javne prometne površine"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "kategorija",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "ko",
+            "oznaka": "K.o."
+          },
+          {
+            "polje": "kc",
+            "oznaka": "K.č."
+          },
+          {
+            "polje": "povrsina_m2",
+            "oznaka": "Površina / duljina (registar)"
+          },
+          {
+            "polje": "rb",
+            "oznaka": "Redni broj u registru"
+          }
+        ]
+      },
+      "opis": "Nerazvrstane ceste, javne zelene površine, parkirališta, groblja i druga komunalna infrastruktura iz registra općine.",
+      "detaljno": "Prikazane su katastarske čestice iz Registra komunalne infrastrukture Općine Bilje, objavljenog na bilje.hr. Zapisi su automatski povezani s aktualnim katastrom DGU-a preko broja katastarske općine i čestice: od 723 zapisa povezan je 721.\n\nNerazvrstane ceste su lokalne ceste i putovi kojima upravlja općina (ulice, poljski putovi). Za javnu rasvjetu prikazane su čestice na kojima se rasvjeta nalazi, a ne pojedinačne svjetiljke.\n\nPovezivanje s katastrom ponavlja se automatski jednom mjesečno. Izmjene registra unose se u tablicu data/izvori/registar_komunalne_infrastrukture.csv.",
+      "izvor": "Registar komunalne infrastrukture i Registar imovine Općine Bilje (bilje.hr), povezano s katastrom DGU-a",
+      "azurirano": "registar 2026., katastar: mjesečno"
+    },
+    {
+      "id": "imovina_opcine",
+      "naziv": "Imovina općine (nekretnine)",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/opcinska_imovina.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.5,
+        "kategorije": {
+          "polje": "skupina",
+          "vrijednosti": {
+            "drustveni": {
+              "boja": "#7c3aed",
+              "oznaka": "Društveni domovi, vrtići, kultura"
+            },
+            "stanovi": {
+              "boja": "#db2777",
+              "oznaka": "Stanovi i kuće za najam"
+            },
+            "poslovni": {
+              "boja": "#2563eb",
+              "oznaka": "Poslovni prostori"
+            },
+            "gradjevinsko": {
+              "boja": "#dc2626",
+              "oznaka": "Neizgrađeno građevinsko zemljište"
+            },
+            "poljoprivredno": {
+              "boja": "#ca8a04",
+              "oznaka": "Poljoprivredno zemljište"
+            },
+            "ostalo": {
+              "boja": "#6b7280",
+              "oznaka": "Ostalo"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta (registar)"
+          },
+          {
+            "polje": "adresa",
+            "oznaka": "Adresa"
+          },
+          {
+            "polje": "ko",
+            "oznaka": "K.o."
+          },
+          {
+            "polje": "kc",
+            "oznaka": "K.č."
+          },
+          {
+            "polje": "povrsina_m2",
+            "oznaka": "Površina (m²)"
+          },
+          {
+            "polje": "vrijednost_eur",
+            "oznaka": "Vrijednost u registru",
+            "format": "eur"
+          }
+        ]
+      },
+      "opis": "Nekretnine u vlasništvu Općine Bilje prema Registru imovine.",
+      "detaljno": "Nekretnine iz Registra imovine Općine Bilje (stanje 1. 1. 2026.), objavljenog na bilje.hr: društveni domovi, vrtići, stanovi za najam, poslovni prostori, građevinsko i poljoprivredno zemljište. Zapisi su povezani s aktualnim katastrom DGU-a: od 125 zapisa povezano je 120. Za preostalih 5 čestica, uglavnom u poslovnoj zoni, broj čestice se u međuvremenu promijenio ili nije točno upisan.\n\nVrijednost je iznos naveden u registru.\n\nPrikaz pomaže građanima i poduzetnicima da vide koja je imovina općinska (npr. slobodno građevinsko zemljište u poslovnoj zoni), a vijeću da ima pregled imovine na karti.",
+      "izvor": "Registar komunalne infrastrukture i Registar imovine Općine Bilje (bilje.hr), povezano s katastrom DGU-a",
+      "azurirano": "registar 1. 1. 2026., katastar: mjesečno"
     },
     {
       "id": "projekti",
