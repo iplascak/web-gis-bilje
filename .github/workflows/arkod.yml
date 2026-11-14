@@ -51,7 +51,7 @@ jobs:
           merge-multiple: true
       - name: Popis i spremanje
         run: |
-          python3 -c "import json,os;d='data/poljoprivreda/arkod';s=sorted(f[6:-8] for f in os.listdir(d) if f.startswith('arkod_') and f.endswith('.geojson'));json.dump({'stanja':s},open(d+'/popis.json','w'));print(s)"
+          python3 -c "import json,os;d='data/poljoprivreda/arkod';s=sorted(f[6:-8] for f in os.listdir(d) if f.startswith('arkod_') and f.endswith('.geojson') and os.path.getsize(os.path.join(d,f))>500);json.dump({'stanja':s},open(d+'/popis.json','w'));print(s)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/poljoprivreda/arkod
