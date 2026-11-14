@@ -29,3 +29,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - run: ls glasnici_tekst | wc -l; ls glasnici_tekst
       - run: python3 scripts/glasnici/projekti.py glasnici_tekst
+      - run: python3 scripts/glasnici/uzorak.py glasnici_tekst
