@@ -270,18 +270,16 @@
     if (def.tip === 'osm') {
       sloj = new ol.layer.Tile({ source: new ol.source.OSM(), className: 'podloga' });
     } else if (def.tip === 'wms') {
-      // u pločicama (512 px): brže se učitava i ne prelazi najveću veličinu slike koju servis dopušta
-      sloj = new ol.layer.Tile({
+      // jedna slika po prikazu (ne pločice): DGU na svaku sliku stavlja vodeni žig "GEOPORTAL",
+      // pa bi ga pločice ponavljale po cijeloj karti
+      sloj = new ol.layer.Image({
         className: 'podloga',
-        source: new ol.source.TileWMS({
+        source: new ol.source.ImageWMS({
           url: def.url,
-          params: { LAYERS: def.wmsSlojevi, FORMAT: def.format || 'image/jpeg', VERSION: '1.3.0', TILED: true },
+          params: { LAYERS: def.wmsSlojevi, FORMAT: def.format || 'image/jpeg', VERSION: '1.3.0' },
           projection: def.projekcija || 'EPSG:3857',
-          tileGrid: def.projekcija ? ol.tilegrid.createXYZ({
-            extent: ol.proj.get(def.projekcija).getExtent(), tileSize: 512, maxZoom: 20
-          }) : undefined,
-          attributions: def.atribucija,
-          transition: 0
+          ratio: 1.2,
+          attributions: def.atribucija
         })
       });
     } else {
