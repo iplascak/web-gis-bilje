@@ -69,7 +69,10 @@ def cestice_ko(ko, url):
                 slojevi.append(g)
         if not slojevi:
             raise RuntimeError(f"k.o. {ko}: u ZIP-u nema čitljivog GML-a")
-        g = max(slojevi, key=len)  # sloj čestica je najveći
+        # u ZIP-u su i zgrade; uzima se sloj čestica (stupac BROJ_CESTICE ili gml_id 'CESTICE.')
+        cest = [x for x in slojevi if "BROJ_CESTICE" in x.columns or
+                ("gml_id" in x.columns and x["gml_id"].astype(str).str.startswith("CESTIC").any())]
+        g = max(cest or slojevi, key=len)
     # broj čestice: stupac čije vrijednosti izgledaju kao "123" ili "123/4"
     print(f"  k.o. {ko}: stupci {list(g.columns)}", flush=True)
     print("  primjer:", g.drop(columns="geometry").head(2).to_dict("records"), flush=True)
