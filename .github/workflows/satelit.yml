@@ -1,0 +1,89 @@
+name: Satelit – stanje usjeva (Sentinel-2)
+
+# Sentinel-2 L2A (Copernicus) preko Earth Search STAC-a: NDVI/NDMI po ARKOD parceli za svaku godinu,
+# zatim spajanje u proizvode za portal. Rezultati idu na granu 'satelit' (jedan commit, bez rasta povijesti).
+# Tjedno: tekuća godina. Ručno: popis godina, npr. ["2018","2019",...].
+on:
+  schedule:
+    - cron: "23 5 * * 2,5"
+  workflow_dispatch:
+    inputs:
+      godine:
+        description: "JSON popis godina (prazno = tekuća)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: satelit
+  cancel-in-progress: false
+
+jobs:
+  priprema:
+    runs-on: ubuntu-latest
+    outputs:
+      godine: ${{ steps.g.outputs.godine }}
+    steps:
+      - id: g
+        run: |
+          G='${{ github.event.inputs.godine }}'
+          if [ -z "$G" ]; then G="[\"$(date -u +%Y)\"]"; fi
+          echo "godine=$G" >> $GITHUB_OUTPUT
+  godina:
+    needs: priprema
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        g: ${{ fromJSON(needs.priprema.outputs.godine) }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            scripts/satelit
+            data/satelit
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -q pystac-client rasterio pyproj numpy
+      - run: python scripts/satelit/s2.py ${{ matrix.g }} izlaz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sat-${{ matrix.g }}
+          path: izlaz/
+          retention-days: 3
+  zbroj:
+    needs: godina
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            scripts/satelit
+            data/satelit
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -q rasterio pyproj numpy pillow
+      - name: Postojeći podaci s grane satelit
+        run: |
+          git clone -q --depth 1 --branch satelit "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" /tmp/sat || mkdir -p /tmp/sat
+          mkdir -p /tmp/sat/izvor
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sat-*
+          path: /tmp/sat/izvor
+          merge-multiple: true
+      - run: python scripts/satelit/zbroj.py /tmp/sat/izvor /tmp/sat
+      - name: Objava na grani satelit
+        run: |
+          cd /tmp/sat && rm -rf .git && git init -q -b satelit
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "Satelit $(date -u +%F)"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" satelit
