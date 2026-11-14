@@ -26,13 +26,21 @@ import pandas as pd
 
 KORIJEN = pathlib.Path(__file__).resolve().parents[2]
 ATOM = "https://oss.uredjenazemlja.hr/oss/public/atom/atom_feed.xml"
-ZAGLAVLJA = {"User-Agent": "WebGIS-Opcina-Bilje/1.0"}
+ZAGLAVLJA = {"User-Agent": "Mozilla/5.0 (compatible; WebGIS-Opcina-Bilje/1.0; +https://github.com/iplascak/web-gis-bilje)", "Accept": "*/*"}
 KO_NAZIVI = {"300055": "Bilje", "300209": "Kopačevo", "300241": "Lug", "300322": "Vardarac"}
 
 
-def dohvati(url):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=ZAGLAVLJA), timeout=180) as o:
-        return o.read()
+def dohvati(url, pokusaja=6):
+    import time
+    for i in range(pokusaja):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=ZAGLAVLJA), timeout=180) as o:
+                return o.read()
+        except Exception as g:  # DGU povremeno vraća 403/5xx – pričekaj i pokušaj ponovno
+            if i == pokusaja - 1:
+                raise
+            print(f"  {url}: {g} – ponovni pokušaj za {20 * (i + 1)} s", flush=True)
+            time.sleep(20 * (i + 1))
 
 
 def zip_adrese():
