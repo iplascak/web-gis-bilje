@@ -130,8 +130,8 @@
     const korakKod = el('div', { hidden: true },
       el('label', { class: 'polje' }, el('span', {}, 'Kod iz e-pošte'), kod),
       el('button', { class: 'gumb-primarni', type: 'button', onclick: potvrdiKod }, 'Prijavi me'),
-      el('p', { class: 'sitno-siva' }, 'Možete i samo otvoriti poveznicu iz e-pošte u ovom pregledniku.'));
-    const gumbSalji = el('button', { class: 'gumb-primarni', type: 'submit' }, 'Pošalji kod');
+      el('p', { class: 'sitno-siva' }, 'Ne vidite poruku? Provjerite mapu neželjene pošte.'));
+    const gumbSalji = el('button', { class: 'gumb-primarni', type: 'submit' }, 'Pošalji poveznicu');
     const obrazac = el('form', { class: 'obrazac', onsubmit: async (e) => {
       e.preventDefault();
       gumbSalji.disabled = true;
@@ -140,7 +140,7 @@
         options: { emailRedirectTo: location.origin + location.pathname, shouldCreateUser: true } });
       gumbSalji.disabled = false;
       if (error) { status.replaceChildren(poruka('Slanje nije uspjelo: ' + error.message, 'greska')); return; }
-      status.replaceChildren(poruka('Poslali smo e-poruku na ' + email.value.trim() + '. Upišite kod iz poruke.', 'uspjeh'));
+      status.replaceChildren(poruka('Poslali smo e-poruku na ' + email.value.trim() + '. Otvorite poveznicu iz poruke u ovom pregledniku – bit ćete prijavljeni. Ako poruka sadrži kod, možete ga upisati ovdje.', 'uspjeh'));
       korakKod.hidden = false;
       kod.focus();
     } },
@@ -156,7 +156,7 @@
 
     stanje.api.otvoriDijalog(
       el('h3', {}, 'Prijava na portal'),
-      el('p', {}, 'Za slanje prijave dovoljna je e-adresa: na nju šaljemo jednokratni kod. Lozinka nije potrebna.'),
+      el('p', {}, 'Za slanje prijave dovoljna je e-adresa: na nju šaljemo poveznicu za prijavu. Lozinka nije potrebna.'),
       obrazac, status, korakKod,
       el('p', { class: 'sitno-siva' }, 'E-adresu koristimo samo za prijavu na portal i eventualni upit općinskih službi o vašoj prijavi. Ne objavljuje se i ne dijeli s drugima.'));
     email.focus();
