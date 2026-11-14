@@ -2,38 +2,51 @@
   "grupe": [
     {
       "id": "osnovno",
-      "naziv": "Osnovni podaci",
+      "naziv": "Općina i adrese",
+      "ikona": "karta",
       "otvoreno": true
     },
     {
+      "id": "imovina",
+      "naziv": "Imovina i komunalno",
+      "ikona": "zgrada",
+      "otvoreno": false
+    },
+    {
+      "id": "projekti",
+      "naziv": "Projekti i ulaganja",
+      "ikona": "kran",
+      "otvoreno": false
+    },
+    {
       "id": "prostor",
-      "naziv": "Prostorni plan",
+      "naziv": "Prostorno planiranje",
+      "ikona": "sestar",
       "otvoreno": false
     },
     {
       "id": "poplave",
-      "naziv": "Poplave i vode",
+      "naziv": "Voda i poplave",
+      "ikona": "val",
       "otvoreno": false
     },
     {
       "id": "priroda",
-      "naziv": "Priroda i baština",
+      "naziv": "Priroda",
+      "ikona": "list",
+      "otvoreno": false
+    },
+    {
+      "id": "bastina",
+      "naziv": "Baština i krajobraz",
+      "ikona": "stup",
       "otvoreno": false
     },
     {
       "id": "promet",
       "naziv": "Promet",
+      "ikona": "autobus",
       "otvoreno": false
-    },
-    {
-      "id": "imovina",
-      "naziv": "Imovina i komunalna infrastruktura",
-      "otvoreno": false
-    },
-    {
-      "id": "projekti",
-      "naziv": "Projekti općine",
-      "otvoreno": true
     }
   ],
   "slojevi": [
@@ -54,7 +67,8 @@
       "izvor": "Državna geodetska uprava – Registar prostornih jedinica",
       "azurirano": "2017.",
       "klik": false,
-      "detaljno": "Prikazuje službenu administrativnu granicu Općine Bilje iz Registra prostornih jedinica Državne geodetske uprave. Općina obuhvaća naselja Bilje, Kopačevo, Kozjak, Lug, Podunavlje, Tikveš, Vardarac i Zlatnu Gredu. Zlatna Greda je odvojena od ostatka općine (enklava) na sjeveru.\n\nGranica je informativna. Službeni podatak o pripadnosti neke čestice općini daje katastar."
+      "detaljno": "Prikazuje službenu administrativnu granicu Općine Bilje iz Registra prostornih jedinica Državne geodetske uprave. Općina obuhvaća naselja Bilje, Kopačevo, Kozjak, Lug, Podunavlje, Tikveš, Vardarac i Zlatnu Gredu. Zlatna Greda je odvojena od ostatka općine (enklava) na sjeveru.\n\nGranica je informativna. Službeni podatak o pripadnosti neke čestice općini daje katastar.",
+      "podgrupa": "Granice"
     },
     {
       "id": "naselja",
@@ -75,7 +89,8 @@
       "izvor": "Državna geodetska uprava – Registar prostornih jedinica",
       "azurirano": "2017.",
       "klik": false,
-      "detaljno": "Granice naselja iz Registra prostornih jedinica DGU-a. Naziv naselja prikazuje se na karti, a u kartici \"Što je na ovoj lokaciji?\" naselje se određuje prema ovom sloju.\n\nGranica naselja nije isto što i granica građevinskog područja naselja. Gdje se smije graditi određuje prostorni plan."
+      "detaljno": "Granice naselja iz Registra prostornih jedinica DGU-a. Naziv naselja prikazuje se na karti, a u kartici \"Što je na ovoj lokaciji?\" naselje se određuje prema ovom sloju.\n\nGranica naselja nije isto što i granica građevinskog područja naselja. Gdje se smije graditi određuje prostorni plan.",
+      "podgrupa": "Granice"
     },
     {
       "id": "institucije",
@@ -148,7 +163,8 @@
       "opis": "Sjedište Općine Bilje i ustanove i trgovačko društvo u njezinom vlasništvu.",
       "detaljno": "Općina Bilje, Kulturno razvojni centar Bilje, Turistička zajednica Općine Bilje, Dječji vrtić Grlica i komunalno poduzeće Komunalno - Bilje d.o.o., s adresama i kontaktima kako su objavljeni na službenoj stranici općine (bilje.hr, \"Naše institucije\" i \"Kontakt\"). Lokacija je određena prema kućnom broju iz registra prostornih jedinica DGU-a.",
       "izvor": "bilje.hr; adrese: DGU RPJ",
-      "azurirano": "studeni 2026."
+      "azurirano": "studeni 2026.",
+      "podgrupa": "Ustanove"
     },
     {
       "id": "ulice",
@@ -177,7 +193,8 @@
       "opis": "Ulice iz registra prostornih jedinica.",
       "izvor": "Državna geodetska uprava – Registar prostornih jedinica",
       "azurirano": "2017.",
-      "detaljno": "Ulice iz Registra prostornih jedinica DGU-a (stanje 2017.), ukupno 101. Nazivi se prikazuju kad dovoljno uvećate kartu. Pretraga na vrhu panela pronalazi ulice i kućne brojeve iz istog registra.\n\nNovije ulice i kućni brojevi, dodani nakon 2017., možda još nisu prikazani."
+      "detaljno": "Ulice iz Registra prostornih jedinica DGU-a (stanje 2017.), ukupno 101. Nazivi se prikazuju kad dovoljno uvećate kartu. Pretraga na vrhu panela pronalazi ulice i kućne brojeve iz istog registra.\n\nNovije ulice i kućni brojevi, dodani nakon 2017., možda još nisu prikazani.",
+      "podgrupa": "Adrese i čestice"
     },
     {
       "id": "katastar",
@@ -195,7 +212,289 @@
       "licenca": "Korištenje uz prihvaćanje uvjeta korištenja DGU-a",
       "azurirano": "uživo s DGU servisa",
       "legenda": false,
-      "detaljno": "Granice i brojevi katastarskih čestica, učitani uživo sa servisa Državne geodetske uprave. Zbog količine podataka sloj se prikazuje tek kod većeg uvećanja.\n\nBroj čestice za bilo koju točku dobit ćete i klikom na kartu, pa \"Što je na ovoj lokaciji?\".\n\nPrikaz je informativan. Službeni podaci (vlasništvo, površina, način uporabe) nalaze se u Zajedničkom informacijskom sustavu zemljišnih knjiga i katastra (OSS)."
+      "detaljno": "Granice i brojevi katastarskih čestica, učitani uživo sa servisa Državne geodetske uprave. Zbog količine podataka sloj se prikazuje tek kod većeg uvećanja.\n\nBroj čestice za bilo koju točku dobit ćete i klikom na kartu, pa \"Što je na ovoj lokaciji?\".\n\nPrikaz je informativan. Službeni podaci (vlasništvo, površina, način uporabe) nalaze se u Zajedničkom informacijskom sustavu zemljišnih knjiga i katastra (OSS).",
+      "podgrupa": "Adrese i čestice"
+    },
+    {
+      "id": "imovina_opcine",
+      "naziv": "Imovina općine (nekretnine)",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/opcinska_imovina.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.5,
+        "kategorije": {
+          "polje": "skupina",
+          "vrijednosti": {
+            "drustveni": {
+              "boja": "#7c3aed",
+              "oznaka": "Društveni domovi, vrtići, kultura"
+            },
+            "stanovi": {
+              "boja": "#db2777",
+              "oznaka": "Stanovi i kuće za najam"
+            },
+            "poslovni": {
+              "boja": "#2563eb",
+              "oznaka": "Poslovni prostori"
+            },
+            "gradjevinsko": {
+              "boja": "#dc2626",
+              "oznaka": "Neizgrađeno građevinsko zemljište"
+            },
+            "poljoprivredno": {
+              "boja": "#ca8a04",
+              "oznaka": "Poljoprivredno zemljište"
+            },
+            "ostalo": {
+              "boja": "#6b7280",
+              "oznaka": "Ostalo"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta (registar)"
+          },
+          {
+            "polje": "adresa",
+            "oznaka": "Adresa"
+          },
+          {
+            "polje": "ko",
+            "oznaka": "K.o."
+          },
+          {
+            "polje": "kc",
+            "oznaka": "K.č."
+          },
+          {
+            "polje": "povrsina_m2",
+            "oznaka": "Površina (m²)"
+          },
+          {
+            "polje": "vrijednost_eur",
+            "oznaka": "Vrijednost u registru",
+            "format": "eur"
+          }
+        ]
+      },
+      "opis": "Nekretnine u vlasništvu Općine Bilje prema Registru imovine.",
+      "detaljno": "Nekretnine iz Registra imovine Općine Bilje (stanje 1. 1. 2026.), objavljenog na bilje.hr: društveni domovi, vrtići, stanovi za najam, poslovni prostori, građevinsko i poljoprivredno zemljište. Zapisi su povezani s aktualnim katastrom DGU-a: od 125 zapisa povezano je 120. Za preostalih 5 čestica, uglavnom u poslovnoj zoni, broj čestice se u međuvremenu promijenio ili nije točno upisan.\n\nVrijednost je iznos naveden u registru.\n\nPrikaz pomaže građanima i poduzetnicima da vide koja je imovina općinska (npr. slobodno građevinsko zemljište u poslovnoj zoni), a vijeću da ima pregled imovine na karti.",
+      "izvor": "Registar komunalne infrastrukture i Registar imovine Općine Bilje (bilje.hr), povezano s katastrom DGU-a",
+      "azurirano": "registar 1. 1. 2026., katastar: mjesečno",
+      "podgrupa": "Imovina i infrastruktura"
+    },
+    {
+      "id": "komunalna",
+      "naziv": "Komunalna infrastruktura",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/komunalna_infrastruktura.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1.2,
+        "ispunaProzirnost": 0.45,
+        "kategorije": {
+          "polje": "kategorija",
+          "vrijednosti": {
+            "Nerazvrstane ceste": {
+              "boja": "#ea580c",
+              "oznaka": "Nerazvrstane ceste"
+            },
+            "Javna rasvjeta": {
+              "boja": "#eab308",
+              "oznaka": "Javna rasvjeta (čestice)"
+            },
+            "Javne zelene površine": {
+              "boja": "#16a34a",
+              "oznaka": "Javne zelene površine"
+            },
+            "Građevine i uređaji javne namjene": {
+              "boja": "#7c3aed",
+              "oznaka": "Građevine i uređaji javne namjene"
+            },
+            "Javna parkirališta": {
+              "boja": "#2563eb",
+              "oznaka": "Javna parkirališta"
+            },
+            "Groblja": {
+              "boja": "#6b7280",
+              "oznaka": "Groblja"
+            },
+            "Javno prometne površine bez prometa motornih vozila": {
+              "boja": "#db2777",
+              "oznaka": "Pješačke i druge javne prometne površine"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "kategorija",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "ko",
+            "oznaka": "K.o."
+          },
+          {
+            "polje": "kc",
+            "oznaka": "K.č."
+          },
+          {
+            "polje": "povrsina_m2",
+            "oznaka": "Površina / duljina (registar)"
+          },
+          {
+            "polje": "rb",
+            "oznaka": "Redni broj u registru"
+          }
+        ]
+      },
+      "opis": "Nerazvrstane ceste, javne zelene površine, parkirališta, groblja i druga komunalna infrastruktura iz registra općine.",
+      "detaljno": "Prikazane su katastarske čestice iz Registra komunalne infrastrukture Općine Bilje, objavljenog na bilje.hr. Zapisi su automatski povezani s aktualnim katastrom DGU-a preko broja katastarske općine i čestice: od 723 zapisa povezan je 721.\n\nNerazvrstane ceste su lokalne ceste i putovi kojima upravlja općina (ulice, poljski putovi). Za javnu rasvjetu prikazane su čestice na kojima se rasvjeta nalazi, a ne pojedinačne svjetiljke.\n\nPovezivanje s katastrom ponavlja se automatski jednom mjesečno. Izmjene registra unose se u tablicu data/izvori/registar_komunalne_infrastrukture.csv.",
+      "izvor": "Registar komunalne infrastrukture i Registar imovine Općine Bilje (bilje.hr), povezano s katastrom DGU-a",
+      "azurirano": "registar 2026., katastar: mjesečno",
+      "podgrupa": "Imovina i infrastruktura"
+    },
+    {
+      "id": "groblja",
+      "naziv": "Groblja",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/groblja.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#4b5563",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.08,
+        "natpis": "naziv",
+        "natpisMinZoom": 13
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "snimka",
+            "oznaka": "Snimka"
+          },
+          {
+            "polje": "napomena",
+            "oznaka": ""
+          }
+        ]
+      },
+      "opis": "Obuhvat snimki groblja izrađenih dronom.",
+      "detaljno": "Groblja u Bilju, Kopačevu i Lugu snimljena su dronom u vrlo visokoj razlučivosti (oko 5 cm po pikselu), tako da se razaznaju pojedinačni grobovi, staze i objekti. Snimka je korisna za održavanje groblja, planiranje proširenja i snalaženje posjetitelja.\n\nSnimka se prikazuje kad se karta dovoljno uveća (od razine ulice naviše). Datoteke snimki izrađene su u ožujku 2022.; za groblje u Vardarcu snimka još ne postoji.\n\nNa snimci nema imena pokojnika ni drugih osobnih podataka; evidencija grobnih mjesta (grobni očevidnik) nije dio javnog portala.",
+      "izvor": "Općina Bilje",
+      "azurirano": "2022.",
+      "podgrupa": "Groblja"
+    },
+    {
+      "id": "groblja_dron",
+      "naziv": "Groblja – snimka dronom (5 cm)",
+      "grupa": "imovina",
+      "tip": "xyz",
+      "izvori": [
+        {
+          "url": "data/groblja/bilje/{z}/{x}/{y}.webp",
+          "extent": [
+            2085591.2,
+            5716885.7,
+            2085896.8,
+            5717210.0
+          ]
+        },
+        {
+          "url": "data/groblja/kopacevo/{z}/{x}/{y}.webp",
+          "extent": [
+            2090891.8,
+            5716525.3,
+            2091195.3,
+            5716946.1
+          ]
+        },
+        {
+          "url": "data/groblja/lug/{z}/{x}/{y}.webp",
+          "extent": [
+            2089357.5,
+            5726110.8,
+            2089819.5,
+            5726364.9
+          ]
+        }
+      ],
+      "minZoom": 15,
+      "maxNativeZoom": 21,
+      "vidljivo": false,
+      "klik": false,
+      "opis": "Detaljna snimka groblja dronom; vidljiva pri uvećanju.",
+      "detaljno": "Groblja u Bilju, Kopačevu i Lugu snimljena su dronom u vrlo visokoj razlučivosti (oko 5 cm po pikselu), tako da se razaznaju pojedinačni grobovi, staze i objekti. Snimka je korisna za održavanje groblja, planiranje proširenja i snalaženje posjetitelja.\n\nSnimka se prikazuje kad se karta dovoljno uveća (od razine ulice naviše). Datoteke snimki izrađene su u ožujku 2022.; za groblje u Vardarcu snimka još ne postoji.\n\nNa snimci nema imena pokojnika ni drugih osobnih podataka; evidencija grobnih mjesta (grobni očevidnik) nije dio javnog portala.",
+      "izvor": "Općina Bilje (snimanje dronom)",
+      "azurirano": "2022.",
+      "atribucija": "Snimka groblja © Općina Bilje",
+      "podgrupa": "Groblja"
+    },
+    {
+      "id": "grobna_mjesta_prijedlog",
+      "naziv": "Grobna mjesta – automatski prijedlog",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/groblja/grobna_mjesta.geojson",
+      "vidljivo": false,
+      "minZoom": 17,
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#F1C50E",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.08
+      },
+      "skocniProzor": {
+        "naslov": "oznaka",
+        "polja": [
+          {
+            "polje": "groblje",
+            "oznaka": "Groblje"
+          },
+          {
+            "polje": "duzina_m",
+            "oznaka": "Duljina (m)"
+          },
+          {
+            "polje": "sirina_m",
+            "oznaka": "Širina (m)"
+          },
+          {
+            "polje": "povrsina_m2",
+            "oznaka": "Površina (m²)"
+          },
+          {
+            "polje": "pouzdanost",
+            "oznaka": "Pouzdanost (0–1)"
+          },
+          {
+            "polje": "izvor",
+            "oznaka": "Izvor"
+          }
+        ]
+      },
+      "opis": "Obrisi grobnih mjesta na grobljima Bilje, Kopačevo i Lug koje je automatski prepoznao računalni model na snimkama dronom – radni prijedlog za grobni katastar.",
+      "detaljno": "Obrise je automatski izdvojio model umjetne inteligencije za segmentaciju slike (Segment Anything, Meta AI) sa snimaka groblja dronom (5 cm). Zadržane su plohe koje po veličini (1,3–9 m²), pravokutnom obliku i boji odgovaraju grobnom mjestu, a uklonjeni su osamljeni objekti izvan redova grobova.\n\nOvo je RADNI PRIJEDLOG, a ne službeni grobni katastar. Najbolje je prepoznat noviji dio groblja u Bilju (velika većina grobnih mjesta); u Kopačevu i osobito u Lugu, gdje su grobovi gusto zbijeni i u sjeni drveća, propušteno je više mjesta; propuštena su ponajviše mjesta bez kamene ploče (zemljani grobovi), a ponegdje je ocrtana samo unutarnja ploča umjesto cijelog okvira ili je kao grob označen dio staze ili cvjetnjak. Prije uporabe obrise treba pregledati i ispraviti u QGIS-u i povezati s grobnim očevidnikom (polje, red, broj).\n\nNa sloju nema imena pokojnika ni korisnika grobnih mjesta.",
+      "izvor": "Snimka: Općina Bilje (dron); obrada: Web GIS Općine Bilje",
+      "azurirano": "studeni 2026.",
+      "podgrupa": "Groblja"
     },
     {
       "id": "gradevinska_podrucja",
@@ -279,7 +578,8 @@
       "licenca": "Hrvatske vode – javni WMS servis",
       "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
       "atribucija": "© Hrvatske vode",
-      "detaljno": "Područja koja bi bila poplavljena pri čestim, manjim velikim vodama. Boja označava očekivanu dubinu vode: od manje od 0,5 m (najsvjetlija) do više od 2,5 m (najtamnija). Tamnoplavo su stalne vodene površine.\n\nKarte su izradile Hrvatske vode 2019. u sklopu Plana upravljanja rizicima od poplava. Pretpostavljaju da obrambeni sustav (nasipi) radi. Karte su pokazatelj opasnosti, a ne točna prognoza za pojedinu kuću."
+      "detaljno": "Područja koja bi bila poplavljena pri čestim, manjim velikim vodama. Boja označava očekivanu dubinu vode: od manje od 0,5 m (najsvjetlija) do više od 2,5 m (najtamnija). Tamnoplavo su stalne vodene površine.\n\nKarte su izradile Hrvatske vode 2019. u sklopu Plana upravljanja rizicima od poplava. Pretpostavljaju da obrambeni sustav (nasipi) radi. Karte su pokazatelj opasnosti, a ne točna prognoza za pojedinu kuću.",
+      "podgrupa": "Opasnost od poplava"
     },
     {
       "id": "poplave_sv",
@@ -296,7 +596,8 @@
       "licenca": "Hrvatske vode – javni WMS servis",
       "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
       "atribucija": "© Hrvatske vode",
-      "detaljno": "Područja koja bi bila poplavljena pri velikoj vodi s povratnim razdobljem od 100 godina, odnosno vjerojatnošću od 1 % u svakoj godini. To je najčešće korišten scenarij u prostornom planiranju i osiguranju. Boja označava očekivanu dubinu vode.\n\nIzvor: Hrvatske vode, karte opasnosti od poplava 2019."
+      "detaljno": "Područja koja bi bila poplavljena pri velikoj vodi s povratnim razdobljem od 100 godina, odnosno vjerojatnošću od 1 % u svakoj godini. To je najčešće korišten scenarij u prostornom planiranju i osiguranju. Boja označava očekivanu dubinu vode.\n\nIzvor: Hrvatske vode, karte opasnosti od poplava 2019.",
+      "podgrupa": "Opasnost od poplava"
     },
     {
       "id": "poplave_mv",
@@ -313,7 +614,8 @@
       "licenca": "Hrvatske vode – javni WMS servis",
       "azurirano": "uživo s Hrvatskih voda (karte iz 2019.)",
       "atribucija": "© Hrvatske vode",
-      "detaljno": "Područja koja bi bila poplavljena pri rijetkim, ekstremnim događajima, uključujući moguće otkazivanje obrambenih građevina. Ovaj scenarij pokazuje najveći mogući obuhvat i važan je za planiranje zaštite i spašavanja.\n\nIzvor: Hrvatske vode, karte opasnosti od poplava 2019."
+      "detaljno": "Područja koja bi bila poplavljena pri rijetkim, ekstremnim događajima, uključujući moguće otkazivanje obrambenih građevina. Ovaj scenarij pokazuje najveći mogući obuhvat i važan je za planiranje zaštite i spašavanja.\n\nIzvor: Hrvatske vode, karte opasnosti od poplava 2019.",
+      "podgrupa": "Opasnost od poplava"
     },
     {
       "id": "nasipi",
@@ -339,7 +641,8 @@
       "opis": "Obrambeni nasipi uz Dravu i Dunav.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.), izvorno Hrvatske vode",
       "azurirano": "2016.",
-      "detaljno": "Obrambeni nasipi uz Dravu i Dunav koji štite naselja i poljoprivredne površine od velikih voda. Podaci potječu iz Inventarizacije okolišnih resursa Općine Bilje (izvorno Hrvatske vode, 2016.).\n\nZa stanje nasipa i radove na njima nadležne su Hrvatske vode."
+      "detaljno": "Obrambeni nasipi uz Dravu i Dunav koji štite naselja i poljoprivredne površine od velikih voda. Podaci potječu iz Inventarizacije okolišnih resursa Općine Bilje (izvorno Hrvatske vode, 2016.).\n\nZa stanje nasipa i radove na njima nadležne su Hrvatske vode.",
+      "podgrupa": "Obrana od poplava"
     },
     {
       "id": "hidro_postaje",
@@ -376,7 +679,8 @@
       "opis": "Hidrološke postaje DHMZ-a na Dravi i Dunavu u okolici općine. Trenutni vodostaji dostupni su na stranici DHMZ-a.",
       "izvor": "DHMZ (preko Inventarizacije okolišnih resursa, 2017.)",
       "azurirano": "2016.",
-      "detaljno": "Hidrološke postaje Državnog hidrometeorološkog zavoda na Dravi i Dunavu u okolici općine (Osijek, Aljmaš, Batina, Bijelo Brdo, Belišće). Na njima se prate vodostaji i protoci.\n\nKlik na postaju daje poveznicu na stranicu DHMZ-a s trenutnim vodostajima. Kod porasta Dunava najvažnija je postaja Batina, a kod Drave Osijek."
+      "detaljno": "Hidrološke postaje Državnog hidrometeorološkog zavoda na Dravi i Dunavu u okolici općine (Osijek, Aljmaš, Batina, Bijelo Brdo, Belišće). Na njima se prate vodostaji i protoci.\n\nKlik na postaju daje poveznicu na stranicu DHMZ-a s trenutnim vodostajima. Kod porasta Dunava najvažnija je postaja Batina, a kod Drave Osijek.",
+      "podgrupa": "Obrana od poplava"
     },
     {
       "id": "sanitarna_zastita",
@@ -420,7 +724,8 @@
       "opis": "Zone sanitarne zaštite izvorišta pitke vode (npr. Bilje – Konkološ). U zonama vrijede ograničenja gradnje i korištenja zemljišta.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
       "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Zone sanitarne zaštite izvorišta pitke vode, uživo iz Registra zaštićenih područja Hrvatskih voda. Na području općine to je izvorište Bilje – Konkološ.\n\nI. zona je najstroža i obuhvaća neposredno područje zahvata vode. U II. i III. zoni vrijede ograničenja gradnje i djelatnosti, npr. skladištenja opasnih tvari, gnojidbe i sabirnih jama. Točna ograničenja propisuje odluka o zonama sanitarne zaštite."
+      "detaljno": "Zone sanitarne zaštite izvorišta pitke vode, uživo iz Registra zaštićenih područja Hrvatskih voda. Na području općine to je izvorište Bilje – Konkološ.\n\nI. zona je najstroža i obuhvaća neposredno područje zahvata vode. U II. i III. zoni vrijede ograničenja gradnje i djelatnosti, npr. skladištenja opasnih tvari, gnojidbe i sabirnih jama. Točna ograničenja propisuje odluka o zonama sanitarne zaštite.",
+      "podgrupa": "Voda za ljude"
     },
     {
       "id": "kupalista",
@@ -444,7 +749,8 @@
       "opis": "Službena kupališta na kopnenim vodama u okolici općine.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
       "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Službena kupališta na kopnenim vodama iz Registra zaštićenih područja Hrvatskih voda. Na njima se tijekom sezone prati kakvoća vode za kupanje."
+      "detaljno": "Službena kupališta na kopnenim vodama iz Registra zaštićenih područja Hrvatskih voda. Na njima se tijekom sezone prati kakvoća vode za kupanje.",
+      "podgrupa": "Voda za ljude"
     },
     {
       "id": "zasticena_podrucja",
@@ -492,7 +798,8 @@
       "opis": "Zaštićena područja prema Zakonu o zaštiti prirode: Park prirode Kopački rit, posebni rezervat i Regionalni park Mura–Drava.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
       "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Područja zaštićena Zakonom o zaštiti prirode, uživo iz registra Hrvatskih voda:\n• Park prirode Kopački rit, jedna od najvećih očuvanih poplavnih nizina u Europi\n• posebni zoološki rezervat unutar parka, s najstrožim režimom zaštite\n• Regionalni park Mura–Drava\n\nU zaštićenim područjima za mnoge zahvate potrebni su uvjeti zaštite prirode. Informacije daje Javna ustanova Park prirode Kopački rit."
+      "detaljno": "Područja zaštićena Zakonom o zaštiti prirode, uživo iz registra Hrvatskih voda:\n• Park prirode Kopački rit, jedna od najvećih očuvanih poplavnih nizina u Europi\n• posebni zoološki rezervat unutar parka, s najstrožim režimom zaštite\n• Regionalni park Mura–Drava\n\nU zaštićenim područjima za mnoge zahvate potrebni su uvjeti zaštite prirode. Informacije daje Javna ustanova Park prirode Kopački rit.",
+      "podgrupa": "Zaštita prirode"
     },
     {
       "id": "natura_pop",
@@ -521,7 +828,8 @@
       "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za ptice.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
       "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje ptica (POP). Područje \"Podunavlje i donje Podravlje\" obuhvaća velik dio općine.\n\nZa zahvate koji bi mogli utjecati na ciljeve očuvanja provodi se ocjena prihvatljivosti za ekološku mrežu. Natura 2000 nije zabrana: poljoprivreda i uobičajene djelatnosti se nastavljaju."
+      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje ptica (POP). Područje \"Podunavlje i donje Podravlje\" obuhvaća velik dio općine.\n\nZa zahvate koji bi mogli utjecati na ciljeve očuvanja provodi se ocjena prihvatljivosti za ekološku mrežu. Natura 2000 nije zabrana: poljoprivreda i uobičajene djelatnosti se nastavljaju.",
+      "podgrupa": "Natura 2000"
     },
     {
       "id": "natura_povs",
@@ -550,12 +858,13 @@
       "opis": "Područja ekološke mreže Natura 2000 očuvanja značajna za vrste i stanišne tipove.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
       "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje vrsta i stanišnih tipova (POVS), npr. Kopački rit, Donji tok Drave i Dunav. Za zahvate koji bi mogli utjecati na ta područja provodi se ocjena prihvatljivosti za ekološku mrežu."
+      "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje vrsta i stanišnih tipova (POVS), npr. Kopački rit, Donji tok Drave i Dunav. Za zahvate koji bi mogli utjecati na ta područja provodi se ocjena prihvatljivosti za ekološku mrežu.",
+      "podgrupa": "Natura 2000"
     },
     {
       "id": "bastina_registar",
       "naziv": "Kulturna baština (registar)",
-      "grupa": "priroda",
+      "grupa": "bastina",
       "tip": "wfs",
       "url": "https://servisi.voda.hr/zasticena_podrucja/wfs",
       "typeName": "zasticena_podrucja:hr.rzp.g_podrucja-kulturne-bastine",
@@ -573,12 +882,13 @@
       "opis": "Zaštićena područja kulturne baštine iz registra: dvorac Tikveš, pustara Zlatna Greda.",
       "izvor": "Hrvatske vode – Registar zaštićenih područja (WFS, uživo)",
       "azurirano": "uživo s Hrvatskih voda",
-      "detaljno": "Zaštićena područja kulturne baštine iz registra zaštićenih područja Hrvatskih voda: kompleks dvorca Tikveš i pustara Zlatna Greda. Zahvati na zaštićenim kulturnim dobrima zahtijevaju uvjete nadležnog konzervatorskog odjela."
+      "detaljno": "Zaštićena područja kulturne baštine iz registra zaštićenih područja Hrvatskih voda: kompleks dvorca Tikveš i pustara Zlatna Greda. Zahvati na zaštićenim kulturnim dobrima zahtijevaju uvjete nadležnog konzervatorskog odjela.",
+      "podgrupa": "Kulturna baština"
     },
     {
       "id": "kulturna_dobra",
       "naziv": "Kulturna dobra i arheološki lokaliteti",
-      "grupa": "priroda",
+      "grupa": "bastina",
       "tip": "geojson",
       "url": "data/kulturna_dobra.geojson",
       "vidljivo": false,
@@ -616,12 +926,13 @@
       "opis": "Kulturna dobra i arheološki lokaliteti prema prostornom planu općine.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
       "azurirano": "2017.",
-      "detaljno": "Kulturna dobra i arheološki lokaliteti prema prostornom planu općine, preuzeto iz Inventarizacije okolišnih resursa (2017.). Graditeljska baština prikazana je kao područja po naseljima s brojem građevina, a arheološki lokaliteti pojedinačno (npr. Rimska cesta, Mali Sakadaš, Kenderfeld).\n\nStatus: zaštićeno (u Registru kulturnih dobara), preventivno zaštićeno ili evidentirano (preporuka zaštite prostornim planom)."
+      "detaljno": "Kulturna dobra i arheološki lokaliteti prema prostornom planu općine, preuzeto iz Inventarizacije okolišnih resursa (2017.). Graditeljska baština prikazana je kao područja po naseljima s brojem građevina, a arheološki lokaliteti pojedinačno (npr. Rimska cesta, Mali Sakadaš, Kenderfeld).\n\nStatus: zaštićeno (u Registru kulturnih dobara), preventivno zaštićeno ili evidentirano (preporuka zaštite prostornim planom).",
+      "podgrupa": "Kulturna baština"
     },
     {
       "id": "krajobraz",
       "naziv": "Krajobrazna područja",
-      "grupa": "priroda",
+      "grupa": "bastina",
       "tip": "geojson",
       "url": "data/krajobrazna_podrucja.geojson",
       "vidljivo": false,
@@ -667,12 +978,13 @@
       "opis": "Krajobrazna područja općine.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
       "azurirano": "2017.",
-      "detaljno": "Podjela općine na krajobrazna područja prema Inventarizaciji okolišnih resursa (2017.): plato Brestovac, sustav naselja sa sitnom parcelacijom, niža meliorirana područja Baranje, doprirodno područje uz Dravu i Kopački rit.\n\nKorisno kao podloga za planiranje turizma, sadnje i uređenja prostora."
+      "detaljno": "Podjela općine na krajobrazna područja prema Inventarizaciji okolišnih resursa (2017.): plato Brestovac, sustav naselja sa sitnom parcelacijom, niža meliorirana područja Baranje, doprirodno područje uz Dravu i Kopački rit.\n\nKorisno kao podloga za planiranje turizma, sadnje i uređenja prostora.",
+      "podgrupa": "Krajobraz i vidikovci"
     },
     {
       "id": "vizure",
       "naziv": "Vizure",
-      "grupa": "priroda",
+      "grupa": "bastina",
       "tip": "geojson",
       "url": "data/vizure.geojson",
       "vidljivo": false,
@@ -710,12 +1022,13 @@
       "opis": "Kvaliteta pogleda iz točaka gledišta.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
       "azurirano": "2017.",
-      "detaljno": "Procjena kvalitete pogleda iz točaka gledišta, iz Inventarizacije okolišnih resursa (2017.). Zelenom su označene odlične vizure, uglavnom prema Kopačkom ritu. Dobro je to imati na umu pri planiranju vidikovaca, biciklističkih staza i izbjegavanju gradnje koja zaklanja vrijedne poglede."
+      "detaljno": "Procjena kvalitete pogleda iz točaka gledišta, iz Inventarizacije okolišnih resursa (2017.). Zelenom su označene odlične vizure, uglavnom prema Kopačkom ritu. Dobro je to imati na umu pri planiranju vidikovaca, biciklističkih staza i izbjegavanju gradnje koja zaklanja vrijedne poglede.",
+      "podgrupa": "Krajobraz i vidikovci"
     },
     {
       "id": "tocke_gledista",
       "naziv": "Točke gledišta",
-      "grupa": "priroda",
+      "grupa": "bastina",
       "tip": "geojson",
       "url": "data/tocke_gledista.geojson",
       "vidljivo": false,
@@ -728,7 +1041,8 @@
       "opis": "Točke iz kojih su procijenjene vizure.",
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
       "azurirano": "2017.",
-      "detaljno": "Točke iz kojih su u Inventarizaciji okolišnih resursa (2017.) procijenjene vizure. Mogu poslužiti kao početni prijedlog lokacija za vidikovce."
+      "detaljno": "Točke iz kojih su u Inventarizaciji okolišnih resursa (2017.) procijenjene vizure. Mogu poslužiti kao početni prijedlog lokacija za vidikovce.",
+      "podgrupa": "Krajobraz i vidikovci"
     },
     {
       "id": "bus_stajalista",
@@ -762,282 +1076,6 @@
       "detaljno": "Gradski prijevoz između Osijeka i Bilja ponovno vozi od rujna 2026.: 19 polazaka u svakom smjeru od ponedjeljka do subote i 11 nedjeljom. Prema shemi linija GPP-a 2026. linija 6 u Bilju staje na stajalištima Okretište, Ind. zona, Ul. kralja Tomislava, Centar i Ul. kralja Zvonimira.\n\nPoložaji stajališta preuzeti su iz OpenStreetMapa. Stajalište Okretište još nije ucrtano jer mu točan položaj nije potvrđen.",
       "izvor": "GPP Osijek – shema linija 2026.; položaji © OpenStreetMap suradnici (ODbL)",
       "azurirano": "studeni 2026."
-    },
-    {
-      "id": "groblja",
-      "naziv": "Groblja",
-      "grupa": "imovina",
-      "tip": "geojson",
-      "url": "data/groblja.geojson",
-      "vidljivo": false,
-      "stil": {
-        "geometrija": "poligon",
-        "boja": "#4b5563",
-        "debljina": 1.5,
-        "ispunaProzirnost": 0.08,
-        "natpis": "naziv",
-        "natpisMinZoom": 13
-      },
-      "skocniProzor": {
-        "naslov": "naziv",
-        "polja": [
-          {
-            "polje": "snimka",
-            "oznaka": "Snimka"
-          },
-          {
-            "polje": "napomena",
-            "oznaka": ""
-          }
-        ]
-      },
-      "opis": "Obuhvat snimki groblja izrađenih dronom.",
-      "detaljno": "Groblja u Bilju, Kopačevu i Lugu snimljena su dronom u vrlo visokoj razlučivosti (oko 5 cm po pikselu), tako da se razaznaju pojedinačni grobovi, staze i objekti. Snimka je korisna za održavanje groblja, planiranje proširenja i snalaženje posjetitelja.\n\nSnimka se prikazuje kad se karta dovoljno uveća (od razine ulice naviše). Datoteke snimki izrađene su u ožujku 2022.; za groblje u Vardarcu snimka još ne postoji.\n\nNa snimci nema imena pokojnika ni drugih osobnih podataka; evidencija grobnih mjesta (grobni očevidnik) nije dio javnog portala.",
-      "izvor": "Općina Bilje",
-      "azurirano": "2022."
-    },
-    {
-      "id": "groblja_dron",
-      "naziv": "Groblja – snimka dronom (5 cm)",
-      "grupa": "imovina",
-      "tip": "xyz",
-      "izvori": [
-        {
-          "url": "data/groblja/bilje/{z}/{x}/{y}.webp",
-          "extent": [
-            2085591.2,
-            5716885.7,
-            2085896.8,
-            5717210.0
-          ]
-        },
-        {
-          "url": "data/groblja/kopacevo/{z}/{x}/{y}.webp",
-          "extent": [
-            2090891.8,
-            5716525.3,
-            2091195.3,
-            5716946.1
-          ]
-        },
-        {
-          "url": "data/groblja/lug/{z}/{x}/{y}.webp",
-          "extent": [
-            2089357.5,
-            5726110.8,
-            2089819.5,
-            5726364.9
-          ]
-        }
-      ],
-      "minZoom": 15,
-      "maxNativeZoom": 21,
-      "vidljivo": true,
-      "klik": false,
-      "opis": "Detaljna snimka groblja dronom; vidljiva pri uvećanju.",
-      "detaljno": "Groblja u Bilju, Kopačevu i Lugu snimljena su dronom u vrlo visokoj razlučivosti (oko 5 cm po pikselu), tako da se razaznaju pojedinačni grobovi, staze i objekti. Snimka je korisna za održavanje groblja, planiranje proširenja i snalaženje posjetitelja.\n\nSnimka se prikazuje kad se karta dovoljno uveća (od razine ulice naviše). Datoteke snimki izrađene su u ožujku 2022.; za groblje u Vardarcu snimka još ne postoji.\n\nNa snimci nema imena pokojnika ni drugih osobnih podataka; evidencija grobnih mjesta (grobni očevidnik) nije dio javnog portala.",
-      "izvor": "Općina Bilje (snimanje dronom)",
-      "azurirano": "2022.",
-      "atribucija": "Snimka groblja © Općina Bilje"
-    },
-    {
-      "id": "grobna_mjesta_prijedlog",
-      "naziv": "Grobna mjesta – automatski prijedlog",
-      "grupa": "imovina",
-      "tip": "geojson",
-      "url": "data/groblja/grobna_mjesta.geojson",
-      "vidljivo": false,
-      "minZoom": 17,
-      "stil": {
-        "geometrija": "poligon",
-        "boja": "#F1C50E",
-        "debljina": 1.5,
-        "ispunaProzirnost": 0.08
-      },
-      "skocniProzor": {
-        "naslov": "oznaka",
-        "polja": [
-          {
-            "polje": "groblje",
-            "oznaka": "Groblje"
-          },
-          {
-            "polje": "duzina_m",
-            "oznaka": "Duljina (m)"
-          },
-          {
-            "polje": "sirina_m",
-            "oznaka": "Širina (m)"
-          },
-          {
-            "polje": "povrsina_m2",
-            "oznaka": "Površina (m²)"
-          },
-          {
-            "polje": "pouzdanost",
-            "oznaka": "Pouzdanost (0–1)"
-          },
-          {
-            "polje": "izvor",
-            "oznaka": "Izvor"
-          }
-        ]
-      },
-      "opis": "Obrisi grobnih mjesta na grobljima Bilje, Kopačevo i Lug koje je automatski prepoznao računalni model na snimkama dronom – radni prijedlog za grobni katastar.",
-      "detaljno": "Obrise je automatski izdvojio model umjetne inteligencije za segmentaciju slike (Segment Anything, Meta AI) sa snimaka groblja dronom (5 cm). Zadržane su plohe koje po veličini (1,3–9 m²), pravokutnom obliku i boji odgovaraju grobnom mjestu, a uklonjeni su osamljeni objekti izvan redova grobova.\n\nOvo je RADNI PRIJEDLOG, a ne službeni grobni katastar. Najbolje je prepoznat noviji dio groblja u Bilju (velika većina grobnih mjesta); u Kopačevu i osobito u Lugu, gdje su grobovi gusto zbijeni i u sjeni drveća, propušteno je više mjesta; propuštena su ponajviše mjesta bez kamene ploče (zemljani grobovi), a ponegdje je ocrtana samo unutarnja ploča umjesto cijelog okvira ili je kao grob označen dio staze ili cvjetnjak. Prije uporabe obrise treba pregledati i ispraviti u QGIS-u i povezati s grobnim očevidnikom (polje, red, broj).\n\nNa sloju nema imena pokojnika ni korisnika grobnih mjesta.",
-      "izvor": "Snimka: Općina Bilje (dron); obrada: Web GIS Općine Bilje",
-      "azurirano": "studeni 2026."
-    },
-    {
-      "id": "komunalna",
-      "naziv": "Komunalna infrastruktura",
-      "grupa": "imovina",
-      "tip": "geojson",
-      "url": "data/komunalna_infrastruktura.geojson",
-      "vidljivo": false,
-      "stil": {
-        "geometrija": "poligon",
-        "debljina": 1.2,
-        "ispunaProzirnost": 0.45,
-        "kategorije": {
-          "polje": "kategorija",
-          "vrijednosti": {
-            "Nerazvrstane ceste": {
-              "boja": "#ea580c",
-              "oznaka": "Nerazvrstane ceste"
-            },
-            "Javna rasvjeta": {
-              "boja": "#eab308",
-              "oznaka": "Javna rasvjeta (čestice)"
-            },
-            "Javne zelene površine": {
-              "boja": "#16a34a",
-              "oznaka": "Javne zelene površine"
-            },
-            "Građevine i uređaji javne namjene": {
-              "boja": "#7c3aed",
-              "oznaka": "Građevine i uređaji javne namjene"
-            },
-            "Javna parkirališta": {
-              "boja": "#2563eb",
-              "oznaka": "Javna parkirališta"
-            },
-            "Groblja": {
-              "boja": "#6b7280",
-              "oznaka": "Groblja"
-            },
-            "Javno prometne površine bez prometa motornih vozila": {
-              "boja": "#db2777",
-              "oznaka": "Pješačke i druge javne prometne površine"
-            }
-          }
-        }
-      },
-      "skocniProzor": {
-        "naslov": "naziv",
-        "polja": [
-          {
-            "polje": "kategorija",
-            "oznaka": "Vrsta"
-          },
-          {
-            "polje": "ko",
-            "oznaka": "K.o."
-          },
-          {
-            "polje": "kc",
-            "oznaka": "K.č."
-          },
-          {
-            "polje": "povrsina_m2",
-            "oznaka": "Površina / duljina (registar)"
-          },
-          {
-            "polje": "rb",
-            "oznaka": "Redni broj u registru"
-          }
-        ]
-      },
-      "opis": "Nerazvrstane ceste, javne zelene površine, parkirališta, groblja i druga komunalna infrastruktura iz registra općine.",
-      "detaljno": "Prikazane su katastarske čestice iz Registra komunalne infrastrukture Općine Bilje, objavljenog na bilje.hr. Zapisi su automatski povezani s aktualnim katastrom DGU-a preko broja katastarske općine i čestice: od 723 zapisa povezan je 721.\n\nNerazvrstane ceste su lokalne ceste i putovi kojima upravlja općina (ulice, poljski putovi). Za javnu rasvjetu prikazane su čestice na kojima se rasvjeta nalazi, a ne pojedinačne svjetiljke.\n\nPovezivanje s katastrom ponavlja se automatski jednom mjesečno. Izmjene registra unose se u tablicu data/izvori/registar_komunalne_infrastrukture.csv.",
-      "izvor": "Registar komunalne infrastrukture i Registar imovine Općine Bilje (bilje.hr), povezano s katastrom DGU-a",
-      "azurirano": "registar 2026., katastar: mjesečno"
-    },
-    {
-      "id": "imovina_opcine",
-      "naziv": "Imovina općine (nekretnine)",
-      "grupa": "imovina",
-      "tip": "geojson",
-      "url": "data/opcinska_imovina.geojson",
-      "vidljivo": false,
-      "stil": {
-        "geometrija": "poligon",
-        "debljina": 1.5,
-        "ispunaProzirnost": 0.5,
-        "kategorije": {
-          "polje": "skupina",
-          "vrijednosti": {
-            "drustveni": {
-              "boja": "#7c3aed",
-              "oznaka": "Društveni domovi, vrtići, kultura"
-            },
-            "stanovi": {
-              "boja": "#db2777",
-              "oznaka": "Stanovi i kuće za najam"
-            },
-            "poslovni": {
-              "boja": "#2563eb",
-              "oznaka": "Poslovni prostori"
-            },
-            "gradjevinsko": {
-              "boja": "#dc2626",
-              "oznaka": "Neizgrađeno građevinsko zemljište"
-            },
-            "poljoprivredno": {
-              "boja": "#ca8a04",
-              "oznaka": "Poljoprivredno zemljište"
-            },
-            "ostalo": {
-              "boja": "#6b7280",
-              "oznaka": "Ostalo"
-            }
-          }
-        }
-      },
-      "skocniProzor": {
-        "naslov": "naziv",
-        "polja": [
-          {
-            "polje": "vrsta",
-            "oznaka": "Vrsta (registar)"
-          },
-          {
-            "polje": "adresa",
-            "oznaka": "Adresa"
-          },
-          {
-            "polje": "ko",
-            "oznaka": "K.o."
-          },
-          {
-            "polje": "kc",
-            "oznaka": "K.č."
-          },
-          {
-            "polje": "povrsina_m2",
-            "oznaka": "Površina (m²)"
-          },
-          {
-            "polje": "vrijednost_eur",
-            "oznaka": "Vrijednost u registru",
-            "format": "eur"
-          }
-        ]
-      },
-      "opis": "Nekretnine u vlasništvu Općine Bilje prema Registru imovine.",
-      "detaljno": "Nekretnine iz Registra imovine Općine Bilje (stanje 1. 1. 2026.), objavljenog na bilje.hr: društveni domovi, vrtići, stanovi za najam, poslovni prostori, građevinsko i poljoprivredno zemljište. Zapisi su povezani s aktualnim katastrom DGU-a: od 125 zapisa povezano je 120. Za preostalih 5 čestica, uglavnom u poslovnoj zoni, broj čestice se u međuvremenu promijenio ili nije točno upisan.\n\nVrijednost je iznos naveden u registru.\n\nPrikaz pomaže građanima i poduzetnicima da vide koja je imovina općinska (npr. slobodno građevinsko zemljište u poslovnoj zoni), a vijeću da ima pregled imovine na karti.",
-      "izvor": "Registar komunalne infrastrukture i Registar imovine Općine Bilje (bilje.hr), povezano s katastrom DGU-a",
-      "azurirano": "registar 1. 1. 2026., katastar: mjesečno"
     },
     {
       "id": "projekti",

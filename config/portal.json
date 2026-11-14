@@ -19,7 +19,8 @@
       "id": "osm",
       "naziv": "Karta (OpenStreetMap)",
       "tip": "osm",
-      "zadano": true
+      "zadano": true,
+      "kratkiNaziv": "Karta"
     },
     {
       "id": "tk25",
@@ -29,7 +30,8 @@
       "wmsSlojevi": "TK25_NOVI",
       "projekcija": "EPSG:3765",
       "format": "image/png",
-      "atribucija": "© Državna geodetska uprava (TK25)"
+      "atribucija": "© Državna geodetska uprava (TK25)",
+      "kratkiNaziv": "Topografska"
     },
     {
       "id": "dof2021",
@@ -38,7 +40,8 @@
       "url": "https://geoportal.dgu.hr/services/inspire/orthophoto_2021/wms",
       "wmsSlojevi": "OI.OrthoimageCoverage",
       "projekcija": "EPSG:3765",
-      "atribucija": "© Državna geodetska uprava (DOF 2021), otvorena dozvola"
+      "atribucija": "© Državna geodetska uprava (DOF 2021), otvorena dozvola",
+      "kratkiNaziv": "Ortofoto 2021."
     },
     {
       "id": "dof2023",
@@ -47,12 +50,14 @@
       "url": "https://geoportal.dgu.hr/services/inspire/orthophoto_2023/wms",
       "wmsSlojevi": "OI.OrthoimageCoverage",
       "projekcija": "EPSG:3765",
-      "atribucija": "© Državna geodetska uprava (DOF 2023), otvorena dozvola"
+      "atribucija": "© Državna geodetska uprava (DOF 2023), otvorena dozvola",
+      "kratkiNaziv": "Ortofoto 2023."
     },
     {
       "id": "bez",
       "naziv": "Bez podloge",
-      "tip": "prazno"
+      "tip": "prazno",
+      "kratkiNaziv": "Bez podloge"
     }
   ],
   "oPortalu": "Portal je informativnog karaktera i nema pravnu snagu. Za službene podatke (katastar, prostorni planovi) obratite se nadležnim tijelima ili Jedinstvenom upravnom odjelu Općine Bilje. Portal je izrađen volonterski, isključivo s besplatnim alatima otvorenog koda.",
@@ -192,5 +197,93 @@
   "prijave": {
     "supabaseUrl": "https://pwowutilrdhnsygawmsu.supabase.co",
     "supabaseKljuc": "sb_publishable_FA1BEE0oUi6HiqMfK-Ct_Q_REyf6VVG"
-  }
+  },
+  "preklopi": [
+    {
+      "id": "dof_bilje_2020",
+      "naziv": "Snimka naselja dronom 2020. (Općina Bilje)",
+      "tip": "xyz",
+      "izvori": [
+        {
+          "url": "data/podloge/dof_bilje_2020/{z}/{x}/{y}.webp",
+          "extent": [
+            2078090.0,
+            5713520.2,
+            2107534.0,
+            5737808.6
+          ]
+        }
+      ],
+      "maxNativeZoom": 17,
+      "atribucija": "Snimka naselja 2020. © Općina Bilje",
+      "opis": "Ortofoto naselja snimljen dronom 2020. godine (DOF_BILJE_light); pokriva izgrađena područja naselja i lijepi se preko odabrane podloge."
+    }
+  ],
+  "uvijekUkljuceni": [
+    "granica",
+    "naselja"
+  ],
+  "brziPrikazi": [
+    {
+      "id": "gradnja",
+      "naziv": "Gradim kuću",
+      "ikona": "kuca",
+      "opis": "Katastar, građevinska područja, opasnost od poplava i zaštićena priroda",
+      "slojevi": [
+        "katastar",
+        "gradevinska_podrucja",
+        "poplave_sv",
+        "zasticena_podrucja",
+        "bastina_registar"
+      ]
+    },
+    {
+      "id": "poplave",
+      "naziv": "Poplave",
+      "ikona": "val",
+      "opis": "Opasnost od poplava, nasipi i vodostaji",
+      "slojevi": [
+        "poplave_vv",
+        "poplave_sv",
+        "poplave_mv",
+        "nasipi",
+        "hidro_postaje"
+      ]
+    },
+    {
+      "id": "priroda",
+      "naziv": "Priroda i izleti",
+      "ikona": "stablo",
+      "opis": "Zaštićena područja, vidikovci, kupališta, baština i autobus",
+      "slojevi": [
+        "zasticena_podrucja",
+        "tocke_gledista",
+        "kupalista",
+        "kulturna_dobra",
+        "bus_stajalista"
+      ]
+    },
+    {
+      "id": "komunalno",
+      "naziv": "Komunalno",
+      "ikona": "kljuc",
+      "opis": "Prijave mještana, komunalna infrastruktura i imovina općine",
+      "slojevi": [
+        "prijave",
+        "komunalna",
+        "imovina_opcine",
+        "institucije"
+      ]
+    },
+    {
+      "id": "projekti",
+      "naziv": "Projekti",
+      "ikona": "kran",
+      "opis": "Razvojni projekti općine",
+      "slojevi": [
+        "projekti",
+        "institucije"
+      ]
+    }
+  ]
 }

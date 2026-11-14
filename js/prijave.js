@@ -65,7 +65,7 @@
     cfg = portal.prijave;
     if (!cfg || !cfg.supabaseUrl || !cfg.supabaseKljuc || !window.supabase) return;
     if (!konfig.grupe.some(g => g.id === 'prijave')) {
-      konfig.grupe.splice(1, 0, { id: 'prijave', naziv: 'Prijave mještana', otvoreno: true });
+      konfig.grupe.splice(1, 0, { id: 'prijave', naziv: 'Prijave mještana', ikona: 'poruka', otvoreno: false });
     }
     const vrijednosti = {};
     for (const [k, v] of Object.entries(STATUSI)) vrijednosti[k] = { boja: v.boja, oznaka: v.oznaka, simbol: k };

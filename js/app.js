@@ -348,22 +348,119 @@
 
   // ---------- sučelje: podloge i slojevi ----------
 
+
+
+  // ---------- ikone sučelja (vlastiti jednostavni crteži, 24x24, obrub) ----------
+  const IKONE = {
+    karta: 'M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14',
+    poruka: 'M4 5h16v11H9l-5 4z',
+    zgrada: 'M4 21V8l8-5 8 5v13M9 21v-6h6v6M4 21h16',
+    kran: 'M4 21h10M7 21V5l13 3M7 5 4 8m16 0v5m-2 0h4v3h-4z',
+    sestar: 'M12 3v3m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-1 4-5 11m7-11 5 11M7 15h10',
+    val: 'M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0',
+    satelit: 'M13 7 9 3 5 7l4 4m4-4 4 4m-4-4 2-2 4 4-2 2m-8 0 4 4 4-4M9 11l-2 2 4 4 2-2M4 16a4 4 0 0 0 4 4M3 13a8 8 0 0 0 8 8',
+    list: 'M5 19c0-9 5-14 15-14 0 10-5 15-14 15zM5 19 13 11',
+    stup: 'M3 21h18M5 18h14M6 18V9m4 9V9m4 9V9m4 9V9M3 9l9-6 9 6z',
+    autobus: 'M5 17V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v11zM5 12h14M7 17v3m10-3v3M8 14.5h.01M16 14.5h.01',
+    slojevi: 'm12 3 9 5-9 5-9-5zm-9 9 9 5 9-5m-18 4 9 5 9-5',
+    tocke: 'M5 12h.01M12 12h.01M19 12h.01',
+    zatvori: 'M6 6l12 12M18 6 6 18',
+    povuci: 'M9 6h.01M15 6h.01M9 12h.01M15 12h.01M9 18h.01M15 18h.01',
+    plus: 'M12 5v14M5 12h14',
+    info: 'M12 8h.01M11 12h1v5h1M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z',
+    cilj: 'M12 3v3m0 12v3M3 12h3m12 0h3M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z',
+    kuca: 'M3 11 12 4l9 7M5 10v10h14V10M10 20v-6h4v6',
+    stablo: 'M12 21v-6m0 0-4-4m4 4 4-4M12 3a6 6 0 0 0-6 6 6 6 0 0 0 12 0 6 6 0 0 0-6-6z',
+    kljuc: 'M14.7 3.3a5 5 0 0 0-5.9 6.6l-5.5 5.5a1.6 1.6 0 0 0 0 2.3l3 3a1.6 1.6 0 0 0 2.3 0l5.5-5.5a5 5 0 0 0 6.6-5.9l-3 3-2.8-.7-.7-2.8z',
+    strelica: 'm9 6 6 6-6 6'
+  };
+  function ikona(ime, velicina = 18) {
+    const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('width', velicina); s.setAttribute('height', velicina);
+    s.setAttribute('aria-hidden', 'true'); s.setAttribute('class', 'ikona');
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', IKONE[ime] || IKONE.slojevi);
+    p.setAttribute('fill', 'none'); p.setAttribute('stroke', 'currentColor'); p.setAttribute('stroke-width', '1.8');
+    p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
+    s.append(p);
+    return s;
+  }
+
+  // minijaturni prikaz stila sloja (kako izgleda na karti)
+  function uzorakSloja(def) {
+    const stil = def.stil || {};
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 20 20'); svg.setAttribute('width', 20); svg.setAttribute('height', 20);
+    svg.setAttribute('class', 'uzorak'); svg.setAttribute('aria-hidden', 'true');
+    const dodaj = (ime, attrs) => { const e = document.createElementNS(NS, ime); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); svg.append(e); };
+    const kat = stil.kategorije ? Object.values(stil.kategorije.vrijednosti) : [];
+    const boje = kat.length ? kat.map(k => k.boja).slice(0, 3) : [stil.boja || stil.rub || '#2563eb'];
+    const geom = stil.geometrija;
+    const sim = kat.find(k => k.simbol) || (stil.simbol ? { simbol: stil.simbol, boja: boje[0] } : null);
+    if (geom === 'tocka' && sim && SIMBOLI[sim.simbol]) {
+      return el('img', { class: 'uzorak', src: svgSimbola(sim.simbol, sim.boja), alt: '', width: 20, height: 20 });
+    }
+    if (!def.stil) {
+      // rasterski sloj (WMS, snimka): mali "mozaik"
+      dodaj('rect', { x: 2, y: 2, width: 16, height: 16, rx: 4, fill: '#d9e3d0' });
+      dodaj('path', { d: 'M2 13c3-3 6-3 9 0s5 2 7-1v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z', fill: '#8fb07a' });
+      dodaj('circle', { cx: 13.5, cy: 6.5, r: 2, fill: '#f1c50e' });
+    } else if (geom === 'tocka') {
+      if (kat.length > 1) boje.forEach((b, i) => dodaj('circle', { cx: 5 + i * 5, cy: 10 + (i % 2 ? -3 : 3), r: 3.6, fill: b, stroke: '#fff', 'stroke-width': 1.2 }));
+      else dodaj('circle', { cx: 10, cy: 10, r: 5, fill: boje[0], stroke: '#fff', 'stroke-width': 1.5 });
+    } else if (geom === 'linija') {
+      boje.forEach((b, i) => dodaj('path', { d: `M2 ${14 - i * 4}c4-6 8 2 16-4`, fill: 'none', stroke: b, 'stroke-width': stil.debljina > 2 ? 3 : 2.2,
+        'stroke-dasharray': stil.isprekidano ? '3 2.5' : 'none', 'stroke-linecap': 'round' }));
+    } else {
+      if (kat.length > 1) boje.forEach((b, i) => dodaj('rect', { x: 2 + i * 5, y: 2 + i * 5, width: 10, height: 10, rx: 2.5, fill: b, 'fill-opacity': .55, stroke: b, 'stroke-width': 1.2 }));
+      else dodaj('rect', { x: 3, y: 3, width: 14, height: 14, rx: 3.5, fill: boje[0], 'fill-opacity': Math.max(stil.ispunaProzirnost ?? .25, .12),
+        stroke: boje[0], 'stroke-width': 1.6, 'stroke-dasharray': stil.isprekidano ? '3 2' : 'none' });
+    }
+    return svg;
+  }
+
+  // ---------- podloga: plutajući prebacivač u kutu karte ----------
+
+  function sličicaPodloge(def) {
+    // mali pregled oko središta Bilja, učitan izravno sa servisa
+    if (def.tip === 'osm') {
+      const z = 13, lon = 18.745, lat = 45.606, n = 2 ** z;
+      const x = Math.floor((lon + 180) / 360 * n);
+      const y = Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * n);
+      return 'https://tile.openstreetmap.org/' + z + '/' + x + '/' + y + '.png';
+    }
+    if (def.tip === 'wms') {
+      const p = new URLSearchParams({ SERVICE: 'WMS', VERSION: '1.3.0', REQUEST: 'GetMap', LAYERS: def.wmsSlojevi, STYLES: '',
+        FORMAT: def.format || 'image/jpeg', CRS: def.projekcija || 'EPSG:3765', WIDTH: 128, HEIGHT: 128,
+        BBOX: def.projekcija === 'EPSG:3857' ? '2085800,5716400,2087800,5718400' : '673700,5052600,675700,5054600' });
+      return def.url + '?' + p;
+    }
+    return null;
+  }
+
   function postaviPodlogu(idPodloge) {
     if (!stanje.podloge[idPodloge]) return;
     for (const [id, s] of Object.entries(stanje.podloge)) s.setVisible(id === idPodloge);
-    const r = document.querySelector('input[name=podloga][value="' + idPodloge + '"]');
-    if (r) r.checked = true;
     stanje.podloga = idPodloge;
+    for (const g of document.querySelectorAll('[data-podloga]')) g.classList.toggle('aktivna', g.dataset.podloga === idPodloge);
+    const def = stanje.portal.podloge.find(p => p.id === idPodloge);
+    const gumb = document.getElementById('gumbPodloga');
+    if (gumb && def) {
+      const sl = sličicaPodloge(def);
+      gumb.querySelector('.slicica').style.backgroundImage = sl ? 'url("' + sl + '")' : 'none';
+      gumb.querySelector('.naziv-podloge').textContent = def.kratkiNaziv || def.naziv;
+    }
   }
 
   function prikaziPodloge() {
-    const div = document.getElementById('podloge');
+    const okvir = el('div', { class: 'podloga-izbornik', id: 'podlogaIzbornik', hidden: true, role: 'dialog', 'aria-label': 'Odabir podloge' });
+    const mreza = el('div', { class: 'podloga-mreza' });
     for (const def of stanje.portal.podloge) {
-      const unos = el('input', {
-        type: 'radio', name: 'podloga', value: def.id, checked: !!def.zadano,
-        onchange: () => postaviPodlogu(def.id)
-      });
-      div.append(el('label', {}, unos, def.naziv));
+      const sl = sličicaPodloge(def);
+      mreza.append(el('button', { class: 'podloga-plocica', 'data-podloga': def.id, title: def.naziv, onclick: () => postaviPodlogu(def.id) },
+        el('span', { class: 'slicica' + (sl ? '' : ' prazna'), style: sl ? 'background-image:url("' + sl + '")' : '' }),
+        el('span', {}, def.kratkiNaziv || def.naziv)));
     }
     // intenzitet i crno-bijeli prikaz podloge (da se slojevi bolje vide)
     const klizac = el('input', { type: 'range', min: 15, max: 100, step: 5, value: Math.round(stanje.intenzitetPodloge * 100),
@@ -371,7 +468,7 @@
       oninput: (e) => { stanje.intenzitetPodloge = e.target.value / 100; postaviIzgledPodloge(); spremiPostavku('intenzitet', stanje.intenzitetPodloge); } });
     const siva = el('input', { type: 'checkbox', checked: stanje.sivaPodloga,
       onchange: (e) => { stanje.sivaPodloga = e.target.checked; postaviIzgledPodloge(); spremiPostavku('siva', stanje.sivaPodloga); } });
-    // dodatne snimke koje se lijepe preko odabrane podloge (npr. DOF_BILJE_light, snimke dronom)
+    // dodatne snimke koje se lijepe preko odabrane podloge (npr. DOF Bilje 2020, snimke dronom)
     const preklopi = (stanje.portal.preklopi || []).map(def => {
       const sloj = napraviOlSloj(Object.assign({ tip: 'xyz' }, def, { vidljivo: false }));
       sloj.setZIndex(-50);
@@ -381,50 +478,208 @@
         sloj.setVisible(e.target.checked);
         if (e.target.checked) pribliziSloju(def, sloj);
       } });
-      return el('label', { class: 'kvacica', title: def.opis || '' }, kv, def.naziv);
+      return el('label', { class: 'prekidac-red', title: def.opis || '' }, el('span', {}, def.naziv), kv);
     });
-    div.parentElement.append(el('div', { class: 'postavke-podloge' },
-      ...(preklopi.length ? [el('div', { class: 'preklopi' }, el('span', { class: 'sitno-siva' }, 'Preko podloge:'), ...preklopi)] : []),
-      el('label', { class: 'klizac' }, el('span', {}, 'Intenzitet podloge'), klizac),
-      el('label', { class: 'kvacica' }, siva, 'Crno-bijela podloga')));
+    okvir.append(el('div', { class: 'podloga-naslov' }, 'Podloga'), mreza,
+      ...(preklopi.length ? [el('div', { class: 'podloga-naslov' }, 'Preko podloge'), ...preklopi] : []),
+      el('div', { class: 'podloga-naslov' }, 'Izgled'),
+      el('label', { class: 'klizac' }, el('span', {}, 'Jačina podloge'), klizac),
+      el('label', { class: 'prekidac-red' }, el('span', {}, 'Crno-bijela podloga'), siva));
+    const gumb = el('button', { id: 'gumbPodloga', class: 'gumb-podloga', 'aria-expanded': 'false', 'aria-controls': 'podlogaIzbornik',
+      title: 'Promijeni podlogu', onclick: (e) => {
+        e.stopPropagation();
+        okvir.hidden = !okvir.hidden;
+        gumb.setAttribute('aria-expanded', String(!okvir.hidden));
+      } },
+      el('span', { class: 'slicica' }), el('span', { class: 'naziv-podloge' }), ikona('slojevi', 14));
+    const omot = el('div', { class: 'podloga-prekidac' }, okvir, gumb);
+    document.body.append(omot);
+    document.addEventListener('click', (e) => { if (!omot.contains(e.target)) { okvir.hidden = true; gumb.setAttribute('aria-expanded', 'false'); } });
+    postaviPodlogu(stanje.podloga || (stanje.portal.podloge.find(p => p.zadano) || stanje.portal.podloge[0]).id);
   }
+
+  // ---------- slojevi: aktivni na vrhu, grupe po namjeni, cijeli redak je prekidač ----------
 
   function prikaziSlojeve() {
     const div = document.getElementById('slojevi');
+    const filtar = document.getElementById('filtarSlojeva');
+    const zapisiGrupa = [];
+
     for (const grupa of stanje.konfig.grupe) {
-      const det = el('details', { class: 'grupa', open: grupa.otvoreno !== false },
-        el('summary', {}, grupa.naziv));
-      const slojeviGrupe = stanje.konfig.slojevi.filter(s => s.grupa === grupa.id);
+      const slojeviGrupe = stanje.konfig.slojevi.filter(s => s.grupa === grupa.id && stanje.slojevi[s.id]);
+      if (!slojeviGrupe.length) continue;
+      const brojac = el('span', { class: 'brojac' });
+      const sadrzaj = el('div', { class: 'grupa-sadrzaj' });
+      const omot = el('div', { class: 'grupa-omot' }, sadrzaj);
+      const zaglavlje = el('button', { class: 'grupa-zaglavlje', 'aria-expanded': 'false' },
+        el('span', { class: 'grupa-ikona' }, ikona(grupa.ikona)), el('span', { class: 'grupa-naziv' }, grupa.naziv), brojac,
+        el('span', { class: 'chevron' }, ikona('strelica', 16)));
+      const blok = el('section', { class: 'grupa' }, zaglavlje, omot);
+      const otvori = (v) => { blok.classList.toggle('otvorena', v); zaglavlje.setAttribute('aria-expanded', String(v)); };
+      zaglavlje.addEventListener('click', () => otvori(!blok.classList.contains('otvorena')));
+      otvori(!!grupa.otvoreno);
+
+      let podgrupa = null;
+      const redovi = [];
       for (const def of slojeviGrupe) {
-        const zapis = stanje.slojevi[def.id];
-        if (!zapis) continue;
-        const legenda = napraviLegendu(def);
-        // legenda se prikazuje samo dok je sloj uključen
-        if (legenda) legenda.hidden = !def.vidljivo;
-        const kvacica = el('input', {
-          type: 'checkbox', checked: !!def.vidljivo,
-          onchange: (e) => {
-            zapis.olSloj.setVisible(e.target.checked);
-            if (legenda) legenda.hidden = !e.target.checked;
-            zatvoriSkocni();
-            if (e.target.checked) pribliziSloju(def, zapis.olSloj);
-          }
-        });
-        zapis.postaviVidljivost = (v) => {
-          kvacica.checked = v;
-          zapis.olSloj.setVisible(v);
-          if (legenda) legenda.hidden = !v;
-          // otvori grupu da se uključeni sloj vidi u panelu
-          if (v) det.open = true;
-        };
-        const red = el('div', { class: 'sloj-red' },
-          el('label', {}, kvacica, el('span', {}, def.naziv,
-            def.minZoom ? el('span', { class: 'napomena' }, ' (uvećajte kartu)') : null)),
-          el('button', { class: 'gumb-info', title: 'Podaci o sloju', 'aria-label': 'Podaci o sloju ' + def.naziv,
-            onclick: () => prikaziMetapodatke(def) }, 'i'));
-        det.append(el('div', { class: 'sloj' }, red, legenda));
+        if (def.podgrupa && def.podgrupa !== podgrupa) {
+          podgrupa = def.podgrupa;
+          sadrzaj.append(el('div', { class: 'podgrupa' }, podgrupa));
+        }
+        const r = napraviRedSloja(def, () => otvori(true), osvjeziBrojac);
+        redovi.push(r);
+        sadrzaj.append(r.element);
       }
-      div.append(det);
+      function osvjeziBrojac() {
+        const n = redovi.filter(r => r.ukljucen()).length;
+        brojac.textContent = n ? String(n) : '';
+        brojac.hidden = !n;
+      }
+      osvjeziBrojac();
+      zapisiGrupa.push({ blok, redovi, otvori, sadrzaj });
+      div.append(blok);
+    }
+
+    // traženje sloja po nazivu
+    if (filtar) filtar.addEventListener('input', () => {
+      const q = normalizirajTekst(filtar.value.trim());
+      for (const g of zapisiGrupa) {
+        let ima = 0;
+        for (const r of g.redovi) { const ok = !q || r.trazi.includes(q); r.element.hidden = !ok; if (ok) ima++; }
+        for (const pg of g.sadrzaj.querySelectorAll('.podgrupa')) pg.hidden = !!q;
+        g.blok.hidden = !ima;
+        if (q) g.otvori(true);
+      }
+    });
+    prikaziBrzePrikaze();
+    osvjeziAktivne();
+  }
+
+  function normalizirajTekst(t) {
+    return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
+  }
+
+  function napraviRedSloja(def, otvoriGrupu, osvjeziBrojac) {
+    const zapis = stanje.slojevi[def.id];
+    const legenda = napraviLegendu(def);
+    const kategorije = def.stil && def.stil.kategorije;
+    // legenda s kategorijama (i kvačicama) vidi se uz uključen sloj; ostalo je u izborniku •••
+    const legendaUz = legenda && kategorije ? legenda : null;
+    const detalji = el('div', { class: 'sloj-detalji', hidden: true });
+    const red = el('div', { class: 'sloj-red', role: 'switch', tabindex: '0', 'aria-checked': 'false' },
+      uzorakSloja(def),
+      el('span', { class: 'sloj-naziv' }, def.naziv, def.minZoom ? el('span', { class: 'napomena' }, 'vidljivo pri uvećanju') : null),
+      el('button', { class: 'gumb-vise', title: 'Više o sloju', 'aria-label': 'Više o sloju ' + def.naziv,
+        onclick: (e) => { e.stopPropagation(); otvoriDetalje(); } }, ikona('tocke', 18)));
+    const element = el('div', { class: 'sloj', 'data-sloj': def.id }, red, legendaUz || '', detalji);
+
+    function otvoriDetalje() {
+      if (!detalji.hidden) { detalji.hidden = true; element.classList.remove('detalji'); return; }
+      const prozirnost = el('input', { type: 'range', min: 10, max: 100, step: 5, value: Math.round(zapis.olSloj.getOpacity() * 100),
+        'aria-label': 'Neprozirnost sloja', oninput: (e) => zapis.olSloj.setOpacity(e.target.value / 100) });
+      detalji.replaceChildren(
+        el('label', { class: 'klizac' }, el('span', {}, 'Neprozirnost'), prozirnost),
+        el('div', { class: 'detalji-gumbi' },
+          el('button', { class: 'gumb-mali', onclick: () => { postavi(true); pribliziSloju(Object.assign({}, def), zapis.olSloj, true); } }, ikona('cilj', 14), ' Približi'),
+          el('button', { class: 'gumb-mali', onclick: () => prikaziMetapodatke(def) }, ikona('info', 14), ' O sloju')),
+        legenda && !kategorije ? legenda : '');
+      if (legenda && !kategorije) legenda.hidden = false;
+      detalji.hidden = false;
+      element.classList.add('detalji');
+    }
+
+    function postavi(v, priblizi) {
+      zapis.olSloj.setVisible(v);
+      element.classList.toggle('ukljucen', v);
+      red.setAttribute('aria-checked', String(v));
+      if (legendaUz) legendaUz.hidden = !v;
+      if (v) otvoriGrupu();
+      osvjeziBrojac();
+      osvjeziAktivne();
+      if (v && priblizi) pribliziSloju(def, zapis.olSloj);
+    }
+    const prebaci = () => { zatvoriSkocni(); postavi(!zapis.olSloj.getVisible(), true); oznaciBrziPrikaz(); };
+    red.addEventListener('click', prebaci);
+    red.addEventListener('keydown', (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); prebaci(); } });
+
+    zapis.postaviVidljivost = (v) => postavi(v, false);
+    zapis.def = def;
+    // početno stanje (bez približavanja)
+    element.classList.toggle('ukljucen', !!def.vidljivo);
+    red.setAttribute('aria-checked', String(!!def.vidljivo));
+    if (legendaUz) legendaUz.hidden = !def.vidljivo;
+    return {
+      element, ukljucen: () => zapis.olSloj.getVisible(),
+      trazi: normalizirajTekst(def.naziv + ' ' + (def.opis || '') + ' ' + (def.podgrupa || ''))
+    };
+  }
+
+  // "Na karti": svi uključeni slojevi na jednom mjestu; povlačenjem se mijenja redoslijed (što je gore, crta se iznad)
+  function osvjeziAktivne() {
+    const okvir = document.getElementById('aktivniSlojevi');
+    if (!okvir) return;
+    const aktivni = Object.entries(stanje.slojevi)
+      .filter(([, z]) => z.def && z.olSloj.getVisible())
+      .sort((a, b) => b[1].olSloj.getZIndex() - a[1].olSloj.getZIndex());
+    okvir.hidden = !aktivni.length;
+    const popis = el('div', { class: 'aktivni-popis' });
+    for (const [id, z] of aktivni) {
+      const stavka = el('div', { class: 'aktivni-stavka', draggable: 'true', 'data-id': id },
+        el('span', { class: 'rucka', title: 'Povucite za promjenu redoslijeda' }, ikona('povuci', 14)),
+        uzorakSloja(z.def), el('span', { class: 'aktivni-naziv', title: z.def.naziv }, z.def.naziv),
+        el('button', { class: 'gumb-ukloni', title: 'Isključi', 'aria-label': 'Isključi sloj ' + z.def.naziv,
+          onclick: () => { z.postaviVidljivost(false); oznaciBrziPrikaz(); } }, ikona('zatvori', 14)));
+      stavka.addEventListener('dragstart', (e) => { e.dataTransfer.setData('text/plain', id); stavka.classList.add('vuce'); });
+      stavka.addEventListener('dragend', () => stavka.classList.remove('vuce'));
+      stavka.addEventListener('dragover', (e) => { e.preventDefault(); stavka.classList.add('cilj'); });
+      stavka.addEventListener('dragleave', () => stavka.classList.remove('cilj'));
+      stavka.addEventListener('drop', (e) => {
+        e.preventDefault(); stavka.classList.remove('cilj');
+        const izvor = e.dataTransfer.getData('text/plain');
+        if (!izvor || izvor === id) return;
+        const red = aktivni.map(([i]) => i).filter(i => i !== izvor);
+        red.splice(red.indexOf(id), 0, izvor);
+        // novi redoslijed: prvi u popisu ima najveći z-index
+        const z0 = Math.max(...aktivni.map(([, x]) => x.olSloj.getZIndex()));
+        red.forEach((i, n) => stanje.slojevi[i].olSloj.setZIndex(z0 + 1 + (red.length - n)));
+        osvjeziAktivne();
+      });
+      popis.append(stavka);
+    }
+    okvir.replaceChildren(
+      el('div', { class: 'aktivni-zaglavlje' }, el('span', {}, 'Na karti'), el('span', { class: 'brojac' }, String(aktivni.length)),
+        el('button', { class: 'gumb-tekst-mali', onclick: () => {
+          for (const [, z] of aktivni) z.postaviVidljivost(false);
+          oznaciBrziPrikaz();
+        } }, 'Isključi sve')),
+      popis);
+  }
+
+  // brzi prikazi: unaprijed složeni skupovi slojeva za česta pitanja mještana
+  function prikaziBrzePrikaze() {
+    const okvir = document.getElementById('brziPrikazi');
+    const prikazi = (stanje.portal.brziPrikazi || []).filter(p => p.slojevi.some(id => stanje.slojevi[id]));
+    if (!okvir || !prikazi.length) return;
+    okvir.hidden = false;
+    okvir.replaceChildren(...prikazi.map(p => el('button', { class: 'brzi-prikaz', 'data-prikaz': p.id, title: p.opis || '',
+      onclick: () => {
+        const ukljuci = new Set([...(stanje.portal.uvijekUkljuceni || []), ...p.slojevi]);
+        for (const [id, z] of Object.entries(stanje.slojevi)) if (z.postaviVidljivost) z.postaviVidljivost(ukljuci.has(id));
+        zatvoriSkocni();
+        oznaciBrziPrikaz();
+        if (p.prikaz) stanje.karta.getView().animate({ center: ol.proj.fromLonLat(p.prikaz.centar), zoom: p.prikaz.zoom, duration: 600 });
+        else if (stanje.granicaExtent) stanje.karta.getView().fit(stanje.granicaExtent, { padding: [30, 30, 30, 30], duration: 600 });
+      } }, ikona(p.ikona, 16), el('span', {}, p.naziv))));
+    oznaciBrziPrikaz();
+  }
+
+  function oznaciBrziPrikaz() {
+    const ukljuceni = new Set(Object.entries(stanje.slojevi).filter(([, z]) => z.def && z.olSloj.getVisible()).map(([id]) => id));
+    for (const p of stanje.portal.brziPrikazi || []) {
+      const g = document.querySelector('[data-prikaz="' + p.id + '"]');
+      if (!g) continue;
+      const ocekivano = new Set([...(stanje.portal.uvijekUkljuceni || []), ...p.slojevi].filter(id => stanje.slojevi[id]));
+      g.classList.toggle('aktivan', ocekivano.size === ukljuceni.size && [...ocekivano].every(id => ukljuceni.has(id)));
     }
   }
 
@@ -451,7 +706,7 @@
     return Promise.resolve(stanje.granicaExtent ? [stanje.granicaExtent] : []);
   }
 
-  async function pribliziSloju(def, sloj) {
+  async function pribliziSloju(def, sloj, uvijek) {
     const obuhvati = await obuhvatiSloja(def, sloj);
     if (!obuhvati.length || !sloj.getVisible()) return;
     const view = stanje.karta.getView();
@@ -463,7 +718,7 @@
     const premalen = povrsina(ukupno) < 0.01 * povrsina(prikaz);
     const minZ = def.minZoom;
     const premaloUvecano = minZ !== undefined && view.getZoom() < minZ;
-    if (udioVidljivo >= 0.5 && !premalen && !premaloUvecano) return;
+    if (!uvijek && udioVidljivo >= 0.5 && !premalen && !premaloUvecano) return;
 
     const sredina = view.getCenter();
     let cilj = ukupno;
@@ -960,7 +1215,8 @@
     const obradene = (cfg.nepogode || []).filter(n => n.status === 'obradeno' && n.rezultati);
     if (!obradene.length) return;
     if (!konfig.grupe.some(g => g.id === 'nepogode')) {
-      konfig.grupe.splice(1, 0, { id: 'nepogode', naziv: 'Elementarne nepogode i poplave', otvoreno: false });
+      const iza = konfig.grupe.findIndex(g => g.id === 'poplave');
+      konfig.grupe.splice(iza >= 0 ? iza + 1 : konfig.grupe.length, 0, { id: 'nepogode', naziv: 'Nepogode iz satelita', ikona: 'satelit', otvoreno: false });
     }
     const stavkeLokacije = [];
     for (const n of obradene) {
@@ -1125,10 +1381,11 @@
 
     // panel, dijalog, "O portalu"
     document.getElementById('gumbPanel').addEventListener('click', () => {
-      document.getElementById('panel').classList.toggle('skriven');
+      const skriven = document.getElementById('panel').classList.toggle('skriven');
+      document.body.classList.toggle('panel-skriven', skriven);
       setTimeout(() => karta.updateSize(), 50);
     });
-    if (window.innerWidth <= 720) document.getElementById('panel').classList.add('skriven');
+    if (window.innerWidth <= 720) { document.getElementById('panel').classList.add('skriven'); document.body.classList.add('panel-skriven'); }
     const dijalog = document.getElementById('dijalog');
     dijalog.querySelector('.zatvori').addEventListener('click', () => dijalog.close());
     const gumbPodijeli = document.getElementById('gumbPodijeli');
