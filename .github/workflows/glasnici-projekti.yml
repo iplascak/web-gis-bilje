@@ -1,0 +1,31 @@
+name: Projekti iz službenih glasnika
+
+# Čita tekst glasnika iz artefakta zadnje radnje "Službeni glasnici" i ispisuje popis
+# kapitalnih/tekućih projekata (šifra, naziv, godine, iznosi) u zapisnik radnje.
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "ID radnje glasnici.yml s artefaktom glasnici-tekst"
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  projekti:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: scripts/glasnici
+      - uses: actions/download-artifact@v4
+        with:
+          name: glasnici-tekst
+          path: glasnici_tekst
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: ls glasnici_tekst | wc -l; ls glasnici_tekst
+      - run: python3 scripts/glasnici/projekti.py glasnici_tekst
