@@ -102,7 +102,7 @@ def obradi(url, oznaka, proba=False):
         sifra = str(pr.get(p_vr, "") or "").split(".")[0] if p_vr else ""
         pov = pr.get(p_pov) if p_pov else None
         try:
-            pov = round(float(pov) / (10000 if float(pov) > 500 else 1), 2)
+            pov = round(float(pov) / 10000, 4)  # APPRRR polje "area" je u m²
         except (TypeError, ValueError):
             pov = None
         znacajke.append({"type": "Feature", "geometry": f["geometry"],

@@ -1,0 +1,204 @@
+{
+"2013": {
+"parcela": 1864,
+"ha": {
+"oranica": 5799.4,
+"voćnjak": 89.9,
+"staklenik na oranici": 4.3,
+"livada": 3.6,
+"vrsta 424": 2.7,
+"vinograd": 0.5,
+"pašnjak": 0.4,
+"ostalo": 0.3
+},
+"navodnjavano_ha": 9.5
+},
+"2014": {
+"parcela": 1867,
+"ha": {
+"oranica": 5826.5,
+"voćnjak": 90.1,
+"staklenik na oranici": 4.3,
+"vrsta 424": 2.7,
+"livada": 1.9,
+"vinograd": 0.5,
+"pašnjak": 0.4,
+"ostalo": 0.3
+},
+"navodnjavano_ha": 9.6
+},
+"2015": {
+"parcela": 1853,
+"ha": {
+"oranica": 5921.2,
+"voćnjak": 114.3,
+"staklenik na oranici": 4.0,
+"livada": 1.7,
+"pašnjak": 0.4,
+"ostalo": 0.3
+},
+"navodnjavano_ha": 9.5
+},
+"2016": {
+"parcela": 1912,
+"ha": {
+"oranica": 5947.0,
+"voćnjak": 57.7,
+"pašnjak": 4.5,
+"staklenik na oranici": 4.2,
+"livada": 2.5,
+"ostalo": 0.5,
+"vinograd": 0.4,
+"mješoviti trajni nasadi": 0.1
+},
+"navodnjavano_ha": 8.8
+},
+"2017": {
+"parcela": 1955,
+"ha": {
+"oranica": 6022.1,
+"voćnjak": 57.6,
+"pašnjak": 4.5,
+"staklenik na oranici": 4.1,
+"livada": 2.8,
+"mješoviti trajni nasadi": 0.8,
+"ostalo": 0.5,
+"ostale trajne kulture": 0.0
+},
+"navodnjavano_ha": 8.2
+},
+"2018": {
+"parcela": 2000,
+"ha": {
+"oranica": 6029.0,
+"voćnjak": 56.6,
+"pašnjak": 4.2,
+"staklenik na oranici": 3.8,
+"livada": 2.5,
+"ostalo": 1.1,
+"privremeno neodržavano": 1.1,
+"mješoviti trajni nasadi": 0.9,
+"ostale trajne kulture": 0.4
+},
+"navodnjavano_ha": 8.0
+},
+"2019": {
+"parcela": 2002,
+"ha": {
+"oranica": 5916.8,
+"voćnjak": 59.5,
+"pašnjak": 9.1,
+"staklenik na oranici": 4.0,
+"livada": 1.8,
+"mješoviti trajni nasadi": 1.4,
+"privremeno neodržavano": 1.1,
+"ostalo": 0.9,
+"ostale trajne kulture": 0.4
+},
+"navodnjavano_ha": 8.2
+},
+"2020": {
+"parcela": 2046,
+"ha": {
+"oranica": 5761.4,
+"pašnjak": 219.4,
+"voćnjak": 67.6,
+"livada": 16.3,
+"staklenik na oranici": 4.1,
+"mješoviti trajni nasadi": 1.4,
+"ostalo": 0.6,
+"privremeno neodržavano": 0.6,
+"ostale trajne kulture": 0.3
+},
+"navodnjavano_ha": 8.1
+},
+"2021": {
+"parcela": 2083,
+"ha": {
+"oranica": 5911.0,
+"pašnjak": 68.7,
+"voćnjak": 68.3,
+"livada": 16.8,
+"staklenik na oranici": 4.2,
+"mješoviti trajni nasadi": 1.9,
+"ostalo": 1.1,
+"privremeno neodržavano": 0.6,
+"ostale trajne kulture": 0.3
+},
+"navodnjavano_ha": 7.9
+},
+"2022": {
+"parcela": 2067,
+"ha": {
+"oranica": 5909.8,
+"voćnjak": 71.7,
+"pašnjak": 65.7,
+"livada": 17.6,
+"privremeno neodržavano": 16.0,
+"staklenik na oranici": 4.5,
+"mješoviti trajni nasadi": 3.8,
+"ostalo": 0.9,
+"ostale trajne kulture": 0.3
+},
+"navodnjavano_ha": 7.8
+},
+"2023": {
+"parcela": 2052,
+"ha": {
+"oranica": 5928.3,
+"pašnjak": 66.8,
+"voćnjak": 42.8,
+"privremeno neodržavano": 18.6,
+"livada": 13.5,
+"staklenik na oranici": 4.6,
+"mješoviti trajni nasadi": 4.2,
+"ostalo": 1.9,
+"ostale trajne kulture": 0.3
+},
+"navodnjavano_ha": 4.1
+},
+"2024": {
+"parcela": 1944,
+"ha": {
+"oranica": 5807.2,
+"pašnjak": 66.5,
+"voćnjak": 42.4,
+"livada": 15.0,
+"privremeno neodržavano": 6.8,
+"staklenik na oranici": 4.3,
+"ostalo": 4.0,
+"ostale trajne kulture": 0.4,
+"vinograd": 0.1
+},
+"navodnjavano_ha": 3.7
+},
+"2025": {
+"parcela": 1992,
+"ha": {
+"oranica": 5879.7,
+"livada": 71.8,
+"voćnjak": 38.7,
+"pašnjak": 21.9,
+"privremeno neodržavano": 16.7,
+"staklenik na oranici": 4.3,
+"ostalo": 3.5,
+"ostale trajne kulture": 0.6,
+"vinograd": 0.1
+},
+"navodnjavano_ha": 3.6
+},
+"trenutno": {
+"parcela": 1939,
+"ha": {
+"oranica": 5897.2,
+"livada": 46.0,
+"voćnjak": 35.9,
+"pašnjak": 21.4,
+"privremeno neodržavano": 14.8,
+"staklenik na oranici": 4.1,
+"ostalo": 3.0,
+"ostale trajne kulture": 0.4
+},
+"navodnjavano_ha": 3.4
+}
+}
