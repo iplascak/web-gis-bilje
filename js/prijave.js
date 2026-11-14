@@ -99,6 +99,10 @@
     stanje = s;
     el = s.api.el;
     s.akcije.prijava = () => zapocniPrijavu();
+    s.akcije.prijavaZaObjekt = (objekt, koord) => {
+      const kreni = () => obrazacPrijave(koord, objekt);
+      if (!korisnik) prijavaKorisnika(kreni); else kreni();
+    };
     sb = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseKljuc, {
       auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
     });
@@ -212,7 +216,7 @@
     });
   }
 
-  function obrazacPrijave(koord) {
+  function obrazacPrijave(koord, objekt) {
     const [lon, lat] = ol.proj.toLonLat(koord);
     const adresa = stanje.api.najblizaAdresa(koord);
     const kategorija = el('select', { required: true },
@@ -220,6 +224,10 @@
       ...Object.entries(KATEGORIJE).map(([k, v]) => el('option', { value: k }, v)));
     const opis = el('textarea', { required: true, minlength: 5, maxlength: 2000, rows: 4,
       placeholder: 'Što je problem? Npr. "Ne radi ulična svjetiljka ispred kućnog broja 12."' });
+    if (objekt) {
+      kategorija.value = objekt.vrsta === 'svjetiljka' ? 'rasvjeta' : 'komunalna_oprema';
+      opis.value = (objekt.vrsta === 'svjetiljka' ? 'Ne svijetli svjetiljka' : 'Kvar: ' + objekt.vrsta) + (objekt.oznaka ? ' br. ' + objekt.oznaka : '') + (objekt.ulica ? ', ' + objekt.ulica : '') + '. ';
+    }
     const foto = el('input', { type: 'file', accept: 'image/*' });
     const privola = el('input', { type: 'checkbox', required: true });
     const status = el('div');
@@ -237,11 +245,14 @@
           const { error } = await sb.storage.from('prijave-foto').upload(putanja, blob, { contentType: 'image/jpeg' });
           if (error) throw error;
         }
-        const { data, error } = await sb.from('prijave').insert({
+        const zapis = {
           kategorija: kategorija.value, opis: opis.value.trim(),
           lon: +lon.toFixed(6), lat: +lat.toFixed(6),
           adresa: adresa ? adresa.tekst : null, fotografija: putanja, kontakt_email: korisnik.email
-        }).select('id').single();
+        };
+        if (objekt && objekt.id) zapis.objekt_id = objekt.id;
+        let { data, error } = await sb.from('prijave').insert(zapis).select('id').single();
+        if (error && /objekt_id/.test(error.message || '')) { delete zapis.objekt_id; ({ data, error } = await sb.from('prijave').insert(zapis).select('id').single()); }
         if (error) throw error;
         stanje.api.otvoriDijalog(
           el('h3', {}, 'Hvala! Prijava je zaprimljena.'),

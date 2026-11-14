@@ -703,3 +703,9 @@ button { font-family: inherit; }
 .moja-parcela { border-top: 1px solid rgba(127,127,127,.2); padding-top: 10px; margin-top: 10px; }
 .moja-zaglavlje { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
 .moja-zaglavlje strong { flex: 1; }
+.dog-popis { display: flex; flex-direction: column; gap: 10px; }
+.dog-stavka { display: flex; gap: 12px; align-items: flex-start; }
+.dog-datum { flex: 0 0 52px; text-align: center; border-left: 4px solid; padding: 2px 0 2px 6px; }
+.dog-datum b { display: block; font-size: 20px; } .dog-datum span { font-size: 12px; text-transform: uppercase; color: var(--tekst-2); }
+.dog-tekst { flex: 1; } .dog-tekst .redak-gumba { margin-top: 4px; }
+.kvacica { display: flex; gap: 6px; align-items: center; margin: 6px 0; }

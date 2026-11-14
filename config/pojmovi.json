@@ -49,6 +49,43 @@
   },
   {
    "pojmovi": [
+    "dogad",
+    "manifestac",
+    "koncert",
+    "festival",
+    "sajam",
+    "priredb",
+    "zatvoren",
+    "radovi na cesti",
+    "kalendar"
+   ],
+   "naslov": "Događanja i radovi",
+   "opis": "manifestacije, sport, kultura, zatvorene ceste",
+   "akcija": "dogadjanja",
+   "slojevi": [
+    "dogadjanja"
+   ]
+  },
+  {
+   "pojmovi": [
+    "svjetiljk",
+    "stup rasvjete",
+    "klupa",
+    "hidrant",
+    "defibrilator",
+    "aed",
+    "javna slavina",
+    "punionic",
+    "igralo"
+   ],
+   "naslov": "Komunalni objekti",
+   "opis": "rasvjeta, klupe, igrala, AED – prijava kvara na objekt",
+   "slojevi": [
+    "komunalni_objekti"
+   ]
+  },
+  {
+   "pojmovi": [
     "vrijeme",
     "prognoz",
     "kisa",
