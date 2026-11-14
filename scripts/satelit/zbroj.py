@@ -55,6 +55,52 @@ def interp(obs, d):
     return float(np.interp(d, xs, ys))
 
 
+
+# ---------- procjena kulture iz krivulje NDVI-a (fenološka pravila, bez terenskih podataka – procjena) ----------
+KULTURE = {"O": "ozima kultura (pšenica, ječam, repica)", "S": "suncokret (vjerojatno)", "K": "kukuruz ili soja", "R": "šećerna repa (vjerojatno)",
+           "T": "travnjak, djetelina ili lucerna", "N": "bez razvijenog usjeva", "X": "ostalo / mješovito", "P": "trajni nasad (ARKOD)"}
+TRAJNI = ("voćnjak", "vinograd", "mješoviti trajni nasadi", "ostale trajne kulture", "livada", "pašnjak")
+
+
+def klasa(obs, arkod_kultura):
+    if arkod_kultura in TRAJNI: return ("P" if arkod_kultura not in ("livada", "pašnjak") else "T"), None
+    o = [x for x in obs if 0 <= x[1] <= 1]
+    if len(o) < 12: return None, None
+    d = np.array([x[0] for x in o]); v = np.array([x[1] for x in o])
+    f = lambda doy: float(np.interp(doy, d, v))
+    mreza = np.arange(90, 291, 5); vr = np.array([f(x) for x in mreza])
+    # blago izglađivanje (pomični medijan 3) protiv pojedinačnih šiljaka
+    vr = np.array([np.median(vr[max(0, i - 1):i + 2]) for i in range(len(vr))])
+    vrh_i = int(np.argmax(vr)); vrh_d = int(mreza[vrh_i]); vrh = float(vr[vrh_i])
+    g = lambda doy: float(np.interp(doy, mreza, vr))
+    if vrh < 0.4: k = "N"
+    elif g(120) >= 0.55 and g(190) < 0.45: k = "O"
+    elif g(140) < 0.45 and vrh >= 0.6:
+        if vrh_d <= 195 and g(225) < 0.45: k = "S"
+        elif g(260) >= 0.6: k = "R"
+        else: k = "K"
+    elif g(100) >= 0.45 and g(200) >= 0.5 and g(280) >= 0.45: k = "T"
+    else: k = "X"
+    return k, round(vrh, 2)
+
+
+procjene = {}   # pid -> {godina: (klasa, vrh)}
+arkod_k = {f["properties"]["id"]: f["properties"].get("kultura") for f in jed}
+for pid, s in nizovi.items():
+    for g, o in s.items():
+        k, vrh = klasa(o, arkod_k.get(pid))
+        if k: procjene.setdefault(pid, {})[g] = (k, vrh)
+# percentil vrhunca među parcelama iste procijenjene kulture iste godine
+skupine = {}
+for pid, pg in procjene.items():
+    for g, (k, vrh) in pg.items():
+        if vrh is not None: skupine.setdefault((g, k), []).append(vrh)
+for v in skupine.values(): v.sort()
+def percentil(g, k, vrh):
+    a = skupine.get((g, k)) or []
+    if len(a) < 10 or vrh is None: return None
+    return round(100 * np.searchsorted(a, vrh) / len(a))
+
 # zone unutar parcela
 zone_udio = {}
 tifovi = sorted(glob.glob(f"{IZVOR}/sezona_*.tif"))
@@ -137,8 +183,17 @@ for f in jed:
     else:
         p["stanje"] = "nema snimke"
     if pid in zone_udio: p["zona_slabija_pct"], p["zona_jaca_pct"] = zone_udio[pid]
+    pg = procjene.get(pid, {})
+    if pg:
+        p["plodored"] = "|".join(f"{g}:{pg[g][0]}" for g in sorted(pg))
+        if str(tek) in pg:
+            k, vrh = pg[str(tek)]
+            p["kultura_sat"] = KULTURE[k]
+            p["kultura_kod"] = k
+            p["percentil_kulture"] = percentil(str(tek), k, vrh)
+            p["n_iste_kulture"] = len(skupine.get((str(tek), k), []))
     znacajke.append({"type": "Feature", "geometry": f["geometry"], "properties": p})
 json.dump({"type": "FeatureCollection", "features": znacajke}, open(f"{IZLAZ}/stanje.geojson", "w"), ensure_ascii=False, separators=(",", ":"))
-json.dump({"godine": godine, "tekuca": tek, "zadnji_datum": zadnji, "parcela": len(nizovi),
-           "izracunato": dt.datetime.utcnow().isoformat(timespec="minutes") + "Z"}, open(f"{IZLAZ}/sazetak.json", "w"))
+json.dump({"kulture": KULTURE, "godine": godine, "tekuca": tek, "zadnji_datum": zadnji, "parcela": len(nizovi),
+           "izracunato": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")}, open(f"{IZLAZ}/sazetak.json", "w"))
 print("godine", godine, "parcela s podacima", len(nizovi), "zadnji datum", zadnji)

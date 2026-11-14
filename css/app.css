@@ -693,3 +693,7 @@ button { font-family: inherit; }
 .sat-graf .tocka { fill: #5f9a1f; }
 .sat-detalji { margin-top: 6px; font-size: 13px; }
 .sat-detalji summary { cursor: pointer; font-weight: 600; }
+.plodored { margin: 6px 0; }
+.plodored-niz { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; }
+.plodored-god { display: inline-flex; align-items: center; gap: 4px; }
+.plodored-boja { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }

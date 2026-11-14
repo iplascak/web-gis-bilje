@@ -82,11 +82,30 @@
     // golo tlo zimi
     const zima = (niz[tek] || []).filter(o => o[0] < 60).concat((niz[tek - 1] || []).filter(o => o[0] > 335));
     if (zima.length >= 2 && zima.filter(o => o[1] < 0.25).length / zima.length > 0.7) s.push(['info', 'Zimi je tlo bilo bez pokrova', 'Pokrovni usjevi ili ozimi usjevi štite tlo od erozije i ispiranja dušika. Provjerite mogućnosti u eko-shemama Zajedničke poljoprivredne politike.']);
+    // usporedba s parcelama iste (procijenjene) kulture
+    if (p.kultura_sat && p.percentil_kulture != null && p.kultura_kod !== 'N' && p.kultura_kod !== 'X') {
+      const pc = p.percentil_kulture, k = p.kultura_sat.replace(' (vjerojatno)', '');
+      if (pc <= 25) s.push(['oprez', 'Slabija od većine parcela s istom kulturom', 'Ove sezone procijenjena kultura je ' + k + '. Među ' + p.n_iste_kulture + ' takvih parcela u općini ova je po najvećoj bujnosti u donjih ' + Math.max(pc, 1) + ' %. Usporedite sortu, rok sjetve, gnojidbu i vodu s boljim susjedima.']);
+      else if (pc >= 75) s.push(['dobro', 'Među boljim parcelama s istom kulturom', 'Ove sezone procijenjena kultura je ' + k + '. Po najvećoj bujnosti ova je parcela u gornjih ' + (100 - pc) + ' % od ' + p.n_iste_kulture + ' takvih parcela u općini.']);
+    }
     // što očekivati
     if (vrhDoy && d < vrhDoy - 7 && vegetacija) s.push(['info', 'Što očekivati', 'Prethodnih sezona ova je parcela vrhunac zelene mase dosezala oko ' + datumIzDoy(tek, vrhDoy) + ' (bujnost oko ' + zaok(vrhVr) + '). To je razdoblje najveće potrebe za vodom.']);
     const red = { upozorenje: 0, oprez: 1, dobro: 2, info: 3 };
     s.sort((a, b) => red[a[0]] - red[b[0]]);
     return { s, vrhDoy, vrhVr, tek, d, nd, nm, uobicajeno };
+  }
+
+
+  const BOJE_KULTURA = { O: '#d4a017', S: '#f2c14e', K: '#2e7d32', R: '#7b1fa2', T: '#7cb342', N: '#bcaaa4', X: '#90a4ae', P: '#6d4c41' };
+  const KRATKO = { O: 'ozima', S: 'suncokret', K: 'kukuruz/soja', R: 'repa', T: 'travnjak', N: 'bez usjeva', X: 'ostalo', P: 'trajni nasad' };
+  function plodored(p) {
+    if (!p.plodored) return '';
+    const st = p.plodored.split('|').map(x => x.split(':'));
+    return el('div', { class: 'plodored' },
+      el('div', { class: 'sat-naslov' }, 'Plodored – procjena sa satelita'),
+      el('div', { class: 'plodored-niz' }, ...st.map(([g, k]) => el('span', { class: 'plodored-god', title: g + ': ' + (KRATKO[k] || k) },
+        el('span', { class: 'plodored-boja', style: 'background:' + (BOJE_KULTURA[k] || '#999') }), el('b', {}, "'" + g.slice(2)), ' ' + (KRATKO[k] || k)))),
+      el('p', { class: 'sitno-siva' }, 'Kultura je procijenjena iz oblika krivulje bujnosti (kad niče, kad je vrhunac, kad se žanje). Nije službeni podatak i može biti pogrešna – posebno kukuruz i soja te dvostruki usjevi.'));
   }
 
   // ---------- graf sezona ----------
@@ -127,6 +146,7 @@
         el('div', { class: 'sat-naslov' }, 'Satelit: sezone ' + god[0] + '.–' + god[god.length - 1] + '.'),
         el('div', { class: 'savjeti' }, ...t.s.map(([r, n, o]) => el('div', { class: 'savjet ' + r },
           el('span', { class: 'savjet-oznaka' }, { upozorenje: '!', oprez: '•', dobro: '✓', info: 'i' }[r]), el('div', {}, el('strong', {}, n), el('p', {}, o))))),
+        plodored(p),
         prekidac, grafMjesto,
         el('div', { class: 'gdd-legenda' }, el('span', { class: 'l-tekuca' }, String(t.tek) + '.'), el('span', { class: 'l-prosjek' }, 'prethodne sezone')),
         el('details', { class: 'sat-detalji' }, el('summary', {}, 'Vrhunci po sezonama'),
@@ -158,6 +178,19 @@
       opis: 'Je li usjev bujniji ili slabiji nego prethodnih godina u isto doba – po parceli, sa satelita.',
       detaljno: 'Svaka poljoprivredna parcela uspoređuje se sama sa sobom. Od travnja do rujna zadnja čista snimka Sentinel-2 satelita uspoređuje se s istim dobom godine u prethodnim sezonama (od 2018.), a izvan vegetacije vrhunac ove sezone s vrhuncima prethodnih. Klikom na parcelu vidite krivulje svih sezona, vodu u biljci i preporuke.\n\nPodaci se osvježavaju dvaput tjedno. Satelit pokazuje gdje treba pogledati – razlog (sjetva, kultura, voda, šteta) utvrđuje se na terenu.',
       izvor: 'Copernicus Sentinel-2 (ESA/EU), obrada: portal (Earth Search STAC)', licenca: 'Copernicus – slobodno korištenje uz navođenje izvora', azurirano: 'dvaput tjedno'
+    }, {
+      id: 'kulture_satelit', naziv: 'Kulture sa satelita (procjena)', grupa: 'poljoprivreda', podgrupa: 'Satelit', tip: 'geojson',
+      url: BAZA + 'stanje.geojson', vidljivo: false, minZoom: 11,
+      stil: { geometrija: 'poligon', debljina: 0.5, ispunaProzirnost: 0.6, kategorije: { polje: 'kultura_kod', vrijednosti: {
+        O: { boja: '#d4a017', oznaka: 'ozima kultura (pšenica, ječam, repica)' }, S: { boja: '#f2c14e', oznaka: 'suncokret (vjerojatno)' },
+        K: { boja: '#2e7d32', oznaka: 'kukuruz ili soja' }, R: { boja: '#7b1fa2', oznaka: 'šećerna repa (vjerojatno)' },
+        T: { boja: '#7cb342', oznaka: 'travnjak, djetelina, lucerna' }, P: { boja: '#6d4c41', oznaka: 'trajni nasad' },
+        X: { boja: '#90a4ae', oznaka: 'ostalo / mješovito' }, N: { boja: '#bcaaa4', oznaka: 'bez razvijenog usjeva' } } } },
+      skocniProzor: { naslov: 'kultura_sat', polja: [{ polje: 'povrsina_ha', oznaka: 'Površina (ha)' }] },
+      skocniDodatak: 'satelit',
+      opis: 'Što se ove sezone uzgajalo na kojoj parceli – procjena iz krivulje bujnosti.',
+      detaljno: 'Satelit ne vidi kulturu izravno, ali svaka kultura ima svoj ritam: ozimi usjevi zelene se u proljeće i žanju u srpnju, suncokret je najbujniji početkom srpnja i brzo suši, kukuruz i soja vrhunac imaju krajem srpnja i u kolovozu, šećerna repa ostaje zelena do jeseni. Po tom ritmu portal procjenjuje kulturu i plodored po godinama.\n\nTo je procjena bez terenske provjere – kukuruz i soju satelit teško razlikuje, a dvostruki usjevi i mješovite parcele mogu biti pogrešno svrstani. Služi za pregled i usporedbu s parcelama iste kulture.',
+      izvor: 'Copernicus Sentinel-2, obrada: portal', azurirano: 'dvaput tjedno'
     }, {
       id: 'zone_parcela', naziv: 'Zone unutar parcela (višegodišnje)', grupa: 'poljoprivreda', podgrupa: 'Satelit', tip: 'slika',
       url: BAZA + 'zone.png', extent: ext, vidljivo: false, minZoom: 12, neprozirnost: 0.85,
