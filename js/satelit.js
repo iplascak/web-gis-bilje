@@ -77,7 +77,7 @@
       if (d - d0 <= 25 && n0 - nd >= 0.25 && mj >= 5 && mj <= 9) s.push(['oprez', 'Nagli pad zelene mase', 'Između ' + datumIzDoy(tek, d0) + ' i ' + datumIzDoy(tek, d) + ' bujnost je pala s ' + zaok(n0) + ' na ' + zaok(nd) + '. Ako niste kosili ili žanjeli, moguća je šteta (tuča, poplava, bolest) – dokumentirajte stanje fotografijama.']);
     }
     // neujednačenost i zone
-    if (nd > 0.4 && sd / nd > 0.2) s.push(['oprez', 'Parcela je neujednačena', 'Zelena masa se jako razlikuje unutar parcele. Uključite sloj „Zone unutar parcela” i obiđite slabije dijelove.']);
+    if (vegetacija && nd > 0.4 && sd / nd > 0.2) s.push(['oprez', 'Parcela je neujednačena', 'Zelena masa se jako razlikuje unutar parcele. Uključite sloj „Zone unutar parcela” i obiđite slabije dijelove.']);
     if (p.zona_slabija_pct >= 15) s.push(['info', 'Dio parcele godinama daje slabiji usjev', 'Oko ' + p.zona_slabija_pct + ' % parcele je u svim sezonama slabiji od ostatka (crveno na sloju „Zone unutar parcela”). Analiza tla na tom dijelu i prilagođena gnojidba ili sjetva mogu smanjiti troškove i izjednačiti prinos.']);
     // golo tlo zimi
     const zima = (niz[tek] || []).filter(o => o[0] < 60).concat((niz[tek - 1] || []).filter(o => o[0] > 335));
