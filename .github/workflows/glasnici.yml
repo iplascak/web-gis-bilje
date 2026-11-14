@@ -1,0 +1,24 @@
+name: Službeni glasnici (tekst za pregled)
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  glasnici:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install pdfplumber
+      - run: python scripts/glasnici/preuzmi.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glasnici-tekst
+          path: glasnici_tekst
+          retention-days: 30
