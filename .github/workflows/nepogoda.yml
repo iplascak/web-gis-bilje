@@ -1,0 +1,45 @@
+name: Analiza elementarne nepogode
+
+# Ručno pokretanje: Actions -> "Analiza elementarne nepogode" -> Run workflow -> upišite id iz config/nepogode.json.
+# Rezultati (karta, parcele, manifest) automatski se spremaju u repozitorij i pojavljuju na portalu.
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "id nepogode iz config/nepogode.json (npr. susa-2026)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nepogoda-${{ inputs.id }}
+  cancel-in-progress: false
+
+jobs:
+  analiza:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/nepogode/requirements.txt
+
+      - name: Instalacija
+        run: pip install -r scripts/nepogode/requirements.txt
+
+      - name: Analiza
+        run: python scripts/nepogode/analiza.py --id "${{ inputs.id }}"
+
+      - name: Spremanje rezultata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/nepogode.json "data/nepogode/${{ inputs.id }}"
+          git commit -m "Rezultati analize nepogode: ${{ inputs.id }}" || echo "Nema promjena"
+          git pull --rebase
+          git push

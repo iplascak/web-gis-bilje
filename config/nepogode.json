@@ -1,0 +1,40 @@
+{
+  "_upute": "Svaka elementarna nepogoda je jedan zapis u popisu 'nepogode'. Za novu nepogodu kopirajte postojeći zapis, promijenite id, naziv, datume i 'analiza', postavite status na 'ceka_obradu' i na GitHubu pokrenite Actions -> 'Analiza elementarne nepogode' s tim id-om. Rezultati se sami upisuju u 'rezultati' i pojavljuju na portalu.",
+  "metode": {
+    "ndvi_anomalija": {
+      "naziv": "Odstupanje stanja vegetacije od višegodišnjeg prosjeka",
+      "za": ["susa", "toplinski_val"],
+      "opis": "Iz satelitskih snimaka Sentinel-2 računa se medijan indeksa vegetacije NDVI u zadanom razdoblju nepogode te u istom razdoblju referentnih godina. Odstupanje pokazuje koliko je vegetacija u godini nepogode slabija ili jača od uobičajenog za to doba godine."
+    },
+    "ndvi_promjena": {
+      "naziv": "Promjena stanja vegetacije prije i poslije događaja",
+      "za": ["tuca", "olujno_nevrijeme", "pozar"],
+      "opis": "Uspoređuje se medijan NDVI-ja u kratkom razdoblju prije i neposredno poslije događaja. Nagli pad ukazuje na oštećenje usjeva ili vegetacije."
+    },
+    "s1_voda": {
+      "naziv": "Poplavljene površine iz radarskih snimaka (Sentinel-1)",
+      "za": ["poplava"],
+      "opis": "Radar vidi kroz oblake; vodene površine u vrijeme događaja uspoređuju se s uobičajenim stanjem. (U pripremi.)"
+    }
+  },
+  "nepogode": [
+    {
+      "id": "susa-2026",
+      "naziv": "Suša 2026.",
+      "vrsta": "susa",
+      "proglasena": "2026-09-01",
+      "odluka_url": "https://bilje.hr/2026/09/01/proglasenje-elementarne-nepogode-2026/",
+      "opis": "Elementarna nepogoda zbog suše proglašena je za područje Osječko-baranjske županije, uključujući Općinu Bilje. Prijave šteta (višegodišnji nasadi, ribnjaci, poljoprivredna proizvodnja) primale su se do 9. rujna 2026.",
+      "analiza": {
+        "metoda": "ndvi_anomalija",
+        "godina": 2026,
+        "razdoblje": ["06-01", "08-31"],
+        "referentne_godine": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+        "max_oblacnost": 70,
+        "rezolucija_m": 20
+      },
+      "status": "ceka_obradu",
+      "rezultati": null
+    }
+  ]
+}
