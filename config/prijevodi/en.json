@@ -1,0 +1,392 @@
+{
+ "naziv": "Bilje Municipality Web GIS",
+ "grupe": {
+  "osnovno": "Municipality and addresses",
+  "svakodnevica": "Everyday life",
+  "imovina": "Property and utilities",
+  "projekti": "Projects and investments",
+  "prostor": "Spatial planning",
+  "poljoprivreda": "Agriculture",
+  "poplave": "Water and floods",
+  "priroda": "Nature",
+  "bastina": "Heritage and landscape",
+  "promet": "Transport",
+  "nepogode": "Disasters from satellite",
+  "prijave": "Residents' reports"
+ },
+ "brzi": {
+  "gradnja": "Building a house",
+  "otpad": "Waste collection",
+  "poplave": "Floods",
+  "poljoprivreda": "Agriculture",
+  "priroda": "Nature and trips",
+  "komunalno": "Utilities",
+  "projekti": "Projects"
+ },
+ "slojevi": {
+  "granica": [
+   "Municipal boundary",
+   "Administrative boundary of Bilje Municipality."
+  ],
+  "naselja": [
+   "Settlements",
+   "Boundaries of the settlements of Bilje Municipality."
+  ],
+  "institucije": [
+   "Municipality and its institutions",
+   "Municipal offices and the institutions and company it owns."
+  ],
+  "ulice": [
+   "Streets",
+   "Streets from the register of spatial units."
+  ],
+  "katastar": [
+   "Cadastral parcels",
+   "Cadastral parcel boundaries and numbers, visible when zoomed in."
+  ],
+  "javni_sadrzaji": [
+   "Public services",
+   "Pharmacies, doctors, kindergartens, schools, shops, playgrounds, sports, recycling, post, ATMs…"
+  ],
+  "slobodno_vrijeme": [
+   "Food, accommodation and sights",
+   "Restaurants, cafés, accommodation, viewpoints, parks, castles and monuments."
+  ],
+  "pristupacnost": [
+   "Accessibility (wheelchairs, prams)",
+   "Whether public buildings can be entered with a wheelchair or pram."
+  ],
+  "imovina_opcine": [
+   "Municipal property",
+   "Real estate owned by Bilje Municipality."
+  ],
+  "komunalna": [
+   "Municipal infrastructure",
+   "Local roads, green areas, car parks, cemeteries and other infrastructure."
+  ],
+  "dalekovodi": [
+   "Power lines",
+   "High-voltage power line routes."
+  ],
+  "plinovod": [
+   "Main gas pipeline",
+   "Route of the main gas pipeline."
+  ],
+  "groblja": [
+   "Cemeteries",
+   "Extent of drone images of cemeteries."
+  ],
+  "groblja_dron": [
+   "Cemeteries – drone image (5 cm)",
+   "Detailed drone image of cemeteries, visible when zoomed in."
+  ],
+  "grobna_mjesta_prijedlog": [
+   "Grave plots – automatic outline",
+   "Grave outlines automatically detected on drone images – working draft."
+  ],
+  "projekti": [
+   "Development projects (Strategy 2030)",
+   "Development projects under the municipal strategy to 2030."
+  ],
+  "projekti_baza": [
+   "Municipal projects (2013 – today)",
+   "Completed, ongoing and planned municipal projects."
+  ],
+  "gradevinska_podrucja": [
+   "Building zones (spatial plan, 2017)",
+   "Building zones under the 2017 spatial plan – not current."
+  ],
+  "osjetljivost_solar": [
+   "Nature sensitivity for solar farms",
+   "Where solar farms would least affect nature."
+  ],
+  "osjetljivost_vjetar": [
+   "Nature sensitivity for wind farms",
+   "Nature sensitivity for wind farms (birds, bats, habitats)."
+  ],
+  "pogodnost_solar": [
+   "Technical suitability for solar farms",
+   "Technical suitability of land for solar farms."
+  ],
+  "corine_2018": [
+   "CORINE land cover 2018",
+   "European land cover map, 2018."
+  ],
+  "corine_1980": [
+   "CORINE land cover 1980",
+   "Land cover in 1980 – compare with 2018 using the swipe tool."
+  ],
+  "corine_promjene": [
+   "CORINE land cover change 2012–2018",
+   "Where land cover changed between 2012 and 2018."
+  ],
+  "izgradenost_promjena": [
+   "Built-up change 2021–2024",
+   "New built-up areas from Copernicus satellite data."
+  ],
+  "bonitet": [
+   "Soil value class",
+   "Agricultural value of land (spatial plan classes)."
+  ],
+  "pedoloska_karta": [
+   "Soil map",
+   "Soil types from the basic soil map."
+  ],
+  "arkod_uporaba": [
+   "Agricultural parcels (ARKOD)",
+   "Registered agricultural parcels by land use (no farmer data)."
+  ],
+  "struktura_parcela": [
+   "Farmland structure",
+   "Large, fragmented and irregular parcels."
+  ],
+  "paprika_pogodnost": [
+   "Suitability for paprika",
+   "Where conditions for paprika are best."
+  ],
+  "tlo_org_ugljik": [
+   "Soil organic carbon (0–30 cm)",
+   "Organic carbon in topsoil – an indicator of soil health."
+  ],
+  "tlo_dusik": [
+   "Total soil nitrogen (0–10 cm)",
+   "Total nitrogen in topsoil (2016 monitoring)."
+  ],
+  "tlo_cn": [
+   "Soil C/N ratio (0–30 cm)",
+   "Carbon to nitrogen ratio."
+  ],
+  "stanje_usjeva": [
+   "Crop condition from satellite",
+   "Is the crop stronger or weaker than in previous years – per parcel."
+  ],
+  "kulture_satelit": [
+   "Crops from satellite (estimate)",
+   "What was grown on each parcel this season – estimate."
+  ],
+  "zone_parcela": [
+   "Zones within parcels",
+   "Parts of parcels that are consistently weaker or stronger."
+  ],
+  "poplave_vv": [
+   "Floods – high probability",
+   "Frequently flooded areas; colour shows water depth."
+  ],
+  "poplave_sv": [
+   "Floods – medium probability (100 years)",
+   "100-year flood; colour shows water depth."
+  ],
+  "poplave_mv": [
+   "Floods – low probability",
+   "Rare, extreme floods; colour shows water depth."
+  ],
+  "nasipi": [
+   "Embankments",
+   "Flood embankments along the Drava and the Danube."
+  ],
+  "hidro_postaje": [
+   "Gauging stations",
+   "Water level stations on the Drava and the Danube."
+  ],
+  "vodotoci_kanali": [
+   "Canals and streams",
+   "Drainage canals, streams and ditches."
+  ],
+  "jezera_bare": [
+   "Lakes, ponds and river islands",
+   "Lakes (Kopačko jezero, Sakadaš), ponds and river islands."
+  ],
+  "sanitarna_zastita": [
+   "Drinking water protection zones",
+   "Protection zones of drinking water sources."
+  ],
+  "kupalista": [
+   "Bathing sites",
+   "Official inland bathing sites nearby."
+  ],
+  "prepreke_vodotoci": [
+   "Barriers on watercourses",
+   "Sluices, pumping stations, groynes and weirs."
+  ],
+  "zasticena_podrucja": [
+   "Protected areas",
+   "Areas protected under the Nature Protection Act."
+  ],
+  "natura_pop": [
+   "Natura 2000 – bird sites (SPA)",
+   "Natura 2000 sites important for birds."
+  ],
+  "natura_povs": [
+   "Natura 2000 – habitats sites (SCI)",
+   "Natura 2000 sites important for species and habitats."
+  ],
+  "stanista": [
+   "Habitat map",
+   "Habitat types (national classification)."
+  ],
+  "stanista_2016": [
+   "Non-forest habitats 2016",
+   "Official habitat map, 2016."
+  ],
+  "sume": [
+   "Forests",
+   "Forests by purpose and ownership."
+  ],
+  "lovista": [
+   "Hunting grounds",
+   "Hunting ground boundaries – useful for walkers in hunting season."
+  ],
+  "ciprinidne_vode": [
+   "Fishing waters",
+   "Danube and Drava – cyprinid waters."
+  ],
+  "pokrov_zemljista": [
+   "Land cover",
+   "Settlements, fields, forests, wetlands and water."
+  ],
+  "ramsar": [
+   "Ramsar site (wetland of international importance)",
+   "Kopački rit – wetland of international importance."
+  ],
+  "rezervat_biosfere": [
+   "UNESCO Mura–Drava–Danube Biosphere Reserve",
+   "Transboundary biosphere reserve along the Mura, Drava and Danube."
+  ],
+  "upravljacke_zone": [
+   "Management zones of protected areas",
+   "Zones from protected area management plans."
+  ],
+  "obnova_prirode": [
+   "Nature restoration proposals",
+   "Areas and measures proposed for nature restoration."
+  ],
+  "posjetitelji_tocke": [
+   "Visitor facilities in nature",
+   "Attractions, visitor centres, information boards, birdwatching, fishing, restaurants."
+  ],
+  "posjetitelji_linije": [
+   "Trails in nature",
+   "Cycling routes, educational trails and boardwalks."
+  ],
+  "bastina_registar": [
+   "Cultural heritage (register)",
+   "Protected cultural heritage areas: Tikveš castle, Zlatna Greda."
+  ],
+  "kulturna_dobra": [
+   "Cultural assets and archaeological sites",
+   "Cultural assets and archaeological sites."
+  ],
+  "krajobraz": [
+   "Landscape areas",
+   "Landscape areas of the municipality."
+  ],
+  "vizure": [
+   "Views",
+   "Quality of views from viewpoints."
+  ],
+  "tocke_gledista": [
+   "Viewpoints",
+   "Points from which views were assessed."
+  ],
+  "osjetljivost_krajobraza": [
+   "Landscape sensitivity",
+   "How sensitive the landscape is to new development."
+  ],
+  "toponimi_rgi": [
+   "Official place names (fields, ponds, forests)",
+   "Names of fields, ponds, river arms and forests from the official register."
+  ],
+  "doprinosi": [
+   "Old photos and forgotten names",
+   "Old photographs and local place names contributed by residents."
+  ],
+  "bus_stajalista": [
+   "Bus stops (line 6)",
+   "Osijek – Bilje bus stops (line 6)."
+  ],
+  "plovni_put": [
+   "Waterway (Danube, Drava)",
+   "International river waterways."
+  ],
+  "odvoz_otpada": [
+   "Waste collection by street",
+   "When waste is collected in your street."
+  ],
+  "mobilno_reciklazno": [
+   "Mobile recycling yard",
+   "Where and when the mobile recycling yard comes."
+  ],
+  "kvaliteta_zraka": [
+   "Air quality (DHMZ)",
+   "Kopački rit, Osijek 1 and Osijek 2 stations – latest hourly values."
+  ],
+  "dogadjanja": [
+   "Events and roadworks",
+   "Festivals, sport, culture, fairs and road closures."
+  ],
+  "komunalni_objekti": [
+   "Street furniture and lighting",
+   "Street lights, benches, bins, playground equipment, defibrillators."
+  ],
+  "prijave": [
+   "Reported problems",
+   "Problems reported by residents and their status."
+  ]
+ },
+ "tekst": {
+  "Prijavi problem": "Report a problem",
+  "Prijava": "Sign in",
+  "Podijeli": "Share",
+  "O portalu": "About",
+  "Što je ovdje?": "What's here?",
+  "Cijela općina": "Whole municipality",
+  "Pronađi sloj…": "Find a layer…",
+  "Adresa, ulica ili pojam (npr. staklo, poplave, prskanje)…": "Address, street or topic (e.g. floods, trails)…",
+  "Na karti": "On the map",
+  "Isključi sve": "Turn all off",
+  "Neprozirnost": "Opacity",
+  "Približi": "Zoom to",
+  "O sloju": "About layer",
+  "Preuzmi": "Download",
+  "vidljivo pri uvećanju": "visible when zoomed in",
+  "Dalje ›": "Next ›",
+  "‹ Natrag": "‹ Back",
+  "Završi": "Finish",
+  "Moje parcele": "My parcels",
+  "Događanja": "Events",
+  "Vremenska prognoza": "Weather forecast",
+  "Opća prognoza": "Forecast",
+  "Za poljoprivrednike": "For farmers",
+  "Tražilica pokojnika": "Grave finder",
+  "Dodaj sjećanje": "Add a memory",
+  "Priča: poljoprivreda": "Story: farming",
+  "Priča: izlet u Kopački rit": "Story: a trip to Kopački rit",
+  "Karta": "Map",
+  "Satelit": "Satellite",
+  "Topografska": "Topographic",
+  "Što je na ovoj lokaciji?": "What is at this location?",
+  "Izrađeno s alatima otvorenog koda ·": "Built with open-source tools ·",
+  "Zatvori": "Close",
+  "Granice": "Boundaries",
+  "Ustanove": "Institutions",
+  "Adrese i čestice": "Addresses and parcels",
+  "Parcele": "Parcels",
+  "Tlo": "Soil",
+  "Zaštita prirode": "Nature protection",
+  "Staništa i šume": "Habitats and forests",
+  "Izleti i posjeti": "Trips and visits",
+  "Otpad": "Waste",
+  "Javni sadržaji": "Public services",
+  "Vode": "Water",
+  "Pokrov zemljišta": "Land cover",
+  "Obnovljivi izvori energije": "Renewable energy",
+  "Sjećanja mještana": "Residents' memories",
+  "Komunalna oprema": "Street furniture",
+  "Okoliš i vrijeme": "Environment and weather"
+ },
+ "podnaslov": "Kopački rit municipality · spatial data for residents and visitors",
+ "korak": [
+  "Step",
+  "of"
+ ]
+}

@@ -10,7 +10,9 @@
 
   async function pokreniPricu(id) {
     let p;
-    try { p = await (await fetch('config/price/' + id + '.json')).json(); } catch (g) { return; }
+    const j = window.webgisJezik && window.webgisJezik !== 'hr' ? '.' + window.webgisJezik : '';
+    try { p = await (await fetch('config/price/' + id + j + '.json')).json(); }
+    catch (g) { try { p = await (await fetch('config/price/' + id + '.json')).json(); } catch (g2) { return; } }
     const koraci = p.koraci.filter(k => !k.slojevi.length || k.slojevi.some(s => stanje.slojevi[s]));
     let i = 0;
     document.querySelector('.prica')?.remove();
@@ -36,7 +38,7 @@
       if (k.pogled === 'opcina' && stanje.granicaExtent) v.fit(stanje.granicaExtent, { padding: [40, 40, 40, window.innerWidth > 720 ? 420 : 40], duration: 900 });
       else if (k.pogled && k.pogled.centar) v.animate({ center: ol.proj.fromLonLat(k.pogled.centar), zoom: k.pogled.zoom || 13, duration: 900 });
       const akcija = k.akcija && stanje.akcije[k.akcija];
-      tekst.replaceChildren(el('div', { class: 'prica-korak' }, 'Korak ' + (i + 1) + ' od ' + koraci.length),
+      tekst.replaceChildren(el('div', { class: 'prica-korak' }, (window.webgisKorak ? window.webgisKorak[0] : 'Korak') + ' ' + (i + 1) + ' ' + (window.webgisKorak ? window.webgisKorak[1] : 'od') + ' ' + koraci.length),
         el('h3', {}, k.naslov), el('p', {}, k.tekst),
         akcija ? el('button', { class: 'gumb-mali', onclick: akcija }, k.gumb || 'Otvori') : '');
       tocke.replaceChildren(...koraci.map((_, j) => el('button', { class: 'prica-tocka' + (j === i ? ' aktivna' : ''), 'aria-label': 'Korak ' + (j + 1), onclick: () => idi(j) })));

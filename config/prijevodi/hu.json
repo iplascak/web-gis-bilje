@@ -1,0 +1,207 @@
+{
+ "naziv": "Bellye község webes térképe",
+ "grupe": {
+  "osnovno": "Község és címek",
+  "svakodnevica": "Mindennapok",
+  "imovina": "Vagyon és közművek",
+  "projekti": "Projektek és beruházások",
+  "prostor": "Területrendezés",
+  "poljoprivreda": "Mezőgazdaság",
+  "poplave": "Víz és árvizek",
+  "priroda": "Természet",
+  "bastina": "Örökség és táj",
+  "promet": "Közlekedés",
+  "nepogode": "Elemi károk műholdról",
+  "prijave": "Lakossági bejelentések"
+ },
+ "brzi": {
+  "gradnja": "Házat építek",
+  "otpad": "Hulladékszállítás",
+  "poplave": "Árvizek",
+  "poljoprivreda": "Mezőgazdaság",
+  "priroda": "Természet és kirándulás",
+  "komunalno": "Kommunális",
+  "projekti": "Projektek"
+ },
+ "slojevi": {
+  "granica": [
+   "Községhatár",
+   "Bellye község közigazgatási határa."
+  ],
+  "naselja": [
+   "Települések",
+   "Bellye község településeinek határai."
+  ],
+  "institucije": [
+   "A község és intézményei",
+   "A községháza, valamint a község intézményei és cége."
+  ],
+  "ulice": [
+   "Utcák",
+   "Utcák a területi egységek nyilvántartásából."
+  ],
+  "katastar": [
+   "Kataszteri parcellák",
+   "Parcellahatárok és helyrajzi számok, nagyításkor láthatók."
+  ],
+  "javni_sadrzaji": [
+   "Közszolgáltatások",
+   "Gyógyszertár, orvos, óvoda, iskola, üzletek, játszóterek, sport, posta, ATM…"
+  ],
+  "slobodno_vrijeme": [
+   "Vendéglátás, szállás, látnivalók",
+   "Éttermek, kávézók, szállás, kilátók, parkok, kastélyok, emlékművek."
+  ],
+  "pristupacnost": [
+   "Akadálymentesség (kerekesszék, babakocsi)",
+   "Be lehet-e jutni a középületekbe kerekesszékkel vagy babakocsival."
+  ],
+  "imovina_opcine": [
+   "Községi ingatlanok",
+   "Bellye község tulajdonában lévő ingatlanok."
+  ],
+  "komunalna": [
+   "Kommunális infrastruktúra",
+   "Utak, zöldterületek, parkolók, temetők."
+  ],
+  "projekti_baza": [
+   "A község projektjei (2013-tól)",
+   "Megvalósult, folyamatban lévő és tervezett projektek."
+  ],
+  "arkod_uporaba": [
+   "Mezőgazdasági parcellák (ARKOD)",
+   "Bejelentett parcellák művelési ág szerint (gazdák adatai nélkül)."
+  ],
+  "stanje_usjeva": [
+   "Vetések állapota műholdról",
+   "Erősebb vagy gyengébb-e a vetés, mint az előző években – parcellánként."
+  ],
+  "kulture_satelit": [
+   "Növénykultúrák műholdról (becslés)",
+   "Mi termett az idén az egyes parcellákon – becslés."
+  ],
+  "zone_parcela": [
+   "Parcellán belüli zónák",
+   "Tartósan gyengébb vagy erősebb parcellarészek."
+  ],
+  "poplave_sv": [
+   "Árvíz – közepes valószínűség (100 év)",
+   "Százéves árvíz; a szín a vízmélységet mutatja."
+  ],
+  "nasipi": [
+   "Gátak",
+   "Árvízvédelmi gátak a Dráva és a Duna mentén."
+  ],
+  "zasticena_podrucja": [
+   "Védett területek",
+   "A természetvédelmi törvény szerint védett területek."
+  ],
+  "natura_pop": [
+   "Natura 2000 – madárvédelmi területek",
+   "Madarak szempontjából fontos Natura 2000 területek."
+  ],
+  "natura_povs": [
+   "Natura 2000 – élőhelyvédelmi területek",
+   "Fajok és élőhelyek szempontjából fontos területek."
+  ],
+  "ramsar": [
+   "Ramsari terület",
+   "A Kopácsi-rét nemzetközi jelentőségű vizes élőhely."
+  ],
+  "rezervat_biosfere": [
+   "Mura–Dráva–Duna UNESCO bioszféra-rezervátum",
+   "Határokon átnyúló bioszféra-rezervátum."
+  ],
+  "posjetitelji_tocke": [
+   "Látogatói létesítmények a természetben",
+   "Látnivalók, látogatóközpontok, madármegfigyelés, horgászat, éttermek."
+  ],
+  "posjetitelji_linije": [
+   "Ösvények a természetben",
+   "Kerékpárutak, tanösvények, sétányok."
+  ],
+  "kulturna_dobra": [
+   "Kulturális javak és régészeti lelőhelyek",
+   "Kulturális javak és régészeti lelőhelyek."
+  ],
+  "toponimi_rgi": [
+   "Hivatalos földrajzi nevek",
+   "Dűlők, tavak, holtágak és erdők nevei."
+  ],
+  "doprinosi": [
+   "Régi fényképek és elfeledett nevek",
+   "A lakosok által beküldött régi fényképek és helynevek."
+  ],
+  "bus_stajalista": [
+   "Buszmegállók (6-os vonal)",
+   "Eszék – Bellye buszmegállók (6-os vonal)."
+  ],
+  "odvoz_otpada": [
+   "Hulladékszállítás utcánként",
+   "Mikor viszik el a hulladékot az utcájában."
+  ],
+  "kvaliteta_zraka": [
+   "Levegőminőség (DHMZ)",
+   "Kopácsi-rét, Eszék 1 és Eszék 2 mérőállomás."
+  ],
+  "dogadjanja": [
+   "Események és útlezárások",
+   "Rendezvények, sport, kultúra, vásárok és útlezárások."
+  ],
+  "prijave": [
+   "Bejelentett problémák",
+   "A lakosok által bejelentett problémák és állapotuk."
+  ]
+ },
+ "tekst": {
+  "Prijavi problem": "Probléma bejelentése",
+  "Prijava": "Belépés",
+  "Podijeli": "Megosztás",
+  "O portalu": "A portálról",
+  "Što je ovdje?": "Mi van itt?",
+  "Cijela općina": "Az egész község",
+  "Pronađi sloj…": "Réteg keresése…",
+  "Adresa, ulica ili pojam (npr. staklo, poplave, prskanje)…": "Cím, utca vagy téma…",
+  "Na karti": "A térképen",
+  "Isključi sve": "Mind ki",
+  "Neprozirnost": "Átlátszatlanság",
+  "Približi": "Nagyítás",
+  "O sloju": "A rétegről",
+  "Preuzmi": "Letöltés",
+  "vidljivo pri uvećanju": "nagyításkor látható",
+  "Dalje ›": "Tovább ›",
+  "‹ Natrag": "‹ Vissza",
+  "Završi": "Vége",
+  "Moje parcele": "Parcelláim",
+  "Događanja": "Események",
+  "Vremenska prognoza": "Időjárás",
+  "Opća prognoza": "Előrejelzés",
+  "Za poljoprivrednike": "Gazdáknak",
+  "Tražilica pokojnika": "Sírkereső",
+  "Dodaj sjećanje": "Emlék hozzáadása",
+  "Priča: poljoprivreda": "Történet: mezőgazdaság",
+  "Priča: izlet u Kopački rit": "Történet: kirándulás a Kopácsi-rétre",
+  "Karta": "Térkép",
+  "Što je na ovoj lokaciji?": "Mi van ezen a helyen?",
+  "Izrađeno s alatima otvorenog koda ·": "Nyílt forráskódú eszközökkel készült ·",
+  "Zatvori": "Bezárás",
+  "Granice": "Határok",
+  "Ustanove": "Intézmények",
+  "Adrese i čestice": "Címek és parcellák",
+  "Satelit": "Műhold",
+  "Parcele": "Parcellák",
+  "Tlo": "Talaj",
+  "Zaštita prirode": "Természetvédelem",
+  "Staništa i šume": "Élőhelyek és erdők",
+  "Izleti i posjeti": "Kirándulások",
+  "Otpad": "Hulladék",
+  "Javni sadržaji": "Közszolgáltatások",
+  "Vode": "Vizek",
+  "Okoliš i vrijeme": "Környezet és időjárás"
+ },
+ "podnaslov": "A Kopácsi-rét községe · térképadatok lakosoknak és látogatóknak",
+ "korak": [
+  "Lépés",
+  "/"
+ ]
+}

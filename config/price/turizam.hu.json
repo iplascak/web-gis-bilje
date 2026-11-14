@@ -1,0 +1,18 @@
+{
+ "id": "turizam",
+ "naslov": "A Kopácsi-rét kapujában – kirándulás Bellye községben",
+ "koraci": [
+  {"naslov": "Üdvözöljük Bellye községben", "tekst": "Nyolc település mintegy 260 km²-en a Dráva és a Duna között. A község keleti részét szinte teljesen a Kopácsi-rét Természetpark foglalja el – Európa egyik legnagyobb, épen maradt ártere. A községháza és a turisztikai iroda Bellye központjában található.", "slojevi": ["institucije", "zasticena_podrucja"], "pogled": "opcina"},
+  {"naslov": "Világjelentőségű vizes élőhely", "tekst": "A Kopácsi-rét szerepel a nemzetközi jelentőségű vizes élőhelyek ramsari listáján, és része a határokon átnyúló Mura–Dráva–Duna UNESCO bioszféra-rezervátumnak.", "slojevi": ["ramsar", "rezervat_biosfere"], "pogled": "opcina"},
+  {"naslov": "Kiindulópont: Kis-Szakadás", "tekst": "A Kopács melletti Kis-Szakadás (Mali Sakadaš) látogatóközpontban multimédiás kiállítás látható, mellette a lóhajtású szárazmalom és a fehér tündérrózsa sétány. A Nagy-Szakadás kikötőből indulnak a hajós túrák.", "slojevi": ["posjetitelji_tocke", "posjetitelji_linije"], "pogled": {"centar": [18.792, 45.608], "zoom": 15}},
+  {"naslov": "Tanösvények", "tekst": "A tanösvények erdőkön, tavakon és csatornák mentén vezetnek. A táblák a rét halait és madarait mutatják be – a madármegfigyelésre a tavaszi és őszi vonulás a legjobb.", "slojevi": ["posjetitelji_linije", "posjetitelji_tocke"], "pogled": {"centar": [18.80, 45.625], "zoom": 13}},
+  {"naslov": "A tikvesi kastély", "tekst": "A park északi részén, az erdőben áll a tikvesi kastélyegyüttes az Új kastéllyal, a vadászvillával, látogatóközponttal és tanösvénnyel. Az együttes védett kulturális érték.", "slojevi": ["posjetitelji_tocke", "posjetitelji_linije", "kulturna_dobra"], "pogled": {"centar": [18.836, 45.698], "zoom": 15}},
+  {"naslov": "A falvak öröksége", "tekst": "Védett épületek minden településen találhatók, a földek alatt pedig régészeti lelőhelyek rejlenek – köztük a Bellye melletti római út.", "slojevi": ["kulturna_dobra", "bastina_registar"], "pogled": "opcina"},
+  {"naslov": "Kerékpárral: három nemzetközi útvonal", "tekst": "A községen áthalad a Pannon Béke Útvonal, a Duna menti kerékpárút és a Baranja Greenways. Kerékpár- és gyalogút köti össze Bellyét Eszékkel.", "slojevi": ["posjetitelji_linije", "projekti_baza"], "pogled": "opcina"},
+  {"naslov": "Horgászat és folyók", "tekst": "A dunamenti csatornák, a Csarna és a grabováci tavak kedvelt horgászhelyek. A természetparkban külön szabályok és engedélyek érvényesek.", "slojevi": ["ciprinidne_vode", "posjetitelji_tocke", "plovni_put"], "pogled": "opcina"},
+  {"naslov": "Emlékezetes kilátások", "tekst": "A kilátópontok megmutatják, honnan nyílik a legszebb kilátás a rétre, a földekre és a falvakra.", "slojevi": ["vizure", "tocke_gledista"], "pogled": "opcina"},
+  {"naslov": "A vidék ízei", "tekst": "Bellye, Kopács és Tikves éttermei hazai konyhát kínálnak – halételeket és vadételeket, amelyekről Baranya híres.", "slojevi": ["posjetitelji_tocke", "javni_sadrzaji"], "pogled": {"centar": [18.775, 45.61], "zoom": 13}},
+  {"naslov": "Nevek, amelyek őrzik a történetet", "tekst": "A dűlők, tavak és holtágak régi nevei lassan feledésbe merülnek. Nézze meg a hivatalos neveket, és ossza meg régi fényképét vagy történetét.", "slojevi": ["toponimi_rgi", "doprinosi"], "pogled": {"centar": [18.80, 45.63], "zoom": 13}, "akcija": "sjecanje", "gumb": "Emlék hozzáadása"},
+  {"naslov": "Tervezze meg látogatását", "tekst": "Indulás előtt nézze meg az időjárást; a buszmegállók a térképen vannak. Kellemes időtöltést Bellyén!", "slojevi": ["bus_stajalista", "posjetitelji_tocke"], "pogled": "opcina", "akcija": "vrijeme", "gumb": "Időjárás"}
+ ]
+}
