@@ -1,0 +1,220 @@
+{
+ "nepogoda": "dunav-2024-09",
+ "stac": "https://planetarycomputer.microsoft.com/api/stac/v1",
+ "kolekcija": "sentinel-1-rtc",
+ "parametri": {
+  "metoda": "s1_voda",
+  "tijekom": [
+   "2024-09-21",
+   "2024-10-03"
+  ],
+  "referenca": [
+   "2024-07-20",
+   "2024-08-31"
+  ],
+  "prag_db": -18,
+  "udio_snimaka": 0.5,
+  "rezolucija_m": 20
+ },
+ "scl_valjani_razredi": [
+  4,
+  5
+ ],
+ "pokrenuto": "2026-11-14T01:17:07+00:00",
+ "kompoziti": {
+  "tijekom događaja": {
+   "razdoblje": [
+    "2024-09-21",
+    "2024-10-03"
+   ],
+   "broj_snimaka": 3,
+   "snimke": [
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240923T164226_20240923T164251_055795_06D130_rtc",
+     "datum": "2024-09-23T16:42+00:00",
+     "orbita": 73,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240922T045452_20240922T045517_055773_06D044_rtc",
+     "datum": "2024-09-22T04:55+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240922T045427_20240922T045452_055773_06D044_rtc",
+     "datum": "2024-09-22T04:54+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    }
+   ],
+   "broj_dana": 2,
+   "dani": [
+    "2024-09-22",
+    "2024-09-23"
+   ],
+   "udio_vode_po_danu": [
+    0.045,
+    0.07
+   ],
+   "otsu_prag_db": -14.1
+  },
+  "referentno razdoblje": {
+   "razdoblje": [
+    "2024-07-20",
+    "2024-08-31"
+   ],
+   "broj_snimaka": 16,
+   "snimke": [
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240830T164226_20240830T164251_055445_06C36D_rtc",
+     "datum": "2024-08-30T16:42+00:00",
+     "orbita": 73,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240829T045452_20240829T045517_055423_06C28D_rtc",
+     "datum": "2024-08-29T04:55+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240829T045427_20240829T045452_055423_06C28D_rtc",
+     "datum": "2024-08-29T04:54+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240825T163424_20240825T163449_055372_06C0C4_rtc",
+     "datum": "2024-08-25T16:34+00:00",
+     "orbita": 175,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240818T164226_20240818T164251_055270_06BCF8_rtc",
+     "datum": "2024-08-18T16:42+00:00",
+     "orbita": 73,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240817T045451_20240817T045516_055248_06BC15_rtc",
+     "datum": "2024-08-17T04:55+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240817T045426_20240817T045451_055248_06BC15_rtc",
+     "datum": "2024-08-17T04:54+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240813T163423_20240813T163448_055197_06BA46_rtc",
+     "datum": "2024-08-13T16:34+00:00",
+     "orbita": 175,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240806T164225_20240806T164250_055095_06B69C_rtc",
+     "datum": "2024-08-06T16:42+00:00",
+     "orbita": 73,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240805T045452_20240805T045517_055073_06B5B1_rtc",
+     "datum": "2024-08-05T04:55+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240805T045427_20240805T045452_055073_06B5B1_rtc",
+     "datum": "2024-08-05T04:54+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240801T163424_20240801T163449_055022_06B408_rtc",
+     "datum": "2024-08-01T16:34+00:00",
+     "orbita": 175,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240725T164225_20240725T164250_054920_06B084_rtc",
+     "datum": "2024-07-25T16:42+00:00",
+     "orbita": 73,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240724T045451_20240724T045516_054898_06AFB5_rtc",
+     "datum": "2024-07-24T04:55+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240724T045426_20240724T045451_054898_06AFB5_rtc",
+     "datum": "2024-07-24T04:54+00:00",
+     "orbita": 51,
+     "smjer": "descending",
+     "satelit": "SENTINEL-1A"
+    },
+    {
+     "id": "S1A_IW_GRDH_1SDV_20240720T163424_20240720T163449_054847_06ADEF_rtc",
+     "datum": "2024-07-20T16:34+00:00",
+     "orbita": 175,
+     "smjer": "ascending",
+     "satelit": "SENTINEL-1A"
+    }
+   ],
+   "broj_dana": 12,
+   "dani": [
+    "2024-07-20",
+    "2024-07-24",
+    "2024-07-25",
+    "2024-08-01",
+    "2024-08-05",
+    "2024-08-06",
+    "2024-08-13",
+    "2024-08-17",
+    "2024-08-18",
+    "2024-08-25",
+    "2024-08-29",
+    "2024-08-30"
+   ],
+   "udio_vode_po_danu": [
+    0.025,
+    0.025,
+    0.029,
+    0.027,
+    0.024,
+    0.028,
+    0.026,
+    0.025,
+    0.027,
+    0.027,
+    0.026,
+    0.027
+   ],
+   "otsu_prag_db": -13.8
+  }
+ },
+ "prag_db": -18.0,
+ "udio_snimaka_za_vodu": 0.5,
+ "filtar_suma": "medijan 5x5 po snimci"
+}

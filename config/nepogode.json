@@ -141,7 +141,93 @@
         "udio_snimaka": 0.5,
         "rezolucija_m": 20
       },
-      "status": "ceka_obradu"
+      "status": "obradeno",
+      "rezultati": {
+        "slika": {
+          "url": "data/nepogode/dunav-2024-09/voda.png",
+          "extent": [
+            2081653.15,
+            5707304.36,
+            2112395.7,
+            5736188.06
+          ]
+        },
+        "parcele": "data/nepogode/dunav-2024-09/parcele.geojson",
+        "manifest": "data/nepogode/dunav-2024-09/manifest.json",
+        "referenca": "referentno razdoblje 2024-07-20 – 2024-08-31",
+        "legenda_karte": [
+          {
+            "kod": "poplava",
+            "boja": "#1f78b4",
+            "oznaka": "poplavljeno (voda koje inače nema)"
+          },
+          {
+            "kod": "stalna_voda",
+            "boja": "#08306b",
+            "oznaka": "uobičajena vodena površina"
+          }
+        ],
+        "legenda": [
+          {
+            "kod": "pretezno",
+            "boja": "#1f78b4",
+            "oznaka": "pretežno poplavljena (≥ 50 %)"
+          },
+          {
+            "kod": "djelomicno",
+            "boja": "#a6cee3",
+            "oznaka": "djelomično poplavljena (10–50 %)"
+          },
+          {
+            "kod": "bez",
+            "boja": "#e5e7eb",
+            "oznaka": "bez značajne poplave (< 10 %)"
+          }
+        ],
+        "statistika_ha": {
+          "pretezno": 0.0,
+          "djelomicno": 0.0,
+          "bez": 6099.0
+        },
+        "statistika_udio": {
+          "pretezno": 0.0,
+          "djelomicno": 0.0,
+          "bez": 1.0
+        },
+        "povrsine_opcina_ha": {
+          "poplava": 2329.3,
+          "stalna_voda": 801.8
+        },
+        "naziv_karte": "karta poplavljenih površina",
+        "opis_karte": "Visoki vodostaj Dunava, rujan 2024.: voda prepoznata na radarskim snimkama Sentinel-1 (2024-09-22, 2024-09-23) u odnosu na referentno razdoblje.",
+        "naziv_parcela": "udio poplavljenosti po ARKOD parcelama",
+        "polja_parcele": [
+          {
+            "polje": "kultura",
+            "oznaka": "Uporaba (ARKOD 2023.)"
+          },
+          {
+            "polje": "povrsina_ha",
+            "oznaka": "Površina (ha)"
+          },
+          {
+            "polje": "udio_poplavljeno",
+            "oznaka": "Poplavljeno (%)"
+          },
+          {
+            "polje": "poplavljeno_ha",
+            "oznaka": "Poplavljeno (ha)"
+          },
+          {
+            "polje": "arkod_id",
+            "oznaka": "ARKOD ID"
+          }
+        ],
+        "izvor": "Copernicus Sentinel-1 (ESA), RTC obrada: Microsoft Planetary Computer; obrada: Web GIS Općine Bilje",
+        "atribucija": "Sadrži modificirane podatke Copernicus Sentinel-1",
+        "ogranicenja": "Radar prepoznaje otvorenu vodenu površinu. Voda ispod krošanja šuma (npr. poplavne šume Kopačkog rita) često se NE vidi, jer drveće i voda zajedno daju svijetao, a ne taman odraz. Vrlo glatke suhe površine (asfalt, pijesak, tek zaorano tlo) ponekad izgledaju kao voda. Rezultat vrijedi za dane snimanja navedene gore, ne za vrhunac vodostaja između njih. Nije procjena štete; za nju je mjerodavna općinska komisija.",
+        "datum_obrade": "2026-11-14"
+      }
     }
   ]
 }
