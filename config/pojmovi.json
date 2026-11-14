@@ -106,6 +106,25 @@
   },
   {
    "pojmovi": [
+    "satelit",
+    "ndvi",
+    "ndmi",
+    "bujnost",
+    "stanje usjeva",
+    "sentinel",
+    "snimk",
+    "zone parcel",
+    "prinos"
+   ],
+   "naslov": "Stanje usjeva sa satelita",
+   "opis": "bujnost po parceli kroz sezone, zone i preporuke",
+   "slojevi": [
+    "stanje_usjeva",
+    "zone_parcela"
+   ]
+  },
+  {
+   "pojmovi": [
     "paprik"
    ],
    "naslov": "Pogodnost za papriku",

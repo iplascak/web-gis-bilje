@@ -1,16 +1,117 @@
 {
-  "id": "poljoprivreda",
-  "naslov": "Poljoprivredna godina u Općini Bilje",
-  "uvod": "Kratka priča kroz karte: kakvo je naše tlo, što se gdje uzgaja, gdje prijeti voda i kako vrijeme određuje radove u polju.",
-  "koraci": [
-    {"naslov": "Između Drave, Dunava i Kopačkog rita", "tekst": "Općina Bilje ima oko 260 km², a velik dio čine poljoprivredne površine na naplavnoj ravnici. Tla su ovdje uglavnom duboka i plodna, ali voda – previše ili premalo – određuje gotovo svaku sezonu.", "slojevi": ["struktura_parcela"], "pogled": "opcina"},
-    {"naslov": "Kakvo je tlo pod nama", "tekst": "Pedološka karta pokazuje tipove tla. Kliknite na površinu za tip i teksturu tla: teža, glinasta tla sporije se prosušuju u proljeće, a lakša se brže griju i ranije dopuštaju sjetvu.", "slojevi": ["pedoloska_karta"], "pogled": "opcina"},
-    {"naslov": "Gdje su najvrjednija zemljišta", "tekst": "Bonitet govori koliko je zemljište vrijedno za poljoprivredu. Najbolja zemljišta treba čuvati za proizvodnju – važno je pri planiranju gradnje i prostornih planova.", "slojevi": ["bonitet"], "pogled": "opcina"},
-    {"naslov": "Što se danas uzgaja", "tekst": "ARKOD parcele pokazuju prijavljene površine po vrsti uporabe: oranice, livade, pašnjaci, voćnjaci i vinogradi. Uvećajte kartu da vidite pojedine parcele; podaci o korisnicima se ne prikazuju.", "slojevi": ["arkod_uporaba"], "pogled": {"centar": [18.79, 45.61], "zoom": 13}},
-    {"naslov": "Kanali i voda u polju", "tekst": "Mreža kanala odvodi suvišnu vodu u proljeće, ali u sušnim ljetima postaje i mogući izvor za navodnjavanje. Bilanca oborine i isparavanja u vremenskoj prognozi pokazuje treba li usjevima vode.", "slojevi": ["vodotoci_kanali", "jezera_bare"], "pogled": "opcina"},
-    {"naslov": "Kad voda postane prijetnja", "tekst": "Karta opasnosti od poplava pokazuje područja koja Drava i Dunav mogu poplaviti jednom u stotinu godina. Nasipi štite naselja i polja; za štete od nepogoda portal prikazuje i satelitske snimke stanja usjeva.", "slojevi": ["poplave_sv", "nasipi", "hidro_postaje"], "pogled": "opcina"},
-    {"naslov": "Kultura s potencijalom: paprika", "tekst": "Studija pogodnosti pokazuje gdje začinska paprika najbolje uspijeva. Takve karte pomažu odlučiti što sijati i gdje – za papriku, ali i za druge kulture u budućnosti.", "slojevi": ["paprika_pogodnost"], "pogled": "opcina"},
-    {"naslov": "Priroda kao susjed", "tekst": "Dio polja graniči s Parkom prirode Kopački rit i područjima ekološke mreže Natura 2000. Ondje vrijede posebna pravila, ali i posebne potpore za poljoprivredu prihvatljivu za prirodu.", "slojevi": ["zasticena_podrucja", "natura_povs"], "pogled": "opcina"},
-    {"naslov": "Vrijeme određuje radove", "tekst": "Prognoza za poljoprivrednike prevodi brojke u savjete: je li tlo prohodno, je li dovoljno toplo za sjetvu kukuruza, kad prihranjivati, kad prskati i kada prijeti mraz ili bolest. Odaberite svoju kulturu.", "slojevi": [], "pogled": "opcina", "akcija": "agro", "gumb": "Otvori vrijeme za poljoprivrednike"}
-  ]
+ "id": "poljoprivreda",
+ "naslov": "Poljoprivredna godina u Općini Bilje",
+ "uvod": "Kratka priča kroz karte: kakvo je naše tlo, što se gdje uzgaja, gdje prijeti voda i kako vrijeme određuje radove u polju.",
+ "koraci": [
+  {
+   "naslov": "Između Drave, Dunava i Kopačkog rita",
+   "tekst": "Općina Bilje ima oko 260 km², a velik dio čine poljoprivredne površine na naplavnoj ravnici. Tla su ovdje uglavnom duboka i plodna, ali voda – previše ili premalo – određuje gotovo svaku sezonu.",
+   "slojevi": [
+    "struktura_parcela"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Kakvo je tlo pod nama",
+   "tekst": "Pedološka karta pokazuje tipove tla. Kliknite na površinu za tip i teksturu tla: teža, glinasta tla sporije se prosušuju u proljeće, a lakša se brže griju i ranije dopuštaju sjetvu.",
+   "slojevi": [
+    "pedoloska_karta"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Gdje su najvrjednija zemljišta",
+   "tekst": "Bonitet govori koliko je zemljište vrijedno za poljoprivredu. Najbolja zemljišta treba čuvati za proizvodnju – važno je pri planiranju gradnje i prostornih planova.",
+   "slojevi": [
+    "bonitet"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Što se danas uzgaja",
+   "tekst": "ARKOD parcele pokazuju prijavljene površine po vrsti uporabe: oranice, livade, pašnjaci, voćnjaci i vinogradi. Uvećajte kartu da vidite pojedine parcele; podaci o korisnicima se ne prikazuju.",
+   "slojevi": [
+    "arkod_uporaba"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.61
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Pogled sa satelita – svaka parcela, svaka sezona",
+   "tekst": "Europski satelit Sentinel-2 snima naša polja svakih nekoliko dana. Za svaku parcelu portal uspoređuje ovogodišnju bujnost s prethodnim sezonama i upozorava kad je usjev slabiji nego obično ili trpi sušu. Kliknite parcelu za krivulje svih sezona i preporuke.",
+   "slojevi": [
+    "stanje_usjeva"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.62
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Zone unutar parcela",
+   "tekst": "Neki dijelovi parcele godinama daju slabiji usjev – zbog tla, vode ili zbijenosti. Crvene zone su dobro mjesto za analizu tla i prilagođenu gnojidbu; zelene su najjači dijelovi.",
+   "slojevi": [
+    "zone_parcela"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.62
+    ],
+    "zoom": 14
+   }
+  },
+  {
+   "naslov": "Kanali i voda u polju",
+   "tekst": "Mreža kanala odvodi suvišnu vodu u proljeće, ali u sušnim ljetima postaje i mogući izvor za navodnjavanje. Bilanca oborine i isparavanja u vremenskoj prognozi pokazuje treba li usjevima vode.",
+   "slojevi": [
+    "vodotoci_kanali",
+    "jezera_bare"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Kad voda postane prijetnja",
+   "tekst": "Karta opasnosti od poplava pokazuje područja koja Drava i Dunav mogu poplaviti jednom u stotinu godina. Nasipi štite naselja i polja; za štete od nepogoda portal prikazuje i satelitske snimke stanja usjeva.",
+   "slojevi": [
+    "poplave_sv",
+    "nasipi",
+    "hidro_postaje"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Kultura s potencijalom: paprika",
+   "tekst": "Studija pogodnosti pokazuje gdje začinska paprika najbolje uspijeva. Takve karte pomažu odlučiti što sijati i gdje – za papriku, ali i za druge kulture u budućnosti.",
+   "slojevi": [
+    "paprika_pogodnost"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Priroda kao susjed",
+   "tekst": "Dio polja graniči s Parkom prirode Kopački rit i područjima ekološke mreže Natura 2000. Ondje vrijede posebna pravila, ali i posebne potpore za poljoprivredu prihvatljivu za prirodu.",
+   "slojevi": [
+    "zasticena_podrucja",
+    "natura_povs"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Vrijeme određuje radove",
+   "tekst": "Prognoza za poljoprivrednike prevodi brojke u savjete: je li tlo prohodno, je li dovoljno toplo za sjetvu kukuruza, kad prihranjivati, kad prskati i kada prijeti mraz ili bolest. Odaberite svoju kulturu.",
+   "slojevi": [],
+   "pogled": "opcina",
+   "akcija": "agro",
+   "gumb": "Otvori vrijeme za poljoprivrednike"
+  }
+ ]
 }
