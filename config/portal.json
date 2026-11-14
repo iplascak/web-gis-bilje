@@ -188,5 +188,9 @@
       }
     ]
   },
-  "intenzitetPodloge": 0.75
+  "intenzitetPodloge": 0.75,
+  "prijave": {
+    "supabaseUrl": "https://pwowutilrdhnsygawmsu.supabase.co",
+    "supabaseKljuc": "sb_publishable_FA1BEE0oUi6HiqMfK-Ct_Q_REyf6VVG"
+  }
 }
