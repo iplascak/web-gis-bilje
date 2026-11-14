@@ -30,8 +30,12 @@
     rijeseno: { boja: '#1F7A3D', oznaka: 'riješeno' },
     odbijeno: { boja: '#b91c1c', oznaka: 'nije u nadležnosti / odbijeno' }
   };
-  const OSOBLJE = ['zaposlenik', 'nacelnik', 'admin'];
-  const NAZIVI_ULOGA = { gost: 'mještanin', zaposlenik: 'zaposlenik općine', nacelnik: 'načelnik', admin: 'administrator' };
+  const OSOBLJE = ['zaposlenik', 'direktor', 'nacelnik', 'admin'];
+  const NAZIVI_ULOGA = {
+    gost: 'mještanin', zaposlenik: 'obrađuje prijave', direktor: 'direktor/ica (nadzor)',
+    nacelnik: 'načelnik', admin: 'administrator'
+  };
+  const ORGANIZACIJE = ['Općina Bilje', 'Komunalno - Bilje d.o.o.'];
 
   let cfg = null;        // portal.prijave
   let sb = null;         // Supabase klijent
@@ -40,6 +44,19 @@
   let korisnik = null;   // { id, email, uloga }
 
   const jeOsoblje = () => korisnik && OSOBLJE.includes(korisnik.uloga);
+  const smijeBrisati = () => korisnik && ['nacelnik', 'admin'].includes(korisnik.uloga);
+  const jeAdmin = () => korisnik && korisnik.uloga === 'admin';
+  const poveznicaPrivatnost = () => el('a', { href: 'privatnost.html', target: '_blank' }, 'Obavijest o zaštiti osobnih podataka');
+
+  // gumb koji traži drugi klik za potvrdu (bez skočnih prozora preglednika)
+  function gumbPotvrde(tekst, tekstPotvrde, radnja, klasa) {
+    let spreman = false;
+    const g = el('button', { type: 'button', class: klasa || 'gumb-opasno', onclick: async () => {
+      if (!spreman) { spreman = true; g.textContent = tekstPotvrde; setTimeout(() => { spreman = false; g.textContent = tekst; }, 5000); return; }
+      g.disabled = true; await radnja(); g.disabled = false;
+    } }, tekst);
+    return g;
+  }
   const datum = (t) => t ? new Date(t).toLocaleDateString('hr-HR') : '';
 
   // ---------- priprema sloja (prije stvaranja karte) ----------
@@ -158,7 +175,7 @@
       el('h3', {}, 'Prijava na portal'),
       el('p', {}, 'Za slanje prijave dovoljna je e-adresa: na nju šaljemo poveznicu za prijavu. Lozinka nije potrebna.'),
       obrazac, status, korakKod,
-      el('p', { class: 'sitno-siva' }, 'E-adresu koristimo samo za prijavu na portal i eventualni upit općinskih službi o vašoj prijavi. Ne objavljuje se i ne dijeli s drugima.'));
+      el('p', { class: 'sitno-siva' }, 'E-adresu koristimo samo za prijavu na portal i eventualni upit općinskih službi o vašoj prijavi. Ne objavljuje se i ne dijeli s drugima. ', poveznicaPrivatnost(), '.'));
     email.focus();
   }
 
@@ -236,7 +253,8 @@
       el('label', { class: 'polje' }, el('span', {}, 'Opis'), opis),
       el('label', { class: 'polje' }, el('span', {}, 'Fotografija (nije obavezno)'), foto),
       el('label', { class: 'kvacica' }, privola,
-        el('span', {}, 'Razumijem da će prijava nakon pregleda biti javno prikazana na karti (bez mojih podataka). Na fotografiji neće biti lica ni registarskih oznaka.')),
+        el('span', {}, 'Razumijem da će prijava nakon pregleda biti javno prikazana na karti (bez mojih podataka). Na fotografiji neće biti lica ni registarskih oznaka. ', poveznicaPrivatnost(), '.')),
+      el('p', { class: 'sitno-siva' }, 'Za hitne situacije (požar, nesreća, opasnost po život) nazovite 112.'),
       gumb, status);
     stanje.api.otvoriDijalog(el('h3', {}, 'Prijava komunalnog problema'), obrazac);
   }
@@ -266,14 +284,32 @@
 
   async function prikaziRacun() {
     const sadrzaj = el('div', {}, poruka('Učitavam…'));
+    const odjava = el('button', { class: 'gumb-sekundarni', onclick: async () => {
+      await sb.auth.signOut(); korisnik = null; azurirajGumbRacuna(); osvjeziSloj();
+      document.getElementById('dijalog').close();
+    } }, 'Odjava');
+    const brisanjeRacuna = gumbPotvrde('Obriši moj račun', 'Sigurno? Kliknite ponovno za brisanje', async () => {
+      const { error } = await sb.rpc('obrisi_moj_racun');
+      if (error) { sadrzaj.prepend(poruka('Brisanje nije uspjelo: ' + error.message, 'greska')); return; }
+      await sb.auth.signOut(); korisnik = null; azurirajGumbRacuna();
+      stanje.api.otvoriDijalog(el('h3', {}, 'Račun je obrisan'),
+        el('p', {}, 'Vaša e-adresa i račun su obrisani. Vaše dosadašnje prijave ostaju sačuvane, ali bez podataka o vama.'));
+    }, 'gumb-sekundarni');
+    const kartice = jeAdmin() ? el('div', { class: 'kartice-dijaloga' },
+      el('button', { class: 'aktivna', onclick: (e) => { odaberi(e.target); prikaziPopisPrijava(sadrzaj); } }, 'Prijave'),
+      el('button', { onclick: (e) => { odaberi(e.target); prikaziKorisnike(sadrzaj); } }, 'Korisnici i uloge')) : '';
+    function odaberi(g) { for (const b of g.parentElement.children) b.classList.toggle('aktivna', b === g); }
     stanje.api.otvoriDijalog(
       el('h3', {}, jeOsoblje() ? 'Prijave mještana' : 'Moje prijave'),
       el('p', { class: 'sitno-siva' }, korisnik.email + ' · ' + (NAZIVI_ULOGA[korisnik.uloga] || korisnik.uloga)),
-      sadrzaj,
-      el('p', {}, el('button', { class: 'gumb-sekundarni', onclick: async () => {
-        await sb.auth.signOut(); korisnik = null; azurirajGumbRacuna(); osvjeziSloj();
-        document.getElementById('dijalog').close();
-      } }, 'Odjava')));
+      kartice, sadrzaj,
+      el('div', { class: 'redak-gumba' }, odjava, jeOsoblje() ? '' : brisanjeRacuna),
+      el('p', { class: 'sitno-siva' }, poveznicaPrivatnost()));
+    prikaziPopisPrijava(sadrzaj);
+  }
+
+  async function prikaziPopisPrijava(sadrzaj) {
+    sadrzaj.replaceChildren(poruka('Učitavam…'));
 
     let upit = sb.from('prijave').select('id, stvoreno, kategorija, opis, status, javno, odgovor, adresa, lon, lat')
       .order('stvoreno', { ascending: false }).limit(300);
@@ -313,6 +349,60 @@
         tijelo)));
   }
 
+  // ---------- administrator: korisnici i uloge ----------
+
+  async function prikaziKorisnike(sadrzaj) {
+    sadrzaj.replaceChildren(poruka('Učitavam korisnike…'));
+    const { data, error } = await sb.from('profili')
+      .select('id, email, ime, uloga, organizacija, funkcija, obavijesti_nove, obavijesti_tjedno, stvoreno')
+      .order('stvoreno', { ascending: false });
+    if (error) { sadrzaj.replaceChildren(poruka('Greška: ' + error.message + ' (je li pokrenuta supabase/migracija_2.sql?)', 'greska')); return; }
+    const pretraga = el('input', { type: 'search', placeholder: 'Traži po e-adresi ili imenu' });
+    const tijelo = el('tbody');
+    const redak = (k) => {
+      const uloga = el('select', {}, ...Object.entries(NAZIVI_ULOGA).map(([v, o]) => el('option', { value: v, selected: v === k.uloga }, o)));
+      const org = el('select', {}, el('option', { value: '' }, '–'),
+        ...ORGANIZACIJE.map(o => el('option', { value: o, selected: o === k.organizacija }, o)));
+      const funkcija = el('input', { type: 'text', value: k.funkcija || '', placeholder: 'npr. komunalni redar' });
+      const ime = el('input', { type: 'text', value: k.ime || '', placeholder: 'ime i prezime' });
+      const nove = el('input', { type: 'checkbox', checked: k.obavijesti_nove, title: 'E-poruka za svaku novu prijavu' });
+      const tjedno = el('input', { type: 'checkbox', checked: k.obavijesti_tjedno, title: 'Tjedno izvješće ponedjeljkom' });
+      const stanjeSpremanja = el('span', { class: 'sitno-siva' });
+      const spremi = el('button', { class: 'gumb-mali', onclick: async () => {
+        const { error: g } = await sb.from('profili').update({
+          uloga: uloga.value, organizacija: org.value || null, funkcija: funkcija.value.trim() || null,
+          ime: ime.value.trim() || null, obavijesti_nove: nove.checked, obavijesti_tjedno: tjedno.checked
+        }).eq('id', k.id);
+        stanjeSpremanja.textContent = g ? 'greška: ' + g.message : 'spremljeno';
+      } }, 'Spremi');
+      return el('tr', { 'data-trazi': ((k.email || '') + ' ' + (k.ime || '')).toLowerCase() },
+        el('td', {}, el('strong', {}, k.email || '(bez e-adrese)'), el('div', {}, ime)),
+        el('td', {}, uloga, el('div', {}, org), el('div', {}, funkcija)),
+        el('td', {}, el('label', { class: 'kvacica-mala' }, nove, 'nove prijave'), el('label', { class: 'kvacica-mala' }, tjedno, 'tjedno izvješće')),
+        el('td', {}, spremi, stanjeSpremanja));
+    };
+    tijelo.append(...data.map(redak));
+    pretraga.addEventListener('input', () => {
+      const q = pretraga.value.trim().toLowerCase();
+      for (const tr of tijelo.children) tr.hidden = q && !tr.dataset.trazi.includes(q);
+    });
+    sadrzaj.replaceChildren(
+      el('p', { class: 'sitno-siva' }, 'Korisnik se najprije jednom prijavi na portal svojom e-adresom, a zatim mu ovdje dodijelite ulogu. "Obrađuje prijave": komunalni redar, poslovođa. "Direktor/ica": nadzor nad svim prijavama. Načelnik i administrator mogu brisati prijave.'),
+      el('label', { class: 'polje' }, pretraga),
+      el('div', { class: 'tablica-okvir' }, el('table', { class: 'tablica-prijava tablica-korisnika' },
+        el('thead', {}, el('tr', {}, el('th', {}, 'Korisnik'), el('th', {}, 'Uloga'), el('th', {}, 'Obavijesti e-poštom'), el('th'))),
+        tijelo)));
+  }
+
+  async function obrisiPrijavu(r) {
+    if (r.fotografija) await sb.storage.from('prijave-foto').remove([r.fotografija]);
+    const { error } = await sb.from('prijave').delete().eq('id', r.id);
+    if (error) return error;
+    osvjeziSloj();
+    stanje.api.otvoriDijalog(el('h3', {}, 'Prijava br. ' + r.id + ' je obrisana.'));
+    return null;
+  }
+
   async function urediPrijavu(id) {
     const { data: r, error } = await sb.from('prijave').select('*').eq('id', id).single();
     if (error) { stanje.api.otvoriDijalog(poruka('Greška: ' + error.message, 'greska')); return; }
@@ -345,7 +435,12 @@
       el('label', { class: 'polje' }, el('span', {}, 'Odgovor općine'), odgovor),
       el('label', { class: 'polje' }, el('span', {}, 'Interna napomena'), napomena),
       el('label', { class: 'kvacica' }, javno, el('span', {}, 'Objavi na karti (fotografija i opis bit će javni)')),
-      el('button', { class: 'gumb-primarni', type: 'submit' }, 'Spremi'), poruke);
+      el('div', { class: 'redak-gumba' }, el('button', { class: 'gumb-primarni', type: 'submit' }, 'Spremi'),
+        smijeBrisati() ? gumbPotvrde('Obriši prijavu', 'Sigurno? Kliknite ponovno – brisanje je trajno', async () => {
+          const g = await obrisiPrijavu(r);
+          if (g) poruke.replaceChildren(poruka('Brisanje nije uspjelo: ' + g.message, 'greska'));
+        }) : ''),
+      poruke);
     stanje.api.zatvoriSkocni();
     stanje.api.otvoriDijalog(el('h3', {}, 'Prijava br. ' + r.id + ' – ' + (KATEGORIJE[r.kategorija] || r.kategorija)), obrazac);
   }

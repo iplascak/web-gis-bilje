@@ -1050,6 +1050,7 @@
         el('p', {},
           el('a', { href: 'https://bilje.hr/', target: '_blank', rel: 'noopener' }, 'Službena stranica Općine Bilje'), el('br'),
           el('a', { href: 'https://bilje.hr/prostorno-planska-dokumentacija/', target: '_blank', rel: 'noopener' }, 'Važeća prostorno-planska dokumentacija'), el('br'),
+          el('a', { href: 'privatnost.html', target: '_blank' }, 'Zaštita osobnih podataka'), el('br'),
           el('a', { href: 'https://github.com/iplascak/web-gis-bilje', target: '_blank', rel: 'noopener' }, 'Izvorni kod portala (otvoreni kod)'))));
   }
 

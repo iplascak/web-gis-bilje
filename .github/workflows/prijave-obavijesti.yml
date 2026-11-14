@@ -1,0 +1,49 @@
+name: Obavijesti o prijavama
+
+# Svakih 10 minuta: obavijesti o novim prijavama i promjenama statusa.
+# Ponedjeljkom ujutro: tjedno izvješće i brisanje e-adresa iz zatvorenih prijava starijih od 12 mjeseci.
+# Radi tek kad se u Settings -> Secrets and variables -> Actions dodaju SUPABASE_SECRET_KEY i SMTP_* tajne.
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+    - cron: "37 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      nacin:
+        description: "nove | tjedno"
+        default: "nove"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: prijave-obavijesti
+  cancel-in-progress: false
+
+jobs:
+  obavijesti:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: |
+            config
+            scripts/prijave
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Obavijesti
+        run: |
+          if [ "${{ github.event.schedule }}" = "37 5 * * 1" ] || [ "${{ inputs.nacin }}" = "tjedno" ]; then
+            python scripts/prijave/obavijesti.py --nove --tjedno --ciscenje
+          else
+            python scripts/prijave/obavijesti.py --nove
+          fi

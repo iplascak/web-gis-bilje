@@ -24,6 +24,10 @@ Besplatni paket je dovoljan za općinu: 500 MB baze, 1 GB fotografija, 50 000 ko
    ```
    **Nikad** ne kopirajte *secret* / *service_role* ključ u portal ni u repozitorij.
 
+## 1b. Dopuna baze (uloge, brisanje, obavijesti)
+
+U SQL Editoru pokrenite i `supabase/migracija_2.sql` (jednom; smije se ponoviti).
+
 ## 2. Uloge
 
 Nakon prve prijave na portal, u SQL Editoru sebi dodijelite ulogu admina:
@@ -33,8 +37,28 @@ update public.profili set uloga = 'admin'
 where id = (select id from auth.users where email = 'vasa@adresa.hr');
 ```
 
-Djelatnicima općine isto tako dodijelite `zaposlenik` ili `nacelnik`.
-Svi ostali su automatski `gost` (mještanin): šalju prijave i vide samo svoje.
+Ostale uloge dodjeljuje administrator na portalu: **Općina → Korisnici i uloge**
+(korisnik se prije toga mora jednom prijaviti na portal):
+
+| uloga | tko | smije |
+|---|---|---|
+| obrađuje prijave (`zaposlenik`) | komunalni redar, poslovođa Komunalno - Bilje d.o.o. | vidi i obrađuje sve prijave |
+| direktor/ica (`direktor`) | direktorica Komunalno - Bilje d.o.o. | isto, nadzor |
+| načelnik (`nacelnik`) | načelnik | isto + brisanje prijava |
+| administrator (`admin`) | administrator portala | sve + dodjela uloga |
+
+Svi ostali su automatski mještani: šalju prijave i vide samo svoje.
+
+## 2b. Obavijesti e-poštom i tjedno izvješće
+
+Šalje ih GitHub Actions (`.github/workflows/prijave-obavijesti.yml`): nove prijave svakih 10 minuta,
+tjedno izvješće ponedjeljkom ujutro. Uključuju se dodavanjem tajni u GitHubu
+(*repozitorij → Settings → Secrets and variables → Actions → New repository secret*):
+
+- `SUPABASE_SECRET_KEY` – tajni ključ iz Supabase *Project Settings → API Keys* (sb_secret_…). Upisuje se samo ovdje, nikamo drugdje.
+- `SMTP_HOST`, `SMTP_PORT` (587 ili 465), `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` – poslužitelj e-pošte (isti kao u točki 3).
+
+Tko prima što, određuje administrator kvačicama "nove prijave" i "tjedno izvješće" uz svakog korisnika.
 
 ## 3. Za ozbiljnu uporabu
 

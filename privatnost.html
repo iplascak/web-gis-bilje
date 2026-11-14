@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zaštita osobnih podataka – Web GIS Općine Bilje</title>
+  <link rel="icon" href="assets/favicon-32.png">
+  <style>
+    @font-face { font-family: "Libre Franklin"; src: url(lib/fonts/libre-franklin-latin-ext-400-normal.woff2) format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Libre Franklin"; src: url(lib/fonts/libre-franklin-latin-ext-700-normal.woff2) format("woff2"); font-weight: 700; }
+    body { margin: 0; font-family: "Libre Franklin", system-ui, sans-serif; color: #222; background: #f4f4f1; line-height: 1.6; }
+    header { background: #1c1d1f; color: #f5f5f3; border-bottom: 3px solid #F1C50E; padding: 14px 20px; display: flex; gap: 14px; align-items: center; }
+    header img { height: 44px; }
+    header a { color: #F5D654; }
+    main { max-width: 820px; margin: 24px auto; background: #fff; border-radius: 12px; padding: 24px 32px 32px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    h1 { font-size: 26px; line-height: 1.25; margin: 0 0 4px; }
+    h2 { font-size: 18px; margin: 28px 0 6px; color: #1F7A3D; }
+    .sitno { color: #555C66; font-size: 14px; }
+    table { border-collapse: collapse; width: 100%; font-size: 15px; }
+    th, td { text-align: left; vertical-align: top; border-top: 1px solid #e5e5e0; padding: 8px 8px 8px 0; }
+    th { width: 34%; }
+    a { color: #1F7A3D; }
+  </style>
+</head>
+<body>
+<header>
+  <img src="assets/grb.png" alt="Grb Općine Bilje">
+  <div><strong>Web GIS Općine Bilje</strong><br><a href="./">← natrag na kartu</a></div>
+</header>
+<main>
+  <h1>Obavijest o obradi osobnih podataka</h1>
+  <p class="sitno">Web GIS Općine Bilje i prijave komunalnih problema · verzija od 14. studenoga 2026.</p>
+
+  <p>Ova obavijest daje se u skladu s člancima 13. i 14. Opće uredbe o zaštiti podataka (Uredba (EU) 2016/679, „GDPR”) i Zakonom o provedbi Opće uredbe o zaštiti podataka (NN 42/18). Dopunjuje opću <a href="https://bilje.hr/gdpr-2/" target="_blank" rel="noopener">Politiku zaštite osobnih podataka Općine Bilje</a>.</p>
+
+  <h2>1. Voditelj obrade i službenik za zaštitu podataka</h2>
+  <p><strong>Općina Bilje</strong>, Kralja Zvonimira 1b, 31327 Bilje, OIB 23962939458, tel. 031 751 400, e-pošta <a href="mailto:bilje@bilje.hr">bilje@bilje.hr</a>.</p>
+  <p>Službenik za zaštitu osobnih podataka: <a href="mailto:zastita.osobnih.podataka@bilje.hr">zastita.osobnih.podataka@bilje.hr</a>, ili poštom na adresu Općine uz napomenu „n. p. Službenika za zaštitu osobnih podataka”.</p>
+
+  <h2>2. Pregledavanje karte</h2>
+  <p>Za pregledavanje karte ne trebate se prijaviti i ne prikupljamo vaše osobne podatke. Portal ne koristi kolačiće za praćenje, oglašavanje ni analitiku posjeta.</p>
+  <p>Vaš preglednik lokalno, samo na vašem uređaju, pamti postavke prikaza (npr. intenzitet podloge). Ako ste prijavljeni, pamti i podatke o prijavi. Te podatke možete obrisati u postavkama preglednika.</p>
+  <p>Karta se učitava s poslužitelja drugih javnih servisa. To su Državna geodetska uprava, Hrvatske vode, OpenStreetMap i Bioportal (zaštita prirode), a sam portal smješten je na servisu GitHub Pages (GitHub Inc.). Kao i kod posjeta bilo kojoj mrežnoj stranici, ti poslužitelji tehnički primaju IP adresu i podatke o pregledniku.</p>
+
+  <h2>3. Prijave komunalnih problema</h2>
+  <table>
+    <tr><th>Koje podatke obrađujemo</th><td>e-adresu (za prijavu na portal i eventualni upit o prijavi); lokaciju, vrstu i opis problema; fotografiju, ako je priložite; vrijeme slanja i promjena statusa. Pri slanju se fotografija smanjuje, a iz nje se uklanjaju skriveni podaci (EXIF), npr. GPS lokacija i podaci o uređaju.</td></tr>
+    <tr><th>Svrha</th><td>Zaprimanje, obrada i praćenje rješavanja komunalnih problema na području Općine Bilje. Javno se objavljuje stanje rješavanja prijava.</td></tr>
+    <tr><th>Pravna osnova</th><td>Obavljanje zadaće od javnog interesa i izvršavanje javnih ovlasti Općine u području komunalnog gospodarstva i komunalnog reda (čl. 6. st. 1. t. (e) GDPR-a; Zakon o lokalnoj i područnoj (regionalnoj) samoupravi; Zakon o komunalnom gospodarstvu). Slanje prijave je dobrovoljno.</td></tr>
+    <tr><th>Što je javno</th><td>Na karti se prikazuju samo prijave koje su pregledale ovlaštene osobe, i to bez imena i e-adrese prijavitelja. Prikazuju se vrsta, opis, približna lokacija, fotografija, status i odgovor Općine. Prije objave osoblje može ukloniti osobne podatke iz opisa. Prijave s licima, registarskim oznakama ili uvredljivim sadržajem ne objavljuju se.</td></tr>
+    <tr><th>Tko ima pristup</th><td>Ovlaštene osobe Općine Bilje (komunalni redar, načelnik, administrator portala) i trgovačkog društva Komunalno - Bilje d.o.o. (poslovođa, direktor/ica), koje u ime Općine obavlja komunalne poslove. Podaci se ne prodaju niti ustupaju u druge svrhe. Daju se tijelima javne vlasti samo kada to propisuje zakon.</td></tr>
+    <tr><th>Izvršitelji obrade</th><td>Supabase Inc. (baza podataka i prijava korisnika; podaci se čuvaju na poslužiteljima u Europskoj uniji, Frankfurt), GitHub Inc. (smještaj portala i automatsko slanje obavijesti) i pružatelj usluge e-pošte. Ako izvršitelj obrade sa sjedištem izvan EU-a pristupa podacima, to se čini uz primjerene zaštitne mjere iz poglavlja V. GDPR-a (standardne ugovorne klauzule ili okvir EU-SAD za privatnost podataka).</td></tr>
+    <tr><th>Koliko dugo</th><td>E-adresa uz prijavu briše se 12 mjeseci nakon što je prijava riješena ili odbijena. Sama prijava, bez podataka o prijavitelju, čuva se kao evidencija o održavanju komunalne infrastrukture. Korisnički račun čuva se dok ga ne obrišete.</td></tr>
+  </table>
+
+  <h2>4. Vaša prava</h2>
+  <p>Imate pravo zatražiti pristup svojim podacima, njihov ispravak ili brisanje i ograničenje obrade, te uložiti prigovor na obradu. Zahtjev pošaljite službeniku za zaštitu osobnih podataka (točka 1).</p>
+  <p>Svoj korisnički račun možete obrisati i sami: na portalu kliknite <em>Moje prijave → Obriši moj račun</em>. Tada se brišu vaša e-adresa i račun, a vaše prijave ostaju sačuvane bez podataka o vama.</p>
+  <p>Ako smatrate da je obradom povrijeđeno vaše pravo, možete podnijeti prigovor Agenciji za zaštitu osobnih podataka (AZOP), Selska cesta 136, 10000 Zagreb, <a href="https://azop.hr" target="_blank" rel="noopener">azop.hr</a>.</p>
+
+  <h2>5. Sigurnost</h2>
+  <p>Svi podaci prenose se šifrirano (HTTPS). Pravila u bazi podataka osiguravaju da svaki korisnik vidi samo ono za što je ovlašten: mještanin vidi samo svoje prijave, osoblje sve prijave, a javnost samo objavljene prijave bez osobnih podataka.</p>
+
+  <h2>6. Pravila za prijave</h2>
+  <p>Molimo da prijavljujete stvarne komunalne probleme, bez uvredljivog sadržaja i bez osobnih podataka drugih osoba. Na fotografiji ne bi smjelo biti lica ni registarskih oznaka vozila. Općina može urediti opis, odbiti ili ne objaviti prijavu koja nije u skladu s ovim pravilima ili nije u njezinoj nadležnosti. Za hitne situacije (požar, nesreća, opasnost po život) nazovite <strong>112</strong>.</p>
+
+  <h2>7. Izmjene</h2>
+  <p>O izmjenama ove obavijesti obavijestit ćemo na ovoj stranici. Datum posljednje verzije naveden je na vrhu.</p>
+</main>
+</body>
+</html>
