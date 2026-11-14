@@ -3,17 +3,26 @@
   "metode": {
     "ndvi_anomalija": {
       "naziv": "Odstupanje stanja vegetacije od višegodišnjeg prosjeka",
-      "za": ["susa", "toplinski_val"],
+      "za": [
+        "susa",
+        "toplinski_val"
+      ],
       "opis": "Iz satelitskih snimaka Sentinel-2 računa se medijan indeksa vegetacije NDVI u zadanom razdoblju nepogode te u istom razdoblju referentnih godina. Odstupanje pokazuje koliko je vegetacija u godini nepogode slabija ili jača od uobičajenog za to doba godine."
     },
     "ndvi_promjena": {
       "naziv": "Promjena stanja vegetacije prije i poslije događaja",
-      "za": ["tuca", "olujno_nevrijeme", "pozar"],
+      "za": [
+        "tuca",
+        "olujno_nevrijeme",
+        "pozar"
+      ],
       "opis": "Uspoređuje se medijan NDVI-ja u kratkom razdoblju prije i neposredno poslije događaja. Nagli pad ukazuje na oštećenje usjeva ili vegetacije."
     },
     "s1_voda": {
       "naziv": "Poplavljene površine iz radarskih snimaka (Sentinel-1)",
-      "za": ["poplava"],
+      "za": [
+        "poplava"
+      ],
       "opis": "Radar vidi kroz oblake; vodene površine u vrijeme događaja uspoređuju se s uobičajenim stanjem. (U pripremi.)"
     }
   },
@@ -28,13 +37,88 @@
       "analiza": {
         "metoda": "ndvi_anomalija",
         "godina": 2026,
-        "razdoblje": ["06-01", "08-31"],
-        "referentne_godine": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+        "razdoblje": [
+          "06-01",
+          "08-31"
+        ],
+        "referentne_godine": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025
+        ],
         "max_oblacnost": 70,
         "rezolucija_m": 20
       },
-      "status": "ceka_obradu",
-      "rezultati": null
+      "status": "obradeno",
+      "rezultati": {
+        "slika": {
+          "url": "data/nepogode/susa-2026/odstupanje.png",
+          "extent": [
+            2081642.72,
+            5707300.28,
+            2112383.54,
+            5736182.35
+          ]
+        },
+        "parcele": "data/nepogode/susa-2026/parcele.geojson",
+        "manifest": "data/nepogode/susa-2026/manifest.json",
+        "referenca": "prosjek 8 referentnih godina (2018–2025)",
+        "legenda": [
+          {
+            "kod": "izrazito_ispod",
+            "boja": "#8c510a",
+            "oznaka": "izrazito ispod prosjeka"
+          },
+          {
+            "kod": "znatno_ispod",
+            "boja": "#d8b365",
+            "oznaka": "znatno ispod prosjeka"
+          },
+          {
+            "kod": "blago_ispod",
+            "boja": "#f6e8c3",
+            "oznaka": "blago ispod prosjeka"
+          },
+          {
+            "kod": "uobicajeno",
+            "boja": "#e5e7eb",
+            "oznaka": "uobičajeno"
+          },
+          {
+            "kod": "blago_iznad",
+            "boja": "#c7eae5",
+            "oznaka": "blago iznad prosjeka"
+          },
+          {
+            "kod": "iznad",
+            "boja": "#35978f",
+            "oznaka": "iznad prosjeka"
+          }
+        ],
+        "statistika_ha": {
+          "izrazito_ispod": 1465.0,
+          "znatno_ispod": 643.5,
+          "blago_ispod": 335.9,
+          "uobicajeno": 1223.6,
+          "blago_iznad": 932.2,
+          "iznad": 1498.8
+        },
+        "statistika_udio": {
+          "izrazito_ispod": 0.24,
+          "znatno_ispod": 0.106,
+          "blago_ispod": 0.055,
+          "uobicajeno": 0.201,
+          "blago_iznad": 0.153,
+          "iznad": 0.246
+        },
+        "srednje_odstupanje_parcela": -0.042,
+        "datum_obrade": "2026-11-14"
+      }
     }
   ]
 }

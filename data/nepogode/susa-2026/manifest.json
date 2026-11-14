@@ -1,0 +1,6292 @@
+{
+ "nepogoda": "susa-2026",
+ "stac": "https://earth-search.aws.element84.com/v1",
+ "kolekcija": "sentinel-2-l2a",
+ "parametri": {
+  "metoda": "ndvi_anomalija",
+  "godina": 2026,
+  "razdoblje": [
+   "06-01",
+   "08-31"
+  ],
+  "referentne_godine": [
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "max_oblacnost": 70,
+  "rezolucija_m": 20
+ },
+ "scl_valjani_razredi": [
+  4,
+  5
+ ],
+ "pokrenuto": "2026-11-14T00:19:02Z",
+ "kompoziti": {
+  "godina 2026": {
+   "razdoblje": [
+    "2026-06-01",
+    "2026-08-31"
+   ],
+   "broj_snimaka": 89,
+   "snimke": [
+    {
+     "id": "S2A_33TYL_20260831_1_L2A",
+     "datum": "2026-08-31",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.011842
+    },
+    {
+     "id": "S2A_34TCR_20260831_1_L2A",
+     "datum": "2026-08-31",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.875073
+    },
+    {
+     "id": "S2B_33TYL_20260831_0_L2A",
+     "datum": "2026-08-31",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.59317
+    },
+    {
+     "id": "S2B_34TCR_20260831_0_L2A",
+     "datum": "2026-08-31",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.237495
+    },
+    {
+     "id": "S2A_34TCR_20260828_0_L2A",
+     "datum": "2026-08-28",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 64.450437
+    },
+    {
+     "id": "S2C_33TYL_20260826_0_L2A",
+     "datum": "2026-08-26",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.742838
+    },
+    {
+     "id": "S2C_34TCR_20260826_0_L2A",
+     "datum": "2026-08-26",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.728651
+    },
+    {
+     "id": "S2B_33TYL_20260824_0_L2A",
+     "datum": "2026-08-24",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001074
+    },
+    {
+     "id": "S2B_34TCR_20260824_0_L2A",
+     "datum": "2026-08-24",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002882
+    },
+    {
+     "id": "S2A_34TCR_20260821_1_L2A",
+     "datum": "2026-08-21",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 62.176925
+    },
+    {
+     "id": "S2C_33TYL_20260819_0_L2A",
+     "datum": "2026-08-19",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.139143
+    },
+    {
+     "id": "S2C_34TCR_20260819_0_L2A",
+     "datum": "2026-08-19",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.221811
+    },
+    {
+     "id": "S2A_33TYL_20260818_0_L2A",
+     "datum": "2026-08-18",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 57.109749
+    },
+    {
+     "id": "S2C_33TYL_20260816_0_L2A",
+     "datum": "2026-08-16",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000723
+    },
+    {
+     "id": "S2C_34TCR_20260816_0_L2A",
+     "datum": "2026-08-16",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001676
+    },
+    {
+     "id": "S2B_33TYL_20260814_0_L2A",
+     "datum": "2026-08-14",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000833
+    },
+    {
+     "id": "S2B_34TCR_20260814_0_L2A",
+     "datum": "2026-08-14",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000342
+    },
+    {
+     "id": "S2A_33TYL_20260811_1_L2A",
+     "datum": "2026-08-11",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.98769
+    },
+    {
+     "id": "S2A_34TCR_20260811_1_L2A",
+     "datum": "2026-08-11",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.017351
+    },
+    {
+     "id": "S2B_33TYL_20260811_0_L2A",
+     "datum": "2026-08-11",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.574441
+    },
+    {
+     "id": "S2B_34TCR_20260811_0_L2A",
+     "datum": "2026-08-11",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002004
+    },
+    {
+     "id": "S2C_33TYL_20260809_0_L2A",
+     "datum": "2026-08-09",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00617
+    },
+    {
+     "id": "S2C_34TCR_20260809_0_L2A",
+     "datum": "2026-08-09",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.004679
+    },
+    {
+     "id": "S2A_33TYL_20260808_0_L2A",
+     "datum": "2026-08-08",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 51.858419
+    },
+    {
+     "id": "S2A_34TCR_20260808_0_L2A",
+     "datum": "2026-08-08",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 42.58253
+    },
+    {
+     "id": "S2C_33TYL_20260806_0_L2A",
+     "datum": "2026-08-06",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.0007
+    },
+    {
+     "id": "S2C_34TCR_20260806_0_L2A",
+     "datum": "2026-08-06",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00141
+    },
+    {
+     "id": "S2B_33TYL_20260804_0_L2A",
+     "datum": "2026-08-04",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000766
+    },
+    {
+     "id": "S2B_34TCR_20260804_0_L2A",
+     "datum": "2026-08-04",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.6e-05
+    },
+    {
+     "id": "S2A_33TYL_20260801_1_L2A",
+     "datum": "2026-08-01",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00064
+    },
+    {
+     "id": "S2A_34TCR_20260801_1_L2A",
+     "datum": "2026-08-01",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.1e-05
+    },
+    {
+     "id": "S2B_33TYL_20260801_0_L2A",
+     "datum": "2026-08-01",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001712
+    },
+    {
+     "id": "S2B_34TCR_20260801_0_L2A",
+     "datum": "2026-08-01",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002731
+    },
+    {
+     "id": "S2C_33TYL_20260730_0_L2A",
+     "datum": "2026-07-30",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.262224
+    },
+    {
+     "id": "S2C_34TCR_20260730_0_L2A",
+     "datum": "2026-07-30",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.20834
+    },
+    {
+     "id": "S2A_33TYL_20260729_0_L2A",
+     "datum": "2026-07-29",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000567
+    },
+    {
+     "id": "S2A_34TCR_20260729_0_L2A",
+     "datum": "2026-07-29",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000929
+    },
+    {
+     "id": "S2C_33TYL_20260727_0_L2A",
+     "datum": "2026-07-27",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.364249
+    },
+    {
+     "id": "S2C_34TCR_20260727_0_L2A",
+     "datum": "2026-07-27",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 50.072217
+    },
+    {
+     "id": "S2B_33TYL_20260725_0_L2A",
+     "datum": "2026-07-25",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 46.408352
+    },
+    {
+     "id": "S2A_33TYL_20260722_1_L2A",
+     "datum": "2026-07-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.874382
+    },
+    {
+     "id": "S2A_34TCR_20260722_1_L2A",
+     "datum": "2026-07-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.887639
+    },
+    {
+     "id": "S2B_33TYL_20260722_0_L2A",
+     "datum": "2026-07-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.872334
+    },
+    {
+     "id": "S2B_34TCR_20260722_0_L2A",
+     "datum": "2026-07-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.511919
+    },
+    {
+     "id": "S2A_33TYL_20260719_0_L2A",
+     "datum": "2026-07-19",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.114734
+    },
+    {
+     "id": "S2A_34TCR_20260719_0_L2A",
+     "datum": "2026-07-19",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.105275
+    },
+    {
+     "id": "S2C_33TYL_20260717_0_L2A",
+     "datum": "2026-07-17",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.605101
+    },
+    {
+     "id": "S2C_34TCR_20260717_1_L2A",
+     "datum": "2026-07-17",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.297361
+    },
+    {
+     "id": "S2B_33TYL_20260715_0_L2A",
+     "datum": "2026-07-15",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.31556
+    },
+    {
+     "id": "S2B_34TCR_20260715_0_L2A",
+     "datum": "2026-07-15",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.646042
+    },
+    {
+     "id": "S2A_33TYL_20260712_1_L2A",
+     "datum": "2026-07-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 25.698987
+    },
+    {
+     "id": "S2A_34TCR_20260712_1_L2A",
+     "datum": "2026-07-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 47.924945
+    },
+    {
+     "id": "S2B_33TYL_20260712_0_L2A",
+     "datum": "2026-07-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 40.724546
+    },
+    {
+     "id": "S2C_33TYL_20260710_0_L2A",
+     "datum": "2026-07-10",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.908918
+    },
+    {
+     "id": "S2C_34TCR_20260710_0_L2A",
+     "datum": "2026-07-10",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.881077
+    },
+    {
+     "id": "S2C_33TYL_20260707_0_L2A",
+     "datum": "2026-07-07",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.011325
+    },
+    {
+     "id": "S2C_34TCR_20260707_0_L2A",
+     "datum": "2026-07-07",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.405197
+    },
+    {
+     "id": "S2B_33TYL_20260705_0_L2A",
+     "datum": "2026-07-05",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 34.263819
+    },
+    {
+     "id": "S2C_33TYL_20260630_0_L2A",
+     "datum": "2026-06-30",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.005114
+    },
+    {
+     "id": "S2C_34TCR_20260630_0_L2A",
+     "datum": "2026-06-30",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00187
+    },
+    {
+     "id": "S2A_33TYL_20260629_0_L2A",
+     "datum": "2026-06-29",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000985
+    },
+    {
+     "id": "S2A_34TCR_20260629_0_L2A",
+     "datum": "2026-06-29",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001855
+    },
+    {
+     "id": "S2C_33TYL_20260627_0_L2A",
+     "datum": "2026-06-27",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.153958
+    },
+    {
+     "id": "S2C_34TCR_20260627_0_L2A",
+     "datum": "2026-06-27",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.300523
+    },
+    {
+     "id": "S2B_33TYL_20260625_0_L2A",
+     "datum": "2026-06-25",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000262
+    },
+    {
+     "id": "S2B_34TCR_20260625_0_L2A",
+     "datum": "2026-06-25",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.004157
+    },
+    {
+     "id": "S2A_33TYL_20260622_1_L2A",
+     "datum": "2026-06-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.527578
+    },
+    {
+     "id": "S2A_34TCR_20260622_1_L2A",
+     "datum": "2026-06-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.467522
+    },
+    {
+     "id": "S2B_33TYL_20260622_0_L2A",
+     "datum": "2026-06-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.302629
+    },
+    {
+     "id": "S2B_34TCR_20260622_0_L2A",
+     "datum": "2026-06-22",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.97426
+    },
+    {
+     "id": "S2C_33TYL_20260620_0_L2A",
+     "datum": "2026-06-20",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.412558
+    },
+    {
+     "id": "S2C_34TCR_20260620_0_L2A",
+     "datum": "2026-06-20",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.012523
+    },
+    {
+     "id": "S2A_33TYL_20260619_0_L2A",
+     "datum": "2026-06-19",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.502527
+    },
+    {
+     "id": "S2A_34TCR_20260619_0_L2A",
+     "datum": "2026-06-19",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.896563
+    },
+    {
+     "id": "S2C_33TYL_20260617_0_L2A",
+     "datum": "2026-06-17",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.259877
+    },
+    {
+     "id": "S2C_34TCR_20260617_0_L2A",
+     "datum": "2026-06-17",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 24.578774
+    },
+    {
+     "id": "S2A_33TYL_20260612_1_L2A",
+     "datum": "2026-06-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.387021
+    },
+    {
+     "id": "S2A_34TCR_20260612_1_L2A",
+     "datum": "2026-06-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.676307
+    },
+    {
+     "id": "S2B_33TYL_20260612_0_L2A",
+     "datum": "2026-06-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.764222
+    },
+    {
+     "id": "S2B_34TCR_20260612_0_L2A",
+     "datum": "2026-06-12",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.158951
+    },
+    {
+     "id": "S2C_33TYL_20260610_0_L2A",
+     "datum": "2026-06-10",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 29.043323
+    },
+    {
+     "id": "S2C_34TCR_20260610_0_L2A",
+     "datum": "2026-06-10",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.847687
+    },
+    {
+     "id": "S2C_33TYL_20260607_0_L2A",
+     "datum": "2026-06-07",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.002199
+    },
+    {
+     "id": "S2C_34TCR_20260607_0_L2A",
+     "datum": "2026-06-07",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.338448
+    },
+    {
+     "id": "S2B_33TYL_20260605_0_L2A",
+     "datum": "2026-06-05",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 66.967696
+    },
+    {
+     "id": "S2A_33TYL_20260602_1_L2A",
+     "datum": "2026-06-02",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.844767
+    },
+    {
+     "id": "S2A_34TCR_20260602_1_L2A",
+     "datum": "2026-06-02",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.512063
+    },
+    {
+     "id": "S2B_33TYL_20260602_0_L2A",
+     "datum": "2026-06-02",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.3163
+    },
+    {
+     "id": "S2B_34TCR_20260602_0_L2A",
+     "datum": "2026-06-02",
+     "baseline": 5.12,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 41.156954
+    }
+   ],
+   "broj_dana": 40,
+   "udio_valjanih_piksela": 0.971,
+   "srednji_ndvi": 0.667
+  },
+  "referenca 2018": {
+   "razdoblje": [
+    "2018-06-01",
+    "2018-08-31"
+   ],
+   "broj_snimaka": 81,
+   "snimke": [
+    {
+     "id": "S2A_34TCR_20180831_0_L2A",
+     "datum": "2018-08-31",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.089365
+    },
+    {
+     "id": "S2A_33TYL_20180831_0_L2A",
+     "datum": "2018-08-31",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.114364
+    },
+    {
+     "id": "S2A_33TYL_20180828_1_L2A",
+     "datum": "2018-08-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.010275
+    },
+    {
+     "id": "S2A_34TCR_20180828_1_L2A",
+     "datum": "2018-08-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001938
+    },
+    {
+     "id": "S2A_34TCR_20180828_0_L2A",
+     "datum": "2018-08-28",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.071251
+    },
+    {
+     "id": "S2A_33TYL_20180828_0_L2A",
+     "datum": "2018-08-28",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.062243
+    },
+    {
+     "id": "S2B_33TYL_20180823_2_L2A",
+     "datum": "2018-08-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.327755
+    },
+    {
+     "id": "S2B_34TCR_20180823_2_L2A",
+     "datum": "2018-08-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.123454
+    },
+    {
+     "id": "S2B_34TCR_20180823_1_L2A",
+     "datum": "2018-08-23",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.943373
+    },
+    {
+     "id": "S2B_33TYL_20180823_1_L2A",
+     "datum": "2018-08-23",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.638791
+    },
+    {
+     "id": "S2A_33TYL_20180821_1_L2A",
+     "datum": "2018-08-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.370421
+    },
+    {
+     "id": "S2A_34TCR_20180821_1_L2A",
+     "datum": "2018-08-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.743246
+    },
+    {
+     "id": "S2A_34TCR_20180821_0_L2A",
+     "datum": "2018-08-21",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.556577
+    },
+    {
+     "id": "S2A_33TYL_20180821_0_L2A",
+     "datum": "2018-08-21",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.559652
+    },
+    {
+     "id": "S2A_33TYL_20180818_1_L2A",
+     "datum": "2018-08-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.210643
+    },
+    {
+     "id": "S2A_34TCR_20180818_1_L2A",
+     "datum": "2018-08-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.296492
+    },
+    {
+     "id": "S2A_34TCR_20180818_0_L2A",
+     "datum": "2018-08-18",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.715714
+    },
+    {
+     "id": "S2A_33TYL_20180818_0_L2A",
+     "datum": "2018-08-18",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.083115
+    },
+    {
+     "id": "S2B_33TYL_20180816_1_L2A",
+     "datum": "2018-08-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 57.249552
+    },
+    {
+     "id": "S2B_34TCR_20180816_1_L2A",
+     "datum": "2018-08-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 57.425338
+    },
+    {
+     "id": "S2B_34TCR_20180816_0_L2A",
+     "datum": "2018-08-16",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 48.777165
+    },
+    {
+     "id": "S2B_33TYL_20180816_0_L2A",
+     "datum": "2018-08-16",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 54.572803
+    },
+    {
+     "id": "S2B_33TYL_20180813_1_L2A",
+     "datum": "2018-08-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.86001
+    },
+    {
+     "id": "S2B_34TCR_20180813_1_L2A",
+     "datum": "2018-08-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001347
+    },
+    {
+     "id": "S2B_34TCR_20180813_0_L2A",
+     "datum": "2018-08-13",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.054967
+    },
+    {
+     "id": "S2B_33TYL_20180813_0_L2A",
+     "datum": "2018-08-13",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.157956
+    },
+    {
+     "id": "S2A_33TYL_20180811_1_L2A",
+     "datum": "2018-08-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 26.342386
+    },
+    {
+     "id": "S2A_34TCR_20180811_1_L2A",
+     "datum": "2018-08-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.647463
+    },
+    {
+     "id": "S2A_34TCR_20180811_0_L2A",
+     "datum": "2018-08-11",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.965176
+    },
+    {
+     "id": "S2A_33TYL_20180811_0_L2A",
+     "datum": "2018-08-11",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.439991
+    },
+    {
+     "id": "S2A_33TYL_20180808_1_L2A",
+     "datum": "2018-08-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.504942
+    },
+    {
+     "id": "S2A_34TCR_20180808_1_L2A",
+     "datum": "2018-08-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.576796
+    },
+    {
+     "id": "S2A_34TCR_20180808_0_L2A",
+     "datum": "2018-08-08",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.237194
+    },
+    {
+     "id": "S2A_33TYL_20180808_0_L2A",
+     "datum": "2018-08-08",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.664176
+    },
+    {
+     "id": "S2B_33TYL_20180806_1_L2A",
+     "datum": "2018-08-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.778984
+    },
+    {
+     "id": "S2B_34TCR_20180806_1_L2A",
+     "datum": "2018-08-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.567519
+    },
+    {
+     "id": "S2B_34TCR_20180806_0_L2A",
+     "datum": "2018-08-06",
+     "baseline": 0.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.837357
+    },
+    {
+     "id": "S2B_33TYL_20180806_0_L2A",
+     "datum": "2018-08-06",
+     "baseline": 0.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.75713
+    },
+    {
+     "id": "S2B_33TYL_20180803_1_L2A",
+     "datum": "2018-08-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.085816
+    },
+    {
+     "id": "S2B_34TCR_20180803_1_L2A",
+     "datum": "2018-08-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 24.023168
+    },
+    {
+     "id": "S2B_34TCR_20180803_0_L2A",
+     "datum": "2018-08-03",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.23387
+    },
+    {
+     "id": "S2B_33TYL_20180803_0_L2A",
+     "datum": "2018-08-03",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.037236
+    },
+    {
+     "id": "S2A_33TYL_20180801_1_L2A",
+     "datum": "2018-08-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.69559
+    },
+    {
+     "id": "S2A_34TCR_20180801_1_L2A",
+     "datum": "2018-08-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.742863
+    },
+    {
+     "id": "S2A_34TCR_20180801_0_L2A",
+     "datum": "2018-08-01",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.841537
+    },
+    {
+     "id": "S2A_33TYL_20180801_0_L2A",
+     "datum": "2018-08-01",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 25.42212
+    },
+    {
+     "id": "S2A_33TYL_20180729_1_L2A",
+     "datum": "2018-07-29",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.907744
+    },
+    {
+     "id": "S2A_34TCR_20180729_1_L2A",
+     "datum": "2018-07-29",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.105152
+    },
+    {
+     "id": "S2A_34TCR_20180729_0_L2A",
+     "datum": "2018-07-29",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.069299
+    },
+    {
+     "id": "S2A_33TYL_20180729_0_L2A",
+     "datum": "2018-07-29",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.630381
+    },
+    {
+     "id": "S2B_34TCR_20180724_0_L2A",
+     "datum": "2018-07-24",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 54.069961
+    },
+    {
+     "id": "S2B_33TYL_20180724_0_L2A",
+     "datum": "2018-07-24",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 31.843776
+    },
+    {
+     "id": "S2A_34TCR_20180719_0_L2A",
+     "datum": "2018-07-19",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 68.256059
+    },
+    {
+     "id": "S2A_33TYL_20180719_0_L2A",
+     "datum": "2018-07-19",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 43.387912
+    },
+    {
+     "id": "S2B_33TYL_20180717_1_L2A",
+     "datum": "2018-07-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 63.336265
+    },
+    {
+     "id": "S2B_33TYL_20180717_0_L2A",
+     "datum": "2018-07-17",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 56.508597
+    },
+    {
+     "id": "S2B_34TCR_20180714_0_L2A",
+     "datum": "2018-07-14",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.136791
+    },
+    {
+     "id": "S2B_33TYL_20180714_0_L2A",
+     "datum": "2018-07-14",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.365427
+    },
+    {
+     "id": "S2A_34TCR_20180712_0_L2A",
+     "datum": "2018-07-12",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 47.046472
+    },
+    {
+     "id": "S2A_34TCR_20180702_0_L2A",
+     "datum": "2018-07-02",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 24.963363
+    },
+    {
+     "id": "S2A_33TYL_20180702_0_L2A",
+     "datum": "2018-07-02",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.075065
+    },
+    {
+     "id": "S2B_33TYL_20180624_1_L2A",
+     "datum": "2018-06-24",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 68.110931
+    },
+    {
+     "id": "S2B_34TCR_20180624_1_L2A",
+     "datum": "2018-06-24",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.92382
+    },
+    {
+     "id": "S2B_34TCR_20180624_0_L2A",
+     "datum": "2018-06-24",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 45.39297
+    },
+    {
+     "id": "S2B_33TYL_20180624_0_L2A",
+     "datum": "2018-06-24",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.352397
+    },
+    {
+     "id": "S2B_33TYL_20180617_1_L2A",
+     "datum": "2018-06-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 57.306445
+    },
+    {
+     "id": "S2B_34TCR_20180617_1_L2A",
+     "datum": "2018-06-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 40.638644
+    },
+    {
+     "id": "S2B_34TCR_20180617_0_L2A",
+     "datum": "2018-06-17",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.308934
+    },
+    {
+     "id": "S2B_33TYL_20180617_0_L2A",
+     "datum": "2018-06-17",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 44.249967
+    },
+    {
+     "id": "S2A_34TCR_20180612_0_L2A",
+     "datum": "2018-06-12",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.145712
+    },
+    {
+     "id": "S2A_33TYL_20180612_0_L2A",
+     "datum": "2018-06-12",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.175846
+    },
+    {
+     "id": "S2B_33TYL_20180607_1_L2A",
+     "datum": "2018-06-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.460609
+    },
+    {
+     "id": "S2B_34TCR_20180607_1_L2A",
+     "datum": "2018-06-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.099242
+    },
+    {
+     "id": "S2B_34TCR_20180607_0_L2A",
+     "datum": "2018-06-07",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.445802
+    },
+    {
+     "id": "S2B_33TYL_20180607_0_L2A",
+     "datum": "2018-06-07",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.735382
+    },
+    {
+     "id": "S2B_33TYL_20180604_1_L2A",
+     "datum": "2018-06-04",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.127663
+    },
+    {
+     "id": "S2B_34TCR_20180604_1_L2A",
+     "datum": "2018-06-04",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 53.87727
+    },
+    {
+     "id": "S2B_34TCR_20180604_0_L2A",
+     "datum": "2018-06-04",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 39.377175
+    },
+    {
+     "id": "S2B_33TYL_20180604_0_L2A",
+     "datum": "2018-06-04",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.898355
+    },
+    {
+     "id": "S2A_34TCR_20180602_0_L2A",
+     "datum": "2018-06-02",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.886351
+    },
+    {
+     "id": "S2A_33TYL_20180602_0_L2A",
+     "datum": "2018-06-02",
+     "baseline": 2.08,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.030876
+    }
+   ],
+   "broj_dana": 25,
+   "udio_valjanih_piksela": 0.962,
+   "srednji_ndvi": 0.708
+  },
+  "referenca 2019": {
+   "razdoblje": [
+    "2019-06-01",
+    "2019-08-31"
+   ],
+   "broj_snimaka": 110,
+   "snimke": [
+    {
+     "id": "S2B_33TYL_20190831_1_L2A",
+     "datum": "2019-08-31",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.270082
+    },
+    {
+     "id": "S2B_33TYL_20190831_0_L2A",
+     "datum": "2019-08-31",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.18626
+    },
+    {
+     "id": "S2B_34TCR_20190831_0_L2A",
+     "datum": "2019-08-31",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.044761
+    },
+    {
+     "id": "S2B_34TCR_20190831_1_L2A",
+     "datum": "2019-08-31",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.024585
+    },
+    {
+     "id": "S2B_33TYL_20190828_0_L2A",
+     "datum": "2019-08-28",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.789875
+    },
+    {
+     "id": "S2B_33TYL_20190828_1_L2A",
+     "datum": "2019-08-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.734128
+    },
+    {
+     "id": "S2B_34TCR_20190828_1_L2A",
+     "datum": "2019-08-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.155534
+    },
+    {
+     "id": "S2B_34TCR_20190828_0_L2A",
+     "datum": "2019-08-28",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.189163
+    },
+    {
+     "id": "S2A_33TYL_20190826_0_L2A",
+     "datum": "2019-08-26",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.342272
+    },
+    {
+     "id": "S2A_33TYL_20190826_1_L2A",
+     "datum": "2019-08-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.115104
+    },
+    {
+     "id": "S2A_34TCR_20190826_0_L2A",
+     "datum": "2019-08-26",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.838211
+    },
+    {
+     "id": "S2A_34TCR_20190826_1_L2A",
+     "datum": "2019-08-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.37098
+    },
+    {
+     "id": "S2B_33TYL_20190821_0_L2A",
+     "datum": "2019-08-21",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.671845
+    },
+    {
+     "id": "S2B_33TYL_20190821_1_L2A",
+     "datum": "2019-08-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.054801
+    },
+    {
+     "id": "S2B_34TCR_20190821_0_L2A",
+     "datum": "2019-08-21",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.050532
+    },
+    {
+     "id": "S2B_34TCR_20190821_1_L2A",
+     "datum": "2019-08-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001137
+    },
+    {
+     "id": "S2B_33TYL_20190818_0_L2A",
+     "datum": "2019-08-18",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.054652
+    },
+    {
+     "id": "S2B_33TYL_20190818_1_L2A",
+     "datum": "2019-08-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.067094
+    },
+    {
+     "id": "S2B_34TCR_20190818_1_L2A",
+     "datum": "2019-08-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.943514
+    },
+    {
+     "id": "S2B_34TCR_20190818_0_L2A",
+     "datum": "2019-08-18",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.106967
+    },
+    {
+     "id": "S2A_33TYL_20190816_0_L2A",
+     "datum": "2019-08-16",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 68.990704
+    },
+    {
+     "id": "S2A_34TCR_20190816_0_L2A",
+     "datum": "2019-08-16",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 46.46573
+    },
+    {
+     "id": "S2A_34TCR_20190816_1_L2A",
+     "datum": "2019-08-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.539042
+    },
+    {
+     "id": "S2A_33TYL_20190813_1_L2A",
+     "datum": "2019-08-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.853232
+    },
+    {
+     "id": "S2A_33TYL_20190813_0_L2A",
+     "datum": "2019-08-13",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.953431
+    },
+    {
+     "id": "S2A_34TCR_20190813_1_L2A",
+     "datum": "2019-08-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.189366
+    },
+    {
+     "id": "S2A_34TCR_20190813_0_L2A",
+     "datum": "2019-08-13",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.131343
+    },
+    {
+     "id": "S2B_33TYL_20190811_1_L2A",
+     "datum": "2019-08-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.324866
+    },
+    {
+     "id": "S2B_33TYL_20190811_0_L2A",
+     "datum": "2019-08-11",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.568651
+    },
+    {
+     "id": "S2B_34TCR_20190811_0_L2A",
+     "datum": "2019-08-11",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.289754
+    },
+    {
+     "id": "S2B_34TCR_20190811_1_L2A",
+     "datum": "2019-08-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.576495
+    },
+    {
+     "id": "S2B_33TYL_20190808_0_L2A",
+     "datum": "2019-08-08",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 51.127
+    },
+    {
+     "id": "S2B_33TYL_20190808_1_L2A",
+     "datum": "2019-08-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 51.100051
+    },
+    {
+     "id": "S2B_34TCR_20190808_1_L2A",
+     "datum": "2019-08-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.058969
+    },
+    {
+     "id": "S2B_34TCR_20190808_0_L2A",
+     "datum": "2019-08-08",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.582576
+    },
+    {
+     "id": "S2A_33TYL_20190806_0_L2A",
+     "datum": "2019-08-06",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.06877
+    },
+    {
+     "id": "S2A_33TYL_20190806_1_L2A",
+     "datum": "2019-08-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.00592
+    },
+    {
+     "id": "S2A_34TCR_20190806_0_L2A",
+     "datum": "2019-08-06",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.5906
+    },
+    {
+     "id": "S2A_34TCR_20190806_1_L2A",
+     "datum": "2019-08-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.091951
+    },
+    {
+     "id": "S2A_33TYL_20190803_0_L2A",
+     "datum": "2019-08-03",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.930949
+    },
+    {
+     "id": "S2A_33TYL_20190803_1_L2A",
+     "datum": "2019-08-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.421226
+    },
+    {
+     "id": "S2A_34TCR_20190803_1_L2A",
+     "datum": "2019-08-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 63.330501
+    },
+    {
+     "id": "S2A_34TCR_20190803_0_L2A",
+     "datum": "2019-08-03",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 51.977129
+    },
+    {
+     "id": "S2B_33TYL_20190801_1_L2A",
+     "datum": "2019-08-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.374531
+    },
+    {
+     "id": "S2B_33TYL_20190801_0_L2A",
+     "datum": "2019-08-01",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.966056
+    },
+    {
+     "id": "S2B_34TCR_20190801_0_L2A",
+     "datum": "2019-08-01",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.013134
+    },
+    {
+     "id": "S2B_34TCR_20190801_1_L2A",
+     "datum": "2019-08-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 35.753334
+    },
+    {
+     "id": "S2B_33TYL_20190729_0_L2A",
+     "datum": "2019-07-29",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 65.463167
+    },
+    {
+     "id": "S2B_34TCR_20190729_0_L2A",
+     "datum": "2019-07-29",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 64.690254
+    },
+    {
+     "id": "S2A_33TYL_20190727_0_L2A",
+     "datum": "2019-07-27",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.613688
+    },
+    {
+     "id": "S2A_33TYL_20190727_1_L2A",
+     "datum": "2019-07-27",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.323088
+    },
+    {
+     "id": "S2A_34TCR_20190727_0_L2A",
+     "datum": "2019-07-27",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 58.557719
+    },
+    {
+     "id": "S2A_34TCR_20190727_1_L2A",
+     "datum": "2019-07-27",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 67.527223
+    },
+    {
+     "id": "S2A_33TYL_20190724_1_L2A",
+     "datum": "2019-07-24",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.960289
+    },
+    {
+     "id": "S2A_33TYL_20190724_0_L2A",
+     "datum": "2019-07-24",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.628067
+    },
+    {
+     "id": "S2A_34TCR_20190724_1_L2A",
+     "datum": "2019-07-24",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.23402
+    },
+    {
+     "id": "S2A_34TCR_20190724_0_L2A",
+     "datum": "2019-07-24",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.839114
+    },
+    {
+     "id": "S2B_33TYL_20190722_0_L2A",
+     "datum": "2019-07-22",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.755205
+    },
+    {
+     "id": "S2B_33TYL_20190722_1_L2A",
+     "datum": "2019-07-22",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.849487
+    },
+    {
+     "id": "S2B_34TCR_20190722_0_L2A",
+     "datum": "2019-07-22",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.613298
+    },
+    {
+     "id": "S2B_34TCR_20190722_1_L2A",
+     "datum": "2019-07-22",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.450876
+    },
+    {
+     "id": "S2B_33TYL_20190719_0_L2A",
+     "datum": "2019-07-19",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.966117
+    },
+    {
+     "id": "S2B_33TYL_20190719_1_L2A",
+     "datum": "2019-07-19",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.034201
+    },
+    {
+     "id": "S2B_34TCR_20190719_1_L2A",
+     "datum": "2019-07-19",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.289296
+    },
+    {
+     "id": "S2B_34TCR_20190719_0_L2A",
+     "datum": "2019-07-19",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.610983
+    },
+    {
+     "id": "S2A_33TYL_20190717_1_L2A",
+     "datum": "2019-07-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.386392
+    },
+    {
+     "id": "S2A_33TYL_20190717_0_L2A",
+     "datum": "2019-07-17",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.105658
+    },
+    {
+     "id": "S2A_34TCR_20190717_0_L2A",
+     "datum": "2019-07-17",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.849589
+    },
+    {
+     "id": "S2A_34TCR_20190717_1_L2A",
+     "datum": "2019-07-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.830776
+    },
+    {
+     "id": "S2A_33TYL_20190714_0_L2A",
+     "datum": "2019-07-14",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 64.274732
+    },
+    {
+     "id": "S2B_34TCR_20190709_1_L2A",
+     "datum": "2019-07-09",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 58.063048
+    },
+    {
+     "id": "S2B_34TCR_20190709_0_L2A",
+     "datum": "2019-07-09",
+     "baseline": 2.13,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 51.798967
+    },
+    {
+     "id": "S2A_33TYL_20190707_0_L2A",
+     "datum": "2019-07-07",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.225319
+    },
+    {
+     "id": "S2A_33TYL_20190707_1_L2A",
+     "datum": "2019-07-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.837424
+    },
+    {
+     "id": "S2A_34TCR_20190707_0_L2A",
+     "datum": "2019-07-07",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.27163
+    },
+    {
+     "id": "S2A_34TCR_20190707_1_L2A",
+     "datum": "2019-07-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.376459
+    },
+    {
+     "id": "S2B_33TYL_20190702_0_L2A",
+     "datum": "2019-07-02",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.043034
+    },
+    {
+     "id": "S2B_33TYL_20190702_1_L2A",
+     "datum": "2019-07-02",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001352
+    },
+    {
+     "id": "S2B_34TCR_20190702_0_L2A",
+     "datum": "2019-07-02",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.070983
+    },
+    {
+     "id": "S2B_34TCR_20190702_1_L2A",
+     "datum": "2019-07-02",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.005135
+    },
+    {
+     "id": "S2B_33TYL_20190629_0_L2A",
+     "datum": "2019-06-29",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.44194
+    },
+    {
+     "id": "S2B_33TYL_20190629_1_L2A",
+     "datum": "2019-06-29",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.208098
+    },
+    {
+     "id": "S2B_34TCR_20190629_1_L2A",
+     "datum": "2019-06-29",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.362318
+    },
+    {
+     "id": "S2B_34TCR_20190629_0_L2A",
+     "datum": "2019-06-29",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.685635
+    },
+    {
+     "id": "S2A_33TYL_20190627_1_L2A",
+     "datum": "2019-06-27",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.024175
+    },
+    {
+     "id": "S2A_33TYL_20190627_0_L2A",
+     "datum": "2019-06-27",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.060913
+    },
+    {
+     "id": "S2A_34TCR_20190627_0_L2A",
+     "datum": "2019-06-27",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.127433
+    },
+    {
+     "id": "S2A_34TCR_20190627_1_L2A",
+     "datum": "2019-06-27",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.048565
+    },
+    {
+     "id": "S2B_33TYL_20190619_0_L2A",
+     "datum": "2019-06-19",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.341047
+    },
+    {
+     "id": "S2B_33TYL_20190619_1_L2A",
+     "datum": "2019-06-19",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.944213
+    },
+    {
+     "id": "S2B_34TCR_20190619_1_L2A",
+     "datum": "2019-06-19",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 58.047467
+    },
+    {
+     "id": "S2B_34TCR_20190619_0_L2A",
+     "datum": "2019-06-19",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 42.951674
+    },
+    {
+     "id": "S2A_33TYL_20190614_1_L2A",
+     "datum": "2019-06-14",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.610396
+    },
+    {
+     "id": "S2A_33TYL_20190614_0_L2A",
+     "datum": "2019-06-14",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.64739
+    },
+    {
+     "id": "S2A_34TCR_20190614_1_L2A",
+     "datum": "2019-06-14",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.596074
+    },
+    {
+     "id": "S2A_34TCR_20190614_0_L2A",
+     "datum": "2019-06-14",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.348775
+    },
+    {
+     "id": "S2B_33TYL_20190612_0_L2A",
+     "datum": "2019-06-12",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.11471
+    },
+    {
+     "id": "S2B_33TYL_20190612_1_L2A",
+     "datum": "2019-06-12",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.043154
+    },
+    {
+     "id": "S2B_34TCR_20190612_0_L2A",
+     "datum": "2019-06-12",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.230979
+    },
+    {
+     "id": "S2B_34TCR_20190612_1_L2A",
+     "datum": "2019-06-12",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.027284
+    },
+    {
+     "id": "S2B_33TYL_20190609_0_L2A",
+     "datum": "2019-06-09",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.601183
+    },
+    {
+     "id": "S2B_33TYL_20190609_1_L2A",
+     "datum": "2019-06-09",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.157651
+    },
+    {
+     "id": "S2B_34TCR_20190609_1_L2A",
+     "datum": "2019-06-09",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002097
+    },
+    {
+     "id": "S2B_34TCR_20190609_0_L2A",
+     "datum": "2019-06-09",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.053314
+    },
+    {
+     "id": "S2A_33TYL_20190607_0_L2A",
+     "datum": "2019-06-07",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.249644
+    },
+    {
+     "id": "S2A_33TYL_20190607_1_L2A",
+     "datum": "2019-06-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.895338
+    },
+    {
+     "id": "S2A_34TCR_20190607_0_L2A",
+     "datum": "2019-06-07",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.771276
+    },
+    {
+     "id": "S2A_34TCR_20190607_1_L2A",
+     "datum": "2019-06-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.880145
+    },
+    {
+     "id": "S2A_33TYL_20190604_0_L2A",
+     "datum": "2019-06-04",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 60.98595
+    },
+    {
+     "id": "S2A_34TCR_20190604_0_L2A",
+     "datum": "2019-06-04",
+     "baseline": 2.12,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 61.081235
+    }
+   ],
+   "broj_dana": 30,
+   "udio_valjanih_piksela": 0.96,
+   "srednji_ndvi": 0.716
+  },
+  "referenca 2020": {
+   "razdoblje": [
+    "2020-06-01",
+    "2020-08-31"
+   ],
+   "broj_snimaka": 116,
+   "snimke": [
+    {
+     "id": "S2A_33TYL_20200827_0_L2A",
+     "datum": "2020-08-27",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.078345
+    },
+    {
+     "id": "S2A_33TYL_20200827_1_L2A",
+     "datum": "2020-08-27",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.808773
+    },
+    {
+     "id": "S2A_34TCR_20200827_1_L2A",
+     "datum": "2020-08-27",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.16783
+    },
+    {
+     "id": "S2A_34TCR_20200827_0_L2A",
+     "datum": "2020-08-27",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.787552
+    },
+    {
+     "id": "S2B_33TYL_20200825_2_L2A",
+     "datum": "2020-08-25",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.627741
+    },
+    {
+     "id": "S2B_33TYL_20200825_1_L2A",
+     "datum": "2020-08-25",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.711281
+    },
+    {
+     "id": "S2B_34TCR_20200825_2_L2A",
+     "datum": "2020-08-25",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.755724
+    },
+    {
+     "id": "S2B_34TCR_20200825_1_L2A",
+     "datum": "2020-08-25",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.925243
+    },
+    {
+     "id": "S2B_33TYL_20200825_0_L2A",
+     "datum": "2020-08-25",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.214912
+    },
+    {
+     "id": "S2B_34TCR_20200825_0_L2A",
+     "datum": "2020-08-25",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.282863
+    },
+    {
+     "id": "S2B_33TYL_20200822_1_L2A",
+     "datum": "2020-08-22",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000302
+    },
+    {
+     "id": "S2B_33TYL_20200822_0_L2A",
+     "datum": "2020-08-22",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.052827
+    },
+    {
+     "id": "S2B_34TCR_20200822_1_L2A",
+     "datum": "2020-08-22",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001015
+    },
+    {
+     "id": "S2B_34TCR_20200822_0_L2A",
+     "datum": "2020-08-22",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.055773
+    },
+    {
+     "id": "S2A_33TYL_20200820_0_L2A",
+     "datum": "2020-08-20",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.87649
+    },
+    {
+     "id": "S2A_33TYL_20200820_1_L2A",
+     "datum": "2020-08-20",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.531387
+    },
+    {
+     "id": "S2A_34TCR_20200820_0_L2A",
+     "datum": "2020-08-20",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.360485
+    },
+    {
+     "id": "S2A_34TCR_20200820_1_L2A",
+     "datum": "2020-08-20",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.358626
+    },
+    {
+     "id": "S2A_33TYL_20200817_0_L2A",
+     "datum": "2020-08-17",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.087239
+    },
+    {
+     "id": "S2A_33TYL_20200817_1_L2A",
+     "datum": "2020-08-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.083231
+    },
+    {
+     "id": "S2A_34TCR_20200817_1_L2A",
+     "datum": "2020-08-17",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.646434
+    },
+    {
+     "id": "S2A_34TCR_20200817_0_L2A",
+     "datum": "2020-08-17",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.766633
+    },
+    {
+     "id": "S2B_33TYL_20200815_1_L2A",
+     "datum": "2020-08-15",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.549244
+    },
+    {
+     "id": "S2B_33TYL_20200815_0_L2A",
+     "datum": "2020-08-15",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.860211
+    },
+    {
+     "id": "S2B_34TCR_20200815_1_L2A",
+     "datum": "2020-08-15",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.223911
+    },
+    {
+     "id": "S2B_34TCR_20200815_0_L2A",
+     "datum": "2020-08-15",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.934901
+    },
+    {
+     "id": "S2B_33TYL_20200812_1_L2A",
+     "datum": "2020-08-12",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.513107
+    },
+    {
+     "id": "S2B_33TYL_20200812_0_L2A",
+     "datum": "2020-08-12",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.926504
+    },
+    {
+     "id": "S2B_34TCR_20200812_1_L2A",
+     "datum": "2020-08-12",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.440914
+    },
+    {
+     "id": "S2B_34TCR_20200812_0_L2A",
+     "datum": "2020-08-12",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.54253
+    },
+    {
+     "id": "S2A_33TYL_20200810_0_L2A",
+     "datum": "2020-08-10",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.821553
+    },
+    {
+     "id": "S2A_33TYL_20200810_1_L2A",
+     "datum": "2020-08-10",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.647921
+    },
+    {
+     "id": "S2A_34TCR_20200810_0_L2A",
+     "datum": "2020-08-10",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.085292
+    },
+    {
+     "id": "S2A_34TCR_20200810_1_L2A",
+     "datum": "2020-08-10",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.037027
+    },
+    {
+     "id": "S2A_33TYL_20200807_0_L2A",
+     "datum": "2020-08-07",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.487513
+    },
+    {
+     "id": "S2A_33TYL_20200807_1_L2A",
+     "datum": "2020-08-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.665273
+    },
+    {
+     "id": "S2A_34TCR_20200807_1_L2A",
+     "datum": "2020-08-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.140683
+    },
+    {
+     "id": "S2A_34TCR_20200807_0_L2A",
+     "datum": "2020-08-07",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.19343
+    },
+    {
+     "id": "S2B_33TYL_20200802_1_L2A",
+     "datum": "2020-08-02",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.097793
+    },
+    {
+     "id": "S2B_33TYL_20200802_0_L2A",
+     "datum": "2020-08-02",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.941473
+    },
+    {
+     "id": "S2B_34TCR_20200802_1_L2A",
+     "datum": "2020-08-02",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.419372
+    },
+    {
+     "id": "S2B_34TCR_20200802_0_L2A",
+     "datum": "2020-08-02",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.478227
+    },
+    {
+     "id": "S2A_33TYL_20200731_0_L2A",
+     "datum": "2020-07-31",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.160289
+    },
+    {
+     "id": "S2A_33TYL_20200731_1_L2A",
+     "datum": "2020-07-31",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.204525
+    },
+    {
+     "id": "S2A_34TCR_20200731_0_L2A",
+     "datum": "2020-07-31",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.637338
+    },
+    {
+     "id": "S2A_34TCR_20200731_1_L2A",
+     "datum": "2020-07-31",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.976331
+    },
+    {
+     "id": "S2A_33TYL_20200728_0_L2A",
+     "datum": "2020-07-28",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.058245
+    },
+    {
+     "id": "S2A_33TYL_20200728_1_L2A",
+     "datum": "2020-07-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000498
+    },
+    {
+     "id": "S2A_34TCR_20200728_1_L2A",
+     "datum": "2020-07-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000866
+    },
+    {
+     "id": "S2A_34TCR_20200728_0_L2A",
+     "datum": "2020-07-28",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.06213
+    },
+    {
+     "id": "S2B_33TYL_20200726_1_L2A",
+     "datum": "2020-07-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 64.110571
+    },
+    {
+     "id": "S2B_33TYL_20200726_0_L2A",
+     "datum": "2020-07-26",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 49.453976
+    },
+    {
+     "id": "S2B_34TCR_20200726_1_L2A",
+     "datum": "2020-07-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 47.433624
+    },
+    {
+     "id": "S2B_34TCR_20200726_0_L2A",
+     "datum": "2020-07-26",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 31.957901
+    },
+    {
+     "id": "S2B_33TYL_20200723_1_L2A",
+     "datum": "2020-07-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.624953
+    },
+    {
+     "id": "S2B_33TYL_20200723_0_L2A",
+     "datum": "2020-07-23",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.083948
+    },
+    {
+     "id": "S2B_34TCR_20200723_1_L2A",
+     "datum": "2020-07-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 49.808976
+    },
+    {
+     "id": "S2B_34TCR_20200723_0_L2A",
+     "datum": "2020-07-23",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 39.738784
+    },
+    {
+     "id": "S2A_33TYL_20200721_0_L2A",
+     "datum": "2020-07-21",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.549464
+    },
+    {
+     "id": "S2A_33TYL_20200721_1_L2A",
+     "datum": "2020-07-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.357683
+    },
+    {
+     "id": "S2A_34TCR_20200721_0_L2A",
+     "datum": "2020-07-21",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.042248
+    },
+    {
+     "id": "S2A_34TCR_20200721_1_L2A",
+     "datum": "2020-07-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.52886
+    },
+    {
+     "id": "S2A_33TYL_20200718_0_L2A",
+     "datum": "2020-07-18",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 50.077901
+    },
+    {
+     "id": "S2A_33TYL_20200718_1_L2A",
+     "datum": "2020-07-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 62.093532
+    },
+    {
+     "id": "S2A_34TCR_20200718_1_L2A",
+     "datum": "2020-07-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 56.703043
+    },
+    {
+     "id": "S2A_34TCR_20200718_0_L2A",
+     "datum": "2020-07-18",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 45.254904
+    },
+    {
+     "id": "S2B_33TYL_20200716_1_L2A",
+     "datum": "2020-07-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 50.169158
+    },
+    {
+     "id": "S2B_33TYL_20200716_0_L2A",
+     "datum": "2020-07-16",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 37.275716
+    },
+    {
+     "id": "S2B_34TCR_20200716_1_L2A",
+     "datum": "2020-07-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 64.329916
+    },
+    {
+     "id": "S2B_34TCR_20200716_0_L2A",
+     "datum": "2020-07-16",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 56.757493
+    },
+    {
+     "id": "S2B_33TYL_20200713_0_L2A",
+     "datum": "2020-07-13",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 39.591879
+    },
+    {
+     "id": "S2B_33TYL_20200713_1_L2A",
+     "datum": "2020-07-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 47.098947
+    },
+    {
+     "id": "S2B_34TCR_20200713_1_L2A",
+     "datum": "2020-07-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.992687
+    },
+    {
+     "id": "S2B_34TCR_20200713_0_L2A",
+     "datum": "2020-07-13",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.378035
+    },
+    {
+     "id": "S2A_33TYL_20200711_0_L2A",
+     "datum": "2020-07-11",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.316952
+    },
+    {
+     "id": "S2A_33TYL_20200711_1_L2A",
+     "datum": "2020-07-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.243417
+    },
+    {
+     "id": "S2A_34TCR_20200711_0_L2A",
+     "datum": "2020-07-11",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.069537
+    },
+    {
+     "id": "S2A_34TCR_20200711_1_L2A",
+     "datum": "2020-07-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000163
+    },
+    {
+     "id": "S2A_33TYL_20200708_0_L2A",
+     "datum": "2020-07-08",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.150836
+    },
+    {
+     "id": "S2A_34TCR_20200708_0_L2A",
+     "datum": "2020-07-08",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.508462
+    },
+    {
+     "id": "S2B_33TYL_20200706_1_L2A",
+     "datum": "2020-07-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.285133
+    },
+    {
+     "id": "S2B_33TYL_20200706_0_L2A",
+     "datum": "2020-07-06",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.580572
+    },
+    {
+     "id": "S2B_34TCR_20200706_1_L2A",
+     "datum": "2020-07-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.850899
+    },
+    {
+     "id": "S2B_34TCR_20200706_0_L2A",
+     "datum": "2020-07-06",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.925077
+    },
+    {
+     "id": "S2B_34TCR_20200703_0_L2A",
+     "datum": "2020-07-03",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 60.662094
+    },
+    {
+     "id": "S2A_33TYL_20200701_0_L2A",
+     "datum": "2020-07-01",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.165761
+    },
+    {
+     "id": "S2A_33TYL_20200701_1_L2A",
+     "datum": "2020-07-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.21902
+    },
+    {
+     "id": "S2A_34TCR_20200701_0_L2A",
+     "datum": "2020-07-01",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.075787
+    },
+    {
+     "id": "S2A_34TCR_20200701_1_L2A",
+     "datum": "2020-07-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000135
+    },
+    {
+     "id": "S2A_33TYL_20200628_0_L2A",
+     "datum": "2020-06-28",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.827161
+    },
+    {
+     "id": "S2A_33TYL_20200628_1_L2A",
+     "datum": "2020-06-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.151695
+    },
+    {
+     "id": "S2A_34TCR_20200628_1_L2A",
+     "datum": "2020-06-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.622523
+    },
+    {
+     "id": "S2A_34TCR_20200628_0_L2A",
+     "datum": "2020-06-28",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.476767
+    },
+    {
+     "id": "S2B_33TYL_20200626_1_L2A",
+     "datum": "2020-06-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.719012
+    },
+    {
+     "id": "S2B_33TYL_20200626_0_L2A",
+     "datum": "2020-06-26",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.283653
+    },
+    {
+     "id": "S2B_34TCR_20200626_0_L2A",
+     "datum": "2020-06-26",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.687134
+    },
+    {
+     "id": "S2B_34TCR_20200626_1_L2A",
+     "datum": "2020-06-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.247064
+    },
+    {
+     "id": "S2B_33TYL_20200623_1_L2A",
+     "datum": "2020-06-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 53.176421
+    },
+    {
+     "id": "S2B_33TYL_20200623_0_L2A",
+     "datum": "2020-06-23",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 47.152816
+    },
+    {
+     "id": "S2B_34TCR_20200623_0_L2A",
+     "datum": "2020-06-23",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 68.760572
+    },
+    {
+     "id": "S2B_33TYL_20200613_1_L2A",
+     "datum": "2020-06-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.437886
+    },
+    {
+     "id": "S2B_33TYL_20200613_0_L2A",
+     "datum": "2020-06-13",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.23339
+    },
+    {
+     "id": "S2B_34TCR_20200613_1_L2A",
+     "datum": "2020-06-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.813677
+    },
+    {
+     "id": "S2B_34TCR_20200613_0_L2A",
+     "datum": "2020-06-13",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.884663
+    },
+    {
+     "id": "S2A_33TYL_20200611_0_L2A",
+     "datum": "2020-06-11",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 49.152851
+    },
+    {
+     "id": "S2A_33TYL_20200611_1_L2A",
+     "datum": "2020-06-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 57.547313
+    },
+    {
+     "id": "S2A_33TYL_20200608_1_L2A",
+     "datum": "2020-06-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 29.27494
+    },
+    {
+     "id": "S2A_33TYL_20200608_0_L2A",
+     "datum": "2020-06-08",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.071758
+    },
+    {
+     "id": "S2A_34TCR_20200608_1_L2A",
+     "datum": "2020-06-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.003663
+    },
+    {
+     "id": "S2A_34TCR_20200608_0_L2A",
+     "datum": "2020-06-08",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.659248
+    },
+    {
+     "id": "S2B_33TYL_20200606_0_L2A",
+     "datum": "2020-06-06",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 61.28187
+    },
+    {
+     "id": "S2B_34TCR_20200606_0_L2A",
+     "datum": "2020-06-06",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 62.496907
+    },
+    {
+     "id": "S2B_33TYL_20200603_1_L2A",
+     "datum": "2020-06-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.462191
+    },
+    {
+     "id": "S2B_33TYL_20200603_0_L2A",
+     "datum": "2020-06-03",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.215905
+    },
+    {
+     "id": "S2B_34TCR_20200603_1_L2A",
+     "datum": "2020-06-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.673182
+    },
+    {
+     "id": "S2B_34TCR_20200603_0_L2A",
+     "datum": "2020-06-03",
+     "baseline": 2.14,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 43.585936
+    }
+   ],
+   "broj_dana": 31,
+   "udio_valjanih_piksela": 0.963,
+   "srednji_ndvi": 0.724
+  },
+  "referenca 2021": {
+   "razdoblje": [
+    "2021-06-01",
+    "2021-08-31"
+   ],
+   "broj_snimaka": 121,
+   "snimke": [
+    {
+     "id": "S2B_33TYL_20210830_0_L2A",
+     "datum": "2021-08-30",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.489338
+    },
+    {
+     "id": "S2B_33TYL_20210830_1_L2A",
+     "datum": "2021-08-30",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.841141
+    },
+    {
+     "id": "S2B_34TCR_20210830_0_L2A",
+     "datum": "2021-08-30",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.967426
+    },
+    {
+     "id": "S2B_34TCR_20210830_1_L2A",
+     "datum": "2021-08-30",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.659097
+    },
+    {
+     "id": "S2A_33TYL_20210822_0_L2A",
+     "datum": "2021-08-22",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 52.063772
+    },
+    {
+     "id": "S2A_33TYL_20210822_1_L2A",
+     "datum": "2021-08-22",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 59.214705
+    },
+    {
+     "id": "S2A_34TCR_20210822_0_L2A",
+     "datum": "2021-08-22",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.217773
+    },
+    {
+     "id": "S2A_34TCR_20210822_1_L2A",
+     "datum": "2021-08-22",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.360162
+    },
+    {
+     "id": "S2B_33TYL_20210820_0_L2A",
+     "datum": "2021-08-20",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.388817
+    },
+    {
+     "id": "S2B_33TYL_20210820_1_L2A",
+     "datum": "2021-08-20",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.168151
+    },
+    {
+     "id": "S2B_34TCR_20210820_0_L2A",
+     "datum": "2021-08-20",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.653757
+    },
+    {
+     "id": "S2B_34TCR_20210820_1_L2A",
+     "datum": "2021-08-20",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.632497
+    },
+    {
+     "id": "S2A_33TYL_20210815_0_L2A",
+     "datum": "2021-08-15",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.087888
+    },
+    {
+     "id": "S2A_33TYL_20210815_1_L2A",
+     "datum": "2021-08-15",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.03757
+    },
+    {
+     "id": "S2A_34TCR_20210815_0_L2A",
+     "datum": "2021-08-15",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.434812
+    },
+    {
+     "id": "S2A_34TCR_20210815_1_L2A",
+     "datum": "2021-08-15",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.376882
+    },
+    {
+     "id": "S2A_33TYL_20210812_0_L2A",
+     "datum": "2021-08-12",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.544073
+    },
+    {
+     "id": "S2A_33TYL_20210812_1_L2A",
+     "datum": "2021-08-12",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.427726
+    },
+    {
+     "id": "S2A_34TCR_20210812_0_L2A",
+     "datum": "2021-08-12",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.120212
+    },
+    {
+     "id": "S2A_34TCR_20210812_1_L2A",
+     "datum": "2021-08-12",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.740187
+    },
+    {
+     "id": "S2B_33TYL_20210810_0_L2A",
+     "datum": "2021-08-10",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.283143
+    },
+    {
+     "id": "S2B_33TYL_20210810_1_L2A",
+     "datum": "2021-08-10",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.383867
+    },
+    {
+     "id": "S2B_34TCR_20210810_0_L2A",
+     "datum": "2021-08-10",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.042411
+    },
+    {
+     "id": "S2B_34TCR_20210810_1_L2A",
+     "datum": "2021-08-10",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0
+    },
+    {
+     "id": "S2B_33TYL_20210807_0_L2A",
+     "datum": "2021-08-07",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.046991
+    },
+    {
+     "id": "S2B_33TYL_20210807_1_L2A",
+     "datum": "2021-08-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.826019
+    },
+    {
+     "id": "S2B_34TCR_20210807_0_L2A",
+     "datum": "2021-08-07",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.140169
+    },
+    {
+     "id": "S2B_34TCR_20210807_1_L2A",
+     "datum": "2021-08-07",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.074721
+    },
+    {
+     "id": "S2A_33TYL_20210802_0_L2A",
+     "datum": "2021-08-02",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.984472
+    },
+    {
+     "id": "S2A_33TYL_20210802_1_L2A",
+     "datum": "2021-08-02",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.25331
+    },
+    {
+     "id": "S2A_34TCR_20210802_0_L2A",
+     "datum": "2021-08-02",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.282804
+    },
+    {
+     "id": "S2A_34TCR_20210802_1_L2A",
+     "datum": "2021-08-02",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.121035
+    },
+    {
+     "id": "S2B_33TYL_20210731_0_L2A",
+     "datum": "2021-07-31",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.514715
+    },
+    {
+     "id": "S2B_33TYL_20210731_1_L2A",
+     "datum": "2021-07-31",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.038516
+    },
+    {
+     "id": "S2B_34TCR_20210731_0_L2A",
+     "datum": "2021-07-31",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.212639
+    },
+    {
+     "id": "S2B_34TCR_20210731_1_L2A",
+     "datum": "2021-07-31",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.185134
+    },
+    {
+     "id": "S2B_33TYL_20210728_0_L2A",
+     "datum": "2021-07-28",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.651657
+    },
+    {
+     "id": "S2B_33TYL_20210728_1_L2A",
+     "datum": "2021-07-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.587194
+    },
+    {
+     "id": "S2B_34TCR_20210728_0_L2A",
+     "datum": "2021-07-28",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.699809
+    },
+    {
+     "id": "S2B_34TCR_20210728_1_L2A",
+     "datum": "2021-07-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.16906
+    },
+    {
+     "id": "S2A_33TYL_20210726_0_L2A",
+     "datum": "2021-07-26",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 53.974957
+    },
+    {
+     "id": "S2A_33TYL_20210726_1_L2A",
+     "datum": "2021-07-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 62.993091
+    },
+    {
+     "id": "S2A_34TCR_20210726_0_L2A",
+     "datum": "2021-07-26",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.897795
+    },
+    {
+     "id": "S2A_34TCR_20210726_1_L2A",
+     "datum": "2021-07-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 34.924924
+    },
+    {
+     "id": "S2A_33TYL_20210723_0_L2A",
+     "datum": "2021-07-23",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.297193
+    },
+    {
+     "id": "S2A_33TYL_20210723_1_L2A",
+     "datum": "2021-07-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.340968
+    },
+    {
+     "id": "S2A_34TCR_20210723_0_L2A",
+     "datum": "2021-07-23",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.719724
+    },
+    {
+     "id": "S2A_34TCR_20210723_1_L2A",
+     "datum": "2021-07-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.114887
+    },
+    {
+     "id": "S2B_33TYL_20210721_0_L2A",
+     "datum": "2021-07-21",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.96179
+    },
+    {
+     "id": "S2B_33TYL_20210721_1_L2A",
+     "datum": "2021-07-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.901257
+    },
+    {
+     "id": "S2B_34TCR_20210721_0_L2A",
+     "datum": "2021-07-21",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.9116
+    },
+    {
+     "id": "S2B_34TCR_20210721_1_L2A",
+     "datum": "2021-07-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.938476
+    },
+    {
+     "id": "S2B_34TCR_20210718_0_L2A",
+     "datum": "2021-07-18",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.859047
+    },
+    {
+     "id": "S2B_34TCR_20210718_1_L2A",
+     "datum": "2021-07-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 43.253192
+    },
+    {
+     "id": "S2A_33TYL_20210713_0_L2A",
+     "datum": "2021-07-13",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.730718
+    },
+    {
+     "id": "S2A_33TYL_20210713_1_L2A",
+     "datum": "2021-07-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.966483
+    },
+    {
+     "id": "S2A_34TCR_20210713_0_L2A",
+     "datum": "2021-07-13",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.032093
+    },
+    {
+     "id": "S2A_34TCR_20210713_1_L2A",
+     "datum": "2021-07-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000551
+    },
+    {
+     "id": "S2B_33TYL_20210711_0_L2A",
+     "datum": "2021-07-11",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.660702
+    },
+    {
+     "id": "S2B_33TYL_20210711_1_L2A",
+     "datum": "2021-07-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 30.951571
+    },
+    {
+     "id": "S2B_34TCR_20210711_0_L2A",
+     "datum": "2021-07-11",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.061521
+    },
+    {
+     "id": "S2B_34TCR_20210711_1_L2A",
+     "datum": "2021-07-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 42.584091
+    },
+    {
+     "id": "S2B_33TYL_20210708_0_L2A",
+     "datum": "2021-07-08",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.03568
+    },
+    {
+     "id": "S2B_33TYL_20210708_1_L2A",
+     "datum": "2021-07-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001085
+    },
+    {
+     "id": "S2B_34TCR_20210708_0_L2A",
+     "datum": "2021-07-08",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.052024
+    },
+    {
+     "id": "S2B_34TCR_20210708_1_L2A",
+     "datum": "2021-07-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000896
+    },
+    {
+     "id": "S2A_33TYL_20210706_0_L2A",
+     "datum": "2021-07-06",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.682101
+    },
+    {
+     "id": "S2A_33TYL_20210706_1_L2A",
+     "datum": "2021-07-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.594956
+    },
+    {
+     "id": "S2A_34TCR_20210706_0_L2A",
+     "datum": "2021-07-06",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.910863
+    },
+    {
+     "id": "S2A_34TCR_20210706_1_L2A",
+     "datum": "2021-07-06",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.291936
+    },
+    {
+     "id": "S2A_33TYL_20210703_0_L2A",
+     "datum": "2021-07-03",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 35.618992
+    },
+    {
+     "id": "S2A_33TYL_20210703_1_L2A",
+     "datum": "2021-07-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 45.520175
+    },
+    {
+     "id": "S2A_34TCR_20210703_0_L2A",
+     "datum": "2021-07-03",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.024967
+    },
+    {
+     "id": "S2A_34TCR_20210703_1_L2A",
+     "datum": "2021-07-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 37.456849
+    },
+    {
+     "id": "S2B_33TYL_20210701_0_L2A",
+     "datum": "2021-07-01",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.36122
+    },
+    {
+     "id": "S2B_33TYL_20210701_2_L2A",
+     "datum": "2021-07-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.021393
+    },
+    {
+     "id": "S2B_33TYL_20210701_1_L2A",
+     "datum": "2021-07-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.021393
+    },
+    {
+     "id": "S2B_34TCR_20210701_0_L2A",
+     "datum": "2021-07-01",
+     "baseline": 3.01,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.459021
+    },
+    {
+     "id": "S2B_34TCR_20210701_1_L2A",
+     "datum": "2021-07-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.313273
+    },
+    {
+     "id": "S2B_33TYL_20210628_0_L2A",
+     "datum": "2021-06-28",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.064286
+    },
+    {
+     "id": "S2B_33TYL_20210628_1_L2A",
+     "datum": "2021-06-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00439
+    },
+    {
+     "id": "S2B_34TCR_20210628_0_L2A",
+     "datum": "2021-06-28",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.104618
+    },
+    {
+     "id": "S2B_34TCR_20210628_1_L2A",
+     "datum": "2021-06-28",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.061715
+    },
+    {
+     "id": "S2A_33TYL_20210626_0_L2A",
+     "datum": "2021-06-26",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.257768
+    },
+    {
+     "id": "S2A_33TYL_20210626_1_L2A",
+     "datum": "2021-06-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 24.733785
+    },
+    {
+     "id": "S2A_34TCR_20210626_0_L2A",
+     "datum": "2021-06-26",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.311064
+    },
+    {
+     "id": "S2A_34TCR_20210626_1_L2A",
+     "datum": "2021-06-26",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.68353
+    },
+    {
+     "id": "S2A_33TYL_20210623_0_L2A",
+     "datum": "2021-06-23",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.070945
+    },
+    {
+     "id": "S2A_33TYL_20210623_1_L2A",
+     "datum": "2021-06-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000163
+    },
+    {
+     "id": "S2A_34TCR_20210623_0_L2A",
+     "datum": "2021-06-23",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.053235
+    },
+    {
+     "id": "S2A_34TCR_20210623_1_L2A",
+     "datum": "2021-06-23",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000773
+    },
+    {
+     "id": "S2B_33TYL_20210621_0_L2A",
+     "datum": "2021-06-21",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 35.910611
+    },
+    {
+     "id": "S2B_33TYL_20210621_1_L2A",
+     "datum": "2021-06-21",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 42.913687
+    },
+    {
+     "id": "S2B_33TYL_20210618_0_L2A",
+     "datum": "2021-06-18",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.606299
+    },
+    {
+     "id": "S2B_33TYL_20210618_1_L2A",
+     "datum": "2021-06-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.339886
+    },
+    {
+     "id": "S2B_34TCR_20210618_0_L2A",
+     "datum": "2021-06-18",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.142329
+    },
+    {
+     "id": "S2B_34TCR_20210618_1_L2A",
+     "datum": "2021-06-18",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 24.538668
+    },
+    {
+     "id": "S2A_33TYL_20210616_0_L2A",
+     "datum": "2021-06-16",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.737243
+    },
+    {
+     "id": "S2A_33TYL_20210616_1_L2A",
+     "datum": "2021-06-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.810559
+    },
+    {
+     "id": "S2A_34TCR_20210616_0_L2A",
+     "datum": "2021-06-16",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.356639
+    },
+    {
+     "id": "S2A_34TCR_20210616_1_L2A",
+     "datum": "2021-06-16",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.981959
+    },
+    {
+     "id": "S2A_33TYL_20210613_0_L2A",
+     "datum": "2021-06-13",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 42.994213
+    },
+    {
+     "id": "S2A_33TYL_20210613_1_L2A",
+     "datum": "2021-06-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.570877
+    },
+    {
+     "id": "S2A_34TCR_20210613_0_L2A",
+     "datum": "2021-06-13",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.420091
+    },
+    {
+     "id": "S2A_34TCR_20210613_1_L2A",
+     "datum": "2021-06-13",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.547257
+    },
+    {
+     "id": "S2B_33TYL_20210611_0_L2A",
+     "datum": "2021-06-11",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.170954
+    },
+    {
+     "id": "S2B_33TYL_20210611_1_L2A",
+     "datum": "2021-06-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 31.211606
+    },
+    {
+     "id": "S2B_34TCR_20210611_0_L2A",
+     "datum": "2021-06-11",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.34868
+    },
+    {
+     "id": "S2B_34TCR_20210611_1_L2A",
+     "datum": "2021-06-11",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 41.218862
+    },
+    {
+     "id": "S2B_33TYL_20210608_0_L2A",
+     "datum": "2021-06-08",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.964726
+    },
+    {
+     "id": "S2B_33TYL_20210608_1_L2A",
+     "datum": "2021-06-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.858816
+    },
+    {
+     "id": "S2B_34TCR_20210608_0_L2A",
+     "datum": "2021-06-08",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.090555
+    },
+    {
+     "id": "S2B_34TCR_20210608_1_L2A",
+     "datum": "2021-06-08",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.015398
+    },
+    {
+     "id": "S2A_33TYL_20210603_0_L2A",
+     "datum": "2021-06-03",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.126812
+    },
+    {
+     "id": "S2A_33TYL_20210603_1_L2A",
+     "datum": "2021-06-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.442583
+    },
+    {
+     "id": "S2A_34TCR_20210603_0_L2A",
+     "datum": "2021-06-03",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 22.768348
+    },
+    {
+     "id": "S2A_34TCR_20210603_1_L2A",
+     "datum": "2021-06-03",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.301351
+    },
+    {
+     "id": "S2B_33TYL_20210601_0_L2A",
+     "datum": "2021-06-01",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.248853
+    },
+    {
+     "id": "S2B_33TYL_20210601_1_L2A",
+     "datum": "2021-06-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.473575
+    },
+    {
+     "id": "S2B_34TCR_20210601_0_L2A",
+     "datum": "2021-06-01",
+     "baseline": 3.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.211763
+    },
+    {
+     "id": "S2B_34TCR_20210601_1_L2A",
+     "datum": "2021-06-01",
+     "baseline": 5.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.931821
+    }
+   ],
+   "broj_dana": 31,
+   "udio_valjanih_piksela": 0.964,
+   "srednji_ndvi": 0.711
+  },
+  "referenca 2022": {
+   "razdoblje": [
+    "2022-06-01",
+    "2022-08-31"
+   ],
+   "broj_snimaka": 61,
+   "snimke": [
+    {
+     "id": "S2A_33TYL_20220830_0_L2A",
+     "datum": "2022-08-30",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 33.627334
+    },
+    {
+     "id": "S2A_34TCR_20220830_0_L2A",
+     "datum": "2022-08-30",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.863209
+    },
+    {
+     "id": "S2A_33TYL_20220827_0_L2A",
+     "datum": "2022-08-27",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.147143
+    },
+    {
+     "id": "S2A_34TCR_20220827_0_L2A",
+     "datum": "2022-08-27",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.917917
+    },
+    {
+     "id": "S2B_33TYL_20220825_0_L2A",
+     "datum": "2022-08-25",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.47108
+    },
+    {
+     "id": "S2B_34TCR_20220825_0_L2A",
+     "datum": "2022-08-25",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.467984
+    },
+    {
+     "id": "S2A_33TYL_20220817_0_L2A",
+     "datum": "2022-08-17",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.123473
+    },
+    {
+     "id": "S2A_34TCR_20220817_0_L2A",
+     "datum": "2022-08-17",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.463791
+    },
+    {
+     "id": "S2B_33TYL_20220815_0_L2A",
+     "datum": "2022-08-15",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": -1000,
+     "oblacnost": 22.781882
+    },
+    {
+     "id": "S2B_34TCR_20220815_0_L2A",
+     "datum": "2022-08-15",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.939946
+    },
+    {
+     "id": "S2B_33TYL_20220812_0_L2A",
+     "datum": "2022-08-12",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 64.499295
+    },
+    {
+     "id": "S2B_34TCR_20220812_0_L2A",
+     "datum": "2022-08-12",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 37.225002
+    },
+    {
+     "id": "S2A_33TYL_20220810_0_L2A",
+     "datum": "2022-08-10",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": -1000,
+     "oblacnost": 65.721893
+    },
+    {
+     "id": "S2A_34TCR_20220810_0_L2A",
+     "datum": "2022-08-10",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 56.987679
+    },
+    {
+     "id": "S2A_33TYL_20220807_0_L2A",
+     "datum": "2022-08-07",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.245779
+    },
+    {
+     "id": "S2A_34TCR_20220807_0_L2A",
+     "datum": "2022-08-07",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.041716
+    },
+    {
+     "id": "S2B_33TYL_20220805_0_L2A",
+     "datum": "2022-08-05",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.019744
+    },
+    {
+     "id": "S2B_34TCR_20220805_0_L2A",
+     "datum": "2022-08-05",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000385
+    },
+    {
+     "id": "S2B_33TYL_20220802_0_L2A",
+     "datum": "2022-08-02",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.831921
+    },
+    {
+     "id": "S2B_34TCR_20220802_0_L2A",
+     "datum": "2022-08-02",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.372794
+    },
+    {
+     "id": "S2A_33TYL_20220731_0_L2A",
+     "datum": "2022-07-31",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.416521
+    },
+    {
+     "id": "S2A_34TCR_20220731_0_L2A",
+     "datum": "2022-07-31",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.958293
+    },
+    {
+     "id": "S2B_33TYL_20220726_0_L2A",
+     "datum": "2022-07-26",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.363057
+    },
+    {
+     "id": "S2B_34TCR_20220726_0_L2A",
+     "datum": "2022-07-26",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.67634
+    },
+    {
+     "id": "S2B_33TYL_20220723_0_L2A",
+     "datum": "2022-07-23",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.010431
+    },
+    {
+     "id": "S2B_34TCR_20220723_0_L2A",
+     "datum": "2022-07-23",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.172126
+    },
+    {
+     "id": "S2A_33TYL_20220721_0_L2A",
+     "datum": "2022-07-21",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.759369
+    },
+    {
+     "id": "S2A_34TCR_20220721_0_L2A",
+     "datum": "2022-07-21",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.287445
+    },
+    {
+     "id": "S2A_34TCR_20220718_0_L2A",
+     "datum": "2022-07-18",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.693573
+    },
+    {
+     "id": "S2B_33TYL_20220716_0_L2A",
+     "datum": "2022-07-16",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.885416
+    },
+    {
+     "id": "S2B_34TCR_20220716_0_L2A",
+     "datum": "2022-07-16",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": -1000,
+     "oblacnost": 1.354676
+    },
+    {
+     "id": "S2B_33TYL_20220713_0_L2A",
+     "datum": "2022-07-13",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.927665
+    },
+    {
+     "id": "S2B_34TCR_20220713_0_L2A",
+     "datum": "2022-07-13",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.79735
+    },
+    {
+     "id": "S2A_33TYL_20220711_0_L2A",
+     "datum": "2022-07-11",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 48.984453
+    },
+    {
+     "id": "S2A_34TCR_20220711_0_L2A",
+     "datum": "2022-07-11",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 61.597759
+    },
+    {
+     "id": "S2B_33TYL_20220706_0_L2A",
+     "datum": "2022-07-06",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.215202
+    },
+    {
+     "id": "S2B_34TCR_20220706_0_L2A",
+     "datum": "2022-07-06",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.735749
+    },
+    {
+     "id": "S2B_33TYL_20220703_0_L2A",
+     "datum": "2022-07-03",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.969068
+    },
+    {
+     "id": "S2B_34TCR_20220703_0_L2A",
+     "datum": "2022-07-03",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.442514
+    },
+    {
+     "id": "S2A_33TYL_20220701_0_L2A",
+     "datum": "2022-07-01",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.040978
+    },
+    {
+     "id": "S2A_34TCR_20220701_0_L2A",
+     "datum": "2022-07-01",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.14622
+    },
+    {
+     "id": "S2A_33TYL_20220628_0_L2A",
+     "datum": "2022-06-28",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 33.707145
+    },
+    {
+     "id": "S2A_34TCR_20220628_0_L2A",
+     "datum": "2022-06-28",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.696812
+    },
+    {
+     "id": "S2B_33TYL_20220626_0_L2A",
+     "datum": "2022-06-26",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.300488
+    },
+    {
+     "id": "S2B_34TCR_20220626_0_L2A",
+     "datum": "2022-06-26",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.640174
+    },
+    {
+     "id": "S2A_33TYL_20220621_0_L2A",
+     "datum": "2022-06-21",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 39.783493
+    },
+    {
+     "id": "S2A_34TCR_20220621_0_L2A",
+     "datum": "2022-06-21",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": -1000,
+     "oblacnost": 34.972957
+    },
+    {
+     "id": "S2A_33TYL_20220618_0_L2A",
+     "datum": "2022-06-18",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.3197
+    },
+    {
+     "id": "S2A_34TCR_20220618_0_L2A",
+     "datum": "2022-06-18",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": false,
+     "primijenjeni_pomak_dn": -1000,
+     "oblacnost": 17.202263
+    },
+    {
+     "id": "S2B_33TYL_20220616_0_L2A",
+     "datum": "2022-06-16",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.357605
+    },
+    {
+     "id": "S2B_34TCR_20220616_0_L2A",
+     "datum": "2022-06-16",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.683958
+    },
+    {
+     "id": "S2B_33TYL_20220613_0_L2A",
+     "datum": "2022-06-13",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.027621
+    },
+    {
+     "id": "S2B_34TCR_20220613_0_L2A",
+     "datum": "2022-06-13",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.860459
+    },
+    {
+     "id": "S2A_33TYL_20220611_0_L2A",
+     "datum": "2022-06-11",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 31.497243
+    },
+    {
+     "id": "S2A_34TCR_20220611_0_L2A",
+     "datum": "2022-06-11",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.449128
+    },
+    {
+     "id": "S2B_33TYL_20220606_0_L2A",
+     "datum": "2022-06-06",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 55.596149
+    },
+    {
+     "id": "S2B_34TCR_20220606_0_L2A",
+     "datum": "2022-06-06",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 60.937738
+    },
+    {
+     "id": "S2B_33TYL_20220603_0_L2A",
+     "datum": "2022-06-03",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.212942
+    },
+    {
+     "id": "S2B_34TCR_20220603_0_L2A",
+     "datum": "2022-06-03",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.734649
+    },
+    {
+     "id": "S2A_33TYL_20220601_0_L2A",
+     "datum": "2022-06-01",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.972693
+    },
+    {
+     "id": "S2A_34TCR_20220601_0_L2A",
+     "datum": "2022-06-01",
+     "baseline": 4.0,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 33.677107
+    }
+   ],
+   "broj_dana": 31,
+   "udio_valjanih_piksela": 0.966,
+   "srednji_ndvi": 0.697
+  },
+  "referenca 2023": {
+   "razdoblje": [
+    "2023-06-01",
+    "2023-08-31"
+   ],
+   "broj_snimaka": 53,
+   "snimke": [
+    {
+     "id": "S2B_33TYL_20230827_0_L2A",
+     "datum": "2023-08-27",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001546
+    },
+    {
+     "id": "S2B_34TCR_20230827_0_L2A",
+     "datum": "2023-08-27",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001891
+    },
+    {
+     "id": "S2A_33TYL_20230825_0_L2A",
+     "datum": "2023-08-25",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.485881
+    },
+    {
+     "id": "S2A_34TCR_20230825_0_L2A",
+     "datum": "2023-08-25",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 43.075505
+    },
+    {
+     "id": "S2A_33TYL_20230822_1_L2A",
+     "datum": "2023-08-22",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.081776
+    },
+    {
+     "id": "S2A_34TCR_20230822_0_L2A",
+     "datum": "2023-08-22",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.258079
+    },
+    {
+     "id": "S2A_33TYL_20230822_0_L2A",
+     "datum": "2023-08-22",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001626
+    },
+    {
+     "id": "S2A_34TCR_20230822_1_L2A",
+     "datum": "2023-08-22",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002648
+    },
+    {
+     "id": "S2B_33TYL_20230820_0_L2A",
+     "datum": "2023-08-20",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.465775
+    },
+    {
+     "id": "S2B_34TCR_20230820_0_L2A",
+     "datum": "2023-08-20",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.01877
+    },
+    {
+     "id": "S2B_33TYL_20230817_0_L2A",
+     "datum": "2023-08-17",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 31.380916
+    },
+    {
+     "id": "S2B_34TCR_20230817_0_L2A",
+     "datum": "2023-08-17",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.564627
+    },
+    {
+     "id": "S2A_33TYL_20230815_0_L2A",
+     "datum": "2023-08-15",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.604085
+    },
+    {
+     "id": "S2A_34TCR_20230815_0_L2A",
+     "datum": "2023-08-15",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 35.112935
+    },
+    {
+     "id": "S2A_33TYL_20230812_0_L2A",
+     "datum": "2023-08-12",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.490519
+    },
+    {
+     "id": "S2A_34TCR_20230812_0_L2A",
+     "datum": "2023-08-12",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.129989
+    },
+    {
+     "id": "S2B_33TYL_20230810_0_L2A",
+     "datum": "2023-08-10",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 54.579157
+    },
+    {
+     "id": "S2B_34TCR_20230810_0_L2A",
+     "datum": "2023-08-10",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 68.84892
+    },
+    {
+     "id": "S2B_34TCR_20230807_0_L2A",
+     "datum": "2023-08-07",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 65.07597
+    },
+    {
+     "id": "S2B_33TYL_20230731_0_L2A",
+     "datum": "2023-07-31",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.39107
+    },
+    {
+     "id": "S2B_34TCR_20230731_0_L2A",
+     "datum": "2023-07-31",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.171415
+    },
+    {
+     "id": "S2B_33TYL_20230728_0_L2A",
+     "datum": "2023-07-28",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.789938
+    },
+    {
+     "id": "S2B_34TCR_20230728_0_L2A",
+     "datum": "2023-07-28",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.953679
+    },
+    {
+     "id": "S2A_33TYL_20230723_0_L2A",
+     "datum": "2023-07-23",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.269523
+    },
+    {
+     "id": "S2A_34TCR_20230723_0_L2A",
+     "datum": "2023-07-23",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.876663
+    },
+    {
+     "id": "S2B_33TYL_20230721_0_L2A",
+     "datum": "2023-07-21",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 37.296292
+    },
+    {
+     "id": "S2B_34TCR_20230721_0_L2A",
+     "datum": "2023-07-21",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 68.554336
+    },
+    {
+     "id": "S2B_33TYL_20230718_0_L2A",
+     "datum": "2023-07-18",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.505768
+    },
+    {
+     "id": "S2B_34TCR_20230718_0_L2A",
+     "datum": "2023-07-18",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.407295
+    },
+    {
+     "id": "S2A_33TYL_20230716_0_L2A",
+     "datum": "2023-07-16",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.785703
+    },
+    {
+     "id": "S2A_34TCR_20230716_0_L2A",
+     "datum": "2023-07-16",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.076319
+    },
+    {
+     "id": "S2A_33TYL_20230713_0_L2A",
+     "datum": "2023-07-13",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 32.443941
+    },
+    {
+     "id": "S2A_34TCR_20230713_0_L2A",
+     "datum": "2023-07-13",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.505519
+    },
+    {
+     "id": "S2B_33TYL_20230711_0_L2A",
+     "datum": "2023-07-11",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.004311
+    },
+    {
+     "id": "S2B_34TCR_20230711_0_L2A",
+     "datum": "2023-07-11",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001925
+    },
+    {
+     "id": "S2B_33TYL_20230708_0_L2A",
+     "datum": "2023-07-08",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.82003
+    },
+    {
+     "id": "S2B_34TCR_20230708_0_L2A",
+     "datum": "2023-07-08",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.768999
+    },
+    {
+     "id": "S2A_33TYL_20230706_0_L2A",
+     "datum": "2023-07-06",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 36.444229
+    },
+    {
+     "id": "S2A_34TCR_20230706_0_L2A",
+     "datum": "2023-07-06",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.937614
+    },
+    {
+     "id": "S2A_33TYL_20230703_0_L2A",
+     "datum": "2023-07-03",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 41.625449
+    },
+    {
+     "id": "S2A_34TCR_20230703_0_L2A",
+     "datum": "2023-07-03",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.129021
+    },
+    {
+     "id": "S2A_33TYL_20230626_0_L2A",
+     "datum": "2023-06-26",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.860464
+    },
+    {
+     "id": "S2A_34TCR_20230626_0_L2A",
+     "datum": "2023-06-26",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.98355
+    },
+    {
+     "id": "S2A_33TYL_20230623_0_L2A",
+     "datum": "2023-06-23",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.710625
+    },
+    {
+     "id": "S2A_34TCR_20230623_0_L2A",
+     "datum": "2023-06-23",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.379886
+    },
+    {
+     "id": "S2B_33TYL_20230618_0_L2A",
+     "datum": "2023-06-18",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.101171
+    },
+    {
+     "id": "S2B_34TCR_20230618_0_L2A",
+     "datum": "2023-06-18",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.070096
+    },
+    {
+     "id": "S2A_33TYL_20230616_0_L2A",
+     "datum": "2023-06-16",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 63.675684
+    },
+    {
+     "id": "S2A_33TYL_20230613_0_L2A",
+     "datum": "2023-06-13",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.76664
+    },
+    {
+     "id": "S2A_34TCR_20230613_0_L2A",
+     "datum": "2023-06-13",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.115534
+    },
+    {
+     "id": "S2A_33TYL_20230603_0_L2A",
+     "datum": "2023-06-03",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.839351
+    },
+    {
+     "id": "S2A_34TCR_20230603_0_L2A",
+     "datum": "2023-06-03",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.997026
+    },
+    {
+     "id": "S2B_34TCR_20230601_0_L2A",
+     "datum": "2023-06-01",
+     "baseline": 5.09,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 61.483526
+    }
+   ],
+   "broj_dana": 27,
+   "udio_valjanih_piksela": 0.965,
+   "srednji_ndvi": 0.703
+  },
+  "referenca 2024": {
+   "razdoblje": [
+    "2024-06-01",
+    "2024-08-31"
+   ],
+   "broj_snimaka": 59,
+   "snimke": [
+    {
+     "id": "S2B_33TYL_20240831_0_L2A",
+     "datum": "2024-08-31",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001825
+    },
+    {
+     "id": "S2B_34TCR_20240831_0_L2A",
+     "datum": "2024-08-31",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.051304
+    },
+    {
+     "id": "S2A_33TYL_20240829_0_L2A",
+     "datum": "2024-08-29",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.562121
+    },
+    {
+     "id": "S2A_34TCR_20240829_0_L2A",
+     "datum": "2024-08-29",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.263477
+    },
+    {
+     "id": "S2A_33TYL_20240826_0_L2A",
+     "datum": "2024-08-26",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 69.76344
+    },
+    {
+     "id": "S2A_34TCR_20240826_1_L2A",
+     "datum": "2024-08-26",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 41.619256
+    },
+    {
+     "id": "S2B_33TYL_20240824_0_L2A",
+     "datum": "2024-08-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.591965
+    },
+    {
+     "id": "S2B_34TCR_20240824_0_L2A",
+     "datum": "2024-08-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.920621
+    },
+    {
+     "id": "S2B_33TYL_20240821_0_L2A",
+     "datum": "2024-08-21",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.13611
+    },
+    {
+     "id": "S2B_34TCR_20240821_0_L2A",
+     "datum": "2024-08-21",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 44.709417
+    },
+    {
+     "id": "S2A_33TYL_20240816_0_L2A",
+     "datum": "2024-08-16",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.342716
+    },
+    {
+     "id": "S2A_34TCR_20240816_0_L2A",
+     "datum": "2024-08-16",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.060786
+    },
+    {
+     "id": "S2B_33TYL_20240814_0_L2A",
+     "datum": "2024-08-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 15.996832
+    },
+    {
+     "id": "S2B_34TCR_20240814_0_L2A",
+     "datum": "2024-08-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.563403
+    },
+    {
+     "id": "S2B_33TYL_20240811_0_L2A",
+     "datum": "2024-08-11",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.42604
+    },
+    {
+     "id": "S2B_34TCR_20240811_0_L2A",
+     "datum": "2024-08-11",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 29.897615
+    },
+    {
+     "id": "S2A_33TYL_20240809_0_L2A",
+     "datum": "2024-08-09",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.626245
+    },
+    {
+     "id": "S2A_34TCR_20240809_0_L2A",
+     "datum": "2024-08-09",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.863444
+    },
+    {
+     "id": "S2A_33TYL_20240806_0_L2A",
+     "datum": "2024-08-06",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.229515
+    },
+    {
+     "id": "S2A_34TCR_20240806_0_L2A",
+     "datum": "2024-08-06",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.028072
+    },
+    {
+     "id": "S2B_33TYL_20240804_0_L2A",
+     "datum": "2024-08-04",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 38.052231
+    },
+    {
+     "id": "S2B_34TCR_20240804_0_L2A",
+     "datum": "2024-08-04",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 29.004243
+    },
+    {
+     "id": "S2B_33TYL_20240801_0_L2A",
+     "datum": "2024-08-01",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.562413
+    },
+    {
+     "id": "S2B_34TCR_20240801_0_L2A",
+     "datum": "2024-08-01",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.060355
+    },
+    {
+     "id": "S2A_33TYL_20240730_0_L2A",
+     "datum": "2024-07-30",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000386
+    },
+    {
+     "id": "S2A_34TCR_20240730_0_L2A",
+     "datum": "2024-07-30",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000978
+    },
+    {
+     "id": "S2A_33TYL_20240727_0_L2A",
+     "datum": "2024-07-27",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001539
+    },
+    {
+     "id": "S2A_34TCR_20240727_0_L2A",
+     "datum": "2024-07-27",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001709
+    },
+    {
+     "id": "S2B_33TYL_20240725_0_L2A",
+     "datum": "2024-07-25",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.05861
+    },
+    {
+     "id": "S2B_34TCR_20240725_0_L2A",
+     "datum": "2024-07-25",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 24.282239
+    },
+    {
+     "id": "S2B_33TYL_20240722_0_L2A",
+     "datum": "2024-07-22",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 49.467492
+    },
+    {
+     "id": "S2B_34TCR_20240722_0_L2A",
+     "datum": "2024-07-22",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 56.108361
+    },
+    {
+     "id": "S2A_33TYL_20240717_0_L2A",
+     "datum": "2024-07-17",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.769944
+    },
+    {
+     "id": "S2A_34TCR_20240717_0_L2A",
+     "datum": "2024-07-17",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.663104
+    },
+    {
+     "id": "S2B_33TYL_20240715_0_L2A",
+     "datum": "2024-07-15",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.970881
+    },
+    {
+     "id": "S2B_34TCR_20240715_0_L2A",
+     "datum": "2024-07-15",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.038815
+    },
+    {
+     "id": "S2B_33TYL_20240712_0_L2A",
+     "datum": "2024-07-12",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.477513
+    },
+    {
+     "id": "S2B_34TCR_20240712_0_L2A",
+     "datum": "2024-07-12",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.911858
+    },
+    {
+     "id": "S2A_33TYL_20240710_0_L2A",
+     "datum": "2024-07-10",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 16.721213
+    },
+    {
+     "id": "S2A_34TCR_20240710_0_L2A",
+     "datum": "2024-07-10",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.956181
+    },
+    {
+     "id": "S2A_33TYL_20240707_0_L2A",
+     "datum": "2024-07-07",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.116403
+    },
+    {
+     "id": "S2A_34TCR_20240707_0_L2A",
+     "datum": "2024-07-07",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.04857
+    },
+    {
+     "id": "S2B_33TYL_20240705_0_L2A",
+     "datum": "2024-07-05",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.376898
+    },
+    {
+     "id": "S2B_34TCR_20240705_0_L2A",
+     "datum": "2024-07-05",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.824833
+    },
+    {
+     "id": "S2A_33TYL_20240630_0_L2A",
+     "datum": "2024-06-30",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.450017
+    },
+    {
+     "id": "S2A_34TCR_20240630_0_L2A",
+     "datum": "2024-06-30",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.500745
+    },
+    {
+     "id": "S2B_33TYL_20240625_0_L2A",
+     "datum": "2024-06-25",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 41.998038
+    },
+    {
+     "id": "S2B_34TCR_20240625_0_L2A",
+     "datum": "2024-06-25",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 28.669223
+    },
+    {
+     "id": "S2B_33TYL_20240622_0_L2A",
+     "datum": "2024-06-22",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.44114
+    },
+    {
+     "id": "S2B_34TCR_20240622_0_L2A",
+     "datum": "2024-06-22",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.722509
+    },
+    {
+     "id": "S2A_34TCR_20240620_0_L2A",
+     "datum": "2024-06-20",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 49.711099
+    },
+    {
+     "id": "S2A_33TYL_20240617_0_L2A",
+     "datum": "2024-06-17",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.337527
+    },
+    {
+     "id": "S2A_34TCR_20240617_0_L2A",
+     "datum": "2024-06-17",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.07349
+    },
+    {
+     "id": "S2B_33TYL_20240615_0_L2A",
+     "datum": "2024-06-15",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.553644
+    },
+    {
+     "id": "S2B_34TCR_20240615_0_L2A",
+     "datum": "2024-06-15",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.346259
+    },
+    {
+     "id": "S2A_33TYL_20240607_0_L2A",
+     "datum": "2024-06-07",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.735075
+    },
+    {
+     "id": "S2A_34TCR_20240607_0_L2A",
+     "datum": "2024-06-07",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.956353
+    },
+    {
+     "id": "S2B_33TYL_20240605_0_L2A",
+     "datum": "2024-06-05",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 44.292709
+    },
+    {
+     "id": "S2B_34TCR_20240605_0_L2A",
+     "datum": "2024-06-05",
+     "baseline": 5.1,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 53.523189
+    }
+   ],
+   "broj_dana": 30,
+   "udio_valjanih_piksela": 0.964,
+   "srednji_ndvi": 0.678
+  },
+  "referenca 2025": {
+   "razdoblje": [
+    "2025-06-01",
+    "2025-08-31"
+   ],
+   "broj_snimaka": 79,
+   "snimke": [
+    {
+     "id": "S2B_33TYL_20250829_0_L2A",
+     "datum": "2025-08-29",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.197342
+    },
+    {
+     "id": "S2B_34TCR_20250829_0_L2A",
+     "datum": "2025-08-29",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 13.824387
+    },
+    {
+     "id": "S2A_33TYL_20250826_1_L2A",
+     "datum": "2025-08-26",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.971512
+    },
+    {
+     "id": "S2A_34TCR_20250826_1_L2A",
+     "datum": "2025-08-26",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.340139
+    },
+    {
+     "id": "S2B_33TYL_20250826_0_L2A",
+     "datum": "2025-08-26",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 2.158387
+    },
+    {
+     "id": "S2B_34TCR_20250826_0_L2A",
+     "datum": "2025-08-26",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.742443
+    },
+    {
+     "id": "S2C_33TYL_20250824_0_L2A",
+     "datum": "2025-08-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.000751
+    },
+    {
+     "id": "S2C_34TCR_20250824_0_L2A",
+     "datum": "2025-08-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 7.450806
+    },
+    {
+     "id": "S2A_33TYL_20250823_0_L2A",
+     "datum": "2025-08-23",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 50.417721
+    },
+    {
+     "id": "S2A_34TCR_20250823_0_L2A",
+     "datum": "2025-08-23",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 11.760996
+    },
+    {
+     "id": "S2B_33TYL_20250819_0_L2A",
+     "datum": "2025-08-19",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 10.627913
+    },
+    {
+     "id": "S2B_34TCR_20250819_0_L2A",
+     "datum": "2025-08-19",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 17.855118
+    },
+    {
+     "id": "S2A_33TYL_20250816_1_L2A",
+     "datum": "2025-08-16",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.662887
+    },
+    {
+     "id": "S2A_34TCR_20250816_1_L2A",
+     "datum": "2025-08-16",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.925372
+    },
+    {
+     "id": "S2B_33TYL_20250816_0_L2A",
+     "datum": "2025-08-16",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.191181
+    },
+    {
+     "id": "S2B_34TCR_20250816_0_L2A",
+     "datum": "2025-08-16",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 6.481922
+    },
+    {
+     "id": "S2C_33TYL_20250814_0_L2A",
+     "datum": "2025-08-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.069915
+    },
+    {
+     "id": "S2C_34TCR_20250814_0_L2A",
+     "datum": "2025-08-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00036
+    },
+    {
+     "id": "S2A_33TYL_20250813_0_L2A",
+     "datum": "2025-08-13",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000677
+    },
+    {
+     "id": "S2A_34TCR_20250813_0_L2A",
+     "datum": "2025-08-13",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001078
+    },
+    {
+     "id": "S2C_33TYL_20250811_0_L2A",
+     "datum": "2025-08-11",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001865
+    },
+    {
+     "id": "S2C_34TCR_20250811_0_L2A",
+     "datum": "2025-08-11",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001858
+    },
+    {
+     "id": "S2B_33TYL_20250809_0_L2A",
+     "datum": "2025-08-09",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000707
+    },
+    {
+     "id": "S2B_34TCR_20250809_0_L2A",
+     "datum": "2025-08-09",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.5e-05
+    },
+    {
+     "id": "S2B_33TYL_20250806_1_L2A",
+     "datum": "2025-08-06",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 69.34427
+    },
+    {
+     "id": "S2B_34TCR_20250806_1_L2A",
+     "datum": "2025-08-06",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 49.891955
+    },
+    {
+     "id": "S2C_33TYL_20250801_0_L2A",
+     "datum": "2025-08-01",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.444756
+    },
+    {
+     "id": "S2C_34TCR_20250801_0_L2A",
+     "datum": "2025-08-01",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.182113
+    },
+    {
+     "id": "S2B_33TYL_20250730_0_L2A",
+     "datum": "2025-07-30",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 31.33527
+    },
+    {
+     "id": "S2B_34TCR_20250730_0_L2A",
+     "datum": "2025-07-30",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 27.874646
+    },
+    {
+     "id": "S2C_33TYL_20250725_0_L2A",
+     "datum": "2025-07-25",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001706
+    },
+    {
+     "id": "S2C_34TCR_20250725_0_L2A",
+     "datum": "2025-07-25",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002248
+    },
+    {
+     "id": "S2A_33TYL_20250724_0_L2A",
+     "datum": "2025-07-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 12.050836
+    },
+    {
+     "id": "S2A_34TCR_20250724_0_L2A",
+     "datum": "2025-07-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 9.913358
+    },
+    {
+     "id": "S2B_33TYL_20250720_0_L2A",
+     "datum": "2025-07-20",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 3.344305
+    },
+    {
+     "id": "S2B_34TCR_20250720_0_L2A",
+     "datum": "2025-07-20",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.416307
+    },
+    {
+     "id": "S2C_33TYL_20250715_0_L2A",
+     "datum": "2025-07-15",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 4.701944
+    },
+    {
+     "id": "S2C_34TCR_20250715_0_L2A",
+     "datum": "2025-07-15",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.942243
+    },
+    {
+     "id": "S2A_33TYL_20250714_0_L2A",
+     "datum": "2025-07-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.614606
+    },
+    {
+     "id": "S2A_34TCR_20250714_0_L2A",
+     "datum": "2025-07-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 18.887091
+    },
+    {
+     "id": "S2C_33TYL_20250712_0_L2A",
+     "datum": "2025-07-12",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.789845
+    },
+    {
+     "id": "S2C_34TCR_20250712_0_L2A",
+     "datum": "2025-07-12",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.476143
+    },
+    {
+     "id": "S2B_33TYL_20250710_0_L2A",
+     "datum": "2025-07-10",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 60.442239
+    },
+    {
+     "id": "S2A_34TCR_20250707_1_L2A",
+     "datum": "2025-07-07",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 53.823686
+    },
+    {
+     "id": "S2B_34TCR_20250707_0_L2A",
+     "datum": "2025-07-07",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 43.071789
+    },
+    {
+     "id": "S2C_33TYL_20250705_0_L2A",
+     "datum": "2025-07-05",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 1.196063
+    },
+    {
+     "id": "S2C_34TCR_20250705_0_L2A",
+     "datum": "2025-07-05",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.901044
+    },
+    {
+     "id": "S2A_33TYL_20250704_0_L2A",
+     "datum": "2025-07-04",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.042236
+    },
+    {
+     "id": "S2A_34TCR_20250704_0_L2A",
+     "datum": "2025-07-04",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.085783
+    },
+    {
+     "id": "S2C_33TYL_20250702_0_L2A",
+     "datum": "2025-07-02",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.002236
+    },
+    {
+     "id": "S2C_34TCR_20250702_0_L2A",
+     "datum": "2025-07-02",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.004094
+    },
+    {
+     "id": "S2B_33TYL_20250630_0_L2A",
+     "datum": "2025-06-30",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 26.852912
+    },
+    {
+     "id": "S2B_34TCR_20250630_0_L2A",
+     "datum": "2025-06-30",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 20.821947
+    },
+    {
+     "id": "S2C_33TYL_20250625_0_L2A",
+     "datum": "2025-06-25",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.195183
+    },
+    {
+     "id": "S2C_34TCR_20250625_0_L2A",
+     "datum": "2025-06-25",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.608005
+    },
+    {
+     "id": "S2A_33TYL_20250624_0_L2A",
+     "datum": "2025-06-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 5.435924
+    },
+    {
+     "id": "S2A_34TCR_20250624_0_L2A",
+     "datum": "2025-06-24",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 8.79367
+    },
+    {
+     "id": "S2C_33TYL_20250622_0_L2A",
+     "datum": "2025-06-22",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.013875
+    },
+    {
+     "id": "S2C_34TCR_20250622_0_L2A",
+     "datum": "2025-06-22",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.003268
+    },
+    {
+     "id": "S2B_33TYL_20250620_0_L2A",
+     "datum": "2025-06-20",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 50.719684
+    },
+    {
+     "id": "S2B_34TCR_20250620_0_L2A",
+     "datum": "2025-06-20",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 21.043578
+    },
+    {
+     "id": "S2C_33TYL_20250615_0_L2A",
+     "datum": "2025-06-15",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001785
+    },
+    {
+     "id": "S2C_34TCR_20250615_0_L2A",
+     "datum": "2025-06-15",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.004109
+    },
+    {
+     "id": "S2A_33TYL_20250614_0_L2A",
+     "datum": "2025-06-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001599
+    },
+    {
+     "id": "S2A_34TCR_20250614_0_L2A",
+     "datum": "2025-06-14",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.032389
+    },
+    {
+     "id": "S2C_33TYL_20250612_0_L2A",
+     "datum": "2025-06-12",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 25.524703
+    },
+    {
+     "id": "S2C_34TCR_20250612_0_L2A",
+     "datum": "2025-06-12",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 19.4545
+    },
+    {
+     "id": "S2B_33TYL_20250610_0_L2A",
+     "datum": "2025-06-10",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.00096
+    },
+    {
+     "id": "S2B_34TCR_20250610_0_L2A",
+     "datum": "2025-06-10",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.001292
+    },
+    {
+     "id": "S2A_33TYL_20250607_1_L2A",
+     "datum": "2025-06-07",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.764275
+    },
+    {
+     "id": "S2A_34TCR_20250607_0_L2A",
+     "datum": "2025-06-07",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.008574
+    },
+    {
+     "id": "S2B_33TYL_20250607_0_L2A",
+     "datum": "2025-06-07",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.625871
+    },
+    {
+     "id": "S2B_34TCR_20250607_1_L2A",
+     "datum": "2025-06-07",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.011456
+    },
+    {
+     "id": "S2C_33TYL_20250605_0_L2A",
+     "datum": "2025-06-05",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.665714
+    },
+    {
+     "id": "S2C_34TCR_20250605_0_L2A",
+     "datum": "2025-06-05",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 0.000474
+    },
+    {
+     "id": "S2A_33TYL_20250604_0_L2A",
+     "datum": "2025-06-04",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 23.223084
+    },
+    {
+     "id": "S2A_34TCR_20250604_0_L2A",
+     "datum": "2025-06-04",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 14.246365
+    },
+    {
+     "id": "S2C_33TYL_20250602_0_L2A",
+     "datum": "2025-06-02",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 26.044384
+    },
+    {
+     "id": "S2C_34TCR_20250602_0_L2A",
+     "datum": "2025-06-02",
+     "baseline": 5.11,
+     "offset_vec_primijenjen": true,
+     "primijenjeni_pomak_dn": 0,
+     "oblacnost": 25.564653
+    }
+   ],
+   "broj_dana": 37,
+   "udio_valjanih_piksela": 0.967,
+   "srednji_ndvi": 0.697
+  }
+ }
+}
