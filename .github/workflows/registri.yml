@@ -1,0 +1,31 @@
+name: Registri općine
+
+# Povezuje registar imovine i registar komunalne infrastrukture s aktualnim katastrom (DGU ATOM).
+# Pokreće se ručno nakon izmjene CSV-a registara, a automatski jednom mjesečno (katastar se mijenja).
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "41 5 3 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  registri:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install "geopandas>=1.0" pyogrio pandas
+      - run: python scripts/registri/geokodiraj.py
+      - name: Spremanje
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/opcinska_imovina.geojson data/komunalna_infrastruktura.geojson data/izvori/registri_neupareno.csv
+          git commit -m "Registri općine povezani s katastrom" || echo "Nema promjena"
+          git pull --rebase
+          git push

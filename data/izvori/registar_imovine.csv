@@ -1,0 +1,126 @@
+rb;naziv;portfelj;podportfelj;adresa;funkcija;vrijednost_eur;ko_mb;zku;zkc;pl;kc;jedinica;kolicina;udio;kc_izvor
+1;Građevinsko zemljište Poslovna zona sjever k.č.442/3;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;116,979.36;300055;6313;442/3;6313;442/3;M2;3002;1/1;tablica
+2;Građevinsko zemljište Poslovna zona sjever k.č.442/10;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;11,945.05;300055;6313;442/10;6313;442/10;M2;1500;1/1;tablica
+3;Građevinsko zemljište Poslovna zona sjever k.č.442/11;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;32,267.57;300055;7370;442/11;7370;442/11;M2;7845;1/1;tablica
+4;Građevinsko zemljište Poslovna zona sjever k.č.442/13;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;31,428.75;300055;7204;442/13;7204;442/13;M2;1001;1/1;tablica
+5;Građevinsko zemljište Poslovna zona sjever k.č.442/35;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;7370;442/35;7370;442/35;M2;214;1/1;tablica
+6;Građevinsko zemljište Poslovna zona sjever k.č.442/30;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;7204;442/30;7204;442/30;M2;1501;1/1;tablica
+7;Građevinsko zemljište Poslovna zona sjever k.č.442/31;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;7204;442/31;7204;442/31;M2;1501;1/1;tablica
+8;Građevinsko zemljište Poslovna zona sjever k.č.442/27;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;6313;442/27;6313;442/27;M2;1500;1/1;tablica
+9;Građevinsko zemljište Poslovna zona sjever k.č.442/32;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;6313;442/32;6313;442/32;M2;1500;1/1;tablica
+10;Građevinsko zemljište Poslovna zona sjever k.č.442/33;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;6313;442/33;6313;442/33;M2;1500;1/1;tablica
+11;zemljište Poslovna zona sjever k.č.442/34;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;6313;442/34;6313;442/34;M2;1499;1/1;tablica
+12;Oranica Bilje k.č.490/19;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;6313;490/19;6313;490/19;M2;3015;1/1;tablica
+13;Stan Ulica Šandora Petefija k.č.804;STANOVI;STANOVI ZA NAJAM;Bilje Ulica Šandora Petefija 6;C;14,918.38;300055;6313;804;6313;804;M2;292;1/1;tablica
+14;Stan Ulica Žrtava domovinskog rata k.č.493/2;STANOVI;STANOVI ZA NAJAM;Bilje Ulica Žrtava domovinskog;C;13,084.26;300055;6313;493/2;6313;493/2;M2;600;1/1;tablica
+15;Dvorište Ulica Žrtava domovinskog rata k.č.493/2;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;rata 15 Bilje Ulica Žrtava domovinskog;B;0.13;300055;6313;493/2;6313;493/2;M2;551;1/1;tablica
+16;Dvorište Ulica Šandora Petefija k.č.804;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;rata 15 Bilje Ulica Šandora;B;0.13;300055;6313;804;6313;804;M2;500;1/1;tablica
+17;Oranica Ulica Šandora Petefija k.č.804;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Petefija 6 Bilje Ulica Šandora;B;0.13;300055;6313;8049;6313;804;M2;2079;1/1;tablica
+18;Stan Ulica Šandora Petefija k.č.804;STANOVI;STANOVI ZA NAJAM;Petefija 6 Bilje Ulica Šandora;C;15,577.27;300055;6313;804;6313;804;M2;292;1/1;tablica
+19;Stan Ulica Šandora Petefija k.č.804;STANOVI;STANOVI ZA NAJAM;Petefija 6 Bilje Ulica Šandora;C;11,939.39;300055;6313;804;6313;804;M2;292;1/1;tablica
+20;Stan Ulica Šandora Petefija k.č.827;STANOVI;;Petefija 6 Bilje;C;19,626.38;;6313;827;6313;827;M2;104;1/1;tablica
+21;Dvorište Ulica Šandora Petefija k.č.827;ZEMLJIŠTA;STANOVI ZA NAJAM;Ulica Šandora Petefija 29 Bilje;B;0.13;300055;6313;827;6313;827;M2;500;1/1;tablica
+22;Oranica Ulica Šandora Petefija k.č.827;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Ulica Šandora Petefija 29 Bilje;B;0.13;300055;6313;827;6313;827;M2;242;1/1;tablica
+23;Dvorište Ulica kralja ZEMLJIŠTA Tomislava;k.č.939;POLJOPRIVREDNA ZEMLJIŠTA;Ulica Šandora Petefija 29;B;0.13;300055;6313;939;6313;939;M2;500;1/1;tablica
+24;Oranica Ulica kralja Tomislava k.č.939;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Bilje Ulica kralja Tomislava 8;B;0.13;300055;6313;939;6313;939;M2;2726;1/1;tablica
+25;Stan Ulica kralja Tomislava k.č.939;STANOVI;STANOVI ZA NAJAM;Bilje Ulica kralja Tomislava 8;C;16,822.61;300055;6313;939;6313;939;M2;104;1/1;tablica
+26;Oranica Ulica kralja Tomislava k.č.1031/1;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Bilje Ulica kralja Tomislava 13;B;0.13;300055;6313;1031/1;6313;1031/1;M2;403;1/1;tablica
+27;Dvorište Ulica kralja Tomislava k.č.1031/1;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Bilje Ulica kralja Tomislava 13;B;0.13;300055;6313;1031/1;6313;1031/1;M2;500;1/1;tablica
+28;Stan Ulica kralja Tomislava k.č.1031/1;STANOVI;STANOVI ZA NAJAM;Bilje Ulica kralja Tomislava 13B;C;16,023.55;300055;6313;1031/1;6313;1031/1;M2;92;1/1;tablica
+29;Kuća Ulica kralja Tomislava k.č.1031/1;ZEMLJIŠTA;IZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Ulica kralja;B;0.13;300055;6313;1031/1;6313;1031/1;M2;67;1/1;tablica
+30;Stan Ulica kralja Tomislava k.č.1031/4;STANOVI;STANOVI ZA NAJAM;Tomislava 13 Bilje Ulica kralja Tomislava 11A;C;12,913.69;300055;6313;1031/4;6313;1031/4;M2;83;1/1;tablica
+31;Dvorište Ulica kralja Tomislava k.č.1031/4;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Bilje Ulica kralja Tomislava;B;0.13;300055;6313;1031/4;6313;1031/4;M2;500;1/1;tablica
+32;Oranica Ulica kralja Tomislava k.č.1031/4;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;11A-11B Bilje Ulica kralja Tomislava;B;0.13;300055;6313;1031/4;6313;1031/4;M2;365;1/1;tablica
+33;Stan Ulica kralja Tomislava k.č.1031/4;STANOVI;STANOVI ZA NAJAM;11A-11B Bilje Ulica kralja;C;12,913.69;300055;6313;1031/4;6313;1031/4;M2;51;1/1;tablica
+34;Vatrogasni dom Ulica hrvatskih branitelja k.č.1035;ZEMLJIŠTA;IZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Tomislava 11b Bilje Ulica hrvatskih branitelja 5;C;429,156.98;300055;6313;1035;6313;1035;M2;999;1/1;tablica
+35;Oranica Temeti Tabla k.č.1129;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Bilje Temeti Tabla bb;B;0.13;300055;6313;1129;6313;1129;M2;72;1/1;tablica
+36;Bunker Temeti Tabla;;IZGRAĐENA GRAĐEVINSKA;Bilje;B;0.13;;6313;1179;6313;1179;M2;1607;1/1;tablica
+37;Poslovni prostor Ulica kralja Zvonimira k.č.1431/1;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Bilje Ulica kralja Zvonimira 10;C;15,187.10;300055;6313;1431/1;6313;1431/1;M2;116;1/1;tablica
+38;Poslovni prostor Ulica kralja Zvonimira k.č.1431/2;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Bilje Ulica kralja Zvonimira 10;C;9,112.26;300055;6313;1431/2;6313;1431/2;M2;262;1/1;tablica
+39;Oranica Ulica kralja Zvonimira k.č.1431/2;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Bilje Ulica kralja Zvonimira 10;B;0.13;300055;6313;1431/2;6313;1431/2;M2;1575;1/1;tablica
+40;Dvorište Ulica kralja Zvonimira k.č.1431/2;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Bilje Ulica kralja Zvonimira 10 Bilje;B;0.13;300055;6313;1431/2;6313;1431/2;M2;500;1/1;tablica
+41;Dom kulture Ulica kralja Zvonimira k.č.2020;KULTURNI OBJEKTI;DOMOVI;Ulica kralja Zvonimira 2 Bilje;B;37,816.52;300055;5406;2020;5406;2020;M2;5478;1/1;tablica
+42;Poslovni prostor Ulica kralja Zvonimira k.č.2020;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Ulica kralja Zvonimira 2 Bilje;C;24,579.71;300055;5406;2020;5406;2020;M2;5478;1/1;tablica
+43;Oranica Temeti Tabla k.č.2022;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Temeti Tabla bb Bilje;B;0.13;300055;7288;2022;7288;2022;M2;592;1/1;tablica
+44;Oranica Ulica kralja Zvonimira k.č.1430;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Ulica kralja Zvonimira bb Bilje;B;0.13;300055;7106;1430;7106;1430;M2;1266;1/1;tablica
+45;Oranica Vinogradska ulica k.č.1636;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Vinogradska ulica bb Bilje;B;0.13;300055;7106;1636;7106;1636;M2;3492;1/1;tablica
+46;Oranica Primoštenska ulica k.č.1207/2;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Primoštenska ulica bb Bilje;B;0.13;300055;6584;1207/2;6584;1207/2;M2;2905;1/1;tablica
+47;Oranica Primoštenska ulica k.č.1207/3;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Primoštenska ulica bb Bilje Ulica Biljske;B;0.13;300055;6584;1207/3;6584;1207/3;M2;1702;1/1;tablica
+48;Dječji vrtić Ulica Biljske satnije ZNG RH k.č.557;OBRAZOVNI OBJEKTI;VRTIĆI;satnije ZNG R H 11A Bilje Ulica kralja;A C;762,671.51 16,463.51;300055;7044;557;7044;557;M2;509;1/1;tablica
+49;Zgrada Mlin Ulica kralja Zvonimira k.č.1467/2;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Zvonimira 40A;;;;;;;1467/2;;;;naziv
+50;Poslovni građevinski objekt Ulica kralja Zvonimira k.č.446/3;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Bilje Ulica kralja Tomislava 94;C;116,966.07;300055;5189;446/3;5189;446/3;M2;6600;1/1;tablica
+51;Građevinsko zemljište Poslovna zona sjever k.č.442/1;ZEMLJIŠTA;NEIZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Bilje Bilje bb;B;0.13;300055;6901;442/1;6901;442/1;M2;107421;1/1;tablica
+52;Oranica Kopačevo k.č.206;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Kopačevo Kopačevo bb;B;0.13;300209;1235;206;1235;206;M2;11610;1/1;tablica
+53;Dječji vrtić Podunavska ulica k.č.409/12;OBRAZOVNI OBJEKTI;VRTIĆI;Kopačevo Podunavska ulica 32;A;573,909.16;300209;1235;409/12;1235;409/12;M2;919;1/1;tablica
+54;Zemljište Ritska ulica k.č.486;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Kopačevo Ritska ulica;B;2,216.60;300209;1235;486;1235;486;M2;136;1/1;tablica
+55;Kuća i dvor Ritska ulica k.č.486;STANOVI;STANOVI ZA NAJAM;5 Kopačevo Ritska ulica;C;3,504.71;300209;1235;486;1235;486;M2;136;1/1;tablica
+56;Kuća Ulica Lajoša Košuta k.č.500/1;STANOVI;STANOVI ZA NAJAM;5 Kopačevo Ulica Lajoša Košuta 47B-D;C;13,317.90;300209;1235;500/1;1235;500/1;M2;326;1/1;tablica
+57;Kuća Ulica Lajoša Košuta k.č.500/1;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Lajoša Košuta 47B-D;C;13,317.90;300209;1235;500/1;1235;500/1;M2;326;1/1;tablica
+58;Stan Ulica Lajoša Košuta k.č.500/1;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Lajoša Košuta 47B-D;C;6,822.50;300209;1235;500/1;1235;500/1;M2;326;1/1;tablica
+59;Stan Ulica Lajoša Košuta k.č.500/1;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Lajoša Košuta 47B-D;C;6,822.50;300209;1235;500/1;1235;500/1;M2;326;1/1;tablica
+60;Stan Ulica Lajoša Košuta k.č.500/1;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Lajoša Košuta 47B-D;C;6,822.50;300209;1235;500/1;1235;500/1;M2;326;1/1;tablica
+61;Stan Ulica Lajoša Košuta k.č.500/1;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Lajoša Košuta 47B-D;C;6,822.50;300209;1235;500/1;1235;500/1;M2;326;1/1;tablica
+62;Oranica Ulica Lajoša Košuta k.č.500/1;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Kopačevo Ulica Lajoša Košuta 47B-D;B;0.13;300209;1235;500/1;1235;500/1;M2;814;1/1;tablica
+63;Dvorište Ulica Lajoša Košuta k.č.500/1;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Kopačevo Ulica Lajoša;B;0.13;300209;1235;500/1;1235;500/1;M2;500;1/1;tablica
+64;Pašnjak Ulica Šandora Petefija k.č.651/2;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Kopačevo Ulica Šandora Petefija bb;B;0.13;300209;1235;651/2;1235;651/2;M2;424;1/1;tablica
+65;Gospodarska zgrada Ulica Šandora Petefija k.č.651/2;ZEMLJIŠTA;IZGRAĐENA GRAĐEVINSKA ZEMLJIŠTA;Kopačevo Ulica Šandora;B;0.13;300209;1235;651/2;1235;651/2;M2;91;1/1;tablica
+66;Dvorište Ulica Šandora Petefija k.č.652/1;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Petefija bb Kopačevo Ulica Šandora;B;0.13;300209;1235;652/1;1235;652/1;M2;1008;1/1;tablica
+67;Podrum Ulica Šandora Petefija k.č.652/1;ZEMLJIŠTA;IZGRAĐENA GRAĐEVINSKA;Petefija bb Kopačevo Ulica Šandora;B;0.13;300209;1235;652/1;1235;652/1;M2;125;1/1;tablica
+68;Dvorište Ulica Šandora Petefija k.č.652/2;ZEMLJIŠTA;ZEMLJIŠTA;Petefija bb Kopačevo;B;0.13;;1235;652/2;1235;652/2;M2;27;1/1;tablica
+69;Izgrađeno zemljište Ulica Šandora Petefija k.č.652/2;ZEMLJIŠTA;OSTALA ZEMLJIŠTA IZGRAĐENA GRAĐEVINSKA;Ulica Šandora Petefija bb Kopačevo;B;0.13;300209;1235;652/2;1235;652/2;M2;12;1/1;tablica
+70;Poslovni prostor Ulica Šandora Petefija k.č.655;POSLOVNI PROSTORI;ZEMLJIŠTA POSLOVNI PROSTORI;Ulica Šandora Petefija bb Kopačevo;C;18,691.79;300209;1235;655;1235;655;M2;1835;1/1;tablica
+71;Oranica Ulica Šandora Petefija k.č.655;ZEMLJIŠTA;ZA NAJAM POLJOPRIVREDNA;Ulica Šandora Petefija 1 Kopačevo;B;0.13;300209;1235;655;1235;655;M2;427;1/1;tablica
+72;Zgrada Ulica Crkvena k.č.668/1;STANOVI;ZEMLJIŠTA;Ulica Šandora Petefija 1 Kopačevo;C;3,504.71;300209;1235;668/1;1235;668/1;M2;450;1/1;tablica
+73;Oranica Ulica Crkvena k.č.668/2;ZEMLJIŠTA;STANOVI ZA NAJAM POLJOPRIVREDNA;Ulica Crkvena bb Kopačevo;B;0.13;300209;1235;668/2;1235;668/2;M2;35;1/1;tablica
+74;Stan Ulica Crkvena k.č.675;STANOVI;ZEMLJIŠTA;Ulica Crkvena bb Kopačevo;C;6,822.50;300209;1235;675;1235;675;M2;321;1/1;tablica
+75;Stan Ulica Crkvena k.č.675;STANOVI;STANOVI ZA NAJAM;Ulica Crkvena 11 Kopačevo;C;6,822.50;300209;1235;675;1235;675;M2;321;1/1;tablica
+76;Stan Ulica Crkvena k.č.675;STANOVI;STANOVI ZA NAJAM;Ulica Crkvena 11 Kopačevo;C;6,822.50;300209;1235;675;1235;675;M2;321;1/1;tablica
+77;Stan Ulica Crkvena k.č.675;STANOVI;STANOVI ZA NAJAM;Ulica Crkvena 11 Kopačevo;C;6,822.50;300209;1235;675;1235;675;M2;321;1/1;tablica
+78;Stan Ulica Crkvena k.č.675;STANOVI;STANOVI ZA NAJAM;Ulica Crkvena 11 Kopačevo;C;6,822.50;300209;1235;675;1235;675;M2;321;1/1;tablica
+79;Stan Ulica Crkvena k.č.675;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Crkvena 13;C;6,822.50;300209;1235;675;1235;675;M2;321;1/1;tablica
+80;Stan Ulica Crkvena k.č.675;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Crkvena 13;C;13,645.00;300209;1235;675;1235;675;M2;321;1/1;tablica
+81;Dvorište Ulica Crkvena k.č.675;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Kopačevo Ulica Crkvena 11-13;B;0.13;300209;1235;675;1235;675;M2;500;1/1;tablica
+82;Oranica Ulica Crkvena k.č.675;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Kopačevo Ulica Crkvena;B;0.13;300209;1235;675;1235;675;M2;440;1/1;tablica
+83;Kuća, dvor i oranica Ritska ulica k.č.482;STANOVI;STANOVI ZA NAJAM;11-13 Kopačevo Ritska ulica 9;C;5,177.50;300209;1188;482;1188;482;M2;260;1/1;tablica
+84;Kuća, dvor i oranica Ulica Šandora Petefija k.č.571;STANOVI;STANOVI ZA NAJAM;Kopačevo Ulica Šandora;C;12,274.00;300209;1442;571;1442;571;M2;1292;1/1;tablica
+85;Kuća i dvor Ulica hrvatskih branitelja k.č.562/2;STANOVI;;Petefija bb Kopačevo;C;2,004.50;;1167;562/2;1167;562/2;M2;211;1/1;tablica
+86;Dvorište Ritska ulica ZEMLJIŠTA k.č.481;;STANOVI ZA NAJAM;Ulica hrvatskih branitelja bb Kopačevo;B;0.13;300209;1243;481;1243;481;M2;48;1/1;tablica
+87;Zemljišta pod zgrada ZEMLJIŠTA Ritska ulica;k.č.481;OSTALA ZEMLJIŠTA IZGRAĐENA GRAĐEVINSKA;Ritska ulica 10 Kopačevo;B;0.13;300209;1243;481;1243;481;M2;52;1/1;tablica
+88;Poslovni prostor Ulica Šandora Petefija k.č.590;POSLOVNI PROSTORI;ZEMLJIŠTA POSLOVNI PROSTORI ZA NAJAM;Ritska ulica 10 Vardarac Ulica Šandora;C;17,537.59;300209;1487;590;1487;590;M2;268;1/1;tablica
+89;Poslovni prostor Ulica Šandora Petefija k.č.590;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Petefija 39 Vardarac Ulica Šandora Petefija 39;C;15,102.97;300322;1487;590;1487;590;M2;268;1/1;tablica
+90;Dvorište Ulica Šandora Petefija k.č.590;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Vardarac Ulica Šandora;B;0.13;300322;1487;590;1487;590;M2;16;1/1;tablica
+91;Zemjište Vardarac k.č.378;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Petefija 39 Vardarac Vardarac bb;B;0.13;300322;1487;378;1487;378;M2;3064;1/1;tablica
+92;Dvorište Ulica Šandora Petefija k.č.592/2;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Vardarac Ulica Šandora;B;0.13;300322;1487;592/2;1487;592/2;M2;481;1/1;tablica
+93;Vatrogasni dom Ulica Šandora Petefija k.č.592/2;ZEMLJIŠTA;IZGRAĐENA GRAĐEVINSKA;Petefija 116 Vardarac Ulica Šandora;B;0.13;300322;1487;592/2;1487;592/2;M2;75;1/1;tablica
+94;Uređeno zemljište Ulica Šandora Petefija k.č.591/2;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Vardarac Ulica Šandora Petefija 39;B;0.13;300322;1487;591/2;1487;591/2;M2;23;1/1;tablica
+95;Poslovni prostor Ulica Šandora Petefija k.č.591/1;POSLOVNI PROSTORI;POSLOVNI PROSTORI ZA NAJAM;Vardarac Ulica Šandora Petefija 114;C;25,556.36;300322;1487;591/1;1487;591/1;M2;396;1/1;tablica
+96;Dom kulture Ulica Šandora Petefija k.č.591/1;KULTURNI OBJEKTI;DOMOVI;Vardarac Ulica Šandora Petefija 114;B;0.13;300322;1487;591/1;1487;591/1;M2;396;1/1;tablica
+97;Šuma Vardarac k.č.901/1;ZEMLJIŠTA;ŠUME;Vardarac Vardarac bb;B;8,912.93;300322;1825;901/1;1825;901/1;M2;10000;1/1;tablica
+98;Oranica Nađ Čer k.č.35;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Vardarac Nađ Čer bb;B;0.13;300322;1330;35;1330;35;M2;5813;1/1;tablica
+99;Vinograd Kenderfeld ZEMLJIŠTA k.č.1091;;POLJOPRIVREDNA ZEMLJIŠTA;Lug Kenderfeld bb;B;513.65;300241;2326;1091;2326;1091;M2;3113;2/4;tablica
+100;Oranica Kenderfeld k.č.1106;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Lug Kenderfeld bb;B;221.47;300241;1563;1106;1563;1106;M2;547;1/1;tablica
+101;Kuća i dvor Ulica Šandora Petefija k.č.1400;STANOVI;STANOVI ZA NAJAM;Lug Ulica Šandora Petefija 210;C;8,377.58;300241;1563;1400;1563;1400;M2;2303;1/1;tablica
+102;Oranica Silađ k.č.1623;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Lug Silađ bb;B;1,753.29;300241;1678;1623;1678;1623;M2;10626;2/4;tablica
+103;Kuća, dvor i oranica Ulica Šandora Petefija k.č.1399;STANOVI;STANOVI ZA NAJAM;Lug Ulica Šandora;C;12,341.16;300241;2013;1399;2013;1399;M2;2193;1/1;tablica
+104;Vatrogasni dom Školska ulica k.č.767/2;ZEMLJIŠTA;IZGRAĐENA GRAĐEVINSKA;Petefija 212 Lug;B;0.13;300241;1734;767/2;1734;767/2;M2;89;1/1;tablica
+105;Dvorište Školska ulica k.č.767/2;ZEMLJIŠTA;ZEMLJIŠTA OSTALA ZEMLJIŠTA;Školska ulica 1 Lug Školska ulica 1;B;0.13;300241;1734;767/2;1734;767/2;M2;133;1/1;tablica
+106;Zgrada biviši DVD Ulica Šandora Petefija k.č.612;STANOVI;STANOVI ZA NAJAM;Lug Ulica Šandora;C;3,504.71;300241;1734;612;1734;612;M2;64;1/1;tablica
+107;Kuća Dovodomka Ulica Šandora Petefija k.č.776;STANOVI;STANOVI ZA NAJAM;Petefija 131 Lug Ulica Šandora;C;11,074.88;300241;1734;776;1734;776;M2;171;1/1;tablica
+108;Kuća Dovodomka Ulica Šandora Petefija k.č.776;STANOVI;;Petefija 102 Lug;C;11,074.88;;1734;776;1734;776;M2;171;1/1;tablica
+109;Dvorište Ulica Šandora Petefija k.č.776;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Lug Ulica Šandora;B;0.13;300241;1734;776;1734;776;M2;500;1/1;tablica
+110;Oranica Ulica Šandora Petefija k.č.776;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Petefija 102 Lug Ulica Šandora Petefija 102;B;0.13;300241;1734;776;1734;776;M2;1447;1/1;tablica
+111;Stan Ulica Šandora Petefija k.č.826;STANOVI;STANOVI ZA NAJAM;Lug Ulica Šandora;C;9,345.90;300241;1734;826;1734;826;M2;91;1/1;tablica
+112;Dvorište Ulica Šandora Petefija k.č.826;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Petefija 8 Lug Ulica Šandora;B;0.13;300241;1734;826;1734;826;M2;500;1/1;tablica
+113;Oranica Ulica Šandora Petefija k.č.826;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Petefija 8 L ug Ulica Šandora (300241) P etefija 8;B;0.13;300241;1734;826;1734;826;M2;1708;1/1;tablica
+114;Voćnjak Ulica Šandora Petefija k.č.826;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;L ug Ulica Šandora (300241) P etefija 8;B;0.13;300241;1734;826;1734;826;M2;224;1/1;tablica
+115;Zgrada Kozjačka ulica k.č.1438;STANOVI;STANOVI ZA NAJAM;Lug Lug Kozjačka (300241) bb;C;4,672.95;300241;1734;1438;1734;1438;M2;89;1/1;tablica
+116;Zemljište Kozjačka ulica k.č.1438;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Lug Lug Kozjačka (300241) u lica bb;B;2,625.18;300241;1734;1438;1734;1438;M2;5141;1/1;tablica
+117;Stan Ulica novi red k.č.1056;STANOVI;STANOVI ZA NAJAM;Lug Lug Ulica novi (300241) 3 6;C;7,009.43;300241;1805;1056;1805;1056;M2;136;1/2;tablica
+118;Dvorište Ulica novi red k.č.1056;ZEMLJIŠTA;OSTALA ZEMLJIŠTA;Lug Lug Ulica novi (300241) 3 6;B;0.13;300241;1805;1056;1805;1056;M2;500;1/2;tablica
+119;Oranica Ulica novi red k.č.1056;ZEMLJIŠTA;POLJOPRIVREDNA ZEMLJIŠTA;Lug Lug Ulica novi (300241) 3 6;B;0.13;300241;1805;1056;1805;1056;M2;555;1/2;tablica
+120;Dom kulture Ulica Šandora Petefija k.č.749;KULTURNI OBJEKTI;DOMOVI;L ug Ulica Šandora (300241) P etefija 146;B;168,572.31;300241;2264;749;2264;749;M2;1734;1/1;tablica
+121;Dom kulture Ulica Šandora Petefija (E-4) k.č.767/1;KULTURNI OBJEKTI;DOMOVI;L ug Ulica Šandora (300241) P etefija 114B;B;18,703.38;300241;2350;767/1;2350;767/1;M2;417;1/1;tablica
+122;Dom kulture Ulica Šandora Petefija (E-1) k.č.767/1;KULTURNI OBJEKTI;DOMOVI;L ug Ulica Šandora (300241) Petefija 114B;B;0.13;300241;2350;767/1;2350;767/1;M2;417;1/1;tablica
+123;Dom kulture Ulica Šandora Petefija (E-2) k.č.767/1;KULTURNI OBJEKTI;DOMOVI;Lug Ulica Šandora Petefija 114B;B;0.13;300241;2350;767/1;2350;767/1;M2;417;1/1;tablica
+124;Dvorac Eugen Savojski Ulica Šandora Petefija k.č.916;KULTURNI OBJEKTI;DOMOVI;Bilje Ulica Šandora Petefija 33;B;374,232.95;300055;7290;916;7290;916;M2;1580;1/2;tablica
+125;Dom kulture Kozjak k.č.1937;KULTURNI OBJEKTI;DOMOVI;Kozjak K ozjak 16;B;60,186.79;300241;2407;1937;2407;1937;M2;1732;1/1;tablica
