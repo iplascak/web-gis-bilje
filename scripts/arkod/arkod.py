@@ -31,6 +31,10 @@ for _f in json.load(open("data/granica_opcine.geojson"))["features"]:
 
 
 def srediste(g):
+    if g.get("type") == "GeometryCollection":
+        dij = [srediste(x) for x in g.get("geometries", [])]
+        dij = [d for d in dij if d]
+        return dij[0] if dij else None
     t = g.get("coordinates") or []
     while t and isinstance(t[0], list) and t[0] and isinstance(t[0][0], list): t = [q for x in t for q in x]
     t = [p for p in t if isinstance(p, list) and len(p) >= 2]
@@ -77,6 +81,9 @@ def obradi(url, oznaka, proba=False):
                        capture_output=True, text=True)
     print("  ogr2ogr:", r.returncode, r.stderr[-1500:])
     d = json.load(open(tmp))
+    import collections as _c
+    print("  vrste geometrija:", _c.Counter((f.get("geometry") or {}).get("type") for f in d["features"]).most_common(5), "ukupno", len(d["features"]))
+    if d["features"]: print("  primjer:", json.dumps(d["features"][0].get("geometry"))[:300])
     # zadrži parcele čije je središte unutar granice općine (bez dodatnih biblioteka)
     d["features"] = [f for f in d["features"] if f.get("geometry") and unutar(srediste(f["geometry"]))]
     polja = list(d["features"][0]["properties"]) if d["features"] else []
