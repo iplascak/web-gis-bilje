@@ -24,6 +24,7 @@
     nacinLokacije: false,
     odabirTocke: null,
     skocniDodaci: {},
+    detaljiDodaci: {}, // moduli dodaju kontrole u detalje sloja (npr. odabir godine)
     akcije: {}, // moduli prijavljuju radnje za pametnu pretragu (vrijeme, prijava, pokojnik…)
     preklopi: {},
     intenzitetPodloge: 0.75,
@@ -651,7 +652,9 @@
       if (!detalji.hidden) { detalji.hidden = true; element.classList.remove('detalji'); return; }
       const prozirnost = el('input', { type: 'range', min: 10, max: 100, step: 5, value: Math.round(zapis.olSloj.getOpacity() * 100),
         'aria-label': 'Neprozirnost sloja', oninput: (e) => zapis.olSloj.setOpacity(e.target.value / 100) });
+      const dodatak = stanje.detaljiDodaci[def.id] ? stanje.detaljiDodaci[def.id](zapis) : '';
       detalji.replaceChildren(
+        dodatak,
         el('label', { class: 'klizac' }, el('span', {}, 'Neprozirnost'), prozirnost),
         el('div', { class: 'detalji-gumbi' },
           el('button', { class: 'gumb-mali', onclick: () => { postavi(true); pribliziSloju(Object.assign({}, def), zapis.olSloj, true); } }, ikona('cilj', 14), ' Približi'),

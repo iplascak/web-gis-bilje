@@ -1024,7 +1024,7 @@
     },
     {
       "id": "arkod_uporaba",
-      "naziv": "Poljoprivredne parcele (ARKOD 2023.)",
+      "naziv": "Poljoprivredne parcele (ARKOD)",
       "grupa": "poljoprivreda",
       "podgrupa": "Parcele",
       "url": "data/izvori/arkod_2023.geojson",
@@ -1058,19 +1058,31 @@
             },
             "210": {
               "boja": "#4fc3f7",
-              "oznaka": "ARKOD vrsta 210"
+              "oznaka": "staklenik na oranici"
             },
             "900": {
               "boja": "#bdbdbd",
-              "oznaka": "ARKOD vrsta 900"
+              "oznaka": "ostalo"
             },
             "910": {
               "boja": "#9e9e9e",
-              "oznaka": "ARKOD vrsta 910"
+              "oznaka": "privremeno neodržavano"
             },
             "490": {
               "boja": "#8d6e63",
-              "oznaka": "ARKOD vrsta 490"
+              "oznaka": "ostale trajne kulture"
+            },
+            "410": {
+              "boja": "#7b1fa2",
+              "oznaka": "vinograd"
+            },
+            "450": {
+              "boja": "#26a69a",
+              "oznaka": "rasadnik"
+            },
+            "491": {
+              "boja": "#6d4c41",
+              "oznaka": "brzorastući panjači"
             }
           }
         }
@@ -1085,12 +1097,16 @@
           {
             "polje": "arkod_id",
             "oznaka": "ARKOD ID"
+          },
+          {
+            "polje": "navodnjavanje",
+            "oznaka": "Navodnjavanje (1 = da)"
           }
         ]
       },
       "opis": "Prijavljene poljoprivredne parcele po vrsti uporabe (bez podataka o korisnicima).",
-      "detaljno": "Parcele iz evidencije ARKOD (stanje 2023.) po vrsti uporabe zemljišta: oranice, livade, pašnjaci, voćnjaci i trajni nasadi. Prikazana je samo vrsta uporabe i površina; podaci o poljoprivrednicima nisu javni i ne prikazuju se.",
-      "izvor": "APPRRR – ARKOD, stanje 2023.",
+      "detaljno": "Parcele iz evidencije ARKOD Agencije za plaćanja u poljoprivredi, ribarstvu i ruralnom razvoju (APPRRR) po vrsti uporabe zemljišta. Trenutno stanje osvježava se mjesečno, a u detaljima sloja (•••) možete odabrati stanje na 31. prosinca bilo koje godine od 2013. i usporediti kako se korištenje zemljišta mijenjalo. Prikazani su samo vrsta uporabe, površina i navodnjavanje; podaci o poljoprivrednicima nisu javni i ne prikazuju se.",
+      "izvor": "APPRRR – ARKOD (otvoreni podaci, apprrr.hr)",
       "azurirano": "2023.",
       "tip": "geojson",
       "vidljivo": false
