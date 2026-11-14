@@ -39,7 +39,7 @@ def main():
              "razredi": NAZIVI, "postaje": []}
     for ime in POSTAJE:
         h = dohvati({"section": "podaci_kz", "post": ime})
-        stavke = re.findall(r'title="([^"]*)" href="/kvaliteta_zraka\.php\?section=podaci_kz&amp;post=[^&]*&amp;id_komp=(\d+)&amp;komp=([^"]+)"', h)
+        stavke = re.findall(r'title="([^"]*)" href="/kvaliteta_zraka\.php\?section=podaci_kz&(?:amp;)?post=[^&]*&(?:amp;)?id_komp=(\d+)&(?:amp;)?komp=([^"]+)"', h)
         komp = {html.unescape(t).strip().lower(): (i, html.unescape(k)) for t, i, k in stavke}
         lat = re.search(r"Geografska širina:\s*([\d.]+)", h); lon = re.search(r"Geografska dužina:\s*([\d.]+)", h)
         postaja = {"naziv": ime, "lat": float(lat.group(1)) if lat else None, "lon": float(lon.group(1)) if lon else None,
