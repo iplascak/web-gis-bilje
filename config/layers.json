@@ -749,7 +749,7 @@
       "grupa": "projekti",
       "tip": "geojson",
       "url": "data/projekti.geojson",
-      "vidljivo": true,
+      "vidljivo": false,
       "stil": {
         "geometrija": "tocka",
         "velicina": 7,

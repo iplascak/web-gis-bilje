@@ -1427,14 +1427,37 @@
         el('p', {},
           el('a', { href: 'https://bilje.hr/', target: '_blank', rel: 'noopener' }, 'Službena stranica Općine Bilje'), el('br'),
           el('a', { href: 'https://bilje.hr/prostorno-planska-dokumentacija/', target: '_blank', rel: 'noopener' }, 'Važeća prostorno-planska dokumentacija'), el('br'),
+          el('a', { href: '#', onclick: (e) => { e.preventDefault(); dijalog.close(); prikaziUpute(true); } }, 'Kratke upute za korištenje'), el('br'),
           el('a', { href: 'privatnost.html', target: '_blank' }, 'Zaštita osobnih podataka'), el('br'),
           el('a', { href: 'https://github.com/iplascak/web-gis-bilje', target: '_blank', rel: 'noopener' }, 'Izvorni kod portala (otvoreni kod)'))));
+  }
+
+  // ---------- kratke upute pri prvom posjetu (i na zahtjev iz "O portalu") ----------
+  function prikaziUpute(prisilno) {
+    if (!prisilno && procitajPostavku('upute', false)) return;
+    const pozadina = el('div', { class: 'upute-pozadina' });
+    const zatvori = () => { pozadina.remove(); okvir.remove(); spremiPostavku('upute', true); };
+    pozadina.addEventListener('click', zatvori);
+    const okvir = el('section', { class: 'upute', role: 'dialog', 'aria-label': 'Kako koristiti kartu' },
+      el('h2', {}, 'Dobro došli na kartu Općine Bilje'),
+      el('p', { class: 'podnaslov' }, 'Sve o našoj općini na jednom mjestu – u pet koraka:'),
+      el('ol', {},
+        el('li', {}, el('span', {}, el('b', {}, 'Upišite svoju adresu'), ' u tražilicu – dobit ćete karticu s odvozom otpada, najbližim uslugama i svime što vrijedi za vaše mjesto.')),
+        el('li', {}, el('span', {}, el('b', {}, 'Kliknite brzi prikaz'), ' (Gradim kuću, Odvoz otpada, Poplave, Poljoprivreda…) – karta sama uključi ono što vam treba.')),
+        el('li', {}, el('span', {}, el('b', {}, 'Uključite ili isključite slojeve'), ' klikom na naziv. Uključeni su uvijek popisani pod "Na karti".')),
+        el('li', {}, el('span', {}, el('b', {}, 'Kliknite bilo što na karti'), ' za podatke; desni klik (na mobitelu dugi pritisak) pokazuje sve o tom mjestu.')),
+        el('li', {}, el('span', {}, el('b', {}, 'Vidite problem u mjestu?'), ' Gumb "Prijavi problem" – općina ga dobiva odmah, a vi pratite rješavanje.'))),
+      el('div', { class: 'upute-gumbi' },
+        el('button', { class: 'tekst-gumb', onclick: zatvori }, 'Ne prikazuj više'),
+        el('button', { class: 'gumb-kivi', onclick: zatvori }, 'Kreni')));
+    document.body.append(pozadina, okvir);
   }
 
   // sučelje za module
   stanje.api = { el, otvoriDijalog, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
 
   pokreni().then(() => {
+    if (!location.hash || location.hash.length < 3) setTimeout(() => prikaziUpute(false), 600);
     for (const m of window.webgisModuli || []) {
       try { if (m.pokreni) m.pokreni(stanje); } catch (g) { console.warn('Modul', m.naziv, g); }
     }
