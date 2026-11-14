@@ -804,7 +804,7 @@
     const obradene = (cfg.nepogode || []).filter(n => n.status === 'obradeno' && n.rezultati);
     if (!obradene.length) return;
     if (!konfig.grupe.some(g => g.id === 'nepogode')) {
-      konfig.grupe.splice(1, 0, { id: 'nepogode', naziv: 'Elementarne nepogode', otvoreno: false });
+      konfig.grupe.splice(1, 0, { id: 'nepogode', naziv: 'Elementarne nepogode i poplave', otvoreno: false });
     }
     const stavkeLokacije = [];
     for (const n of obradene) {
@@ -813,41 +813,51 @@
       const legenda = r.legenda.concat([{ kod: 'nema_podataka', boja: '#ffffff', oznaka: 'nema dovoljno podataka' }]);
       const udjeli = legenda.filter(l => r.statistika_udio && r.statistika_udio[l.kod])
         .map(l => '• ' + l.oznaka + ': ' + fmtPostotak(r.statistika_udio[l.kod]) + ' (' + r.statistika_ha[l.kod].toLocaleString('hr-HR') + ' ha)').join('\n');
+      const radar = n.analiza.metoda === 's1_voda';
+      const ogranicenja = r.ogranicenja || 'Rezultat je pokazatelj stanja vegetacije sa satelita, a ne procjena štete. Na odstupanje utječe i plodored: različita kultura na istoj parceli u različitim godinama daje drugačiji NDVI bez ikakve štete. Za službenu procjenu štete mjerodavna je općinska komisija. Rezultat može poslužiti kao pomoć pri odabiru parcela za terenski obilazak.';
+      const povrsine = r.povrsine_opcina_ha
+        ? 'Na cijelom području općine: poplavljeno ' + r.povrsine_opcina_ha.poplava.toLocaleString('hr-HR') + ' ha, uobičajene vodene površine ' + r.povrsine_opcina_ha.stalna_voda.toLocaleString('hr-HR') + ' ha.\n\n'
+        : '';
+      const usporedba = n.analiza.godina
+        ? 'razdoblje ' + n.analiza.razdoblje.join(' – ') + '. ' + n.analiza.godina + '. prema ' + r.referenca
+        : n.analiza.tijekom ? 'događaj ' + n.analiza.tijekom.join(' – ') + ' prema ' + r.referenca
+        : r.referenca;
       const zajednickiTekst =
         n.opis + '\n\n' +
         'Metoda: ' + (metoda.naziv || n.analiza.metoda) + '. ' + (metoda.opis || '') + '\n\n' +
-        'Usporedba: ' + (n.analiza.godina ? 'razdoblje ' + n.analiza.razdoblje.join(' – ') + '. ' + n.analiza.godina + '. prema ' : '') + r.referenca + '.\n\n' +
+        'Usporedba: ' + usporedba + '.\n\n' + povrsine +
         (udjeli ? 'Udio površine ARKOD parcela po razredima:\n' + udjeli + '\n\n' : '') +
-        'Ograničenja: rezultat je pokazatelj stanja vegetacije sa satelita, a ne procjena štete. Na odstupanje utječe i plodored: različita kultura na istoj parceli u različitim godinama daje drugačiji NDVI bez ikakve štete. Za službenu procjenu štete mjerodavna je općinska komisija. Rezultat može poslužiti kao pomoć pri odabiru parcela za terenski obilazak.';
-      const izvor = 'Copernicus Sentinel-2 L2A (ESA), obrada: Web GIS Općine Bilje';
-      const opisKarta = n.naziv + ': odstupanje stanja vegetacije (NDVI) od uobičajenog.';
+        'Ograničenja: ' + ogranicenja;
+      const izvor = r.izvor || 'Copernicus Sentinel-2 L2A (ESA), obrada: Web GIS Općine Bilje';
+      const opisKarta = r.opis_karte || (n.naziv + ': odstupanje stanja vegetacije (NDVI) od uobičajenog.');
       konfig.slojevi.push({
-        id: n.id + '_karta', naziv: n.naziv + ' – karta odstupanja', grupa: 'nepogode', tip: 'slika',
-        url: r.slika.url, extent: r.slika.extent, vidljivo: false, neprozirnost: 0.85,
-        legendaStavke: r.legenda, opis: opisKarta, detaljno: zajednickiTekst, izvor,
-        azurirano: 'obrađeno ' + r.datum_obrade, atribucija: 'Sadrži modificirane podatke Copernicus Sentinel-2'
+        id: n.id + '_karta', naziv: n.naziv + ' – ' + (r.naziv_karte || 'karta odstupanja'), grupa: 'nepogode', tip: 'slika',
+        url: r.slika.url, extent: r.slika.extent, vidljivo: false, neprozirnost: radar ? 1 : 0.85,
+        legendaStavke: r.legenda_karte || r.legenda, opis: opisKarta, detaljno: zajednickiTekst, izvor,
+        azurirano: 'obrađeno ' + r.datum_obrade, atribucija: r.atribucija || 'Sadrži modificirane podatke Copernicus Sentinel-2'
       });
       const vrijednosti = {};
       for (const l of legenda) vrijednosti[l.kod] = { boja: l.boja, oznaka: l.oznaka };
       konfig.slojevi.push({
-        id: n.id + '_parcele', naziv: n.naziv + ' – po ARKOD parcelama', grupa: 'nepogode', tip: 'geojson',
+        id: n.id + '_parcele', naziv: n.naziv + ' – ' + (r.naziv_parcela || 'po ARKOD parcelama'), grupa: 'nepogode', tip: 'geojson',
         url: r.parcele, vidljivo: false,
         stil: { geometrija: 'poligon', debljina: 0.8, ispunaProzirnost: 0.75, kategorije: { polje: 'razred', vrijednosti } },
-        skocniProzor: { naslov: 'razred_opis', polja: [
+        skocniProzor: { naslov: 'razred_opis', polja: r.polja_parcele || [
           { polje: 'kultura', oznaka: 'Uporaba (ARKOD 2023.)' },
           { polje: 'povrsina_ha', oznaka: 'Površina (ha)' },
           { polje: 'ndvi', oznaka: 'NDVI ' + (n.analiza.godina || 'poslije') },
           { polje: 'ndvi_ref', oznaka: 'NDVI uobičajeno' },
           { polje: 'odstupanje', oznaka: 'Odstupanje' },
           { polje: 'arkod_id', oznaka: 'ARKOD ID' }] },
-        opis: n.naziv + ': prosječno odstupanje po ARKOD parceli.', detaljno: zajednickiTekst, izvor: izvor + '; ARKOD 2023.',
+        opis: n.naziv + ': ' + (radar ? 'udio poplavljene površine' : 'prosječno odstupanje') + ' po ARKOD parceli.',
+        detaljno: zajednickiTekst, izvor: izvor + '; ARKOD 2023.',
         azurirano: 'obrađeno ' + r.datum_obrade
       });
       stavkeLokacije.push({ vrsta: 'poligon', sloj: n.id + '_parcele', polje: 'razred_opis', oznaka: n.naziv, neutralno: true,
         inace: 'nije ARKOD parcela' });
     }
     if (portal.lokacija && stavkeLokacije.length) {
-      portal.lokacija.provjere.push({ naslov: 'Elementarne nepogode (satelitska analiza)', stavke: stavkeLokacije });
+      portal.lokacija.provjere.push({ naslov: 'Nepogode i poplave (satelitska analiza)', stavke: stavkeLokacije });
     }
   }
 

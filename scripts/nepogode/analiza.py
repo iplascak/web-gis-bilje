@@ -16,7 +16,9 @@ Na kraju upisuje rezultate i status 'obradeno' u config/nepogode.json.
 Metode:
     ndvi_anomalija – suša, toplinski val: godina nepogode prema referentnim godinama
     ndvi_promjena  – tuča, oluja, požar: razdoblje poslije prema razdoblju prije
-    s1_voda        – poplava (u pripremi)
+    s1_voda        – poplava: radarske snimke Sentinel-1 (RTC, Microsoft Planetary
+                     Computer) u vrijeme događaja prema referentnom razdoblju;
+                     voda = tamni radarski odraz (VV ispod praga u dB)
 
 Napomena o Sentinel-2: od Processing Baseline 04.00 (25. 1. 2022.) L2A brojevi
 sadrže pomak BOA_ADD_OFFSET = -1000. Pomak se primjenjuje po snimci, prema
@@ -39,6 +41,8 @@ import xarray as xr
 from PIL import Image
 
 KORIJEN = pathlib.Path(__file__).resolve().parents[2]
+PC_STAC = "https://planetarycomputer.microsoft.com/api/stac/v1"
+S1_KOLEKCIJA = "sentinel-1-rtc"
 STAC_URL = "https://earth-search.aws.element84.com/v1"
 KOLEKCIJA = "sentinel-2-l2a"
 UTM = "EPSG:32634"
@@ -145,12 +149,12 @@ def oboji(arr):
     return rgba
 
 
-def zapisi_sliku(odstupanje_utm, granica, izlaz):
+def zapisi_sliku(odstupanje_utm, granica, izlaz, bojanje=None):
     da = odstupanje_utm.rio.write_crs(UTM).rio.write_nodata(np.nan)
     da = da.rio.reproject("EPSG:3857", nodata=np.nan)
     da = da.rio.clip(granica.to_crs(3857).geometry, all_touched=True, drop=True)
     vrijednosti = da.values.squeeze()
-    Image.fromarray(oboji(vrijednosti), "RGBA").save(izlaz, optimize=True)
+    Image.fromarray((bojanje or oboji)(vrijednosti), "RGBA").save(izlaz, optimize=True)
     minx, miny, maxx, maxy = da.rio.bounds()
     return [round(minx, 2), round(miny, 2), round(maxx, 2), round(maxy, 2)]
 
@@ -259,6 +263,188 @@ def analiza_ndvi(nepogoda, granica, parcele, izlaz_dir, manifest):
     }
 
 
+# ---------------------------------------------------------------- Sentinel-1: poplave
+
+# razredi na karti (kod piksela -> boja, oznaka)
+VODA_KARTA = [
+    (1, "#1f78b4", "poplavljeno (voda koje inače nema)", "poplava"),
+    (2, "#08306b", "uobičajena vodena površina", "stalna_voda"),
+]
+# razredi parcela prema udjelu poplavljene površine
+VODA_PARCELE = [
+    (0.5, 9.0, "#1f78b4", "pretežno poplavljena (≥ 50 %)", "pretezno"),
+    (0.1, 0.5, "#a6cee3", "djelomično poplavljena (10–50 %)", "djelomicno"),
+    (-1.0, 0.1, "#e5e7eb", "bez značajne poplave (< 10 %)", "bez"),
+]
+
+
+def oboji_vodu(arr):
+    h, w = arr.shape
+    rgba = np.zeros((h, w, 4), dtype=np.uint8)
+    for kod, boja, _, _ in VODA_KARTA:
+        m = arr == kod
+        rgba[m, 0], rgba[m, 1], rgba[m, 2] = int(boja[1:3], 16), int(boja[3:5], 16), int(boja[5:7], 16)
+        rgba[m, 3] = 215 if kod == 1 else 170
+    return rgba
+
+
+def otsu_prag(vrijednosti, od=-26.0, do=-8.0):
+    """Otsuov prag na histogramu dB vrijednosti (samo kao provjera zadanog praga)."""
+    v = vrijednosti[np.isfinite(vrijednosti)]
+    v = v[(v > od) & (v < do)]
+    if v.size < 1000:
+        return None
+    hist, rubovi = np.histogram(v, bins=180, range=(od, do))
+    sredine = (rubovi[:-1] + rubovi[1:]) / 2
+    w0 = np.cumsum(hist)
+    w1 = w0[-1] - w0
+    m0 = np.cumsum(hist * sredine) / np.maximum(w0, 1)
+    m1 = (np.sum(hist * sredine) - np.cumsum(hist * sredine)) / np.maximum(w1, 1)
+    izmedju = w0 * w1 * (m0 - m1) ** 2
+    return round(float(sredine[int(np.argmax(izmedju))]), 1)
+
+
+def s1_voda_niz(bbox, od, do, rezolucija, prag_db, opis, manifest):
+    """Za svaki dan snimanja: maska vode (VV < prag) nakon uklanjanja šuma (medijan 5x5).
+    Vraća (udio_snimaka_s_vodom, broj_valjanih_snimaka, vv_db_niz)."""
+    import planetary_computer
+    from scipy.ndimage import median_filter
+
+    klijent = pystac_client.Client.open(PC_STAC, modifier=planetary_computer.sign_inplace)
+    items = klijent.search(collections=[S1_KOLEKCIJA], bbox=bbox, datetime=f"{od}/{do}").item_collection()
+    zapis = {"razdoblje": [od, do], "broj_snimaka": len(items), "snimke": [
+        {"id": it.id, "datum": it.datetime.isoformat(timespec="minutes"),
+         "orbita": it.properties.get("sat:relative_orbit"),
+         "smjer": it.properties.get("sat:orbit_state"),
+         "satelit": it.properties.get("platform")} for it in items]}
+    manifest["kompoziti"][opis] = zapis
+    if not len(items):
+        log(f"  {opis}: nema snimaka")
+        return None, None, None
+    ds = odc.stac.load(items, bands=["vv"], crs=UTM, resolution=rezolucija, bbox=bbox,
+                       groupby="solar_day", chunks={}, resampling="average", fail_on_error=False).compute()
+    vv = ds.vv.astype("float32")
+    vv = vv.where(np.isfinite(vv) & (vv > 0))
+    db = 10 * np.log10(vv)
+    filtrirano = []
+    for i in range(db.sizes["time"]):
+        a = db.isel(time=i).values
+        nema = ~np.isfinite(a)
+        f = median_filter(np.where(nema, 0.0, a), size=5)
+        f[nema] = np.nan
+        filtrirano.append(f)
+    db = xr.DataArray(np.stack(filtrirano), dims=db.dims, coords=db.coords)
+    valjano = np.isfinite(db)
+    voda = (db < prag_db) & valjano
+    broj = valjano.sum("time")
+    udio = (voda.sum("time") / broj.where(broj > 0)).astype("float32")
+    zapis.update({
+        "broj_dana": int(ds.sizes["time"]),
+        "dani": [str(np.datetime64(t, "D")) for t in ds.time.values],
+        "udio_vode_po_danu": [round(float((voda.isel(time=i).sum() / max(int(valjano.isel(time=i).sum()), 1)).values), 3)
+                              for i in range(ds.sizes["time"])],
+        "otsu_prag_db": otsu_prag(db.values),
+    })
+    log(f"  {opis}: {len(items)} snimaka, {ds.sizes['time']} dana, udio vode po danu {zapis['udio_vode_po_danu']}, "
+        f"Otsu {zapis['otsu_prag_db']} dB (korišten prag {prag_db} dB)")
+    return udio, broj, db
+
+
+def analiza_s1(nepogoda, granica, parcele, izlaz_dir, manifest):
+    a = nepogoda["analiza"]
+    rez = a.get("rezolucija_m", 20)
+    prag = float(a.get("prag_db", -18.0))
+    min_udio = float(a.get("udio_snimaka", 0.5))
+    bbox = list(granica.to_crs(4326).buffer(0.01).total_bounds)
+    manifest.update({"stac": PC_STAC, "kolekcija": S1_KOLEKCIJA, "prag_db": prag,
+                     "udio_snimaka_za_vodu": min_udio, "filtar_suma": "medijan 5x5 po snimci"})
+
+    dog, dog_broj, _ = s1_voda_niz(bbox, *a["tijekom"], rez, prag, "tijekom događaja", manifest)
+    ref, ref_broj, _ = s1_voda_niz(bbox, *a["referenca"], rez, prag, "referentno razdoblje", manifest)
+    if dog is None or ref is None:
+        raise SystemExit("Nema radarskih snimaka za događaj ili referentno razdoblje.")
+    ref = ref.reindex_like(dog, method="nearest")
+
+    voda_dog = dog >= min_udio
+    voda_ref = ref >= 0.5
+    ima_ref = np.isfinite(ref)
+    kod = xr.full_like(dog, np.nan)
+    kod = kod.where(~(voda_dog & ~voda_ref & ima_ref), 1.0)
+    kod = kod.where(~(voda_dog & voda_ref), 2.0)
+    kod = kod.where(dog_broj > 0)
+    kod.rio.write_crs(UTM, inplace=True)
+    extent = zapisi_sliku(kod, granica, izlaz_dir / "voda.png", bojanje=oboji_vodu)
+
+    # površine unutar općine
+    maska_opcine = rasterio.features.geometry_mask(
+        granica.to_crs(UTM).geometry, out_shape=kod.shape, transform=kod.rio.transform(), invert=True)
+    ha_piksel = rez * rez / 10000
+    k = kod.values
+    nova_ha = float(((k == 1) & maska_opcine).sum() * ha_piksel)
+    stalna_ha = float(((k == 2) & maska_opcine).sum() * ha_piksel)
+
+    # parcele: udio novo poplavljene površine
+    p_utm = parcele.to_crs(UTM)
+    oznake = rasterio.features.rasterize(
+        ((g, i + 1) for i, g in enumerate(p_utm.geometry)),
+        out_shape=kod.shape, transform=kod.rio.transform(), fill=0, dtype="int32")
+    n = len(p_utm) + 1
+    valjano = np.isfinite(dog.values) & (oznake > 0)
+    broj_valjanih = np.bincount(oznake[valjano], minlength=n)
+    broj_poplava = np.bincount(oznake[valjano & (k == 1)], minlength=n)
+    ukupno = np.bincount(oznake.ravel(), minlength=n)
+    znacajke = []
+    statistika = {r[4]: 0.0 for r in VODA_PARCELE}
+    for i, red in enumerate(parcele.itertuples(index=False), start=1):
+        if ukupno[i] == 0 or broj_valjanih[i] / ukupno[i] < 0.3:
+            rk, ro, udio_p = "nema_podataka", "nema dovoljno podataka", None
+        else:
+            udio_p = broj_poplava[i] / broj_valjanih[i]
+            rk, ro = next((r[4], r[3]) for r in VODA_PARCELE if r[0] <= udio_p < r[1])
+            statistika[rk] += float(red.povrsina_ha)
+        znacajke.append({"type": "Feature", "geometry": red.geometry.__geo_interface__, "properties": {
+            "arkod_id": None if red.arkod_id is None or red.arkod_id != red.arkod_id else int(red.arkod_id),
+            "kultura": red.kultura, "povrsina_ha": float(red.povrsina_ha),
+            "razred": rk, "razred_opis": ro,
+            "udio_poplavljeno": None if udio_p is None else round(float(udio_p) * 100, 1),
+            "poplavljeno_ha": None if udio_p is None else round(float(udio_p) * float(red.povrsina_ha), 2),
+        }})
+    (izlaz_dir / "parcele.geojson").write_text(
+        json.dumps({"type": "FeatureCollection", "features": znacajke}, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8")
+    ukupno_ha = sum(statistika.values()) or 1
+    log(f"  novo poplavljeno u općini: {nova_ha:.0f} ha, uobičajena voda: {stalna_ha:.0f} ha")
+    dani = manifest["kompoziti"]["tijekom događaja"].get("dani", [])
+    return {
+        "slika": {"url": f"data/nepogode/{nepogoda['id']}/voda.png", "extent": extent},
+        "parcele": f"data/nepogode/{nepogoda['id']}/parcele.geojson",
+        "manifest": f"data/nepogode/{nepogoda['id']}/manifest.json",
+        "referenca": f"referentno razdoblje {a['referenca'][0]} – {a['referenca'][1]}",
+        "legenda_karte": [{"kod": c, "boja": b, "oznaka": o} for _, b, o, c in VODA_KARTA],
+        "legenda": [{"kod": c, "boja": b, "oznaka": o} for _, _, b, o, c in VODA_PARCELE],
+        "statistika_ha": {k: round(v, 1) for k, v in statistika.items()},
+        "statistika_udio": {k: round(v / ukupno_ha, 3) for k, v in statistika.items()},
+        "povrsine_opcina_ha": {"poplava": round(nova_ha, 1), "stalna_voda": round(stalna_ha, 1)},
+        "naziv_karte": "karta poplavljenih površina",
+        "opis_karte": f"{nepogoda['naziv']}: voda prepoznata na radarskim snimkama Sentinel-1 "
+                      f"({', '.join(dani)}) u odnosu na referentno razdoblje.",
+        "naziv_parcela": "udio poplavljenosti po ARKOD parcelama",
+        "polja_parcele": [
+            {"polje": "kultura", "oznaka": "Uporaba (ARKOD 2023.)"},
+            {"polje": "povrsina_ha", "oznaka": "Površina (ha)"},
+            {"polje": "udio_poplavljeno", "oznaka": "Poplavljeno (%)"},
+            {"polje": "poplavljeno_ha", "oznaka": "Poplavljeno (ha)"},
+            {"polje": "arkod_id", "oznaka": "ARKOD ID"}],
+        "izvor": "Copernicus Sentinel-1 (ESA), RTC obrada: Microsoft Planetary Computer; obrada: Web GIS Općine Bilje",
+        "atribucija": "Sadrži modificirane podatke Copernicus Sentinel-1",
+        "ogranicenja": "Radar prepoznaje otvorenu vodenu površinu. Voda ispod krošanja šuma (npr. poplavne šume "
+                       "Kopačkog rita) često se NE vidi, jer drveće i voda zajedno daju svijetao, a ne taman odraz. "
+                       "Vrlo glatke suhe površine (asfalt, pijesak, tek zaorano tlo) ponekad izgledaju kao voda. "
+                       "Rezultat vrijedi za dane snimanja navedene gore, ne za vrhunac vodostaja između njih. "
+                       "Nije procjena štete; za nju je mjerodavna općinska komisija.",
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--id", required=True, help="id nepogode iz config/nepogode.json")
@@ -279,7 +465,10 @@ def main():
                 "parametri": nepogoda["analiza"], "scl_valjani_razredi": list(SCL_VALJANO),
                 "pokrenuto": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "kompoziti": {}}
     log(f"Analiza: {nepogoda['naziv']} ({nepogoda['analiza']['metoda']})")
-    rezultati = analiza_ndvi(nepogoda, granica, parcele, izlaz_dir, manifest)
+    if nepogoda["analiza"]["metoda"] == "s1_voda":
+        rezultati = analiza_s1(nepogoda, granica, parcele, izlaz_dir, manifest)
+    else:
+        rezultati = analiza_ndvi(nepogoda, granica, parcele, izlaz_dir, manifest)
     rezultati["datum_obrade"] = dt.date.today().isoformat()
     (izlaz_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
 

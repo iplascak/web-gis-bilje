@@ -23,7 +23,7 @@
       "za": [
         "poplava"
       ],
-      "opis": "Radar vidi kroz oblake; vodene površine u vrijeme događaja uspoređuju se s uobičajenim stanjem. (U pripremi.)"
+      "opis": "Radar Sentinel-1 snima kroz oblake, danju i noću. Mirna vodena površina odbija radarski signal od satelita pa je na snimci tamna. Za svaki dan snimanja u vrijeme događaja određuje se gdje je voda, i uspoređuje s referentnim razdobljem kad je stanje bilo uobičajeno: voda koje inače nema označena je kao poplavljena površina."
     }
   },
   "nepogode": [
@@ -119,6 +119,29 @@
         "srednje_odstupanje_parcela": -0.039,
         "datum_obrade": "2026-11-14"
       }
+    },
+    {
+      "id": "dunav-2024-09",
+      "naziv": "Visoki vodostaj Dunava, rujan 2024.",
+      "vrsta": "poplava",
+      "proglasena": null,
+      "odluka_url": null,
+      "opis": "Nakon obilnih kiša u srednjoj Europi (ciklona Boris) val visokog vodostaja Dunava stigao je do Baranje krajem rujna 2024. Za ovaj događaj nije proglašena elementarna nepogoda; analiza služi kao prikaz plavljenja inundacije i Kopačkog rita te kao provjera metode za buduće poplave.",
+      "analiza": {
+        "metoda": "s1_voda",
+        "tijekom": [
+          "2024-09-21",
+          "2024-10-03"
+        ],
+        "referenca": [
+          "2024-07-20",
+          "2024-08-31"
+        ],
+        "prag_db": -18,
+        "udio_snimaka": 0.5,
+        "rezolucija_m": 20
+      },
+      "status": "ceka_obradu"
     }
   ]
 }
