@@ -347,3 +347,4 @@ button { font-family: inherit; }
 .kartice-dijaloga button.aktivna { color: var(--tamna); border-bottom-color: var(--zuta-jaka); }
 .tablica-korisnika input[type=text], .tablica-korisnika select { font: inherit; font-size: 12.5px; padding: 4px 6px; border: 1px solid var(--rub); border-radius: 6px; margin-top: 4px; width: 100%; }
 .kvacica-mala { display: flex; gap: 6px; align-items: center; font-size: 12.5px; white-space: nowrap; }
+.preklopi { display: grid; gap: 6px; padding-bottom: 8px; border-bottom: 1px solid var(--rub); }

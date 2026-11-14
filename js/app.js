@@ -24,6 +24,7 @@
     nacinLokacije: false,
     odabirTocke: null,
     skocniDodaci: {},
+    preklopi: {},
     intenzitetPodloge: 0.75,
     sivaPodloga: false
   };
@@ -370,7 +371,20 @@
       oninput: (e) => { stanje.intenzitetPodloge = e.target.value / 100; postaviIzgledPodloge(); spremiPostavku('intenzitet', stanje.intenzitetPodloge); } });
     const siva = el('input', { type: 'checkbox', checked: stanje.sivaPodloga,
       onchange: (e) => { stanje.sivaPodloga = e.target.checked; postaviIzgledPodloge(); spremiPostavku('siva', stanje.sivaPodloga); } });
+    // dodatne snimke koje se lijepe preko odabrane podloge (npr. DOF_BILJE_light, snimke dronom)
+    const preklopi = (stanje.portal.preklopi || []).map(def => {
+      const sloj = napraviOlSloj(Object.assign({ tip: 'xyz' }, def, { vidljivo: false }));
+      sloj.setZIndex(-50);
+      stanje.karta.addLayer(sloj);
+      stanje.preklopi[def.id] = sloj;
+      const kv = el('input', { type: 'checkbox', onchange: (e) => {
+        sloj.setVisible(e.target.checked);
+        if (e.target.checked) pribliziSloju(def, sloj);
+      } });
+      return el('label', { class: 'kvacica', title: def.opis || '' }, kv, def.naziv);
+    });
     div.parentElement.append(el('div', { class: 'postavke-podloge' },
+      ...(preklopi.length ? [el('div', { class: 'preklopi' }, el('span', { class: 'sitno-siva' }, 'Preko podloge:'), ...preklopi)] : []),
       el('label', { class: 'klizac' }, el('span', {}, 'Intenzitet podloge'), klizac),
       el('label', { class: 'kvacica' }, siva, 'Crno-bijela podloga')));
   }
