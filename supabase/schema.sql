@@ -187,6 +187,15 @@ drop policy if exists "foto: admin briše" on storage.objects;
 create policy "foto: admin briše" on storage.objects for delete to authenticated
   using (bucket_id = 'prijave-foto' and public.moja_uloga() = 'admin');
 
+-- ---------- ovlasti za API (novi Supabase projekti ih ne daju sami) ----------
+-- Što pojedini korisnik stvarno smije vidjeti i mijenjati i dalje određuju pravila (RLS) iznad.
+grant usage on schema public to anon, authenticated;
+grant select, update on public.profili to authenticated;
+grant select, insert, update, delete on public.prijave to authenticated;
+grant select on public.prijave_povijest to authenticated;
+grant execute on function public.moja_uloga(), public.je_osoblje(), public.smije_prijaviti(),
+  public.je_javna_fotografija(text) to anon, authenticated;
+
 -- =====================================================================
 -- Nakon prve prijave na portal, sebi dodijelite ulogu admina (zamijenite e-adresu):
 --   update public.profili set uloga = 'admin'
