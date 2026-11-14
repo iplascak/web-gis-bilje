@@ -2655,6 +2655,64 @@
       "vidljivo": false
     },
     {
+      "id": "toponimi_rgi",
+      "naziv": "Službena geografska imena (polja, bare, šume)",
+      "grupa": "bastina",
+      "podgrupa": "Sjećanja mještana",
+      "tip": "geojson",
+      "url": "data/rgi/toponimi.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "velicina": 4,
+        "natpis": "naziv",
+        "natpisMinZoom": 13,
+        "kategorije": {
+          "polje": "skupina",
+          "vrijednosti": {
+            "polja i pašnjaci": {
+              "boja": "#a16207",
+              "oznaka": "polja, rudine, pašnjaci"
+            },
+            "vode": {
+              "boja": "#0284c7",
+              "oznaka": "bare, rukavci, kanali"
+            },
+            "šume": {
+              "boja": "#166534",
+              "oznaka": "šume"
+            },
+            "naselja": {
+              "boja": "#7c3aed",
+              "oznaka": "naselja"
+            },
+            "objekti": {
+              "boja": "#64748b",
+              "oznaka": "objekti (škole, crkve, mostovi…)"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "status",
+            "oznaka": "Status imena"
+          }
+        ]
+      },
+      "opis": "Imena polja, rudina, bara, rukavaca i šuma iz službenog Registra geografskih imena.",
+      "detaljno": "Geografska imena s topografskih karata 1:25 000 iz Registra geografskih imena Državne geodetske uprave: rudine i polja, bare, rukavci, šume i drugi objekti. To je službena polazna točka za sloj „Stare fotografije i zaboravljeni nazivi” – mještani mogu dopuniti imena koja na kartama nedostaju.",
+      "izvor": "Državna geodetska uprava – Registar geografskih imena (rgi.dgu.hr)",
+      "licenca": "Otvorena dozvola (data.gov.hr/otvorena-dozvola)",
+      "azurirano": "mjesečno"
+    },
+    {
       "id": "bus_stajalista",
       "naziv": "Autobusna stajališta (linija 6)",
       "grupa": "promet",

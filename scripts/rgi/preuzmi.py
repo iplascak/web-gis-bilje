@@ -38,8 +38,13 @@ for f in j["features"]:
         g["coordinates"] = z(g["coordinates"]); t = tocke(g)
     if not any(unutar(x, y) for x, y in t[:: max(1, len(t) // 50)]): continue
     p = f["properties"]
+    v = (p.get("vrstaobiljezja") or "").lower()
+    skupina = ("polja i pašnjaci" if any(k in v for k in ("rudina", "oranica", "pašnjak", "livada", "vinograd", "voćnjak")) else
+               "vode" if any(k in v for k in ("bara", "jezer", "močvar", "rukavac", "mrtvica", "kanal", "potok", "ušće", "ribnjak", "tekućica", "rijeka", "otok")) else
+               "šume" if "šum" in v and "kuća" not in v else
+               "naselja" if v in ("naselje", "zaselak", "dio naselja") else "objekti")
     zn.append({"type": "Feature", "geometry": g, "properties": {"naziv": p.get("geografskoime"), "vrsta": p.get("vrstaobiljezja"),
-                                                               "status": p.get("status"), "jezik": p.get("jezik"), "id": p.get("identifikator")}})
+                                                               "status": p.get("status"), "jezik": p.get("jezik"), "id": p.get("identifikator"), "skupina": skupina}})
 os.makedirs("data/rgi", exist_ok=True)
 json.dump({"type": "FeatureCollection", "features": zn}, open("data/rgi/toponimi.geojson", "w"), ensure_ascii=False, separators=(",", ":"))
 print(len(zn), "imena;", collections.Counter(f["geometry"]["type"] for f in zn), collections.Counter(f["properties"]["vrsta"] for f in zn).most_common(40))
