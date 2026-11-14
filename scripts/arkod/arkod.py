@@ -35,8 +35,16 @@ def obradi(url, oznaka, proba=False):
     sloj = subprocess.run(["ogrinfo", "-q", put], capture_output=True, text=True).stdout.split("\n")[0].split(":")[1].split("(")[0].strip()
     tmp = "/tmp/izrez.geojson"
     if os.path.exists(tmp): os.remove(tmp)
-    subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-t_srs", "EPSG:4326", "-spat", *BBOX, "-spat_srs", "EPSG:4326",
-                    "-clipdst", "data/granica_opcine.geojson", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6"], check=True)
+    # granica u koordinatnom sustavu izvora (HTRS96/TM) – izbjegava zabunu s redoslijedom osi kod EPSG:4326
+    gr = "/tmp/granica_izvor.gpkg"
+    if not os.path.exists(gr):
+        subprocess.run(["ogr2ogr", "-f", "GPKG", gr, "data/granica_opcine.geojson", "-t_srs", "EPSG:3765"], check=True)
+    ext = subprocess.run(["ogrinfo", "-so", "-al", gr], capture_output=True, text=True).stdout
+    import re as _re
+    e = _re.search(r"Extent: \(([-\d.]+), ([-\d.]+)\) - \(([-\d.]+), ([-\d.]+)\)", ext).groups()
+    print("  obuhvat (HTRS96):", e)
+    subprocess.run(["ogr2ogr", "-f", "GeoJSON", tmp, put, sloj, "-spat", *e, "-clipsrc", gr,
+                    "-t_srs", "EPSG:4326", "-nlt", "PROMOTE_TO_MULTI", "-lco", "COORDINATE_PRECISION=6", "-lco", "RFC7946=YES"], check=True)
     d = json.load(open(tmp))
     polja = list(d["features"][0]["properties"]) if d["features"] else []
     print(oznaka, len(d["features"]), "parcela, polja:", polja)
