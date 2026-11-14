@@ -270,14 +270,18 @@
     if (def.tip === 'osm') {
       sloj = new ol.layer.Tile({ source: new ol.source.OSM(), className: 'podloga' });
     } else if (def.tip === 'wms') {
-      sloj = new ol.layer.Image({
+      // u pločicama (512 px): brže se učitava i ne prelazi najveću veličinu slike koju servis dopušta
+      sloj = new ol.layer.Tile({
         className: 'podloga',
-        source: new ol.source.ImageWMS({
+        source: new ol.source.TileWMS({
           url: def.url,
-          params: { LAYERS: def.wmsSlojevi, FORMAT: def.format || 'image/jpeg', VERSION: '1.3.0' },
+          params: { LAYERS: def.wmsSlojevi, FORMAT: def.format || 'image/jpeg', VERSION: '1.3.0', TILED: true },
           projection: def.projekcija || 'EPSG:3857',
-          ratio: 1.2,
-          attributions: def.atribucija
+          tileGrid: def.projekcija ? ol.tilegrid.createXYZ({
+            extent: ol.proj.get(def.projekcija).getExtent(), tileSize: 512, maxZoom: 20
+          }) : undefined,
+          attributions: def.atribucija,
+          transition: 0
         })
       });
     } else {
