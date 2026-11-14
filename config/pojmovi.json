@@ -472,6 +472,23 @@
    "naslov": "Vođena priča: poljoprivreda",
    "opis": "tla, parcele, voda i vrijeme korak po korak",
    "akcija": "prica_poljo"
+  },
+  {
+   "pojmovi": [
+    "izlet",
+    "turiz",
+    "posjet",
+    "vikend",
+    "sto vidjeti",
+    "kopacki",
+    "dvorac tikves",
+    "sakadas",
+    "brod",
+    "setnic"
+   ],
+   "naslov": "Vođena priča: izlet u Kopački rit",
+   "opis": "rit, dvorac Tikveš, staze, baština i okusi kraja",
+   "akcija": "prica_turizam"
   }
  ]
 }
