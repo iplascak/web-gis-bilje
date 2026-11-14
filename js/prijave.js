@@ -35,7 +35,7 @@
     gost: 'mještanin', urednik: 'urednik (projekti, doprinosi)', zaposlenik: 'obrađuje prijave', direktor: 'direktor/ica (nadzor)',
     nacelnik: 'načelnik', admin: 'administrator'
   };
-  const ORGANIZACIJE = ['Općina Bilje', 'Komunalno - Bilje d.o.o.'];
+  const ORGANIZACIJE = ['Općina Bilje', 'Komunalno - Bilje d.o.o.', 'KRC Bilje', 'Turistička zajednica Općine Bilje'];
 
   let cfg = null;        // portal.prijave
   let sb = null;         // Supabase klijent
