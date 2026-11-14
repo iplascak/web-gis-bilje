@@ -1,0 +1,62 @@
+{
+  "_opis": "Popis izvora podataka koje treba povremeno pregledati ili ažurirati. Tjedna provjera (ponedjeljkom) otvara zadatak (GitHub issue) i šalje e-poruku administratorima kad se približi datum pregleda. Nakon ažuriranja upišite novi datum u 'sljedeci_pregled'.",
+  "izvori": [
+    {
+      "id": "odvoz_otpada",
+      "naziv": "Raspored odvoza komunalnog otpada",
+      "slojevi": ["odvoz_otpada", "mobilno_reciklazno"],
+      "vrijedi_do": "2026-12-31",
+      "sljedeci_pregled": "2026-12-01",
+      "kako": "Preuzeti raspored za iduću godinu s unikom.hr (ili od Općine) i poslati ga administratoru portala; pretvorba je automatska skriptom scripts/otpad/raspored_iz_pdf.py.",
+      "izvor": "Unikom d.o.o."
+    },
+    {
+      "id": "registri",
+      "naziv": "Registar nekretnina i komunalne infrastrukture",
+      "slojevi": ["imovina_opcine", "komunalna"],
+      "sljedeci_pregled": "2027-03-01",
+      "kako": "Mjesečno se automatski preuzima s bilje.hr; jednom godišnje provjeriti je li općina objavila novu verziju registra.",
+      "izvor": "Općina Bilje"
+    },
+    {
+      "id": "projekti",
+      "naziv": "Razvojni projekti (Strateški program 2030)",
+      "slojevi": ["projekti"],
+      "sljedeci_pregled": "2027-01-15",
+      "kako": "Ažurirati fazu i vrijednost projekata u data/izvori/projekti.csv.",
+      "izvor": "Općina Bilje"
+    },
+    {
+      "id": "prostorni_plan",
+      "naziv": "Prostorni plan (PPUO) – građevinska područja",
+      "slojevi": ["gradevinska_podrucja"],
+      "sljedeci_pregled": "2027-06-01",
+      "kako": "Prikazano je stanje 2017.; zamijeniti važećim izmjenama PPUO kad budu dostupne u GIS obliku (ISPU ili izrađivač plana).",
+      "izvor": "Općina Bilje / ISPU"
+    },
+    {
+      "id": "arkod",
+      "naziv": "ARKOD parcele (stanje 2023.)",
+      "slojevi": ["arkod_uporaba"],
+      "sljedeci_pregled": "2027-04-01",
+      "kako": "Zatražiti noviju ARKOD evidenciju za područje općine (APPRRR) i zamijeniti data/izvori/arkod_2023.geojson.",
+      "izvor": "APPRRR"
+    },
+    {
+      "id": "inventarizacija",
+      "naziv": "Inventarizacija okolišnih resursa (2017.)",
+      "slojevi": [],
+      "sljedeci_pregled": "2028-01-01",
+      "kako": "Podaci iz 2017. – provjeriti postoji li novija studija ili službeni izvor (Bioportal, Hrvatske vode, Hrvatske šume).",
+      "izvor": "Općina Bilje"
+    },
+    {
+      "id": "nepogode_susa",
+      "naziv": "Praćenje suše i stanja usjeva (Sentinel-2)",
+      "slojevi": [],
+      "sljedeci_pregled": "2027-07-15",
+      "kako": "Pokrenuti analizu za tekuću sezonu (Actions → Elementarne nepogode) ako je proglašena suša ili na zahtjev.",
+      "izvor": "Copernicus"
+    }
+  ]
+}

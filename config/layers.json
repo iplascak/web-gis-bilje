@@ -25,6 +25,12 @@
       "otvoreno": false
     },
     {
+      "id": "poljoprivreda",
+      "naziv": "Poljoprivreda",
+      "ikona": "traktor",
+      "otvoreno": false
+    },
+    {
       "id": "poplave",
       "naziv": "Voda i poplave",
       "ikona": "val",
@@ -369,6 +375,61 @@
       "podgrupa": "Imovina i infrastruktura"
     },
     {
+      "id": "dalekovodi",
+      "naziv": "Dalekovodi",
+      "grupa": "imovina",
+      "podgrupa": "Energetska mreža",
+      "url": "data/inventar/dalekovodi.geojson",
+      "stil": {
+        "geometrija": "linija",
+        "boja": "#e65100",
+        "debljina": 2,
+        "isprekidano": true
+      },
+      "skocniProzor": {
+        "naslov": "vrsta",
+        "polja": [
+          {
+            "polje": "upravlja",
+            "oznaka": "Upravlja"
+          }
+        ]
+      },
+      "opis": "Trase dalekovoda.",
+      "detaljno": "Trase dalekovoda na području općine.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "plinovod",
+      "naziv": "Magistralni plinovod",
+      "grupa": "imovina",
+      "podgrupa": "Energetska mreža",
+      "url": "data/inventar/plinovod.geojson",
+      "stil": {
+        "geometrija": "linija",
+        "boja": "#fbc02d",
+        "debljina": 3
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "tlak_bar",
+            "oznaka": "Tlak (bar)"
+          }
+        ]
+      },
+      "opis": "Trasa magistralnog plinovoda.",
+      "detaljno": "Magistralni plinovod Belišće – Osijek. U zaštitnom pojasu plinovoda gradnja je ograničena.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
       "id": "groblja",
       "naziv": "Groblja",
       "grupa": "imovina",
@@ -497,6 +558,86 @@
       "podgrupa": "Groblja"
     },
     {
+      "id": "projekti",
+      "naziv": "Razvojni projekti (Strateški program 2030)",
+      "grupa": "projekti",
+      "tip": "geojson",
+      "url": "data/projekti.geojson",
+      "vidljivo": true,
+      "stil": {
+        "geometrija": "tocka",
+        "velicina": 7,
+        "kategorije": {
+          "polje": "spremnost",
+          "vrijednosti": {
+            "zavrsen": {
+              "boja": "#16a34a",
+              "oznaka": "Završen"
+            },
+            "u_provedbi": {
+              "boja": "#2563eb",
+              "oznaka": "U provedbi (2021.)"
+            },
+            "eu": {
+              "boja": "#0891b2",
+              "oznaka": "EU projekt (bilje.hr)"
+            },
+            "visoka": {
+              "boja": "#f59e0b",
+              "oznaka": "Visoka spremnost"
+            },
+            "srednja": {
+              "boja": "#f97316",
+              "oznaka": "Srednja spremnost"
+            },
+            "niska": {
+              "boja": "#94a3b8",
+              "oznaka": "Niska spremnost / planiranje"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "spremnost",
+            "oznaka": "Spremnost (2021.)",
+            "format": "kategorija"
+          },
+          {
+            "polje": "vrijednost_eur",
+            "oznaka": "Procijenjena vrijednost",
+            "format": "eur"
+          },
+          {
+            "polje": "izvor_financiranja",
+            "oznaka": "Izvor financiranja"
+          },
+          {
+            "polje": "naselja",
+            "oznaka": "Naselja"
+          },
+          {
+            "polje": "napomena",
+            "oznaka": "Napomena"
+          },
+          {
+            "polje": "lokacija_tocnost",
+            "oznaka": "Lokacija"
+          },
+          {
+            "polje": "izvor",
+            "oznaka": "Izvor"
+          }
+        ]
+      },
+      "opis": "Razvojni projekti Općine Bilje prema Strateškom razvojnom programu do 2030.",
+      "izvor": "Strateški razvojni program Općine Bilje do 2030.; bilje.hr (EU projekti)",
+      "azurirano": "stanje 2021. (dokument); lokacije približne",
+      "detaljno": "31 projekt iz Strateškog razvojnog programa Općine Bilje do 2030. (tablica 17., stanje 2021.), ukupne procijenjene vrijednosti oko 59 milijuna eura (444,3 milijuna kuna). Dodana su i dva projekta s popisa EU projekata na bilje.hr.\n\nBoja označava spremnost projekta u trenutku izrade programa (2021.): u provedbi, visoka spremnost (spreman za prijavu), srednja (u pripremi dokumentacije) i niska (u fazi planiranja). Trenutno stanje pojedinog projekta može biti drugačije.\n\nLokacije su približne, na razini naselja, osim projekata vezanih uz poznatu ulicu ili površinu. Projekti koji obuhvaćaju više naselja (npr. javna rasvjeta, mobilna ambulanta) prikazani su točkom u svakom naselju. Iznosi su preračunati u eure fiksnim tečajem 7,53450.\n\nPodaci se uređuju u tablici data/izvori/projekti.csv (može se otvoriti u Excelu)."
+    },
+    {
       "id": "gradevinska_podrucja",
       "naziv": "Građevinska područja (PPUO, stanje 2017.)",
       "grupa": "prostor",
@@ -562,6 +703,298 @@
       "detaljno": "Granice građevinskih područja naselja i izdvojenih građevinskih područja (turizam, gospodarstvo, sport i rekreacija, groblja) prema Prostornom planu uređenja Općine Bilje, u stanju iz 2017. godine (iz Inventarizacije okolišnih resursa).\n\nVAŽNO: plan je nakon toga više puta mijenjan (II. izmjene 2022., III. 2023., IV. 2024., a u tijeku su i nove izmjene). Granice na ovoj karti zato mogu odstupati od važećeg plana. Za bilo kakvu odluku o gradnji ili kupnji zemljišta mjerodavan je važeći plan, objavljen na stranici općine u rubrici \"Prostorno planska dokumentacija\", odnosno lokacijska informacija koju izdaje nadležni upravni odjel.",
       "izvor": "PPUO Bilje preko Inventarizacije okolišnih resursa Općine Bilje",
       "azurirano": "2017. (zastarjelo – plan mijenjan 2022., 2023. i 2024.)"
+    },
+    {
+      "id": "bonitet",
+      "naziv": "Vrijednost (bonitet) tla",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Tlo",
+      "url": "data/poljoprivreda/bonitet.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.6,
+        "ispunaProzirnost": 0.55,
+        "kategorije": {
+          "polje": "bonitet",
+          "vrijednosti": {
+            "P1": {
+              "boja": "#1a7f37",
+              "oznaka": "P1 – osobito vrijedno obradivo tlo"
+            },
+            "P2": {
+              "boja": "#7cc46b",
+              "oznaka": "P2 – vrijedno obradivo tlo"
+            },
+            "PŠ": {
+              "boja": "#d9c27a",
+              "oznaka": "PŠ – ostala poljoprivredna i šumska tla"
+            },
+            "Vode": {
+              "boja": "#7fb2e5",
+              "oznaka": "vode"
+            },
+            "Neprirodne (izgr": {
+              "boja": "#b8b8b8",
+              "oznaka": "izgrađeno"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "bonitet",
+        "polja": [
+          {
+            "polje": "povrsina_ha",
+            "oznaka": "Površina (ha)"
+          }
+        ]
+      },
+      "opis": "Koliko je tlo vrijedno za poljoprivredu (kategorije prostornog plana P1, P2, PŠ).",
+      "detaljno": "Bonitetne kategorije poljoprivrednog zemljišta prema prostornom planu: P1 – osobito vrijedno obradivo tlo, P2 – vrijedno obradivo tlo, PŠ – ostala poljoprivredna tla, šume i šumsko zemljište. Osobito vrijedno i vrijedno obradivo tlo zakonom je zaštićeno od prenamjene u građevinsko zemljište.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.), na temelju pedoloških podataka.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "pedoloska_karta",
+      "naziv": "Pedološka karta (tipovi tla)",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Tlo",
+      "url": "data/poljoprivreda/pedoloska_karta.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.6,
+        "ispunaProzirnost": 0.5,
+        "kategorije": {
+          "polje": "tlo",
+          "vrijednosti": {
+            "A": {
+              "boja": "#c9a66b",
+              "oznaka": "A – aluvijalno tlo"
+            },
+            "HG – AG – RC": {
+              "boja": "#6b8fb5",
+              "oznaka": "hipoglej, amfiglej, ritska crnica"
+            },
+            "AG – HG": {
+              "boja": "#8aa6c4",
+              "oznaka": "amfiglej, hipoglej"
+            },
+            "HG – AG": {
+              "boja": "#5e7fa8",
+              "oznaka": "hipoglej, amfiglej"
+            },
+            "GY": {
+              "boja": "#a58bc4",
+              "oznaka": "GY (oznaka OPK)"
+            },
+            "L – RI": {
+              "boja": "#d4b483",
+              "oznaka": "L – RI (oznaka OPK)"
+            },
+            "HM": {
+              "boja": "#4c6a4c",
+              "oznaka": "HM – humoglej"
+            },
+            "L – ES": {
+              "boja": "#e0c79a",
+              "oznaka": "L – ES (oznaka OPK)"
+            },
+            "Vode": {
+              "boja": "#a9cdf0",
+              "oznaka": "vode"
+            },
+            "Neprirodne (izgrađene) površine": {
+              "boja": "#bdbdbd",
+              "oznaka": "izgrađeno"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "tlo",
+        "polja": [
+          {
+            "polje": "tekstura",
+            "oznaka": "Tekstura"
+          },
+          {
+            "polje": "dubina",
+            "oznaka": "Dubina / dreniranost (oznaka)"
+          },
+          {
+            "polje": "kartirana_jedinica",
+            "oznaka": "Kartirana jedinica"
+          }
+        ]
+      },
+      "opis": "Tipovi tla prema Osnovnoj pedološkoj karti (oznake i tekstura).",
+      "detaljno": "Tipovi tla na području općine prema Osnovnoj pedološkoj karti Hrvatske (OPK), prikazani skraćenicama tipova tla. Prevladavaju hidromorfna tla (hipoglej, amfiglej, ritska crnica, humoglej) i aluvijalna tla uz rijeke, praškasto-glinaste ilovače. Pune nazive kratica i opis svake kartirane jedinice daje studija Inventarizacije okolišnih resursa (poglavlje o tlu).\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "arkod_uporaba",
+      "naziv": "Poljoprivredne parcele (ARKOD 2023.)",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Parcele",
+      "url": "data/izvori/arkod_2023.geojson",
+      "minZoom": 12,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.6,
+        "ispunaProzirnost": 0.4,
+        "kategorije": {
+          "polje": "arkod_vrsta",
+          "vrijednosti": {
+            "200": {
+              "boja": "#e2b84a",
+              "oznaka": "oranica"
+            },
+            "310": {
+              "boja": "#9ccc65",
+              "oznaka": "livada"
+            },
+            "320": {
+              "boja": "#c5e1a5",
+              "oznaka": "pašnjak"
+            },
+            "422": {
+              "boja": "#e57373",
+              "oznaka": "voćnjak"
+            },
+            "430": {
+              "boja": "#ba68c8",
+              "oznaka": "mješoviti trajni nasadi"
+            },
+            "210": {
+              "boja": "#4fc3f7",
+              "oznaka": "ARKOD vrsta 210"
+            },
+            "900": {
+              "boja": "#bdbdbd",
+              "oznaka": "ARKOD vrsta 900"
+            },
+            "910": {
+              "boja": "#9e9e9e",
+              "oznaka": "ARKOD vrsta 910"
+            },
+            "490": {
+              "boja": "#8d6e63",
+              "oznaka": "ARKOD vrsta 490"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "kultura",
+        "polja": [
+          {
+            "polje": "povrsina_ha",
+            "oznaka": "Površina (ha)"
+          },
+          {
+            "polje": "arkod_id",
+            "oznaka": "ARKOD ID"
+          }
+        ]
+      },
+      "opis": "Prijavljene poljoprivredne parcele po vrsti uporabe (bez podataka o korisnicima).",
+      "detaljno": "Parcele iz evidencije ARKOD (stanje 2023.) po vrsti uporabe zemljišta: oranice, livade, pašnjaci, voćnjaci i trajni nasadi. Prikazana je samo vrsta uporabe i površina; podaci o poljoprivrednicima nisu javni i ne prikazuju se.",
+      "izvor": "APPRRR – ARKOD, stanje 2023.",
+      "azurirano": "2023.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "struktura_parcela",
+      "naziv": "Struktura poljoprivrednih površina",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Parcele",
+      "url": "data/poljoprivreda/struktura_parcela.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 1,
+        "ispunaProzirnost": 0.35,
+        "kategorije": {
+          "polje": "struktura",
+          "vrijednosti": {
+            "velike pravilne parcele": {
+              "boja": "#f9a825",
+              "oznaka": "velike pravilne parcele"
+            },
+            "usitnjene pravilne parcele": {
+              "boja": "#8e24aa",
+              "oznaka": "usitnjene pravilne parcele"
+            },
+            "velike nepravilne parcele": {
+              "boja": "#6d4c41",
+              "oznaka": "velike nepravilne parcele"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "struktura",
+        "polja": [
+          {
+            "polje": "pokrov",
+            "oznaka": "Pokrov"
+          }
+        ]
+      },
+      "opis": "Krupne, usitnjene i nepravilne parcele – kako je razdijeljeno poljoprivredno zemljište.",
+      "detaljno": "Podjela poljoprivrednih površina prema obliku i veličini parcela (posljedica komasacije i povijesne parcelacije). Korisno za planiranje okrupnjavanja i poljskih putova.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "paprika_pogodnost",
+      "naziv": "Pogodnost za uzgoj začinske paprike",
+      "grupa": "poljoprivreda",
+      "podgrupa": "Pogodnost za kulture",
+      "url": "data/poljoprivreda/paprika_pogodnost.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0,
+        "ispunaProzirnost": 0.55,
+        "kategorije": {
+          "polje": "razred",
+          "vrijednosti": {
+            "4": {
+              "boja": "#1b7837",
+              "oznaka": "vrlo pogodno"
+            },
+            "3": {
+              "boja": "#7fbf7b",
+              "oznaka": "pogodno"
+            },
+            "2": {
+              "boja": "#fee08b",
+              "oznaka": "umjereno pogodno"
+            },
+            "1": {
+              "boja": "#f46d43",
+              "oznaka": "slabo pogodno"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "pogodnost",
+        "polja": []
+      },
+      "opis": "Gdje su uvjeti za začinsku papriku najbolji (višekriterijska analiza, 2018.).",
+      "detaljno": "Model pogodnosti zemljišta za uzgoj začinske paprike izrađen u studiji \"Uzgoj začinske paprike na području Općine Bilje\" (2018.). Model kombinira svojstva tla, nagib, udaljenost od vode i druge kriterije; područja isključena iz uzgoja (naselja, šume, vode, zaštićena područja) nisu obojena.\n\nRezultat je pomoć pri odabiru parcela, a ne jamstvo prinosa.",
+      "izvor": "Općina Bilje – studija o uzgoju začinske paprike (2018.)",
+      "azurirano": "2018.",
+      "tip": "geojson",
+      "vidljivo": false
     },
     {
       "id": "poplave_vv",
@@ -681,6 +1114,82 @@
       "azurirano": "2016.",
       "detaljno": "Hidrološke postaje Državnog hidrometeorološkog zavoda na Dravi i Dunavu u okolici općine (Osijek, Aljmaš, Batina, Bijelo Brdo, Belišće). Na njima se prate vodostaji i protoci.\n\nKlik na postaju daje poveznicu na stranicu DHMZ-a s trenutnim vodostajima. Kod porasta Dunava najvažnija je postaja Batina, a kod Drave Osijek.",
       "podgrupa": "Obrana od poplava"
+    },
+    {
+      "id": "vodotoci_kanali",
+      "naziv": "Kanali i vodotoci",
+      "grupa": "poplave",
+      "podgrupa": "Vodotoci i kanali",
+      "url": "data/inventar/vodotoci_kanali.geojson",
+      "stil": {
+        "geometrija": "linija",
+        "debljina": 1.6,
+        "kategorije": {
+          "polje": "tip",
+          "vrijednosti": {
+            "Kanal, stalna voda": {
+              "boja": "#1565c0",
+              "oznaka": "kanal, stalna voda"
+            },
+            "Kanal, povremena voda": {
+              "boja": "#64b5f6",
+              "oznaka": "kanal, povremena voda"
+            },
+            "Potok": {
+              "boja": "#0277bd",
+              "oznaka": "potok"
+            },
+            "Jaruga, povremen tok": {
+              "boja": "#90caf9",
+              "oznaka": "jaruga, povremeni tok"
+            },
+            "Rijeka 5-50 m": {
+              "boja": "#0d47a1",
+              "oznaka": "rijeka"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "tip",
+        "polja": []
+      },
+      "opis": "Melioracijski kanali, potoci i jaruge.",
+      "detaljno": "Mreža kanala (stalne i povremene vode), potoka i jaruga na području općine – važna za odvodnju poljoprivrednih površina i za obranu od unutarnjih voda.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "jezera_bare",
+      "naziv": "Jezera, bare i riječni otoci",
+      "grupa": "poplave",
+      "podgrupa": "Vodotoci i kanali",
+      "url": "data/inventar/jezera_bare.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#2b8cbe",
+        "debljina": 0.8,
+        "ispunaProzirnost": 0.35,
+        "natpis": "naziv",
+        "natpisMinZoom": 13
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          }
+        ]
+      },
+      "opis": "Stajaćice (Kopačko jezero, Sakadaš, bare) i riječni otoci.",
+      "detaljno": "Jezera, bare, ribnjaci i riječni otoci.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
     },
     {
       "id": "sanitarna_zastita",
@@ -860,6 +1369,241 @@
       "azurirano": "uživo s Hrvatskih voda",
       "detaljno": "Područja ekološke mreže Natura 2000 važna za očuvanje vrsta i stanišnih tipova (POVS), npr. Kopački rit, Donji tok Drave i Dunav. Za zahvate koji bi mogli utjecati na ta područja provodi se ocjena prihvatljivosti za ekološku mrežu.",
       "podgrupa": "Natura 2000"
+    },
+    {
+      "id": "stanista",
+      "naziv": "Karta staništa",
+      "grupa": "priroda",
+      "podgrupa": "Staništa i šume",
+      "url": "data/inventar/stanista.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.5,
+        "ispunaProzirnost": 0.45,
+        "kategorije": {
+          "polje": "skupina",
+          "vrijednosti": {
+            "Vode i močvare": {
+              "boja": "#4fa3d1",
+              "oznaka": "vode i močvare"
+            },
+            "Travnjaci": {
+              "boja": "#a5d16b",
+              "oznaka": "travnjaci i vlažne livade"
+            },
+            "Šikare": {
+              "boja": "#7d9f4f",
+              "oznaka": "šikare i živice"
+            },
+            "Šume": {
+              "boja": "#2e6b30",
+              "oznaka": "šume"
+            },
+            "Poljoprivredne površine": {
+              "boja": "#e8d38b",
+              "oznaka": "poljoprivredne površine"
+            },
+            "Izgrađeno": {
+              "boja": "#c2c2c2",
+              "oznaka": "naselja"
+            },
+            "Ostalo": {
+              "boja": "#999",
+              "oznaka": "ostalo"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "staniste",
+        "polja": [
+          {
+            "polje": "nks",
+            "oznaka": "NKS kod"
+          }
+        ]
+      },
+      "opis": "Tipovi staništa prema Nacionalnoj klasifikaciji staništa.",
+      "detaljno": "Kopnena i vodena staništa (NKS) – od vlažnih livada i močvara šaša do intenzivnih oranica.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.), prema karti staništa RH.",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "sume",
+      "naziv": "Šume (gospodarske jedinice i namjena)",
+      "grupa": "priroda",
+      "podgrupa": "Staništa i šume",
+      "url": "data/inventar/sume.geojson",
+      "minZoom": 11,
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.5,
+        "ispunaProzirnost": 0.4,
+        "kategorije": {
+          "polje": "namjena",
+          "vrijednosti": {
+            "Šume posebne namjene": {
+              "boja": "#1b5e20",
+              "oznaka": "šume posebne namjene"
+            },
+            "Gospodarske šume": {
+              "boja": "#7cb342",
+              "oznaka": "gospodarske šume"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "namjena",
+        "polja": [
+          {
+            "polje": "vlasnistvo",
+            "oznaka": "Vlasništvo"
+          },
+          {
+            "polje": "gospodarska_jedinica",
+            "oznaka": "Gospodarska jedinica"
+          },
+          {
+            "polje": "odjel_odsjek",
+            "oznaka": "Odjel/odsjek"
+          }
+        ]
+      },
+      "opis": "Šume po namjeni i vlasništvu, s gospodarskim jedinicama.",
+      "detaljno": "Šumske površine po gospodarskim jedinicama, odjelima i odsjecima, namjeni (gospodarske, posebne namjene) i vlasništvu.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.) (podaci Hrvatskih šuma).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "lovista",
+      "naziv": "Lovišta",
+      "grupa": "priroda",
+      "podgrupa": "Lov i ribolov",
+      "url": "data/inventar/lovista.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#8d6e63",
+        "debljina": 1.6,
+        "ispunaProzirnost": 0.08,
+        "isprekidano": true,
+        "natpis": "naziv",
+        "natpisMinZoom": 10
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "broj",
+            "oznaka": "Broj lovišta"
+          },
+          {
+            "polje": "tip",
+            "oznaka": "Tip"
+          },
+          {
+            "polje": "status",
+            "oznaka": "Status"
+          },
+          {
+            "polje": "povrsina_ha",
+            "oznaka": "Površina (ha)"
+          }
+        ]
+      },
+      "opis": "Granice lovišta – korisno i šetačima u sezoni lova.",
+      "detaljno": "Zajednička i otvorena lovišta na području općine s brojem lovišta. Tijekom lovne sezone šetačima i biciklistima preporučuje se oprez i vidljiva odjeća izvan označenih staza.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "ciprinidne_vode",
+      "naziv": "Ribolovne vode (ciprinidne)",
+      "grupa": "priroda",
+      "podgrupa": "Lov i ribolov",
+      "url": "data/inventar/ciprinidne_vode.geojson",
+      "stil": {
+        "geometrija": "linija",
+        "boja": "#00838f",
+        "debljina": 4
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          }
+        ]
+      },
+      "opis": "Dunav i Drava – vode pogodne za život šaranskih vrsta riba.",
+      "detaljno": "Dionice Dunava i Drave proglašene ciprinidnim vodama (pogodnima za život šarana, soma, smuđa i drugih). Za ribolov je potrebna dozvola ovlaštene udruge; u Parku prirode Kopački rit vrijede posebna pravila.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
+      "id": "pokrov_zemljista",
+      "naziv": "Pokrov zemljišta (CORINE)",
+      "grupa": "priroda",
+      "podgrupa": "Pokrov zemljišta",
+      "url": "data/inventar/pokrov_zemljista.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.4,
+        "ispunaProzirnost": 0.45,
+        "kategorije": {
+          "polje": "skupina",
+          "vrijednosti": {
+            "Neprirodne (izgrađene) površine": {
+              "boja": "#e31a1c",
+              "oznaka": "izgrađene površine"
+            },
+            "Poljoprivredne površine": {
+              "boja": "#ffe64d",
+              "oznaka": "poljoprivredne površine"
+            },
+            "Šumska vegetacija": {
+              "boja": "#33a02c",
+              "oznaka": "šume i prijelazna područja"
+            },
+            "Močvarna zemljišta": {
+              "boja": "#a6a6ff",
+              "oznaka": "močvare"
+            },
+            "Vode": {
+              "boja": "#00ccf2",
+              "oznaka": "vode"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "pokrov",
+        "polja": [
+          {
+            "polje": "clc",
+            "oznaka": "CORINE kod"
+          },
+          {
+            "polje": "povrsina_ha",
+            "oznaka": "Površina (ha)"
+          }
+        ]
+      },
+      "opis": "Čime je prekriveno zemljište: naselja, polja, šume, močvare, vode.",
+      "detaljno": "Pokrov zemljišta prema CORINE klasifikaciji, dorađen u inventarizaciji.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
     },
     {
       "id": "bastina_registar",
@@ -1045,6 +1789,54 @@
       "podgrupa": "Krajobraz i vidikovci"
     },
     {
+      "id": "osjetljivost_krajobraza",
+      "naziv": "Osjetljivost krajobraza",
+      "grupa": "bastina",
+      "podgrupa": "Krajobraz i vidikovci",
+      "url": "data/inventar/osjetljivost_krajobraza.geojson",
+      "stil": {
+        "geometrija": "poligon",
+        "debljina": 0.8,
+        "ispunaProzirnost": 0.35,
+        "kategorije": {
+          "polje": "osjetljivost",
+          "vrijednosti": {
+            "Iznimno osjetljivo": {
+              "boja": "#b2182b",
+              "oznaka": "iznimno osjetljivo"
+            },
+            "Vrlo osjetljivo": {
+              "boja": "#ef8a62",
+              "oznaka": "vrlo osjetljivo"
+            },
+            "Umjereno osjetljivo": {
+              "boja": "#fddbc7",
+              "oznaka": "umjereno osjetljivo"
+            },
+            "Vrlo malo osjetljivo": {
+              "boja": "#d1e5f0",
+              "oznaka": "vrlo malo osjetljivo"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "podrucje",
+        "polja": [
+          {
+            "polje": "osjetljivost",
+            "oznaka": "Osjetljivost"
+          }
+        ]
+      },
+      "opis": "Koliko je krajobraz osjetljiv na nove zahvate.",
+      "detaljno": "Ocjena osjetljivosti krajobraznih cjelina na promjene i nove zahvate (gradnja, infrastruktura).\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
+    },
+    {
       "id": "bus_stajalista",
       "naziv": "Autobusna stajališta (linija 6)",
       "grupa": "promet",
@@ -1078,84 +1870,26 @@
       "azurirano": "studeni 2026."
     },
     {
-      "id": "projekti",
-      "naziv": "Razvojni projekti (Strateški program 2030)",
-      "grupa": "projekti",
-      "tip": "geojson",
-      "url": "data/projekti.geojson",
-      "vidljivo": true,
+      "id": "plovni_put",
+      "naziv": "Plovni put (Dunav, Drava)",
+      "grupa": "promet",
+      "url": "data/inventar/plovni_put.geojson",
       "stil": {
-        "geometrija": "tocka",
-        "velicina": 7,
-        "kategorije": {
-          "polje": "spremnost",
-          "vrijednosti": {
-            "zavrsen": {
-              "boja": "#16a34a",
-              "oznaka": "Završen"
-            },
-            "u_provedbi": {
-              "boja": "#2563eb",
-              "oznaka": "U provedbi (2021.)"
-            },
-            "eu": {
-              "boja": "#0891b2",
-              "oznaka": "EU projekt (bilje.hr)"
-            },
-            "visoka": {
-              "boja": "#f59e0b",
-              "oznaka": "Visoka spremnost"
-            },
-            "srednja": {
-              "boja": "#f97316",
-              "oznaka": "Srednja spremnost"
-            },
-            "niska": {
-              "boja": "#94a3b8",
-              "oznaka": "Niska spremnost / planiranje"
-            }
-          }
-        }
+        "geometrija": "linija",
+        "boja": "#283593",
+        "debljina": 2.5,
+        "isprekidano": true
       },
       "skocniProzor": {
-        "naslov": "naziv",
-        "polja": [
-          {
-            "polje": "spremnost",
-            "oznaka": "Spremnost (2021.)",
-            "format": "kategorija"
-          },
-          {
-            "polje": "vrijednost_eur",
-            "oznaka": "Procijenjena vrijednost",
-            "format": "eur"
-          },
-          {
-            "polje": "izvor_financiranja",
-            "oznaka": "Izvor financiranja"
-          },
-          {
-            "polje": "naselja",
-            "oznaka": "Naselja"
-          },
-          {
-            "polje": "napomena",
-            "oznaka": "Napomena"
-          },
-          {
-            "polje": "lokacija_tocnost",
-            "oznaka": "Lokacija"
-          },
-          {
-            "polje": "izvor",
-            "oznaka": "Izvor"
-          }
-        ]
+        "naslov": "vrsta",
+        "polja": []
       },
-      "opis": "Razvojni projekti Općine Bilje prema Strateškom razvojnom programu do 2030.",
-      "izvor": "Strateški razvojni program Općine Bilje do 2030.; bilje.hr (EU projekti)",
-      "azurirano": "stanje 2021. (dokument); lokacije približne",
-      "detaljno": "31 projekt iz Strateškog razvojnog programa Općine Bilje do 2030. (tablica 17., stanje 2021.), ukupne procijenjene vrijednosti oko 59 milijuna eura (444,3 milijuna kuna). Dodana su i dva projekta s popisa EU projekata na bilje.hr.\n\nBoja označava spremnost projekta u trenutku izrade programa (2021.): u provedbi, visoka spremnost (spreman za prijavu), srednja (u pripremi dokumentacije) i niska (u fazi planiranja). Trenutno stanje pojedinog projekta može biti drugačije.\n\nLokacije su približne, na razini naselja, osim projekata vezanih uz poznatu ulicu ili površinu. Projekti koji obuhvaćaju više naselja (npr. javna rasvjeta, mobilna ambulanta) prikazani su točkom u svakom naselju. Iznosi su preračunati u eure fiksnim tečajem 7,53450.\n\nPodaci se uređuju u tablici data/izvori/projekti.csv (može se otvoriti u Excelu)."
+      "opis": "Međunarodni riječni plovni putovi.",
+      "detaljno": "Međunarodni plovni put Dunavom i Dravom prema prostornom planu.\n\nIzvor: Inventarizacija okolišnih resursa Općine Bilje (2017.).",
+      "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
+      "azurirano": "2017.",
+      "tip": "geojson",
+      "vidljivo": false
     }
   ]
 }

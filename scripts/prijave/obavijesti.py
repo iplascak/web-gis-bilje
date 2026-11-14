@@ -209,6 +209,7 @@ def main():
     ap.add_argument("--nove", action="store_true")
     ap.add_argument("--tjedno", action="store_true")
     ap.add_argument("--ciscenje", action="store_true")
+    ap.add_argument("--admin-poruka", help="pošalji sadržaj datoteke (markdown) svim administratorima")
     a = ap.parse_args()
     kljuc = os.environ.get("SUPABASE_SECRET_KEY")
     if not kljuc:
@@ -223,6 +224,10 @@ def main():
     if a.nove: nove(baza, posta)
     if a.tjedno: tjedno(baza, posta)
     if a.ciscenje: ciscenje(baza)
+    if a.admin_poruka:
+        admini = sorted({r["email"] for r in baza.dohvati("profili", select="email", uloga="eq.admin") if r.get("email")})
+        tekst = pathlib.Path(a.admin_poruka).read_text(encoding="utf-8")
+        if admini: posta.posalji(admini, "Web GIS: podaci za pregled/ažuriranje", tekst)
 
 
 if __name__ == "__main__":

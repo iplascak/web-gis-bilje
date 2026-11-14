@@ -480,3 +480,15 @@ button { font-family: inherit; }
 .aktivni-stavka, .sloj-red { min-width: 0; }
 .sloj-naziv { min-width: 0; }
 .brzi-prikazi { flex-wrap: wrap; overflow: visible; }
+/* odvoz otpada */
+.odvoz { display: grid; gap: 6px; margin-top: 6px; }
+.odvoz-zona { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--tekst-2); }
+.odvoz-popis { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.odvoz-popis li { display: grid; gap: 3px; font-size: 13px; }
+.odvoz-datum { font-weight: 600; }
+.odvoz-vrste { display: flex; gap: 4px; flex-wrap: wrap; }
+.odvoz-oznaka { color: #fff; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px; }
+.odvoz .gumb-mali { justify-self: start; text-decoration: none; }
+.odvoz-napomene { font-size: 12px; color: var(--tekst-2); margin-top: 6px; }
+.odvoz-napomene summary { cursor: pointer; font-weight: 600; }
+.odvoz-napomene p { margin: 4px 0; }

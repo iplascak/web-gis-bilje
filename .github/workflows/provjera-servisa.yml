@@ -48,6 +48,30 @@ jobs:
             gh issue close "$BROJ" --comment "Sve provjere ponovno prolaze – zatvaram automatski."
           done
 
+      - name: Pregled izvora podataka (podsjetnik za ažuriranje)
+        id: izvori
+        continue-on-error: true
+        run: |
+          python3 scripts/pregled_izvora.py
+          cat pregled_izvora.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Podsjetnik adminu (issue i e-pošta)
+        if: steps.izvori.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+        run: |
+          gh label create azuriranje --color FBCA04 --description "Podsjetnik za ažuriranje podataka" 2>/dev/null || true
+          BROJ=$(gh issue list --label azuriranje --state open --json number --jq '.[0].number')
+          if [ -n "$BROJ" ]; then gh issue comment "$BROJ" --body-file pregled_izvora.md
+          else gh issue create --title "Ažuriranje podataka portala" --label azuriranje --body-file pregled_izvora.md; fi
+          python3 scripts/prijave/obavijesti.py --admin-poruka pregled_izvora.md || true
+
       - name: Neuspjeh
         if: steps.provjera.outcome == 'failure'
         run: exit 1

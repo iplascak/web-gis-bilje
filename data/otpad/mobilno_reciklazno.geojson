@@ -1,0 +1,90 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.73487,
+     45.591263
+    ]
+   },
+   "properties": {
+    "naziv": "Mobilno reciklažno dvorište – Bilje",
+    "naselje": "Bilje",
+    "termini": "12. 3., 12. 6., 11. 9. i 11. 11. 2026.",
+    "vrijeme": "08:00–08:45",
+    "napomena": "Točno mjesto stajanja potvrdit će općina."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.897964,
+     45.622937
+    ]
+   },
+   "properties": {
+    "naziv": "Mobilno reciklažno dvorište – Kopačevo",
+    "naselje": "Kopačevo",
+    "termini": "12. 3., 12. 6., 11. 9. i 11. 11. 2026.",
+    "vrijeme": "09:00–09:45",
+    "napomena": "Točno mjesto stajanja potvrdit će općina."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.813109,
+     45.676095
+    ]
+   },
+   "properties": {
+    "naziv": "Mobilno reciklažno dvorište – Kozjak",
+    "naselje": "Kozjak",
+    "termini": "12. 3., 12. 6., 11. 9. i 11. 11. 2026.",
+    "vrijeme": "13:00–13:45",
+    "napomena": "Točno mjesto stajanja potvrdit će općina."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.777007,
+     45.669364
+    ]
+   },
+   "properties": {
+    "naziv": "Mobilno reciklažno dvorište – Lug",
+    "naselje": "Lug",
+    "termini": "12. 3., 12. 6., 11. 9. i 11. 11. 2026.",
+    "vrijeme": "12:00–12:45",
+    "napomena": "Točno mjesto stajanja potvrdit će općina."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.836342,
+     45.636674
+    ]
+   },
+   "properties": {
+    "naziv": "Mobilno reciklažno dvorište – Vardarac",
+    "naselje": "Vardarac",
+    "termini": "12. 3., 12. 6., 11. 9. i 11. 11. 2026.",
+    "vrijeme": "10:00–10:45",
+    "napomena": "Točno mjesto stajanja potvrdit će općina."
+   }
+  }
+ ]
+}
