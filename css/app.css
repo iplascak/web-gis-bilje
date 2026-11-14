@@ -665,3 +665,19 @@ button { font-family: inherit; }
 .prica-tocka.aktivna { background: var(--kivi, #9ccc3c); width: 18px; border-radius: 4px; }
 .prica .gumb-mali:disabled { opacity: .4; }
 @media (max-width: 720px) { .prica { left: 8px; right: 8px; bottom: 8px; width: auto; } }
+/* GDD */
+.gdd { margin-top: 10px; padding: 10px 12px; border-radius: 12px; background: var(--pozadina-2); }
+.gdd p { margin: 6px 0 0; font-size: 13px; }
+.gdd-brojke { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 6px 0; }
+.gdd-brojke div { display: flex; flex-direction: column; }
+.gdd-brojke strong { font-size: 16px; }
+.gdd-brojke span { font-size: 11px; color: var(--tekst-2); }
+.gdd-graf { width: 100%; height: 90px; display: block; }
+.gdd-graf polyline { fill: none; stroke-width: 2; }
+.gdd-graf .prosjek { stroke: #94a3b8; stroke-dasharray: 4 3; }
+.gdd-graf .tekuca { stroke: #5f9a1f; stroke-width: 2.5; }
+.gdd-graf .prognoza { stroke: #d97706; stroke-width: 2.5; }
+.gdd-legenda { display: flex; gap: 12px; font-size: 11px; color: var(--tekst-2); }
+.gdd-legenda span::before { content: ''; display: inline-block; width: 14px; height: 3px; margin-right: 4px; vertical-align: middle; }
+.gdd-legenda .l-tekuca::before { background: #5f9a1f; } .gdd-legenda .l-prognoza::before { background: #d97706; } .gdd-legenda .l-prosjek::before { background: #94a3b8; }
+@media (max-width: 520px) { .gdd-brojke { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

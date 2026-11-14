@@ -219,22 +219,156 @@
     return s.sort((a, b) => red[a[0]] - red[b[0]]);
   }
 
+
+  // ---------- toplinske jedinice (GDD, zbroj efektivnih temperatura) ----------
+  // Dnevno: (min(Tmax, 30) + max(Tmin, baza)) / 2 − baza, ne manje od 0. Usporedba s prosjekom 1995.–2024. (ERA5, Open-Meteo arhiva).
+  const GDD = {
+    opce: { baza: 5, pocetak: '01-01', naziv: 'od 1. siječnja, baza 5 °C' },
+    psenica: { baza: 0, pocetak: '01-01', naziv: 'od 1. siječnja, baza 0 °C' },
+    kukuruz: { baza: 10, pocetak: '04-15', naziv: 'od sjetve, baza 10 °C' },
+    suncokret: { baza: 7, pocetak: '04-10', naziv: 'od sjetve, baza 7 °C' },
+    soja: { baza: 10, pocetak: '04-25', naziv: 'od sjetve, baza 10 °C' },
+    repa: { baza: 3, pocetak: '03-20', naziv: 'od sjetve, baza 3 °C' },
+    repica: { baza: 0, pocetak: '01-01', naziv: 'od 1. siječnja, baza 0 °C' },
+    loza: { baza: 10, pocetak: '04-01', naziv: 'od 1. travnja, baza 10 °C' },
+    vocnjak: { baza: 5, pocetak: '03-01', naziv: 'od 1. ožujka, baza 5 °C' },
+    povrce: { baza: 10, pocetak: '05-10', naziv: 'od sadnje, baza 10 °C' }
+  };
+  let arhiva = null, arhivaMjesto = null;
+  const gddDan = (tmax, tmin, b) => (tmax == null || tmin == null) ? 0 : Math.max(0, (Math.min(tmax, 30) + Math.max(Math.min(tmin, 30), b)) / 2 - b);
+
+  async function dohvatiArhivu() {
+    const kljuc = mjesto.lat.toFixed(2) + ',' + mjesto.lon.toFixed(2);
+    if (arhiva && arhivaMjesto === kljuc) return arhiva;
+    const d = new Date(); d.setDate(d.getDate() - 6);
+    const kraj = d.toISOString().slice(0, 10);
+    const p = new URLSearchParams({ latitude: mjesto.lat.toFixed(3), longitude: mjesto.lon.toFixed(3), start_date: '1995-01-01', end_date: kraj,
+      daily: 'temperature_2m_max,temperature_2m_min', timezone: 'Europe/Zagreb' });
+    const o = await fetch('https://archive-api.open-meteo.com/v1/archive?' + p);
+    if (!o.ok) throw new Error('arhiva ' + o.status);
+    const j = await o.json();
+    const dani = {};
+    j.daily.time.forEach((t, i) => { dani[t] = [j.daily.temperature_2m_max[i], j.daily.temperature_2m_min[i]]; });
+    // dopuni zadnje dane iz prognoze (prošlih 7 + sljedećih 7 dana)
+    const f = podaci.daily;
+    f.time.forEach((t, i) => { if (!dani[t]) dani[t] = [f.temperature_2m_max[i], f.temperature_2m_min[i], true]; });
+    arhiva = dani; arhivaMjesto = kljuc;
+    return dani;
+  }
+
+  function izracunGDD(dani, kultura, pocetak) {
+    const c = GDD[kultura] || GDD.opce;
+    const danas = podaci.current.time.slice(0, 10), god = Number(danas.slice(0, 4));
+    const poc = pocetak || c.pocetak;
+    const krivulja = (g, doDatuma) => {
+      const izlaz = []; let s = 0;
+      const d = new Date(g + '-' + poc + 'T12:00:00'), kraj = new Date(doDatuma + 'T12:00:00');
+      while (d <= kraj) {
+        const k = d.toISOString().slice(0, 10), v = dani[k];
+        if (v) s += gddDan(v[0], v[1], c.baza);
+        izlaz.push({ k: k.slice(5), s, prognoza: v && v[2] });
+        d.setDate(d.getDate() + 1);
+      }
+      return izlaz;
+    };
+    const zadnjiPodatak = Object.keys(dani).sort().pop();
+    if (danas.slice(5) < poc) return { prije: true, c, poc };
+    const tekuca = krivulja(god, zadnjiPodatak);
+    const doDanas = tekuca.filter(x => x.k <= danas.slice(5));
+    // prosjek 1995.–2024. za isti kalendarski dan
+    const prosjek = {}; let n = 0;
+    for (let g = 1995; g <= 2024; g++) {
+      const kr = krivulja(g, g + '-12-31'); if (!kr.length) continue; n++;
+      for (const x of kr) prosjek[x.k] = (prosjek[x.k] || 0) + x.s;
+    }
+    for (const k in prosjek) prosjek[k] /= n;
+    const sada = doDanas.length ? doDanas[doDanas.length - 1].s : 0;
+    const prosjekDanas = prosjek[danas.slice(5)] || 0;
+    // koliko je dana sezona ispred/iza: razlika podijeljena s prosječnim dnevnim prirastom u zadnja dva tjedna
+    const kljucevi = Object.keys(prosjek).sort();
+    const idx = kljucevi.indexOf(danas.slice(5));
+    const prirast = idx >= 14 ? (prosjek[kljucevi[idx]] - prosjek[kljucevi[idx - 14]]) / 14 : 0;
+    const pomak = prirast >= 3 ? Math.max(-40, Math.min(40, Math.round((sada - prosjekDanas) / prirast))) : null;
+    const zaTjedan = tekuca.length ? tekuca[tekuca.length - 1].s - sada : 0;
+    return { c, poc, sada, prosjekDanas, pomak, zaTjedan, tekuca, prosjek, kljucevi, danas: danas.slice(5) };
+  }
+
+  function grafGDD(r) {
+    const ns = 'http://www.w3.org/2000/svg', W = 300, H = 90;
+    const xs = r.kljucevi.filter(k => k >= r.poc);
+    const max = Math.max(r.prosjek[xs[xs.length - 1]] || 1, r.tekuca.length ? r.tekuca[r.tekuca.length - 1].s : 1);
+    const X = i => i / (xs.length - 1) * W, Y = v => H - 4 - v / max * (H - 8);
+    const svg = document.createElementNS(ns, 'svg'); svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('class', 'gdd-graf');
+    const linija = (tocke, klasa) => { const p = document.createElementNS(ns, 'polyline'); p.setAttribute('points', tocke); p.setAttribute('class', klasa); svg.append(p); };
+    linija(xs.map((k, i) => X(i).toFixed(1) + ',' + Y(r.prosjek[k]).toFixed(1)).join(' '), 'prosjek');
+    const pos = Object.fromEntries(xs.map((k, i) => [k, i]));
+    linija(r.tekuca.filter(t => !t.prognoza && pos[t.k] !== undefined).map(t => X(pos[t.k]).toFixed(1) + ',' + Y(t.s).toFixed(1)).join(' '), 'tekuca');
+    linija(r.tekuca.filter(t => t.prognoza && pos[t.k] !== undefined).map(t => X(pos[t.k]).toFixed(1) + ',' + Y(t.s).toFixed(1)).join(' '), 'prognoza');
+    return svg;
+  }
+
+  function opisGDD(r, kultura) {
+    const k = KULTURE[kultura] || '';
+    if (r.prije) return 'Za ' + k.toLowerCase() + ' zbrajanje počinje ' + r.poc.split('-').reverse().join('. ') + '.';
+    if (r.pomak === null) {
+      const o = r.prosjekDanas ? Math.round((r.sada / r.prosjekDanas - 1) * 100) : 0;
+      return Math.abs(o) <= 3 ? 'Ova je sezona po toplini bila prosječna.' : 'Ova je sezona bila ' + Math.abs(o) + ' % ' + (o > 0 ? 'toplija' : 'hladnija') +
+        ' od prosjeka (zbroj od početka sezone). Rast je sada spor, pa se usporedba u danima ne računa.';
+    }
+    const p = Math.abs(r.pomak);
+    let t;
+    if (p <= 2) t = 'Sezona teče kao u prosječnoj godini.';
+    else if (r.pomak > 0) t = 'Sezona je oko ' + p + ' dana ispred prosječne godine – razvoj usjeva, cvatnja i zrioba dolaze ranije.';
+    else t = 'Sezona kasni oko ' + p + ' dana za prosječnom godinom – razvoj je sporiji, rokovi se pomiču kasnije.';
+    if (r.pomak > 5 && ['kukuruz', 'soja', 'suncokret'].includes(kultura)) t += ' Kritično razdoblje za vodu (cvatnja) moglo bi pasti ranije nego inače – pratite bilancu vode.';
+    if (r.pomak > 5 && ['vocnjak', 'loza'].includes(kultura)) t += ' Raniji razvoj znači i veći rizik od kasnog mraza.';
+    if (r.pomak > 5 && ['psenica', 'repica'].includes(kultura)) t += ' Ozimi usjevi ranije kreću – prihranu planirajte ranije.';
+    return t;
+  }
+
+  function prikaziGDD(kultura) {
+    const okvir = el('div', { class: 'gdd' }, el('div', { class: 'agro-naslov' }, 'Toplinske jedinice (GDD)'), el('p', { class: 'sitno-siva' }, 'Učitavam višegodišnji prosjek…'));
+    (async () => {
+      try {
+        const dani = await dohvatiArhivu();
+        const r = izracunGDD(dani, kultura);
+        if (r.prije) { okvir.replaceChildren(el('div', { class: 'agro-naslov' }, 'Toplinske jedinice (GDD)'), el('p', {}, opisGDD(r, kultura))); return; }
+        const omjer = r.prosjekDanas ? Math.round((r.sada / r.prosjekDanas - 1) * 100) : 0;
+        okvir.replaceChildren(
+          el('div', { class: 'agro-naslov' }, 'Toplinske jedinice (GDD) – ' + r.c.naziv),
+          el('div', { class: 'gdd-brojke' },
+            el('div', {}, el('strong', {}, Math.round(r.sada) + ' °C·dan'), el('span', {}, 'ove godine')),
+            el('div', {}, el('strong', {}, Math.round(r.prosjekDanas) + ' °C·dan'), el('span', {}, 'prosjek 1995.–2024.')),
+            el('div', {}, el('strong', {}, (omjer >= 0 ? '+' : '') + omjer + ' %'), el('span', {}, 'razlika')),
+            el('div', {}, el('strong', {}, '+' + Math.round(r.zaTjedan)), el('span', {}, 'sljedećih 7 dana'))),
+          grafGDD(r),
+          el('div', { class: 'gdd-legenda' }, el('span', { class: 'l-tekuca' }, 'ova godina'), el('span', { class: 'l-prognoza' }, 'prognoza'), el('span', { class: 'l-prosjek' }, 'prosjek')),
+          el('p', {}, opisGDD(r, kultura)));
+      } catch (g) {
+        okvir.replaceChildren(el('div', { class: 'agro-naslov' }, 'Toplinske jedinice (GDD)'), el('p', { class: 'sitno-siva' }, 'Višegodišnji podaci trenutno nisu dostupni.'));
+      }
+    })();
+    return okvir;
+  }
+
   function prikaziSavjete() {
     let kultura = 'opce';
     try { kultura = localStorage.getItem('webgis.kultura') || 'opce'; } catch (g) { /* nije bitno */ }
     const x = agroPokazatelji();
     const popis = el('div', { class: 'savjeti' });
+    const gddMjesto = el('div');
     const crtaj = () => {
       popis.replaceChildren(...savjetiZaKulturu(kultura, x).map(([r, n, o]) => el('div', { class: 'savjet ' + r },
         el('span', { class: 'savjet-oznaka' }, { upozorenje: '!', oprez: '•', dobro: '✓', info: 'i' }[r]),
         el('div', {}, el('strong', {}, n), el('p', {}, o)))));
+      gddMjesto.replaceChildren(prikaziGDD(kultura));
     };
     const odabir = el('select', { 'aria-label': 'Kultura', onchange: (e) => { kultura = e.target.value; try { localStorage.setItem('webgis.kultura', kultura); } catch (g) { /* */ } crtaj(); } },
       ...Object.entries(KULTURE).map(([k, n]) => el('option', { value: k, selected: k === kultura }, n)));
     crtaj();
     return el('div', { class: 'agro-savjeti' },
       el('div', { class: 'savjeti-zaglavlje' }, el('div', { class: 'agro-naslov' }, 'Što to znači za vaše radove'), odabir),
-      popis,
+      popis, gddMjesto,
       el('p', { class: 'sitno-siva' }, 'Savjeti su opći, izvedeni iz prognoze i uobičajenih agrotehničkih rokova za istočnu Hrvatsku. Za zaštitu bilja vrijede upute na etiketi sredstva i preporuke savjetodavne službe.'));
   }
 
