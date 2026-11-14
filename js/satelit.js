@@ -147,6 +147,7 @@
         el('div', { class: 'savjeti' }, ...t.s.map(([r, n, o]) => el('div', { class: 'savjet ' + r },
           el('span', { class: 'savjet-oznaka' }, { upozorenje: '!', oprez: '•', dobro: '✓', info: 'i' }[r]), el('div', {}, el('strong', {}, n), el('p', {}, o))))),
         plodored(p),
+        gumbPrati(f),
         prekidac, grafMjesto,
         el('div', { class: 'gdd-legenda' }, el('span', { class: 'l-tekuca' }, String(t.tek) + '.'), el('span', { class: 'l-prosjek' }, 'prethodne sezone')),
         el('details', { class: 'sat-detalji' }, el('summary', {}, 'Vrhunci po sezonama'),
@@ -158,6 +159,100 @@
           el('p', {}, 'Podaci: Sentinel-2 (Copernicus, EU), razlučivost 10 m, snimanje svakih 2–5 dana; računaju se samo dani kad je parcela bez oblaka. Satelit pokazuje gdje treba pogledati – na terenu se utvrđuje zašto.')));
     });
     return okvir;
+  }
+
+
+  // ---------- moje parcele: praćenje i upozorenja (sprema se samo u ovom pregledniku) ----------
+  const KLJUC = 'webgis.moje_parcele';
+  const moje = () => { try { return JSON.parse(localStorage.getItem(KLJUC) || '[]'); } catch (g) { return []; } };
+  const spremi = (l) => { try { localStorage.setItem(KLJUC, JSON.stringify(l)); } catch (g) { /* */ } osvjeziGumbMoje(); };
+
+  function gumbPrati(f) {
+    const p = f.getProperties();
+    const prati = () => moje().some(x => x.id === p.id);
+    const g = el('button', { class: 'gumb-mali gumb-prati' });
+    const crtaj = () => { g.textContent = prati() ? '★ Pratim ovu parcelu' : '☆ Prati ovu parcelu'; g.classList.toggle('aktivan', prati()); };
+    g.onclick = () => {
+      let l = moje();
+      if (prati()) l = l.filter(x => x.id !== p.id);
+      else {
+        const c = ol.proj.toLonLat(ol.extent.getCenter(f.getGeometry().getExtent()));
+        l.push({ id: p.id, naziv: (p.kultura || 'parcela') + ', ' + (p.povrsina_ha ? String(p.povrsina_ha).replace('.', ',') + ' ha' : ''), lon: +c[0].toFixed(5), lat: +c[1].toFixed(5) });
+      }
+      spremi(l); crtaj();
+    };
+    crtaj();
+    return el('div', { class: 'prati-okvir' }, g, el('p', { class: 'sitno-siva' }, 'Praćene parcele i njihova upozorenja vidite gumbom „Moje parcele” na karti. Popis se čuva samo u ovom pregledniku.'));
+  }
+
+  async function vremenskaUpozorenja(lat, lon) {
+    const p = new URLSearchParams({ latitude: lat.toFixed(3), longitude: lon.toFixed(3), timezone: 'Europe/Zagreb', forecast_days: 4,
+      daily: 'temperature_2m_min,temperature_2m_max,precipitation_sum,wind_gusts_10m_max', hourly: 'wind_speed_10m,precipitation,temperature_2m' });
+    const j = await (await fetch('https://api.open-meteo.com/v1/forecast?' + p)).json();
+    const u = [], d = j.daily, mj = new Date().getMonth() + 1;
+    d.time.forEach((t, i) => {
+      const dan = new Date(t + 'T12:00:00').toLocaleDateString('hr-HR', { weekday: 'long', day: 'numeric', month: 'numeric' });
+      if (d.temperature_2m_min[i] <= (mj >= 3 && mj <= 5 ? 0 : -8)) u.push(['upozorenje', 'Mraz: ' + dan, 'Najniža temperatura ' + Math.round(d.temperature_2m_min[i]) + ' °C.']);
+      if (d.precipitation_sum[i] >= 20) u.push(['oprez', 'Obilna kiša: ' + dan, Math.round(d.precipitation_sum[i]) + ' mm – teški strojevi ne na polje dan-dva nakon kiše; gnojidbu odgodite.']);
+      if (d.wind_gusts_10m_max[i] >= 60) u.push(['oprez', 'Olujni vjetar: ' + dan, 'Udari do ' + Math.round(d.wind_gusts_10m_max[i]) + ' km/h.']);
+    });
+    // prvi povoljan termin za prskanje u sljedećih 48 h
+    const h = j.hourly; const sad = new Date().toISOString().slice(0, 13);
+    const i0 = Math.max(0, h.time.findIndex(t => t >= sad.replace('T', 'T')));
+    for (let i = i0; i < Math.min(i0 + 48, h.time.length - 3); i++) {
+      const suho = [0, 1, 2, 3].every(k => (h.precipitation[i + k] || 0) < 0.1);
+      if (suho && h.wind_speed_10m[i] >= 3 && h.wind_speed_10m[i] <= 15 && h.temperature_2m[i] >= 8 && h.temperature_2m[i] <= 25) {
+        u.push(['dobro', 'Povoljan termin za prskanje', new Date(h.time[i]).toLocaleString('hr-HR', { weekday: 'long', hour: '2-digit', minute: '2-digit' }) + ' (vjetar ' + Math.round(h.wind_speed_10m[i]) + ' km/h, bez kiše 3 sata).']);
+        break;
+      }
+    }
+    return u;
+  }
+
+  let upozorenjaMoje = null;
+  async function izracunajMoje() {
+    const l = moje();
+    if (!l.length) return [];
+    let st = {};
+    try { const j = await (await fetch(BAZA + 'stanje.geojson')).json(); for (const f of j.features) st[f.properties.id] = f.properties; } catch (g) { /* */ }
+    const rez = [];
+    for (const x of l) {
+      const niz = await nizParcele(x.id);
+      const t = Object.keys(niz).length ? tumacenje(niz, st[x.id] || {}) : { s: [] };
+      rez.push({ x, sat: t.s.filter(a => a[0] === 'upozorenje' || a[0] === 'oprez') });
+    }
+    let vrijeme = [];
+    try { vrijeme = await vremenskaUpozorenja(l[0].lat, l[0].lon); } catch (g) { /* */ }
+    return { rez, vrijeme };
+  }
+
+  async function osvjeziGumbMoje() {
+    const okvir = document.querySelector('.gumbi-karte');
+    if (!okvir) return;
+    let g = document.getElementById('gumbMoje');
+    if (!moje().length) { if (g) g.remove(); return; }
+    if (!g) { g = el('button', { id: 'gumbMoje', class: 'gumb-karte', title: 'Moje parcele – upozorenja', onclick: prikaziMoje }); okvir.prepend(g); }
+    g.replaceChildren(el('span', {}, '★'), el('span', {}, 'Moje parcele'));
+    upozorenjaMoje = await izracunajMoje();
+    const n = upozorenjaMoje.rez.reduce((a, r) => a + r.sat.length, 0) + upozorenjaMoje.vrijeme.filter(v => v[0] !== 'dobro').length;
+    if (n) g.append(el('span', { class: 'znacka' }, String(n)));
+  }
+
+  async function prikaziMoje() {
+    const sadrzaj = el('div', {}, el('p', {}, 'Učitavam…'));
+    stanje.api.otvoriDijalog(el('h3', {}, 'Moje parcele'), sadrzaj);
+    const u = upozorenjaMoje || await izracunajMoje();
+    const savjet = ([r, n, o]) => el('div', { class: 'savjet ' + r }, el('span', { class: 'savjet-oznaka' }, { upozorenje: '!', oprez: '•', dobro: '✓', info: 'i' }[r]), el('div', {}, el('strong', {}, n), el('p', {}, o)));
+    sadrzaj.replaceChildren(
+      el('div', { class: 'sat-naslov' }, 'Vrijeme na mojim parcelama (sljedeća 4 dana)'),
+      el('div', { class: 'savjeti' }, ...(u.vrijeme.length ? u.vrijeme.map(savjet) : [el('p', { class: 'sitno-siva' }, 'Nema vremenskih upozorenja.')])),
+      ...u.rez.map(({ x, sat }) => el('div', { class: 'moja-parcela' },
+        el('div', { class: 'moja-zaglavlje' }, el('strong', {}, x.naziv),
+          el('button', { class: 'gumb-mali', onclick: () => { document.getElementById('dijalog').close(); stanje.karta.getView().animate({ center: ol.proj.fromLonLat([x.lon, x.lat]), zoom: 16, duration: 600 });
+            const z = stanje.slojevi.stanje_usjeva; if (z && z.postaviVidljivost) z.postaviVidljivost(true); } }, 'Na karti'),
+          el('button', { class: 'gumb-mali', onclick: () => { spremi(moje().filter(y => y.id !== x.id)); prikaziMoje(); } }, 'Ukloni')),
+        el('div', { class: 'savjeti' }, ...(sat.length ? sat.map(savjet) : [el('p', { class: 'sitno-siva' }, 'Satelit ne pokazuje ništa zabrinjavajuće.')])))),
+      el('p', { class: 'sitno-siva' }, 'Upozorenja se računaju pri svakom otvaranju portala. Obavijesti e-poštom bit će moguće kad općina uključi slanje pošte.'));
   }
 
   function pripremi(konfig) {
@@ -207,6 +302,7 @@
     stanje = s; el = s.api.el;
     s.skocniDodaci.satelit = (f) => { const o = el('div'); dodatak(f).then(x => o.replaceChildren(x)); return o; };
     try { sazetak = await (await fetch(BAZA + 'sazetak.json')).json(); } catch (g) { /* još nema podataka */ }
+    osvjeziGumbMoje();
     try {
       const z = await (await fetch(BAZA + 'zone.json')).json();
       const zap = s.slojevi.zone_parcela;

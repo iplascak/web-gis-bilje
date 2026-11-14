@@ -697,3 +697,9 @@ button { font-family: inherit; }
 .plodored-niz { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; }
 .plodored-god { display: inline-flex; align-items: center; gap: 4px; }
 .plodored-boja { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.gumb-prati.aktivan { background: var(--kivi, #9ccc3c); color: #111; }
+.prati-okvir { margin: 8px 0; }
+.znacka { background: #dc2626; color: #fff; border-radius: 999px; padding: 0 6px; font-size: 11px; line-height: 18px; min-width: 18px; text-align: center; }
+.moja-parcela { border-top: 1px solid rgba(127,127,127,.2); padding-top: 10px; margin-top: 10px; }
+.moja-zaglavlje { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; flex-wrap: wrap; }
+.moja-zaglavlje strong { flex: 1; }
