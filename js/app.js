@@ -81,15 +81,35 @@
     return m ? `rgba(${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)},${alfa})` : hex;
   }
 
+  // jednostavni simboli za točke (bijeli znak na obojenom krugu), viewBox 24x24
+  const SIMBOLI = {
+    opcina: 'M3 10h18L12 4z M5 11h2.5v7H5z M10.75 11h2.5v7h-2.5z M16.5 11H19v7h-2.5z M3 19h18v2H3z',
+    vrtic: 'M12 3.5a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z M8 10h8l2.5 4-1.8 1L15 12.5V21h-2.2v-5h-1.6v5H9v-8.5L7.3 15l-1.8-1z',
+    kultura: 'M3.5 5.5C6 4.5 9 4.6 11 6v13c-2-1.4-5-1.5-7.5-.5z M20.5 5.5C18 4.5 15 4.6 13 6v13c2-1.4 5-1.5 7.5-.5z',
+    turizam: 'M10.6 10h2.8v9h-2.8z M12 4.2a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6z',
+    komunalno: 'M2 7h11v8.5H2z M13.5 10H18l3 3.2v2.3h-7.5z M6 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z M17 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z'
+  };
+  function svgSimbola(simbol, boja) {
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">' +
+      '<circle cx="16" cy="16" r="14.5" fill="' + boja + '" stroke="#fff" stroke-width="2.5"/>' +
+      '<g transform="translate(5.2 5.2) scale(0.9)"><path d="' + SIMBOLI[simbol] + '" fill="#fff"/></g></svg>');
+  }
+  function ikonaSimbola(simbol, boja, velicina) {
+    return new ol.style.Icon({ src: svgSimbola(simbol, boja), width: velicina || 30, height: velicina || 30 });
+  }
+
   function napraviStil(stil, idSloja) {
     stil = stil || {};
     const geom = stil.geometrija || 'poligon';
     const kesh = {};
 
-    function osnovniStil(boja) {
-      if (kesh[boja]) return kesh[boja];
+    function osnovniStil(boja, simbol) {
+      const kljuc = boja + (simbol || '');
+      if (kesh[kljuc]) return kesh[kljuc];
       let s;
-      if (geom === 'tocka') {
+      if (geom === 'tocka' && simbol && SIMBOLI[simbol]) {
+        s = new ol.style.Style({ image: ikonaSimbola(simbol, boja, stil.velicinaIkone) });
+      } else if (geom === 'tocka') {
         s = new ol.style.Style({
           image: new ol.style.Circle({
             radius: stil.velicina || 7,
@@ -106,7 +126,7 @@
           fill: new ol.style.Fill({ color: ispuna })
         });
       }
-      kesh[boja] = s;
+      kesh[kljuc] = s;
       return s;
     }
 
@@ -118,23 +138,23 @@
         fill: new ol.style.Fill({ color: '#1f2937' }),
         stroke: new ol.style.Stroke({ color: 'rgba(255,255,255,0.9)', width: 3 }),
         placement: geom === 'linija' ? 'line' : 'point',
-        offsetY: geom === 'tocka' ? -15 : 0,
+        offsetY: geom === 'tocka' ? (stil.simbol || stil.kategorije && Object.values(stil.kategorije.vrijednosti).some(v => v.simbol) ? -22 : -15) : 0,
         overflow: geom === 'poligon'
       })
     }) : null;
 
     const zadana = stil.boja || stil.rub || '#2563eb';
     return function (f, rezolucija) {
-      let boja = zadana;
+      let boja = zadana, simbol = null;
       if (stil.kategorije) {
         const vrijednost = f.get(stil.kategorije.polje);
         // kategorija isključena u legendi -> objekt se ne crta (i ne može se kliknuti)
         const skrivene = idSloja && stanje.skriveneKategorije[idSloja];
         if (skrivene && skrivene.has(String(vrijednost))) return null;
         const k = stil.kategorije.vrijednosti[vrijednost];
-        if (k) boja = k.boja;
+        if (k) { boja = k.boja; simbol = k.simbol; }
       }
-      const osnovni = osnovniStil(boja);
+      const osnovni = osnovniStil(boja, simbol || stil.simbol);
       if (!natpisStil || rezolucija > natpisMaxRez) return osnovni;
       natpisStil.getText().setText(String(f.get(stil.natpis) || ''));
       return [osnovni, natpisStil];
@@ -163,7 +183,8 @@
     const stil = def.stil;
     if (!stil) return null;
     const geom = stil.geometrija || 'poligon';
-    const znak = (boja) => {
+    const znak = (boja, simbol) => {
+      if (geom === 'tocka' && simbol && SIMBOLI[simbol]) return el('img', { class: 'znak-ikona', src: svgSimbola(simbol, boja), alt: '' });
       const z = el('span', { class: 'znak ' + geom });
       if (geom === 'poligon') {
         z.style.borderColor = stil.rub || boja;
@@ -185,11 +206,11 @@
             if (z) z.olSloj.changed();
             zatvoriSkocni();
           } });
-        l.append(el('label', { class: 'kategorija' }, kv, znak(k.boja), k.oznaka));
+        l.append(el('label', { class: 'kategorija' }, kv, znak(k.boja, k.simbol), k.oznaka));
       }
       l.classList.add('legenda-kategorije');
     } else if (geom !== 'poligon' || stil.ispuna) {
-      l.append(el('div', {}, znak(stil.boja || stil.rub || '#2563eb'), def.naziv));
+      l.append(el('div', {}, znak(stil.boja || stil.rub || '#2563eb', stil.simbol), def.naziv));
     } else {
       return null;
     }

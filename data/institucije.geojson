@@ -1,0 +1,100 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.744928,
+     45.603227
+    ]
+   },
+   "properties": {
+    "naziv": "Općina Bilje",
+    "vrsta": "opcina",
+    "adresa": "Kralja Zvonimira 1b, 31327 Bilje",
+    "telefon": "+385 31 751 400",
+    "email": "bilje@bilje.hr",
+    "web": "https://bilje.hr/",
+    "napomena": "Jedinstveni upravni odjel; radno vrijeme pon–pet 7:30–15:30, blagajna 8–10 i 13–14 h"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.743622,
+     45.603555
+    ]
+   },
+   "properties": {
+    "naziv": "Kulturno razvojni centar Bilje",
+    "vrsta": "kultura",
+    "adresa": "Kralja Zvonimira 2, 31327 Bilje",
+    "telefon": "+385 91 6114 565",
+    "email": "krc@bilje.hr",
+    "web": "https://krc.bilje.hr/",
+    "napomena": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.743756,
+     45.602943
+    ]
+   },
+   "properties": {
+    "naziv": "Turistička zajednica Općine Bilje",
+    "vrsta": "turizam",
+    "adresa": "Kralja Zvonimira 10, 31327 Bilje",
+    "telefon": "+385 99 7332 001",
+    "email": "info@tzo-bilje.hr",
+    "web": "http://www.tzo-bilje.hr/",
+    "napomena": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.743313,
+     45.610001
+    ]
+   },
+   "properties": {
+    "naziv": "Dječji vrtić Grlica",
+    "vrsta": "vrtic",
+    "adresa": "Biljske satnije ZNG RH 11a, 31327 Bilje",
+    "telefon": "+385 31 750 144",
+    "email": "dvgrlica.bilje@gmail.com",
+    "web": "https://dv-grlica.hr/",
+    "napomena": null
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.735125,
+     45.612778
+    ]
+   },
+   "properties": {
+    "naziv": "Komunalno - Bilje d.o.o.",
+    "vrsta": "komunalno",
+    "adresa": "Kralja Tomislava 94, 31327 Bilje",
+    "telefon": "+385 31 750 427",
+    "email": "komunalno-bilje1@os.t-com.hr",
+    "web": "http://komunalno-bilje.hr/",
+    "napomena": "Komunalno poduzeće u vlasništvu Općine Bilje"
+   }
+  }
+ ]
+}

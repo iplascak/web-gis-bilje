@@ -337,3 +337,4 @@ button { font-family: inherit; }
   #gumbPrijavi span, #gumbRacun span { display: none; }
   #gumbPrijavi, #gumbRacun { width: 38px; padding: 0; }
 }
+.znak-ikona { width: 18px; height: 18px; flex-shrink: 0; }

@@ -78,6 +78,79 @@
       "detaljno": "Granice naselja iz Registra prostornih jedinica DGU-a. Naziv naselja prikazuje se na karti, a u kartici \"Što je na ovoj lokaciji?\" naselje se određuje prema ovom sloju.\n\nGranica naselja nije isto što i granica građevinskog područja naselja. Gdje se smije graditi određuje prostorni plan."
     },
     {
+      "id": "institucije",
+      "naziv": "Općina i njezine ustanove",
+      "grupa": "osnovno",
+      "tip": "geojson",
+      "url": "data/institucije.geojson",
+      "vidljivo": true,
+      "stil": {
+        "geometrija": "tocka",
+        "natpis": "naziv",
+        "natpisMinZoom": 16,
+        "kategorije": {
+          "polje": "vrsta",
+          "vrijednosti": {
+            "opcina": {
+              "boja": "#1F7A3D",
+              "oznaka": "Općina Bilje",
+              "simbol": "opcina"
+            },
+            "komunalno": {
+              "boja": "#b45309",
+              "oznaka": "Komunalno - Bilje d.o.o.",
+              "simbol": "komunalno"
+            },
+            "vrtic": {
+              "boja": "#db2777",
+              "oznaka": "Dječji vrtić",
+              "simbol": "vrtic"
+            },
+            "kultura": {
+              "boja": "#7c3aed",
+              "oznaka": "Kultura",
+              "simbol": "kultura"
+            },
+            "turizam": {
+              "boja": "#0284c7",
+              "oznaka": "Turistička zajednica",
+              "simbol": "turizam"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "adresa",
+            "oznaka": "Adresa"
+          },
+          {
+            "polje": "telefon",
+            "oznaka": "Telefon"
+          },
+          {
+            "polje": "email",
+            "oznaka": "E-pošta"
+          },
+          {
+            "polje": "web",
+            "oznaka": "Web",
+            "format": "poveznica"
+          },
+          {
+            "polje": "napomena",
+            "oznaka": "Napomena"
+          }
+        ]
+      },
+      "opis": "Sjedište Općine Bilje i ustanove i trgovačko društvo u njezinom vlasništvu.",
+      "detaljno": "Općina Bilje, Kulturno razvojni centar Bilje, Turistička zajednica Općine Bilje, Dječji vrtić Grlica i komunalno poduzeće Komunalno - Bilje d.o.o., s adresama i kontaktima kako su objavljeni na službenoj stranici općine (bilje.hr, \"Naše institucije\" i \"Kontakt\"). Lokacija je određena prema kućnom broju iz registra prostornih jedinica DGU-a.",
+      "izvor": "bilje.hr; adrese: DGU RPJ",
+      "azurirano": "studeni 2026."
+    },
+    {
       "id": "ulice",
       "naziv": "Ulice",
       "grupa": "osnovno",
