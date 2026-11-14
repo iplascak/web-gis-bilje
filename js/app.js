@@ -258,6 +258,15 @@
       return new ol.layer.Image(Object.assign({ source: izvor }, zajednicko));
     }
 
+    if (def.tip === 'xyz') {
+      // vlastite pločice (npr. snimke dronom); više izvora, svaki samo unutar svog obuhvata
+      const slojevi = (def.izvori || [{ url: def.url, extent: def.extent }]).map(iz => new ol.layer.Tile({
+        extent: iz.extent,
+        source: new ol.source.XYZ({ url: iz.url, maxZoom: def.maxNativeZoom || 21, attributions: def.atribucija, transition: 150 })
+      }));
+      return new ol.layer.Group(Object.assign({ layers: slojevi }, zajednicko));
+    }
+
     if (def.tip === 'wms') {
       const izvor = new ol.source.ImageWMS({
         url: def.url,

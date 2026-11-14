@@ -691,6 +691,83 @@
       "azurirano": "studeni 2026."
     },
     {
+      "id": "groblja",
+      "naziv": "Groblja",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/groblja.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#4b5563",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.08,
+        "natpis": "naziv",
+        "natpisMinZoom": 13
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "snimka",
+            "oznaka": "Snimka"
+          },
+          {
+            "polje": "napomena",
+            "oznaka": ""
+          }
+        ]
+      },
+      "opis": "Obuhvat snimki groblja izrađenih dronom.",
+      "detaljno": "Groblja u Bilju, Kopačevu i Lugu snimljena su dronom u vrlo visokoj razlučivosti (oko 5 cm po pikselu), tako da se razaznaju pojedinačni grobovi, staze i objekti. Snimka je korisna za održavanje groblja, planiranje proširenja i snalaženje posjetitelja.\n\nSnimka se prikazuje kad se karta dovoljno uveća (od razine ulice naviše). Datoteke snimki izrađene su u ožujku 2022.; za groblje u Vardarcu snimka još ne postoji.\n\nNa snimci nema imena pokojnika ni drugih osobnih podataka; evidencija grobnih mjesta (grobni očevidnik) nije dio javnog portala.",
+      "izvor": "Općina Bilje",
+      "azurirano": "2022."
+    },
+    {
+      "id": "groblja_dron",
+      "naziv": "Groblja – snimka dronom (5 cm)",
+      "grupa": "imovina",
+      "tip": "xyz",
+      "izvori": [
+        {
+          "url": "data/groblja/bilje/{z}/{x}/{y}.webp",
+          "extent": [
+            2085591.2,
+            5716885.7,
+            2085896.8,
+            5717210.0
+          ]
+        },
+        {
+          "url": "data/groblja/kopacevo/{z}/{x}/{y}.webp",
+          "extent": [
+            2090891.8,
+            5716525.3,
+            2091195.3,
+            5716946.1
+          ]
+        },
+        {
+          "url": "data/groblja/lug/{z}/{x}/{y}.webp",
+          "extent": [
+            2089357.5,
+            5726110.8,
+            2089819.5,
+            5726364.9
+          ]
+        }
+      ],
+      "minZoom": 15,
+      "maxNativeZoom": 21,
+      "vidljivo": true,
+      "klik": false,
+      "opis": "Detaljna snimka groblja dronom; vidljiva pri uvećanju.",
+      "detaljno": "Groblja u Bilju, Kopačevu i Lugu snimljena su dronom u vrlo visokoj razlučivosti (oko 5 cm po pikselu), tako da se razaznaju pojedinačni grobovi, staze i objekti. Snimka je korisna za održavanje groblja, planiranje proširenja i snalaženje posjetitelja.\n\nSnimka se prikazuje kad se karta dovoljno uveća (od razine ulice naviše). Datoteke snimki izrađene su u ožujku 2022.; za groblje u Vardarcu snimka još ne postoji.\n\nNa snimci nema imena pokojnika ni drugih osobnih podataka; evidencija grobnih mjesta (grobni očevidnik) nije dio javnog portala.",
+      "izvor": "Općina Bilje (snimanje dronom)",
+      "azurirano": "2022.",
+      "atribucija": "Snimka groblja © Općina Bilje"
+    },
+    {
       "id": "komunalna",
       "naziv": "Komunalna infrastruktura",
       "grupa": "imovina",
