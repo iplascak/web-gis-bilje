@@ -114,3 +114,16 @@ Gumb **Podijeli** kopira poveznicu oblika `#v=zoom/lon/lat&p=podloga&s=sloj1,slo
 `.github/workflows/provjera-servisa.yml` svakog ponedjeljka pokreće `scripts/provjera_servisa.py`.
 Ako neki izvor ne radi, otvara se issue s oznakom `provjera-servisa` (GitHub šalje e-mail).
 Ručno pokretanje: Actions → Tjedna provjera servisa → Run workflow.
+
+## Elementarne nepogode (satelitska analiza)
+
+1. U `config/nepogode.json` kopirajte postojeći zapis i promijenite `id`, `naziv`, `vrsta`, `opis` i `analiza`:
+   - suša / toplinski val: `"metoda": "ndvi_anomalija"`, `godina`, `razdoblje` (MM-DD), `referentne_godine`
+   - tuča / oluja / požar: `"metoda": "ndvi_promjena"`, `"prije": ["2027-06-01","2027-06-20"]`, `"poslije": ["2027-06-25","2027-07-15"]`
+2. Status postavite na `ceka_obradu` i spremite (commit).
+3. GitHub → Actions → **Analiza elementarne nepogode** → Run workflow → upišite `id`.
+4. Za nekoliko minuta karta i ARKOD parcele pojavljuju se u grupi *Elementarne nepogode*,
+   a nepogoda i u izvještaju "Što je na ovoj lokaciji?".
+
+Podaci: Copernicus Sentinel-2 L2A preko javnog STAC kataloga Earth Search (besplatno). Svaka analiza
+ostavlja `manifest.json` s popisom snimaka, processing baselineom i primijenjenim pomakom.
