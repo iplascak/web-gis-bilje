@@ -408,6 +408,69 @@
       "atribucija": "© OpenStreetMap suradnici"
     },
     {
+      "id": "pristupacnost",
+      "naziv": "Pristupačnost (invalidska kolica, dječja kolica)",
+      "grupa": "svakodnevica",
+      "podgrupa": "Javni sadržaji",
+      "tip": "geojson",
+      "url": "data/sadrzaji/pristupacnost.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "kategorije": {
+          "polje": "pristup",
+          "vrijednosti": {
+            "pristupačno": {
+              "boja": "#2e7d32",
+              "oznaka": "pristupačno"
+            },
+            "djelomično pristupačno": {
+              "boja": "#f9a825",
+              "oznaka": "djelomično pristupačno"
+            },
+            "nije pristupačno": {
+              "boja": "#c62828",
+              "oznaka": "nije pristupačno"
+            },
+            "nije označeno": {
+              "boja": "#9e9e9e",
+              "oznaka": "nije provjereno"
+            }
+          }
+        }
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "vrsta",
+            "oznaka": "Vrsta"
+          },
+          {
+            "polje": "pristup",
+            "oznaka": "Ulaz"
+          },
+          {
+            "polje": "wc_pristupacan",
+            "oznaka": "Pristupačan WC"
+          },
+          {
+            "polje": "adresa",
+            "oznaka": "Adresa"
+          },
+          {
+            "polje": "osm",
+            "oznaka": "Dopuni u OpenStreetMapu",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Može li se u javne objekte ući invalidskim ili dječjim kolicima.",
+      "detaljno": "Ulazi u ambulante, ljekarne, škole, trgovine, crkve, restorane i druge javne objekte prema oznaci pristupačnosti u OpenStreetMapu. Sivi objekti još nisu provjereni.\n\nPodatak može dopuniti svatko: klikom na „Dopuni u OpenStreetMapu” i upisom oznake „wheelchair” (yes / limited / no). Karta se osvježava jednom mjesečno. Dobar projekt za udruge, učenike ili volontere: obići objekte i označiti pristupačnost.",
+      "izvor": "© OpenStreetMap suradnici (ODbL)",
+      "azurirano": "mjesečno"
+    },
+    {
       "id": "imovina_opcine",
       "naziv": "Imovina općine (nekretnine)",
       "grupa": "imovina",

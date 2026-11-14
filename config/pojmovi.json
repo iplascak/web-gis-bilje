@@ -526,6 +526,20 @@
    "naslov": "Vođena priča: izlet u Kopački rit",
    "opis": "rit, dvorac Tikveš, staze, baština i okusi kraja",
    "akcija": "prica_turizam"
+  },
+  {
+   "pojmovi": [
+    "pristupa",
+    "invalid",
+    "kolica",
+    "rampa",
+    "lift"
+   ],
+   "naslov": "Pristupačnost",
+   "opis": "ulaz s invalidskim i dječjim kolicima",
+   "slojevi": [
+    "pristupacnost"
+   ]
   }
  ]
 }

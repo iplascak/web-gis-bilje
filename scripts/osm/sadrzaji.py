@@ -96,8 +96,13 @@ def main():
         izlaz[sloj].append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [round(lon, 6), round(lat, 6)]}, "properties": {
             "naziv": t.get("name") or vrsta[0].upper() + vrsta[1:], "kategorija": kat, "vrsta": vrsta,
             "adresa": adresa or None, "radno_vrijeme": t.get("opening_hours"), "telefon": t.get("phone") or t.get("contact:phone"),
-            "web": t.get("website") or t.get("contact:website"), "osm": f"https://www.openstreetmap.org/{e['type']}/{e['id']}"}})
+            "web": t.get("website") or t.get("contact:website"), "osm": f"https://www.openstreetmap.org/{e['type']}/{e['id']}",
+            "pristup": {"yes": "pristupačno", "limited": "djelomično pristupačno", "no": "nije pristupačno"}.get(t.get("wheelchair"), "nije označeno"),
+            "wc_pristupacan": {"yes": "da", "no": "ne"}.get(t.get("toilets:wheelchair"))}})
     d = K / "data/sadrzaji"; d.mkdir(parents=True, exist_ok=True)
+    # pristupačnost za osobe s invaliditetom i roditelje s kolicima – svi javni objekti, s oznakom iz OSM-a (wheelchair=*)
+    izlaz["pristupacnost"] = [f for sl in ("javni", "slobodno") for f in izlaz[sl]
+                              if f["properties"]["kategorija"] in ("zdravlje", "obrazovanje", "usluge", "trgovine", "vjera", "sigurnost", "ugostiteljstvo", "smjestaj", "bastina", "odmor")]
     for sloj, fs in izlaz.items():
         fs.sort(key=lambda f: (f["properties"]["kategorija"], f["properties"]["naziv"]))
         (d / f"{sloj}.geojson").write_text(json.dumps({"type": "FeatureCollection", "izvor": "© OpenStreetMap suradnici (ODbL)",
