@@ -132,6 +132,15 @@
   }
 
   function napraviLegendu(def) {
+    if (def.legendaStavke) {
+      const l = el('div', { class: 'legenda' });
+      for (const st of def.legendaStavke) {
+        const z = el('span', { class: 'znak poligon' });
+        z.style.background = st.boja; z.style.borderColor = st.boja;
+        l.append(el('div', {}, z, st.oznaka));
+      }
+      return l;
+    }
     if (def.tip === 'wms' && def.legenda !== false) {
       // legenda koju daje sam WMS servis (GetLegendGraphic)
       const sloj = String(def.wmsSlojevi).split(',')[0];
@@ -211,6 +220,14 @@
       const sloj = new ol.layer.Vector(Object.assign({ source: izvor, style: napraviStil(def.stil) }, zajednicko));
       sloj.set('upitni', def.klik !== false);
       return sloj;
+    }
+
+    if (def.tip === 'slika') {
+      // gotova slika (npr. rezultat satelitske analize) s poznatim obuhvatom u EPSG:3857
+      const izvor = new ol.source.ImageStatic({
+        url: def.url, imageExtent: def.extent, projection: 'EPSG:3857', attributions: def.atribucija
+      });
+      return new ol.layer.Image(Object.assign({ source: izvor }, zajednicko));
     }
 
     if (def.tip === 'wms') {
@@ -729,12 +746,73 @@
     unos.addEventListener('focus', () => { if (rezultati.length) lista.hidden = false; });
   }
 
+
+  // ---------- elementarne nepogode ----------
+  // Svaka obrađena nepogoda iz config/nepogode.json automatski dobiva dva sloja
+  // (karta odstupanja i ARKOD parcele) te provjeru u izvještaju o lokaciji.
+
+  const fmtPostotak = (v) => (v * 100).toLocaleString('hr-HR', { maximumFractionDigits: 0 }) + ' %';
+
+  function dodajNepogode(cfg, konfig, portal) {
+    const obradene = (cfg.nepogode || []).filter(n => n.status === 'obradeno' && n.rezultati);
+    if (!obradene.length) return;
+    if (!konfig.grupe.some(g => g.id === 'nepogode')) {
+      konfig.grupe.splice(1, 0, { id: 'nepogode', naziv: 'Elementarne nepogode', otvoreno: false });
+    }
+    const stavkeLokacije = [];
+    for (const n of obradene) {
+      const r = n.rezultati;
+      const metoda = (cfg.metode || {})[n.analiza.metoda] || {};
+      const legenda = r.legenda.concat([{ kod: 'nema_podataka', boja: '#ffffff', oznaka: 'nema dovoljno podataka' }]);
+      const udjeli = legenda.filter(l => r.statistika_udio && r.statistika_udio[l.kod])
+        .map(l => '• ' + l.oznaka + ': ' + fmtPostotak(r.statistika_udio[l.kod]) + ' (' + r.statistika_ha[l.kod].toLocaleString('hr-HR') + ' ha)').join('\n');
+      const zajednickiTekst =
+        n.opis + '\n\n' +
+        'Metoda: ' + (metoda.naziv || n.analiza.metoda) + '. ' + (metoda.opis || '') + '\n\n' +
+        'Usporedba: ' + (n.analiza.godina ? 'razdoblje ' + n.analiza.razdoblje.join(' – ') + '. ' + n.analiza.godina + '. prema ' : '') + r.referenca + '.\n\n' +
+        (udjeli ? 'Udio površine ARKOD parcela po razredima:\n' + udjeli + '\n\n' : '') +
+        'Ograničenja: rezultat je pokazatelj stanja vegetacije sa satelita, a ne procjena štete. Na odstupanje utječe i plodored: različita kultura na istoj parceli u različitim godinama daje drugačiji NDVI bez ikakve štete. Za službenu procjenu štete mjerodavna je općinska komisija. Rezultat može poslužiti kao pomoć pri odabiru parcela za terenski obilazak.';
+      const izvor = 'Copernicus Sentinel-2 L2A (ESA), obrada: Web GIS Općine Bilje';
+      const opisKarta = n.naziv + ': odstupanje stanja vegetacije (NDVI) od uobičajenog.';
+      konfig.slojevi.push({
+        id: n.id + '_karta', naziv: n.naziv + ' – karta odstupanja', grupa: 'nepogode', tip: 'slika',
+        url: r.slika.url, extent: r.slika.extent, vidljivo: false, neprozirnost: 0.85,
+        legendaStavke: r.legenda, opis: opisKarta, detaljno: zajednickiTekst, izvor,
+        azurirano: 'obrađeno ' + r.datum_obrade, atribucija: 'Sadrži modificirane podatke Copernicus Sentinel-2'
+      });
+      const vrijednosti = {};
+      for (const l of legenda) vrijednosti[l.kod] = { boja: l.boja, oznaka: l.oznaka };
+      konfig.slojevi.push({
+        id: n.id + '_parcele', naziv: n.naziv + ' – po ARKOD parcelama', grupa: 'nepogode', tip: 'geojson',
+        url: r.parcele, vidljivo: false,
+        stil: { geometrija: 'poligon', debljina: 0.8, ispunaProzirnost: 0.75, kategorije: { polje: 'razred', vrijednosti } },
+        skocniProzor: { naslov: 'razred_opis', polja: [
+          { polje: 'kultura', oznaka: 'Uporaba (ARKOD 2023.)' },
+          { polje: 'povrsina_ha', oznaka: 'Površina (ha)' },
+          { polje: 'ndvi', oznaka: 'NDVI ' + (n.analiza.godina || 'poslije') },
+          { polje: 'ndvi_ref', oznaka: 'NDVI uobičajeno' },
+          { polje: 'odstupanje', oznaka: 'Odstupanje' },
+          { polje: 'arkod_id', oznaka: 'ARKOD ID' }] },
+        opis: n.naziv + ': prosječno odstupanje po ARKOD parceli.', detaljno: zajednickiTekst, izvor: izvor + '; ARKOD 2023.',
+        azurirano: 'obrađeno ' + r.datum_obrade
+      });
+      stavkeLokacije.push({ vrsta: 'poligon', sloj: n.id + '_parcele', polje: 'razred_opis', oznaka: n.naziv, neutralno: true,
+        inace: 'nije ARKOD parcela' });
+    }
+    if (portal.lokacija && stavkeLokacije.length) {
+      portal.lokacija.provjere.push({ naslov: 'Elementarne nepogode (satelitska analiza)', stavke: stavkeLokacije });
+    }
+  }
+
   // ---------- pokretanje ----------
 
   async function pokreni() {
     const [portal, konfig] = await Promise.all([ucitajJSON('config/portal.json'), ucitajJSON('config/layers.json')]);
     stanje.portal = portal;
     stanje.konfig = konfig;
+    try {
+      dodajNepogode(await ucitajJSON('config/nepogode.json'), konfig, portal);
+    } catch (g) { console.warn('Nepogode nisu učitane:', g); }
 
     document.title = portal.naslov;
     document.getElementById('naslov').textContent = portal.naslov;
@@ -776,6 +854,7 @@
     prikaziSlojeve();
     postaviPretragu(portal.pretraga).catch((g) => console.warn('Pretraga nije dostupna:', g));
     stanje.prikazIzPoveznice = primijeniPoveznicu();
+    window.addEventListener('hashchange', () => primijeniPoveznicu());
 
     // granica općine – za gumb "Cijela općina"
     const granica = stanje.slojevi.granica;

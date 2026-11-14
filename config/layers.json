@@ -21,6 +21,11 @@
       "otvoreno": false
     },
     {
+      "id": "promet",
+      "naziv": "Promet",
+      "otvoreno": false
+    },
+    {
       "id": "projekti",
       "naziv": "Projekti općine",
       "otvoreno": true
@@ -646,6 +651,39 @@
       "izvor": "Inventarizacija okolišnih resursa Općine Bilje (2017.)",
       "azurirano": "2017.",
       "detaljno": "Točke iz kojih su u Inventarizaciji okolišnih resursa (2017.) procijenjene vizure. Mogu poslužiti kao početni prijedlog lokacija za vidikovce."
+    },
+    {
+      "id": "bus_stajalista",
+      "naziv": "Autobusna stajališta (linija 6)",
+      "grupa": "promet",
+      "tip": "geojson",
+      "url": "data/autobusna_stajalista.geojson",
+      "vidljivo": false,
+      "stil": {
+        "geometrija": "tocka",
+        "boja": "#ea580c",
+        "velicina": 6,
+        "natpis": "naziv",
+        "natpisMinZoom": 15
+      },
+      "skocniProzor": {
+        "naslov": "naziv",
+        "polja": [
+          {
+            "polje": "linija",
+            "oznaka": "Linija"
+          },
+          {
+            "polje": "obavijest",
+            "oznaka": "Obavijest općine",
+            "format": "poveznica"
+          }
+        ]
+      },
+      "opis": "Stajališta gradskog prijevoza Osijek – Bilje (linija 6).",
+      "detaljno": "Gradski prijevoz između Osijeka i Bilja ponovno vozi od rujna 2026.: 19 polazaka u svakom smjeru od ponedjeljka do subote i 11 nedjeljom. Prema shemi linija GPP-a 2026. linija 6 u Bilju staje na stajalištima Okretište, Ind. zona, Ul. kralja Tomislava, Centar i Ul. kralja Zvonimira.\n\nPoložaji stajališta preuzeti su iz OpenStreetMapa. Stajalište Okretište još nije ucrtano jer mu točan položaj nije potvrđen.",
+      "izvor": "GPP Osijek – shema linija 2026.; položaji © OpenStreetMap suradnici (ODbL)",
+      "azurirano": "studeni 2026."
     },
     {
       "id": "projekti",
