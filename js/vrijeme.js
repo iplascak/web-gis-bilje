@@ -105,6 +105,139 @@
       el('p', { class: 'sitno-siva' }, 'Oborina u mm, udari vjetra u km/h.'));
   }
 
+
+  // ---------- tumačenje za poljoprivrednike: što vrijednosti znače za radove u polju ----------
+  // Pojednostavljena pravila (agronomska praksa za istočnu Hrvatsku); savjet, ne zamjena za stručnu službu i etiketu sredstva.
+  const KULTURE = {
+    opce: 'Općenito (svi radovi)', psenica: 'Pšenica / ječam (ozimi)', kukuruz: 'Kukuruz', suncokret: 'Suncokret', soja: 'Soja',
+    repa: 'Šećerna repa', repica: 'Uljana repica', loza: 'Vinova loza', vocnjak: 'Voćnjak (jabuka, šljiva…)', povrce: 'Povrće (paprika, rajčica…)'
+  };
+
+  function agroPokazatelji() {
+    const d = podaci.daily, { h, i0 } = satniIndeksi();
+    const danas = d.time.indexOf(podaci.current.time.slice(0, 10));
+    const zb = (niz, a, b) => niz.slice(Math.max(0, a), Math.max(0, b)).reduce((s, x) => s + (x || 0), 0);
+    const sp = (niz, a, b) => { const x = niz.slice(a, b).filter(v => v != null); return x.length ? x.reduce((s, v) => s + v, 0) / x.length : null; };
+    const mokriSati = (a, b) => { let n = 0; for (let i = a; i < Math.min(b, h.time.length); i++) { const t = h.temperature_2m[i]; if ((h.relative_humidity_2m[i] >= 90 || h.precipitation[i] > 0.1) && t >= 10 && t <= 25) n++; } return n; };
+    const suhiDani = (() => { let n = 0; for (let i = danas; i < d.time.length; i++) { if ((d.precipitation_sum[i] || 0) < 1 && (d.precipitation_probability_max[i] || 0) < 40) n++; else break; } return n; })();
+    return {
+      mjesec: Number(podaci.current.time.slice(5, 7)),
+      kisa3proslo: zb(d.precipitation_sum, danas - 3, danas), kisa7proslo: zb(d.precipitation_sum, danas - 7, danas),
+      kisa24: zb(h.precipitation, i0, i0 + 24), kisa72: zb(h.precipitation, i0, i0 + 72), kisa7: zb(d.precipitation_sum, danas, danas + 7),
+      maks48kisa: Math.max(zb(h.precipitation, i0, i0 + 24), zb(h.precipitation, i0 + 24, i0 + 48)),
+      bilanca7: zb(d.precipitation_sum, danas, danas + 7) - zb(d.et0_fao_evapotranspiration, danas, danas + 7),
+      bilancaProslo: zb(d.precipitation_sum, danas - 7, danas) - zb(d.et0_fao_evapotranspiration, danas - 7, danas),
+      tlo: h.soil_temperature_6cm[i0], tlo72: sp(h.soil_temperature_6cm, Math.max(0, i0 - 72), i0 + 1),
+      tloMin72: Math.min(...h.soil_temperature_6cm.slice(i0, i0 + 72).filter(v => v != null)),
+      vlaga: h.soil_moisture_3_to_9cm[i0],
+      tmin: Math.min(...d.temperature_2m_min.slice(danas, danas + 7)), tmin3: Math.min(...d.temperature_2m_min.slice(danas, danas + 3)),
+      tmax: Math.max(...d.temperature_2m_max.slice(danas, danas + 7)),
+      vruciDani: d.temperature_2m_max.slice(danas, danas + 7).filter(t => t >= 32).length,
+      tSred48: sp(h.temperature_2m, i0, i0 + 48), mokri48: mokriSati(i0, i0 + 48), suhiDani
+    };
+  }
+
+  // savjet = [razina, naslov, objašnjenje]; razina: 'dobro' | 'oprez' | 'upozorenje' | 'info'
+  function savjetiZaKulturu(k, x) {
+    const s = [], m = x.mjesec, uMj = (...mj) => mj.includes(m);
+    const prohodno = x.kisa3proslo < 10 && (x.vlaga == null || x.vlaga < 0.36);
+    const premokro = x.kisa3proslo >= 20 || (x.vlaga != null && x.vlaga >= 0.40);
+    // opći radovi – vrijede za sve kulture
+    if (premokro) s.push(['upozorenje', 'Tlo je premokro za strojeve', 'U zadnja 3 dana palo je ' + zaok(x.kisa3proslo) + ' mm. Teški strojevi sada zbijaju tlo i ostavljaju kolotrage; pričekajte da se prosuši.']);
+    else if (prohodno) s.push(['dobro', 'Tlo je prohodno za strojeve', 'Malo oborine u zadnja 3 dana' + (x.vlaga != null ? ', vlažnost površinskog sloja ' + zaok(x.vlaga * 100) + ' %' : '') + ' – povoljno za obradu, sjetvu i rad mehanizacijom.']);
+    if (x.tlo != null && x.tlo <= 0) s.push(['upozorenje', 'Tlo je smrznuto – bez gnojidbe', 'Na smrznuto, snijegom pokriveno ili vodom zasićeno tlo gnojiva se ne smiju primjenjivati (ispiranje u vode).']);
+    else if (x.kisa72 >= 25) s.push(['oprez', 'Gnojidbu dušikom odgodite', 'U sljedeća 3 dana očekuje se ' + zaok(x.kisa72) + ' mm kiše – jaka kiša ispire dušik u dublje slojeve i kanale.']);
+    else if (x.kisa72 >= 5 && x.kisa72 < 20 && !premokro) s.push(['dobro', 'Dobar trenutak za prihranu', 'Očekuje se umjerena kiša (' + zaok(x.kisa72) + ' mm u 3 dana) koja će otopiti i unijeti gnojivo u tlo.']);
+    if (x.suhiDani >= 3) s.push(['dobro', x.suhiDani + ' suha dana zaredom', 'Povoljno za košnju i sušenje sijena, žetvu, berbu i radove koji traže suho vrijeme.']);
+    else if (x.kisa7 >= 30) s.push(['info', 'Kišan tjedan pred nama', 'Do ' + zaok(x.kisa7) + ' mm u 7 dana – planirajte radove u suhim prozorima, a žetvu/berbu prije kiše.']);
+    if (x.bilanca7 < -15 && uMj(4, 5, 6, 7, 8, 9)) s.push(['oprez', 'Usjevi će trošiti više vode nego što padne', 'Bilanca sljedećih 7 dana: ' + zaok(x.bilanca7) + ' mm. Ako navodnjavate, sada je vrijeme; na lakšim tlima manjak se brže osjeti.']);
+    if (x.tmin <= -2 && uMj(3, 4, 5)) s.push(['upozorenje', 'Kasni proljetni mraz', 'Najniža temperatura do ' + zaok(x.tmin) + ' °C – opasno za cvat voćaka, mladice vinove loze i nicanje proljetnih kultura.']);
+    if (x.vruciDani >= 2) s.push(['oprez', 'Toplinski stres', x.vruciDani + ' dana s 32 °C i više. Prskanje i rad u polju rano ujutro ili navečer; usjevi u cvatnji su najosjetljiviji.']);
+
+    const kult = {
+      psenica: () => {
+        if (uMj(9, 10)) s.push(x.tlo72 != null && x.tlo72 > 14 && m === 9 ? ['info', 'Za pšenicu je još rano', 'Optimalni rok sjetve ozime pšenice u Slavoniji i Baranji je oko 5.–25. listopada; ranija sjetva pojačava napad lisnih uši i bolesti.'] : ['dobro', 'Rok sjetve ozimih žitarica', 'Ječam sije se ranije (kraj rujna – sredina listopada), pšenica od početka do kraja listopada. ' + (prohodno ? 'Tlo je sada prohodno.' : 'Pričekajte da se tlo prosuši.')]);
+        if (uMj(11, 12, 1, 2)) s.push(x.tmin <= -15 ? ['upozorenje', 'Opasnost od izmrzavanja', 'Mrazevi ispod −15 °C bez snježnog pokrivača mogu oštetiti ozime usjeve.'] : ['info', 'Zimsko mirovanje', 'Ozimi usjevi miruju; pratite stagnaciju vode na parcelama nakon jačih kiša.']);
+        if (uMj(2, 3)) s.push(['info', 'Prva prihrana dušikom', 'Kad se tlo odmrzne i postane prohodno (kraj veljače – ožujak). ' + (prohodno && x.tlo > 0 ? 'Uvjeti su sada povoljni.' : '')]);
+        if (uMj(5) && x.mokri48 >= 12 && x.tSred48 >= 15) s.push(['upozorenje', 'Rizik od fuzarijske paleži klasa', 'Toplo i vlažno vrijeme u vrijeme cvatnje (' + x.mokri48 + ' vlažnih sati u 48 h) pogoduje fuzariozi – razmotrite zaštitu u cvatnji.']);
+        if (uMj(6, 7)) s.push(x.suhiDani >= 2 ? ['dobro', 'Uvjeti za žetvu', 'Suho vrijeme – zrno se brzo dosušuje.'] : ['oprez', 'Kiša usporava žetvu', 'Vlažno zrno i polijeganje; pratite suhe prozore.']);
+      },
+      kukuruz: () => {
+        if (uMj(3, 4, 5)) {
+          if (x.tlo72 != null && x.tlo72 >= 10 && x.tloMin72 >= 8) s.push(['dobro', 'Tlo je dovoljno toplo za sjetvu kukuruza', 'Prosjek tla na 6 cm zadnja 3 dana ' + zaok(x.tlo72, 1) + ' °C (prag 10 °C). ' + (prohodno ? 'Tlo je prohodno – može se sijati.' : 'Pričekajte da se tlo prosuši.')]);
+          else s.push(['info', 'Za kukuruz je tlo još hladno', 'Tlo na 6 cm: ' + zaok(x.tlo72, 1) + ' °C. Sjetva kad se tlo ustali na 10 °C i više – inače je nicanje sporo i neujednačeno.']);
+        }
+        if (uMj(6) && x.kisa7 >= 5 && x.kisa7 < 25) s.push(['info', 'Međuredna kultivacija i prihrana', 'Do zatvaranja redova; umjerena kiša nakon prihrane je poželjna.']);
+        if (uMj(7)) s.push(x.vruciDani >= 2 || x.bilanca7 < -20 ? ['upozorenje', 'Kukuruz u cvatnji – kritično razdoblje', 'Vrućina i manjak vode u metličanju i svilanju najviše smanjuju prinos; navodnjavanje sada ima najveći učinak.'] : ['dobro', 'Povoljni uvjeti za oplodnju kukuruza', 'Nema jakih vrućina ni većeg manjka vode.']);
+        if (uMj(9, 10, 11)) s.push(x.suhiDani >= 2 ? ['dobro', 'Berba kukuruza', 'Suho vrijeme smanjuje troškove sušenja zrna i olakšava ulazak kombajna.'] : ['oprez', 'Berba – vlažno', 'Kiša povećava vlagu zrna i zbija tlo pod kombajnom.']);
+      },
+      suncokret: () => {
+        if (uMj(3, 4, 5)) s.push(x.tlo72 >= 8 ? ['dobro', 'Tlo je toplo za sjetvu suncokreta', 'Prag je 8 °C na dubini sjetve (sada ' + zaok(x.tlo72, 1) + ' °C).'] : ['info', 'Za suncokret je tlo još hladno', 'Sjetva kad tlo dosegne 8 °C (sada ' + zaok(x.tlo72, 1) + ' °C).']);
+        if (uMj(7, 8) && x.mokri48 >= 12) s.push(['oprez', 'Vlažno – rizik od bolesti glavice', 'Dugo vlažno razdoblje pogoduje bijeloj i sivoj truleži.']);
+        if (uMj(8, 9)) s.push(x.suhiDani >= 2 ? ['dobro', 'Žetva suncokreta', 'Suho vrijeme – povoljno za žetvu.'] : ['oprez', 'Žetva suncokreta – vlažno', 'Kiša u žetvi povećava gubitke i truleži.']);
+      },
+      soja: () => {
+        if (uMj(4, 5)) s.push(x.tlo72 >= 10 ? ['dobro', 'Tlo je toplo za sjetvu soje', 'Soja traži barem 10 °C u tlu (sada ' + zaok(x.tlo72, 1) + ' °C); hladno tlo usporava nicanje.'] : ['info', 'Za soju je tlo još hladno', 'Pričekajte 10 °C u tlu (sada ' + zaok(x.tlo72, 1) + ' °C).']);
+        if (uMj(7, 8) && x.bilanca7 < -15) s.push(['oprez', 'Soja u cvatnji i nalijevanju zrna', 'Manjak vode sada smanjuje broj mahuna i krupnoću zrna.']);
+        if (uMj(9, 10)) s.push(x.suhiDani >= 2 ? ['dobro', 'Žetva soje', 'Suho vrijeme – mahune ne pucaju od vlage, zrno se brzo suši.'] : ['oprez', 'Žetva soje – vlažno', 'Pričekajte suhi prozor.']);
+      },
+      repa: () => {
+        if (uMj(3, 4)) s.push(x.tlo72 >= 5 ? ['dobro', 'Rok sjetve šećerne repe', 'Repa se sije čim je tlo prohodno i toplije od 5 °C (sada ' + zaok(x.tlo72, 1) + ' °C).' + (prohodno ? '' : ' Tlo je još mokro.')] : ['info', 'Za repu je tlo još hladno', 'Prag je oko 5 °C u tlu.']);
+        if (uMj(7, 8) && x.tSred48 >= 20 && x.mokri48 >= 10) s.push(['upozorenje', 'Rizik od pjegavosti lista (Cercospora)', 'Topli dani i vlažne noći pogoduju širenju bolesti; pregledajte usjev.']);
+        if (uMj(9, 10, 11)) s.push(premokro ? ['oprez', 'Vađenje repe – mokro tlo', 'Mokro tlo zbija se pod teškim vadilicama i više ga ostaje na korijenu.'] : ['dobro', 'Uvjeti za vađenje repe', 'Tlo je dovoljno suho.']);
+      },
+      repica: () => {
+        if (uMj(8, 9)) s.push(['info', 'Rok sjetve uljane repice', 'Kraj kolovoza – sredina rujna; repica treba dobro razvijenu rozetu prije zime. ' + (x.bilanca7 < -10 ? 'Suho je – nicanje može kasniti.' : '')]);
+        if (uMj(3, 4) && x.tmin3 <= -3) s.push(['upozorenje', 'Mraz u porastu/cvatnji repice', 'Temperature do ' + zaok(x.tmin3) + ' °C mogu oštetiti cvjetne pupove.']);
+        if (uMj(6, 7)) s.push(x.suhiDani >= 2 ? ['dobro', 'Žetva repice', 'Suho vrijeme – manje osipanja i lakša žetva.'] : ['oprez', 'Žetva repice – kiša', 'Kiša i vjetar povećavaju osipanje sjemena.']);
+      },
+      loza: () => {
+        if (uMj(4, 5, 6, 7)) {
+          if (x.maks48kisa >= 10 && x.tSred48 >= 10) s.push(['upozorenje', 'Pravilo 3 × 10: uvjeti za peronosporu', 'Očekuje se ≥ 10 mm kiše u 24 h pri temperaturi iznad 10 °C. Ako su mladice duže od 10 cm, moguća je primarna zaraza plamenjačom – zaštita prije kiše.']);
+          else if (x.mokri48 >= 12) s.push(['oprez', 'Vlažno – pratite peronosporu', x.mokri48 + ' vlažnih sati u 48 h.']);
+          if (x.tSred48 >= 20 && x.tSred48 <= 28 && x.mokri48 < 12) s.push(['oprez', 'Toplo i sparno – uvjeti za pepelnicu', 'Pepelnici odgovaraju temperature 20–27 °C i visoka vlaga zraka bez kiše.']);
+        }
+        if (uMj(4, 5) && x.tmin3 <= 0) s.push(['upozorenje', 'Mraz nakon kretanja vegetacije', 'Mlade mladice stradavaju već na 0 do −1 °C.']);
+        if (uMj(8, 9, 10)) s.push(x.suhiDani >= 3 ? ['dobro', 'Berba grožđa', 'Suho razdoblje – grožđe ne puca i manje je sive plijesni.'] : ['oprez', 'Kiša pred berbu', 'Kiša u dozrijevanju potiče sivu plijesan i pucanje bobica.']);
+      },
+      vocnjak: () => {
+        if (uMj(3, 4, 5) && x.tmin3 <= -1) s.push(['upozorenje', 'Mraz u cvatnji voćaka', 'U cvatnji je kritično već −1 do −2 °C (najniža očekivana ' + zaok(x.tmin3) + ' °C). Zaštita orošavanjem ili zadimljavanjem ako je imate.']);
+        if (uMj(4, 5, 6) && x.mokri48 >= 9 && x.tSred48 >= 10) s.push(['upozorenje', 'Uvjeti za krastavost (čađavu pjegavost)', x.mokri48 + ' vlažnih sati pri 10–25 °C – lišće i plodovi jabuke i kruške mogu se zaraziti.']);
+        if (uMj(6, 7, 8) && x.bilanca7 < -15) s.push(['oprez', 'Plodovi rastu – treba vode', 'Manjak vode u rastu plodova smanjuje krupnoću; navodnjavanje kap po kap.']);
+        if (uMj(8, 9, 10)) s.push(x.suhiDani >= 2 ? ['dobro', 'Uvjeti za berbu', 'Suho vrijeme – plodovi su čvršći i bolje se skladište.'] : ['info', 'Berba – kišni dani', 'Berite u suhim prozorima.']);
+      },
+      povrce: () => {
+        if (uMj(4, 5)) s.push(x.tmin >= 5 && x.tlo72 >= 12 ? ['dobro', 'Presađivanje na otvoreno', 'Nema mraza, a tlo ima ' + zaok(x.tlo72, 1) + ' °C – paprika i rajčica mogu van (paprika voli 15 °C i više u tlu).'] : ['oprez', 'Za presađivanje je još rano', 'Najniža temperatura ' + zaok(x.tmin) + ' °C, tlo ' + zaok(x.tlo72, 1) + ' °C. Paprika i rajčica stradavaju na hladnoći; pričekajte toplije noći.']);
+        if (uMj(6, 7, 8, 9) && x.mokri48 >= 12 && x.tSred48 >= 15) s.push(['upozorenje', 'Vlažno i toplo – plamenjača rajčice i krumpira', 'Uvjeti pogoduju širenju plamenjače; preventivna zaštita prije kiše.']);
+        if (uMj(6, 7, 8) && x.vruciDani >= 2) s.push(['oprez', 'Vrućina – opadanje cvjetova paprike', 'Iznad 32 °C paprika odbacuje cvjetove; navodnjavanje i zasjena pomažu.']);
+        if (uMj(6, 7, 8) && x.bilanca7 < -10) s.push(['oprez', 'Povrće treba redovito zalijevanje', 'Bilanca sljedećih 7 dana ' + zaok(x.bilanca7) + ' mm.']);
+      }
+    };
+    if (kult[k]) kult[k]();
+    if (!s.length) s.push(['info', 'Nema posebnih upozorenja', 'Za odabranu kulturu i ovo doba godine vrijeme ne traži posebne mjere.']);
+    const red = { upozorenje: 0, oprez: 1, dobro: 2, info: 3 };
+    return s.sort((a, b) => red[a[0]] - red[b[0]]);
+  }
+
+  function prikaziSavjete() {
+    let kultura = 'opce';
+    try { kultura = localStorage.getItem('webgis.kultura') || 'opce'; } catch (g) { /* nije bitno */ }
+    const x = agroPokazatelji();
+    const popis = el('div', { class: 'savjeti' });
+    const crtaj = () => {
+      popis.replaceChildren(...savjetiZaKulturu(kultura, x).map(([r, n, o]) => el('div', { class: 'savjet ' + r },
+        el('span', { class: 'savjet-oznaka' }, { upozorenje: '!', oprez: '•', dobro: '✓', info: 'i' }[r]),
+        el('div', {}, el('strong', {}, n), el('p', {}, o)))));
+    };
+    const odabir = el('select', { 'aria-label': 'Kultura', onchange: (e) => { kultura = e.target.value; try { localStorage.setItem('webgis.kultura', kultura); } catch (g) { /* */ } crtaj(); } },
+      ...Object.entries(KULTURE).map(([k, n]) => el('option', { value: k, selected: k === kultura }, n)));
+    crtaj();
+    return el('div', { class: 'agro-savjeti' },
+      el('div', { class: 'savjeti-zaglavlje' }, el('div', { class: 'agro-naslov' }, 'Što to znači za vaše radove'), odabir),
+      popis,
+      el('p', { class: 'sitno-siva' }, 'Savjeti su opći, izvedeni iz prognoze i uobičajenih agrotehničkih rokova za istočnu Hrvatsku. Za zaštitu bilja vrijede upute na etiketi sredstva i preporuke savjetodavne službe.'));
+  }
+
   function prikaziPoljoprivreda() {
     const d = podaci.daily, { h, i0 } = satniIndeksi();
     const danas = d.time.indexOf(podaci.current.time.slice(0, 10));
@@ -126,6 +259,7 @@
 
     const bilancaProslo = kisaProslo - etProslo, bilancaBuduce = kisaBuduce - etBuduce;
     return el('div', { class: 'vrijeme-agro' },
+      prikaziSavjete(),
       el('div', { class: 'agro-mreza' },
         kartica('Oborina zadnjih 7 dana', zaok(kisaProslo, 1) + ' mm', 'isparavanje (ET₀) ' + zaok(etProslo, 1) + ' mm → bilanca ' + (bilancaProslo >= 0 ? '+' : '') + zaok(bilancaProslo, 1) + ' mm', bilancaProslo < -15 ? 'upozorenje' : ''),
         kartica('Oborina sljedećih 7 dana', zaok(kisaBuduce, 1) + ' mm', 'ET₀ ' + zaok(etBuduce, 1) + ' mm → bilanca ' + (bilancaBuduce >= 0 ? '+' : '') + zaok(bilancaBuduce, 1) + ' mm', bilancaBuduce < -15 ? 'upozorenje' : ''),
