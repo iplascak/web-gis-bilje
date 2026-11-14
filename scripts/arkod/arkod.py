@@ -41,7 +41,7 @@ def obradi(url, oznaka, proba=False):
     polja = list(d["features"][0]["properties"]) if d["features"] else []
     print(oznaka, len(d["features"]), "parcela, polja:", polja)
     nadji = lambda *imena: next((p for p in polja if p.lower() in imena), None)
-    p_id = nadji("arkod_id", "id_arkod", "id", "jpaid", "parcela_id", "lpis_id")
+    p_id = nadji("arkod_id", "id_arkod", "id")  # jpaid se namjerno ne preuzima (moguća oznaka korisnika)
     p_vr = nadji("land_use_id", "vrsta_uporabe", "vrsta_upor", "land_use", "uporaba", "vrsta", "landuse_code", "lu_code", "vrsta_uporabe_sifra", "vu_sifra")
     p_pov = nadji("povrsina", "area", "povrsina_ha", "pov", "area_ha")
     print("  koristim:", p_id, p_vr, p_pov)
