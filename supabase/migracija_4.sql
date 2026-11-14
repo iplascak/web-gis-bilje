@@ -1,6 +1,7 @@
 -- =====================================================================
 -- Web GIS Općine Bilje – dopuna baze (4):
 --   * kalendar događanja (manifestacije, sport, kultura, sajmovi, radovi i zatvorene ceste)
+--   * zbirni brojevi za godišnje izvješće (izvjesce_godine)
 --   * komunalni objekti (svjetiljke javne rasvjete, klupe, koševi, igrala, hidranti…)
 --     i poveznica prijave s objektom ("ne svijetli svjetiljka br. 123")
 -- Pokretanje: Supabase -> SQL Editor -> New query -> zalijepiti -> Run. Smije se ponoviti.
@@ -106,3 +107,36 @@ grant execute on function public.komunalni_objekti_geojson() to anon, authentica
 
 -- prijava se može vezati uz objekt
 alter table public.prijave add column if not exists objekt_id bigint references public.komunalni_objekti(id) on delete set null;
+
+-- ---------- GODIŠNJE IZVJEŠĆE: samo zbirni brojevi, bez ikakvih osobnih podataka ----------
+-- Prijave: broj po kategoriji, statusu i mjesecu te medijan dana do rješenja.
+-- Male skupine (< 3 prijave) ne otkrivaju ništa o pojedincu jer nema lokacije, opisa ni autora.
+create or replace function public.izvjesce_godine(godina int) returns json
+language sql stable security definer set search_path = public as $$
+  with p as (
+    select * from public.prijave
+    where stvoreno >= make_date(godina, 1, 1) and stvoreno < make_date(godina + 1, 1, 1)
+  ), rj as (
+    select p.id, extract(epoch from (min(h.vrijeme) - p.stvoreno)) / 86400.0 as dana
+    from p join public.prijave_povijest h on h.prijava = p.id and h.status = 'rijeseno'
+    group by p.id, p.stvoreno
+  )
+  select json_build_object(
+    'godina', godina,
+    'prijave', json_build_object(
+      'ukupno', (select count(*) from p),
+      'po_kategoriji', (select coalesce(json_object_agg(kategorija, n), '{}'::json) from (select kategorija, count(*) n from p group by 1) x),
+      'po_statusu', (select coalesce(json_object_agg(status, n), '{}'::json) from (select status, count(*) n from p group by 1) x),
+      'po_mjesecu', (select coalesce(json_object_agg(m, n), '{}'::json) from (select extract(month from stvoreno at time zone 'Europe/Zagreb')::int m, count(*) n from p group by 1) x),
+      'rijeseno_medijan_dana', (select round(percentile_cont(0.5) within group (order by dana)::numeric, 1) from rj),
+      'rijeseno_u_7_dana', (select count(*) from rj where dana <= 7)),
+    'dogadjanja', (select coalesce(json_object_agg(kategorija, n), '{}'::json) from (
+        select kategorija, count(*) n from public.dogadjanja
+        where javno and extract(year from pocetak at time zone 'Europe/Zagreb') = godina group by 1) x),
+    'doprinosi', (select count(*) from public.doprinosi where status = 'odobreno'
+        and extract(year from stvoreno at time zone 'Europe/Zagreb') = godina),
+    'komunalni_objekti', (select coalesce(json_object_agg(vrsta, n), '{}'::json) from (
+        select vrsta, count(*) n from public.komunalni_objekti group by 1) x)
+  )
+$$;
+grant execute on function public.izvjesce_godine(int) to anon, authenticated;

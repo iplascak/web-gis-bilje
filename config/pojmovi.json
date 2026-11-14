@@ -540,6 +540,22 @@
    "slojevi": [
     "pristupacnost"
    ]
+  },
+  {
+   "pojmovi": [
+    "izvjesc",
+    "izvješć",
+    "godisnj",
+    "godišnj",
+    "statistik",
+    "vijece",
+    "vijeće",
+    "brojk"
+   ],
+   "naslov": "Godišnje izvješće iz podataka",
+   "opis": "prijave, projekti, poljoprivreda, zrak i događanja u jednoj godini",
+   "slojevi": [],
+   "akcija": "izvjesce"
   }
  ]
 }

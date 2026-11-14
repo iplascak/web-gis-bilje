@@ -1514,6 +1514,7 @@
           el('a', { href: 'https://bilje.hr/', target: '_blank', rel: 'noopener' }, 'Službena stranica Općine Bilje'), el('br'),
           el('a', { href: 'https://bilje.hr/prostorno-planska-dokumentacija/', target: '_blank', rel: 'noopener' }, 'Važeća prostorno-planska dokumentacija'), el('br'),
           el('a', { href: '#', onclick: (e) => { e.preventDefault(); dijalog.close(); prikaziUpute(true); } }, 'Kratke upute za korištenje'), el('br'),
+          el('a', { href: 'izvjesce.html', target: '_blank' }, 'Godišnje izvješće iz podataka (za vijeće i mještane)'), el('br'),
           el('a', { href: 'privatnost.html', target: '_blank' }, 'Zaštita osobnih podataka'), el('br'),
           el('a', { href: 'https://github.com/iplascak/web-gis-bilje', target: '_blank', rel: 'noopener' }, 'Izvorni kod portala (otvoreni kod)'))));
   }
@@ -1540,6 +1541,7 @@
   }
 
   // sučelje za module
+  stanje.akcije.izvjesce = () => window.open('izvjesce.html', '_blank');
   stanje.api = { el, ikonaSimbola, otvoriDijalog, preuzmiDatoteku, uCsv, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
 
   pokreni().then(() => {

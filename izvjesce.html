@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Godišnje izvješće iz podataka – Web GIS Općine Bilje</title>
+  <link rel="icon" href="assets/favicon-32.png">
+  <style>
+    @font-face { font-family: "Libre Franklin"; src: url(lib/fonts/libre-franklin-latin-ext-400-normal.woff2) format("woff2"); font-weight: 400; }
+    @font-face { font-family: "Libre Franklin"; src: url(lib/fonts/libre-franklin-latin-ext-700-normal.woff2) format("woff2"); font-weight: 700; }
+    :root { --zelena: #1F7A3D; --zuta: #F1C50E; --siva: #555C66; --rub: #e5e5e0; }
+    body { margin: 0; font-family: "Libre Franklin", system-ui, sans-serif; color: #222; background: #f4f4f1; line-height: 1.55; }
+    header { background: #1c1d1f; color: #f5f5f3; border-bottom: 3px solid var(--zuta); padding: 14px 20px; display: flex; gap: 14px; align-items: center; }
+    header img { height: 44px; } header a { color: #F5D654; }
+    .alati { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+    select, button { font: inherit; font-size: 14px; padding: 7px 12px; border-radius: 999px; border: 1px solid #555; background: #2a2b2e; color: #fff; cursor: pointer; }
+    button.glavni { background: var(--zuta); color: #111; border-color: var(--zuta); font-weight: 700; }
+    main { max-width: 900px; margin: 24px auto; background: #fff; border-radius: 12px; padding: 24px 36px 36px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    h1 { font-size: 28px; line-height: 1.2; margin: 0 0 4px; }
+    h2 { font-size: 19px; margin: 34px 0 8px; color: var(--zelena); border-top: 1px solid var(--rub); padding-top: 22px; }
+    .sitno { color: var(--siva); font-size: 13.5px; }
+    .kartice { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+    .kartica { background: #f7f6f1; border-radius: 10px; padding: 12px 14px; }
+    .kartica b { display: block; font-size: 26px; line-height: 1.1; color: #111; }
+    .kartica span { font-size: 13px; color: var(--siva); }
+    .traka { display: grid; grid-template-columns: 190px 1fr 70px; gap: 8px; align-items: center; font-size: 14px; margin: 3px 0; }
+    .traka i { display: block; height: 14px; border-radius: 3px; background: var(--zelena); }
+    .traka .br { text-align: right; font-variant-numeric: tabular-nums; }
+    .napomena { background: #fdf6d8; border-left: 4px solid var(--zuta); padding: 10px 14px; border-radius: 6px; font-size: 14px; margin: 10px 0; }
+    .zakljucak { background: #e8f3eb; border-left: 4px solid var(--zelena); padding: 10px 14px; border-radius: 6px; margin: 10px 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { text-align: left; border-top: 1px solid var(--rub); padding: 6px 8px 6px 0; }
+    td.br, th.br { text-align: right; font-variant-numeric: tabular-nums; }
+    svg text { font-family: inherit; }
+    @media print {
+      body { background: #fff; } header { display: none; } main { box-shadow: none; margin: 0; max-width: none; padding: 0; }
+      h2 { break-after: avoid; } section { break-inside: avoid; }
+      .traka i, .kartica { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="assets/grb.png" alt="Grb Općine Bilje">
+  <div><strong>Web GIS Općine Bilje</strong><br><a href="./">← natrag na kartu</a></div>
+  <div class="alati">
+    <label for="godina" class="sitno" style="color:#ccc">Godina</label>
+    <select id="godina"></select>
+    <button class="glavni" onclick="window.print()">Ispis / PDF</button>
+  </div>
+</header>
+<main id="sadrzaj"><p>Učitavam podatke…</p></main>
+<script src="js/izvjesce.js?v=20261115g"></script>
+</body>
+</html>

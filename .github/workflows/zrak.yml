@@ -1,6 +1,7 @@
 name: Kvaliteta zraka (DHMZ)
 
 # Svaki sat preuzima zadnja mjerenja s postaja Kopački rit, Osijek 1 i Osijek 2.
+# Uz to vodi dnevnu arhivu (zrak_arhiva.json) za godišnje izvješće.
 # Rezultat se sprema na granu 'podaci-uzivo' kao jedan commit (povijest ne raste).
 on:
   schedule:
@@ -23,12 +24,16 @@ jobs:
         with:
           sparse-checkout: scripts/zrak
       - run: python3 scripts/zrak/meteo_hr.py /tmp/zrak.geojson
+      - name: Dnevna arhiva (za godišnje izvješće)
+        run: |
+          curl -sf https://raw.githubusercontent.com/${{ github.repository }}/podaci-uzivo/zrak_arhiva.json -o /tmp/stara.json || echo '{}' > /tmp/stara.json
+          python3 scripts/zrak/arhiva.py /tmp/zrak.geojson /tmp/stara.json /tmp/zrak_arhiva.json
       - name: Objava na grani podaci-uzivo
         run: |
           mkdir /tmp/objava && cd /tmp/objava
           git init -q -b podaci-uzivo
-          cp /tmp/zrak.geojson .
+          cp /tmp/zrak.geojson /tmp/zrak_arhiva.json .
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add zrak.geojson && git commit -qm "Kvaliteta zraka $(date -u +%FT%H:%MZ)"
+          git add zrak.geojson zrak_arhiva.json && git commit -qm "Kvaliteta zraka $(date -u +%FT%H:%MZ)"
           git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" podaci-uzivo
