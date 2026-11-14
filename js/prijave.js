@@ -68,7 +68,7 @@
       konfig.grupe.splice(1, 0, { id: 'prijave', naziv: 'Prijave mještana', otvoreno: true });
     }
     const vrijednosti = {};
-    for (const [k, v] of Object.entries(STATUSI)) vrijednosti[k] = { boja: v.boja, oznaka: v.oznaka };
+    for (const [k, v] of Object.entries(STATUSI)) vrijednosti[k] = { boja: v.boja, oznaka: v.oznaka, simbol: k };
     konfig.slojevi.push({
       id: 'prijave', naziv: 'Prijave komunalnih problema', grupa: 'prijave', tip: 'geojson',
       url: cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/rpc/prijave_geojson',

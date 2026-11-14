@@ -6,14 +6,14 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     18.744928,
-     45.603227
+     18.743622,
+     45.603555
     ]
    },
    "properties": {
     "naziv": "Općina Bilje",
     "vrsta": "opcina",
-    "adresa": "Kralja Zvonimira 1b, 31327 Bilje",
+    "adresa": "Kralja Zvonimira 2, 31327 Bilje",
     "telefon": "+385 31 751 400",
     "email": "bilje@bilje.hr",
     "web": "https://bilje.hr/",
@@ -25,18 +25,18 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     18.743622,
-     45.603555
+     18.743956,
+     45.602943
     ]
    },
    "properties": {
     "naziv": "Kulturno razvojni centar Bilje",
     "vrsta": "kultura",
-    "adresa": "Kralja Zvonimira 2, 31327 Bilje",
+    "adresa": "Kralja Zvonimira 10, 31327 Bilje",
     "telefon": "+385 91 6114 565",
     "email": "krc@bilje.hr",
     "web": "https://krc.bilje.hr/",
-    "napomena": null
+    "napomena": "Na istoj adresi kao Turistička zajednica."
    }
   },
   {
@@ -44,7 +44,7 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     18.743756,
+     18.743556,
      45.602943
     ]
    },

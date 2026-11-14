@@ -87,12 +87,16 @@
     vrtic: 'M12 3.5a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z M8 10h8l2.5 4-1.8 1L15 12.5V21h-2.2v-5h-1.6v5H9v-8.5L7.3 15l-1.8-1z',
     kultura: 'M3.5 5.5C6 4.5 9 4.6 11 6v13c-2-1.4-5-1.5-7.5-.5z M20.5 5.5C18 4.5 15 4.6 13 6v13c2-1.4 5-1.5 7.5-.5z',
     turizam: 'M10.6 10h2.8v9h-2.8z M12 4.2a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6z',
+    zaprimljeno: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2.3a6.7 6.7 0 1 1 0 13.4 6.7 6.7 0 0 1 0-13.4zM11 7h2v5.1l3.2 2-1.1 1.7L11 13.2z',
+    u_obradi: 'M14.7 3.3a5 5 0 0 0-5.9 6.6l-5.5 5.5a1.6 1.6 0 0 0 0 2.3l3 3a1.6 1.6 0 0 0 2.3 0l5.5-5.5a5 5 0 0 0 6.6-5.9l-3 3-2.8-.7-.7-2.8z',
+    rijeseno: 'M9.5 16.2 4.8 11.5 3.2 13.1l6.3 6.3L21 7.9l-1.6-1.6z',
+    odbijeno: 'M6.4 4.8 12 10.4l5.6-5.6 1.6 1.6-5.6 5.6 5.6 5.6-1.6 1.6-5.6-5.6-5.6 5.6-1.6-1.6 5.6-5.6-5.6-5.6z',
     komunalno: 'M2 7h11v8.5H2z M13.5 10H18l3 3.2v2.3h-7.5z M6 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z M17 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z'
   };
   function svgSimbola(simbol, boja) {
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">' +
       '<circle cx="16" cy="16" r="14.5" fill="' + boja + '" stroke="#fff" stroke-width="2.5"/>' +
-      '<g transform="translate(5.2 5.2) scale(0.9)"><path d="' + SIMBOLI[simbol] + '" fill="#fff"/></g></svg>');
+      '<g transform="translate(5.2 5.2) scale(0.9)"><path d="' + SIMBOLI[simbol] + '" fill="#fff" fill-rule="evenodd"/></g></svg>');
   }
   function ikonaSimbola(simbol, boja, velicina) {
     return new ol.style.Icon({ src: svgSimbola(simbol, boja), width: velicina || 30, height: velicina || 30 });
@@ -389,6 +393,7 @@
             zapis.olSloj.setVisible(e.target.checked);
             if (legenda) legenda.hidden = !e.target.checked;
             zatvoriSkocni();
+            if (e.target.checked) pribliziSloju(def, zapis.olSloj);
           }
         });
         zapis.postaviVidljivost = (v) => {
@@ -407,6 +412,64 @@
       }
       div.append(det);
     }
+  }
+
+  // ---------- približavanje uključenom sloju ----------
+  // Kad korisnik uključi sloj, karta se pomakne/približi tako da se sloj odmah vidi:
+  // ako je sloj uglavnom izvan prikaza, premalen da bi se uočio ili vidljiv tek pri većem uvećanju.
+
+  function obuhvatiSloja(def, sloj) {
+    if (def.izvori) return Promise.resolve(def.izvori.map(i => i.extent).filter(Boolean));
+    if (def.extent) return Promise.resolve([def.extent]);
+    const izvor = sloj.getSource && sloj.getSource();
+    if (izvor && izvor.getFeatures) {
+      const gotovo = () => {
+        const e = izvor.getExtent();
+        return izvor.getFeatures().length && isFinite(e[0]) ? [e] : [];
+      };
+      if (izvor.getFeatures().length) return Promise.resolve(gotovo());
+      return new Promise(ok => {
+        const t = setTimeout(() => ok(gotovo()), 6000);
+        izvor.once('featuresloadend', () => { clearTimeout(t); ok(gotovo()); });
+        izvor.once('featuresloaderror', () => { clearTimeout(t); ok([]); });
+      });
+    }
+    return Promise.resolve(stanje.granicaExtent ? [stanje.granicaExtent] : []);
+  }
+
+  async function pribliziSloju(def, sloj) {
+    const obuhvati = await obuhvatiSloja(def, sloj);
+    if (!obuhvati.length || !sloj.getVisible()) return;
+    const view = stanje.karta.getView();
+    const prikaz = view.calculateExtent(stanje.karta.getSize());
+    const ukupno = obuhvati.reduce((a, e) => ol.extent.extend(a, e), ol.extent.createEmpty());
+    const povrsina = (e) => Math.max(ol.extent.getWidth(e), 1) * Math.max(ol.extent.getHeight(e), 1);
+    const presjek = ol.extent.getIntersection(ukupno, prikaz);
+    const udioVidljivo = ol.extent.isEmpty(presjek) ? 0 : povrsina(presjek) / povrsina(ukupno);
+    const premalen = povrsina(ukupno) < 0.01 * povrsina(prikaz);
+    const minZ = def.minZoom;
+    const premaloUvecano = minZ !== undefined && view.getZoom() < minZ;
+    if (udioVidljivo >= 0.5 && !premalen && !premaloUvecano) return;
+
+    const sredina = view.getCenter();
+    let cilj = ukupno;
+    if (obuhvati.length > 1 && minZ !== undefined) {
+      // više odvojenih dijelova (npr. groblja): najbliži trenutnom prikazu
+      cilj = obuhvati.slice().sort((a, b) => {
+        const d = (e) => { const c = ol.extent.getCenter(e); return Math.hypot(c[0] - sredina[0], c[1] - sredina[1]); };
+        return d(a) - d(b);
+      })[0];
+    }
+    const rez = view.getResolutionForExtent(cilj, stanje.karta.getSize().map(v => v - 80));
+    let zoom = Math.min(view.getZoomForResolution(rez), def.najvecePriblizavanje || 17);
+    let centar = ol.extent.getCenter(cilj);
+    if (minZ !== undefined && zoom < minZ) {
+      zoom = minZ;
+      // velik sloj vidljiv tek izbliza (ulice, katastar): ostani na trenutnom mjestu ako je unutar sloja
+      if (ol.extent.containsCoordinate(cilj, sredina)) centar = sredina;
+      else if (stanje.portal.pocetniPrikaz) centar = ol.proj.fromLonLat(stanje.portal.pocetniPrikaz.centar);
+    }
+    view.animate({ center: centar, zoom, duration: 600 });
   }
 
   function otvoriDijalog(...sadrzaj) {
@@ -434,14 +497,28 @@
     stanje.odabranaKoordinata = null;
   }
 
+  // skočni prozor uvijek cijeli unutar karte: iznad točke ako ima mjesta, inače ispod; vodoravno se pomakne do ruba
   function pozicionirajSkocni() {
     if (!stanje.odabranaKoordinata) return;
+    const s = document.getElementById('skocni');
+    if (s.hidden || window.matchMedia('(max-width: 720px)').matches) return;
     const px = stanje.karta.getPixelFromCoordinate(stanje.odabranaKoordinata);
     if (!px) return;
     const r = stanje.karta.getTargetElement().getBoundingClientRect();
-    const s = document.getElementById('skocni');
-    s.style.left = (r.left + px[0]) + 'px';
-    s.style.top = (r.top + px[1]) + 'px';
+    const w = s.offsetWidth, h = s.offsetHeight, razmak = 16, rub = 8;
+    const x = r.left + px[0] + window.scrollX, y = r.top + px[1] + window.scrollY;
+    const gore = r.top + window.scrollY + rub, dolje = r.bottom + window.scrollY - rub;
+    let ispod = y - h - razmak < gore && y + h + razmak <= dolje;
+    let top = ispod ? y + razmak : y - h - razmak;
+    top = Math.max(gore, Math.min(top, dolje - h));
+    const left = Math.max(r.left + rub, Math.min(x - w / 2, r.right - w - rub));
+    s.style.left = left + 'px';
+    s.style.top = top + 'px';
+    s.classList.toggle('ispod', ispod);
+    // strelica pokazuje na točku i kad je prozor pomaknut; skriva se ako točka nije uz prozor
+    const strelicaX = Math.max(18, Math.min(x - left, w - 18));
+    s.style.setProperty('--strelica-x', strelicaX + 'px');
+    s.classList.toggle('bez-strelice', ispod ? top !== y + razmak : top !== y - h - razmak);
   }
 
   function sadrzajZaObjekt(f, def) {
@@ -1028,6 +1105,8 @@
     if (gumbOvdje && portal.lokacija) gumbOvdje.addEventListener('click', () => postaviNacinLokacije(!stanje.nacinLokacije));
     else if (gumbOvdje) gumbOvdje.hidden = true;
     karta.on('postrender', pozicionirajSkocni);
+    // sadržaj se može naknadno povećati (npr. učitana fotografija) – ponovno smjesti prozor
+    if (window.ResizeObserver) new ResizeObserver(() => pozicionirajSkocni()).observe(document.getElementById('skocni'));
     document.querySelector('#skocni .zatvori').addEventListener('click', zatvoriSkocni);
 
     // panel, dijalog, "O portalu"
