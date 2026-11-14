@@ -77,7 +77,17 @@ def ndvi_kompozit(bbox, od, do, max_oblacnost, rezolucija, opis, manifest):
     klijent = pystac_client.Client.open(STAC_URL)
     items = klijent.search(collections=[KOLEKCIJA], bbox=bbox, datetime=f"{od}/{do}",
                            query={"eo:cloud_cover": {"lt": max_oblacnost}}).item_collection()
-    zapis = {"razdoblje": [od, do], "broj_snimaka": len(items), "snimke": []}
+    # Ista pločica i datum mogu postojati u više obrada (izvorna i reprocesirana).
+    # Zadržava se po jedna: prednost ima ona kojoj pomak ne treba ručno primjenjivati.
+    najbolje = {}
+    for it in items:
+        k = (it.properties.get("s2:mgrs_tile") or it.properties.get("grid:code"), it.datetime.date())
+        rang = 1 if pomak_snimke(it)[0] else 0
+        if k not in najbolje or rang < najbolje[k][0]:
+            najbolje[k] = (rang, it)
+    uklonjeno = len(items) - len(najbolje)
+    items = [v[1] for v in najbolje.values()]
+    zapis = {"razdoblje": [od, do], "broj_snimaka": len(items), "uklonjeni_duplikati": uklonjeno, "snimke": []}
     manifest["kompoziti"][opis] = zapis
     if len(items) == 0:
         log(f"  {opis}: nema snimaka")
@@ -110,7 +120,7 @@ def ndvi_kompozit(bbox, od, do, max_oblacnost, rezolucija, opis, manifest):
     udio = float(np.isfinite(kompozit.values).mean())
     zapis.update({"broj_dana": int(ds.sizes["time"]), "udio_valjanih_piksela": round(udio, 3),
                   "srednji_ndvi": round(float(np.nanmean(kompozit.values)), 3)})
-    log(f"  {opis}: {len(items)} snimaka, {ds.sizes['time']} dana, valjano {udio:.0%}, "
+    log(f"  {opis}: {len(items)} snimaka (uklonjeno duplikata: {uklonjeno}), {ds.sizes['time']} dana, valjano {udio:.0%}, "
         f"srednji NDVI {zapis['srednji_ndvi']}")
     return kompozit, broj
 
@@ -267,7 +277,7 @@ def main():
 
     manifest = {"nepogoda": nepogoda["id"], "stac": STAC_URL, "kolekcija": KOLEKCIJA,
                 "parametri": nepogoda["analiza"], "scl_valjani_razredi": list(SCL_VALJANO),
-                "pokrenuto": dt.datetime.utcnow().isoformat(timespec="seconds") + "Z", "kompoziti": {}}
+                "pokrenuto": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "kompoziti": {}}
     log(f"Analiza: {nepogoda['naziv']} ({nepogoda['analiza']['metoda']})")
     rezultati = analiza_ndvi(nepogoda, granica, parcele, izlaz_dir, manifest)
     rezultati["datum_obrade"] = dt.date.today().isoformat()
