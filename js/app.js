@@ -110,13 +110,18 @@
     reciklaza: 'M7.5 9.5 10 5.2a2 2 0 0 1 3.5 0l1.3 2.2 1.8-1 .2 4.6-4.1-2.1 1.8-1-1-1.7-2.2 3.8zM16.8 11l2.5 4.3a2 2 0 0 1-1.7 3H15v2l-3.9-2.6 3.9-2.4v2h2.6l-2.2-3.8zM9.6 18.3H4.6a2 2 0 0 1-1.7-3l1.3-2.2-1.8-1 4-2.5.2 4.6-1.8-1-1 1.7h4.4z',
     komunalno: 'M2 7h11v8.5H2z M13.5 10H18l3 3.2v2.3h-7.5z M6 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z M17 15.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4z'
   };
+  // oznake na karti: pribadača (pin) u boji kategorije, s bijelim simbolom ili točkom; vrh pribadače je na lokaciji
+  const PIN = 'M16 1.5C8.3 1.5 2.2 7.6 2.2 15.1c0 9.4 12 21.9 12.6 22.4a1.7 1.7 0 0 0 2.4 0c.6-.5 12.6-13 12.6-22.4C29.8 7.6 23.7 1.5 16 1.5z';
   function svgSimbola(simbol, boja) {
-    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">' +
-      '<circle cx="16" cy="16" r="14.5" fill="' + boja + '" stroke="#fff" stroke-width="2.5"/>' +
-      '<g transform="translate(5.2 5.2) scale(0.9)"><path d="' + SIMBOLI[simbol] + '" fill="#fff" fill-rule="evenodd"/></g></svg>');
+    const sredina = simbol && SIMBOLI[simbol]
+      ? '<g transform="translate(7.6 6.7) scale(0.7)"><path d="' + SIMBOLI[simbol] + '" fill="#fff" fill-rule="evenodd"/></g>'
+      : '<circle cx="16" cy="15" r="5" fill="#fff"/>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">' +
+      '<path d="' + PIN + '" fill="' + boja + '" stroke="#fff" stroke-width="2.2"/>' + sredina + '</svg>');
   }
   function ikonaSimbola(simbol, boja, velicina) {
-    return new ol.style.Icon({ src: svgSimbola(simbol, boja), width: velicina || 30, height: velicina || 30 });
+    const v = velicina || 30;
+    return new ol.style.Icon({ src: svgSimbola(simbol, boja), width: v, height: v * 1.25, anchor: [0.5, 1] });
   }
 
   function napraviStil(stil, idSloja) {
@@ -131,13 +136,7 @@
       if (geom === 'tocka' && simbol && SIMBOLI[simbol]) {
         s = new ol.style.Style({ image: ikonaSimbola(simbol, boja, stil.velicinaIkone) });
       } else if (geom === 'tocka') {
-        s = new ol.style.Style({
-          image: new ol.style.Circle({
-            radius: stil.velicina || 7,
-            fill: new ol.style.Fill({ color: boja }),
-            stroke: new ol.style.Stroke({ color: '#ffffff', width: 2 })
-          })
-        });
+        s = new ol.style.Style({ image: ikonaSimbola(null, boja, Math.max(20, Math.round((stil.velicina || 7) * 4))) });
       } else if (geom === 'linija') {
         s = new ol.style.Style({ stroke: new ol.style.Stroke({ color: boja, width: stil.debljina || 3, lineDash: stil.isprekidano ? [8, 6] : undefined }) });
       } else {
@@ -159,7 +158,7 @@
         fill: new ol.style.Fill({ color: '#1f2937' }),
         stroke: new ol.style.Stroke({ color: 'rgba(255,255,255,0.9)', width: 3 }),
         placement: geom === 'linija' ? 'line' : 'point',
-        offsetY: geom === 'tocka' ? (stil.simbol || stil.kategorije && Object.values(stil.kategorije.vrijednosti).some(v => v.simbol) ? -22 : -15) : 0,
+        offsetY: geom === 'tocka' ? 12 : 0, // ispod vrha pribadače
         overflow: geom === 'poligon'
       })
     }) : null;
@@ -1250,7 +1249,7 @@
     const slojOznake = new ol.layer.Vector({
       source: izvorOznake, zIndex: 1000,
       style: new ol.style.Style({
-        image: new ol.style.Circle({ radius: 9, fill: new ol.style.Fill({ color: 'rgba(220,38,38,0.85)' }), stroke: new ol.style.Stroke({ color: '#fff', width: 3 }) }),
+        image: ikonaSimbola(null, '#dc2626', 34),
         stroke: new ol.style.Stroke({ color: 'rgba(220,38,38,0.9)', width: 4 })
       })
     });
@@ -1541,7 +1540,7 @@
   }
 
   // sučelje za module
-  stanje.api = { el, otvoriDijalog, preuzmiDatoteku, uCsv, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
+  stanje.api = { el, ikonaSimbola, otvoriDijalog, preuzmiDatoteku, uCsv, zatvoriSkocni, najblizaAdresa, odaberiTocku, formatiraj, izvjestajLokacije, ikona, napraviPodlogu, napraviOlSloj };
 
   pokreni().then(() => {
     if (!location.hash || location.hash.length < 3) setTimeout(() => prikaziUpute(false), 600);

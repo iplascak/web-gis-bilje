@@ -34,7 +34,7 @@
     const boja = f.get('boja') || BOJE_BILJESKI[0];
     const g = f.getGeometry();
     return new ol.style.Style({
-      image: new ol.style.Circle({ radius: 7, fill: new ol.style.Fill({ color: boja }), stroke: new ol.style.Stroke({ color: '#fff', width: 2 }) }),
+      image: stanje.api.ikonaSimbola(null, boja, 28),
       stroke: new ol.style.Stroke({ color: boja, width: 3 }), fill: new ol.style.Fill({ color: boja + '33' }),
       text: f.get('tekst') ? new ol.style.Text({ text: f.get('tekst'), font: '600 13px "Libre Franklin", sans-serif', overflow: true,
         fill: new ol.style.Fill({ color: '#111' }), backgroundFill: new ol.style.Fill({ color: 'rgba(255,255,255,.92)' }),

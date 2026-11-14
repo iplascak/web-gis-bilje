@@ -61,7 +61,7 @@
     const k = ol.proj.fromLonLat([r.lon, r.lat]);
     if (!oznaka) {
       oznaka = new ol.layer.Vector({ source: new ol.source.Vector(), zIndex: 1200, style: new ol.style.Style({
-        image: new ol.style.Circle({ radius: 9, fill: new ol.style.Fill({ color: '#9ccc3c' }), stroke: new ol.style.Stroke({ color: '#111', width: 2.5 }) }) }) });
+        image: stanje.api.ikonaSimbola(null, '#7cb32b', 34) }) });
       stanje.karta.addLayer(oznaka);
     }
     oznaka.getSource().clear();
