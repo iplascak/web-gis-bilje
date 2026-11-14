@@ -841,6 +841,50 @@
       "atribucija": "Snimka groblja © Općina Bilje"
     },
     {
+      "id": "grobna_mjesta_prijedlog",
+      "naziv": "Grobna mjesta – automatski prijedlog (Bilje)",
+      "grupa": "imovina",
+      "tip": "geojson",
+      "url": "data/groblja/bilje_grobna_mjesta.geojson",
+      "vidljivo": false,
+      "minZoom": 17,
+      "stil": {
+        "geometrija": "poligon",
+        "boja": "#F1C50E",
+        "debljina": 1.5,
+        "ispunaProzirnost": 0.08
+      },
+      "skocniProzor": {
+        "naslov": "oznaka",
+        "polja": [
+          {
+            "polje": "duzina_m",
+            "oznaka": "Duljina (m)"
+          },
+          {
+            "polje": "sirina_m",
+            "oznaka": "Širina (m)"
+          },
+          {
+            "polje": "povrsina_m2",
+            "oznaka": "Površina (m²)"
+          },
+          {
+            "polje": "pouzdanost",
+            "oznaka": "Pouzdanost (0–1)"
+          },
+          {
+            "polje": "izvor",
+            "oznaka": "Izvor"
+          }
+        ]
+      },
+      "opis": "Obrisi grobnih mjesta na groblju Bilje koje je automatski prepoznao računalni model na snimci dronom – radni prijedlog za grobni katastar.",
+      "detaljno": "Obrise je automatski izdvojio model umjetne inteligencije za segmentaciju slike (Segment Anything, Meta AI) sa snimke groblja dronom (5 cm). Zadržane su plohe koje po veličini (1,3–9 m²), pravokutnom obliku i boji odgovaraju grobnom mjestu, a uklonjeni su osamljeni objekti izvan redova grobova.\n\nOvo je RADNI PRIJEDLOG, a ne službeni grobni katastar. Na novijem dijelu groblja prepoznata je velika većina grobnih mjesta; propuštena su ponajviše mjesta bez kamene ploče (zemljani grobovi), a ponegdje je ocrtana samo unutarnja ploča umjesto cijelog okvira ili je kao grob označen dio staze ili cvjetnjak. Prije uporabe obrise treba pregledati i ispraviti u QGIS-u i povezati s grobnim očevidnikom (polje, red, broj).\n\nNa sloju nema imena pokojnika ni korisnika grobnih mjesta.",
+      "izvor": "Snimka: Općina Bilje (dron); obrada: Web GIS Općine Bilje",
+      "azurirano": "studeni 2026."
+    },
+    {
       "id": "komunalna",
       "naziv": "Komunalna infrastruktura",
       "grupa": "imovina",
