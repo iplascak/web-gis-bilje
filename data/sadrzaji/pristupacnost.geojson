@@ -1,0 +1,1546 @@
+{
+"type": "FeatureCollection",
+"izvor": "© OpenStreetMap suradnici (ODbL)",
+"features": [
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.747777,
+45.607006
+]
+},
+"properties": {
+"naziv": "Dvorac Eugena Savojskog",
+"kategorija": "bastina",
+"vrsta": "dvorac",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/relation/10068194",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.83394,
+45.698759
+]
+},
+"properties": {
+"naziv": "Dvorac Tikveš",
+"kategorija": "bastina",
+"vrsta": "dvorac",
+"adresa": "Titov dvorac 1, Lug",
+"radno_vrijeme": null,
+"telefon": "+385992636778",
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559267438",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.83425,
+45.698101
+]
+},
+"properties": {
+"naziv": "Kompleks “Dvorac Tikveš”",
+"kategorija": "bastina",
+"vrsta": "znamenitost",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/757869279",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.83487,
+45.697694
+]
+},
+"properties": {
+"naziv": "Ladanjska vila",
+"kategorija": "bastina",
+"vrsta": "kurija / ladanjska vila",
+"adresa": "Titov dvorac 2, Lug",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559267433",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.78718,
+45.598904
+]
+},
+"properties": {
+"naziv": "Spomenik hrv. branitelja",
+"kategorija": "bastina",
+"vrsta": "spomen-obilježje",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870597",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.787846,
+45.599033
+]
+},
+"properties": {
+"naziv": "Spomenik mađarskih žrtava I sv. rata",
+"kategorija": "bastina",
+"vrsta": "spomen-obilježje",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870603",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743118,
+45.610045
+]
+},
+"properties": {
+"naziv": "Dječji vrtić Grlica – Bilje",
+"kategorija": "obrazovanje",
+"vrsta": "dječji vrtić",
+"adresa": "Ulica Biljske satnije ZNG RH 11a, Bilje",
+"radno_vrijeme": null,
+"telefon": "031 750 144",
+"web": "https://dv-grlica.hr/",
+"osm": "https://www.openstreetmap.org/way/1281950081",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.746969,
+45.608442
+]
+},
+"properties": {
+"naziv": "Osnovna škola Bilje",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://os-bilje.skole.hr/",
+"osm": "https://www.openstreetmap.org/way/1186084073",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.771659,
+45.659737
+]
+},
+"properties": {
+"naziv": "Osnovna škola Lug",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": "Školska ulica 6, Lug",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://os-lug.skole.hr/",
+"osm": "https://www.openstreetmap.org/way/1187843342",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.789089,
+45.600384
+]
+},
+"properties": {
+"naziv": "Područna škola Kopačevo",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": "Ulica Šandora Petefija 8",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "Osnovna škola Lug - Laskói Általános Iskola",
+"osm": "https://www.openstreetmap.org/node/699870623",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.773501,
+45.625941
+]
+},
+"properties": {
+"naziv": "Područna škola Vardarac",
+"kategorija": "obrazovanje",
+"vrsta": "škola",
+"adresa": "Školska ulica 30, Vardarac",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://os-lug.skole.hr/",
+"osm": "https://www.openstreetmap.org/way/1198109697",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.78887,
+45.607689
+]
+},
+"properties": {
+"naziv": "Javni WC",
+"kategorija": "odmor",
+"vrsta": "javni WC",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559200189",
+"pristup": "pristupačno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.80096,
+45.612279
+]
+},
+"properties": {
+"naziv": "Javni WC",
+"kategorija": "odmor",
+"vrsta": "javni WC",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559217728",
+"pristup": "pristupačno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.748887,
+45.607158
+]
+},
+"properties": {
+"naziv": "Park",
+"kategorija": "odmor",
+"vrsta": "park",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1344737729",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.834515,
+45.697719
+]
+},
+"properties": {
+"naziv": "Park",
+"kategorija": "odmor",
+"vrsta": "park",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559267444",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.741429,
+45.594067
+]
+},
+"properties": {
+"naziv": "Park hrvatskih branitelja",
+"kategorija": "odmor",
+"vrsta": "park",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/735333299",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.747617,
+45.607659
+]
+},
+"properties": {
+"naziv": "Park oko dvorca",
+"kategorija": "odmor",
+"vrsta": "park",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559233823",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.741457,
+45.604786
+]
+},
+"properties": {
+"naziv": "DVD Bilje",
+"kategorija": "sigurnost",
+"vrsta": "vatrogasci (DVD)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": "750-693",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/498851706",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.78678,
+45.599072
+]
+},
+"properties": {
+"naziv": "DVD Kopačevo",
+"kategorija": "sigurnost",
+"vrsta": "vatrogasci (DVD)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870595",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.770424,
+45.624697
+]
+},
+"properties": {
+"naziv": "DVD Vardarac",
+"kategorija": "sigurnost",
+"vrsta": "vatrogasci (DVD)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1129716421",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.784485,
+45.5984
+]
+},
+"properties": {
+"naziv": "Family Camp Kopačevo",
+"kategorija": "smjestaj",
+"vrsta": "kamp",
+"adresa": "Ulica Ferenca Kiša 9, Kopačevo",
+"radno_vrijeme": null,
+"telefon": "+385 31 752 106",
+"web": "https://www.camping.hr/hr/kampovi/family-camper-stop",
+"osm": "https://www.openstreetmap.org/way/1408286455",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.767755,
+45.664147
+]
+},
+"properties": {
+"naziv": "Hotel Lug",
+"kategorija": "smjestaj",
+"vrsta": "hotel",
+"adresa": "Šandora Petefija 64, Lug",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://bts.hr/",
+"osm": "https://www.openstreetmap.org/way/381838242",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742756,
+45.604212
+]
+},
+"properties": {
+"naziv": "Kuća za odmor Kovačević",
+"kategorija": "smjestaj",
+"vrsta": "smještaj (sobe, kuća za odmor)",
+"adresa": "Crkvena ulica 4, Bilje",
+"radno_vrijeme": null,
+"telefon": "750-123",
+"web": null,
+"osm": "https://www.openstreetmap.org/way/529384254",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.744576,
+45.61117
+]
+},
+"properties": {
+"naziv": "Mazur",
+"kategorija": "smjestaj",
+"vrsta": "smještaj (sobe, kuća za odmor)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1999058502",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743528,
+45.593239
+]
+},
+"properties": {
+"naziv": "Seosko gospodarstvo Lackovići",
+"kategorija": "smjestaj",
+"vrsta": "smještaj (sobe, kuća za odmor)",
+"adresa": "Vinogradska 5",
+"radno_vrijeme": null,
+"telefon": "750-850",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741564763",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.739104,
+45.60867
+]
+},
+"properties": {
+"naziv": "Smještaj (sobe, kuća za odmor)",
+"kategorija": "smjestaj",
+"vrsta": "smještaj (sobe, kuća za odmor)",
+"adresa": "Ulica Hrvatskih branitelja 56",
+"radno_vrijeme": null,
+"telefon": "750-827",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741588236",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.762018,
+45.59878
+]
+},
+"properties": {
+"naziv": "Sobe za iznajmljivanje",
+"kategorija": "smjestaj",
+"vrsta": "smještaj (sobe, kuća za odmor)",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": "+385 95 828 3921",
+"web": "http://www.capistro.hr/?page_id=2",
+"osm": "https://www.openstreetmap.org/way/727896044",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.745345,
+45.593161
+]
+},
+"properties": {
+"naziv": "Vrata Baranje",
+"kategorija": "smjestaj",
+"vrsta": "smještaj (sobe, kuća za odmor)",
+"adresa": "Vinogradska 15",
+"radno_vrijeme": null,
+"telefon": "750-057",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741564761",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.738541,
+45.607914
+]
+},
+"properties": {
+"naziv": "Alucel elektromaterijal",
+"kategorija": "trgovine",
+"vrsta": "trgovina",
+"adresa": "Dubrovačka ulica 41",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741588230",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743136,
+45.600786
+]
+},
+"properties": {
+"naziv": "Frizerski salon Ana",
+"kategorija": "trgovine",
+"vrsta": "frizer",
+"adresa": "Kralja Zvonimira",
+"radno_vrijeme": null,
+"telefon": "750-222",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578084",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742513,
+45.600899
+]
+},
+"properties": {
+"naziv": "Konzum",
+"kategorija": "trgovine",
+"vrsta": "supermarket",
+"adresa": "Ulica kralja Zvonimira 28, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/672157387",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74076,
+45.600383
+]
+},
+"properties": {
+"naziv": "Moto-nautika d.o.o.",
+"kategorija": "trgovine",
+"vrsta": "trgovina",
+"adresa": "Blatna ulica 48, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1226141829",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.770466,
+45.624377
+]
+},
+"properties": {
+"naziv": "NTL",
+"kategorija": "trgovine",
+"vrsta": "trgovina mješovitom robom",
+"adresa": "Ulica Šandora Petefija 114, Vardarac",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870665",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742591,
+45.60474
+]
+},
+"properties": {
+"naziv": "NTL",
+"kategorija": "trgovine",
+"vrsta": "supermarket",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1573971203",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.738699,
+45.605581
+]
+},
+"properties": {
+"naziv": "PVC stolarija HIT",
+"kategorija": "trgovine",
+"vrsta": "trgovina",
+"adresa": "Dubrovačka ulica 31, Bilje",
+"radno_vrijeme": null,
+"telefon": "750-205",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741588222",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743797,
+45.60318
+]
+},
+"properties": {
+"naziv": "Pekara Dva Goluba",
+"kategorija": "trgovine",
+"vrsta": "pekara",
+"adresa": "Kralja Zvonimira 6",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578089",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743948,
+45.601685
+]
+},
+"properties": {
+"naziv": "Poljoprivredna ljekarna Jakić",
+"kategorija": "trgovine",
+"vrsta": "drogerija / ljekarna za bilje",
+"adresa": "Kralja Zvonimira 5c",
+"radno_vrijeme": null,
+"telefon": "750-388",
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578086",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.787542,
+45.59906
+]
+},
+"properties": {
+"naziv": "Slavonija Bošković",
+"kategorija": "trgovine",
+"vrsta": "supermarket",
+"adresa": null,
+"radno_vrijeme": "Mo-Sa 06:30-20:00; Su 08:00-13:00",
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870616",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.832069,
+45.697379
+]
+},
+"properties": {
+"naziv": "Suveniri",
+"kategorija": "trgovine",
+"vrsta": "suveniri",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/7077873954",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.78798,
+45.599777
+]
+},
+"properties": {
+"naziv": "Amigos",
+"kategorija": "ugostiteljstvo",
+"vrsta": "kafić",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/699870618",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743032,
+45.593367
+]
+},
+"properties": {
+"naziv": "Baranjska Ruža",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": "Vinogradska 3b",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741564762",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743842,
+45.604137
+]
+},
+"properties": {
+"naziv": "Cafe Bar Centar",
+"kategorija": "ugostiteljstvo",
+"vrsta": "kafić / bar",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1583703925",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.744124,
+45.604192
+]
+},
+"properties": {
+"naziv": "Cafe Bar Sky",
+"kategorija": "ugostiteljstvo",
+"vrsta": "kafić",
+"adresa": "Ulica Šandora Petefija 1a, Bilje",
+"radno_vrijeme": "Mo-Th 07:00-23:00; Fr-Sa 07:00-02:00; Su 08:00-23:00",
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/695550166",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.790112,
+45.607805
+]
+},
+"properties": {
+"naziv": "Cafe Lopoč",
+"kategorija": "ugostiteljstvo",
+"vrsta": "kafić",
+"adresa": null,
+"radno_vrijeme": "08:00-21:00",
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/11980854117",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.761879,
+45.598794
+]
+},
+"properties": {
+"naziv": "Capistro",
+"kategorija": "ugostiteljstvo",
+"vrsta": "brza hrana",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": "+385 95 828 3921",
+"web": "http://www.capistro.hr/?page_id=36",
+"osm": "https://www.openstreetmap.org/node/1403855736",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.766858,
+45.6195
+]
+},
+"properties": {
+"naziv": "Citadela",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/4081137289",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.791731,
+45.605947
+]
+},
+"properties": {
+"naziv": "Didin konak",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": "Ulica Šandora Petefija 91, Kopačevo",
+"radno_vrijeme": null,
+"telefon": null,
+"web": "http://didinkonak.hr",
+"osm": "https://www.openstreetmap.org/node/7985863586",
+"pristup": "pristupačno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743486,
+45.604236
+]
+},
+"properties": {
+"naziv": "Kafić / bar",
+"kategorija": "ugostiteljstvo",
+"vrsta": "kafić / bar",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/12459284666",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743245,
+45.597533
+]
+},
+"properties": {
+"naziv": "Kod Varge",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": "https://kod-varge.hr/varga/",
+"osm": "https://www.openstreetmap.org/node/741578079",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.814637,
+45.630879
+]
+},
+"properties": {
+"naziv": "Kormoran",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/356898791",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.863991,
+45.721112
+]
+},
+"properties": {
+"naziv": "Kuća u prirodi Zlatna Greda",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": "Zlatna Greda 16, Zlatna Greda",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/4309487626",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.747344,
+45.605693
+]
+},
+"properties": {
+"naziv": "Park",
+"kategorija": "ugostiteljstvo",
+"vrsta": "kafić",
+"adresa": "Lajoša Košuta 32",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/695550623",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.770615,
+45.623904
+]
+},
+"properties": {
+"naziv": "Restoran Darócz",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": "Ulica Lajoša Košuta 39, Vardarac",
+"radno_vrijeme": null,
+"telefon": "+385 31 753 113",
+"web": "https://darocz.com/",
+"osm": "https://www.openstreetmap.org/node/4145949590",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.8355,
+45.697205
+]
+},
+"properties": {
+"naziv": "Tikveški dvorac",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/908088879",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.787759,
+45.598514
+]
+},
+"properties": {
+"naziv": "Zelena Žaba",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": "Ribarska ulica 3, Kopačevo",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/306938059",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.737281,
+45.592119
+]
+},
+"properties": {
+"naziv": "Čingi Lingi čarda",
+"kategorija": "ugostiteljstvo",
+"vrsta": "restoran",
+"adresa": "Ul. kralja Zvonimira, Bilje",
+"radno_vrijeme": "Mo-Su 11:00-23:00",
+"telefon": "+385 31 281 700",
+"web": "https://cingilingicarda.hr",
+"osm": "https://www.openstreetmap.org/node/11771962877",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743826,
+45.602941
+]
+},
+"properties": {
+"naziv": "31327 Bilje",
+"kategorija": "usluge",
+"vrsta": "pošta",
+"adresa": "Ulica kralja Zvonimira 10, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/741578087",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74369,
+45.603562
+]
+},
+"properties": {
+"naziv": "Bankomat",
+"kategorija": "usluge",
+"vrsta": "bankomat",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1342429731",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743602,
+45.603768
+]
+},
+"properties": {
+"naziv": "Bankomat",
+"kategorija": "usluge",
+"vrsta": "bankomat",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1342429816",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.742715,
+45.600966
+]
+},
+"properties": {
+"naziv": "Bankomat",
+"kategorija": "usluge",
+"vrsta": "bankomat",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/1999063345",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.744162,
+45.603544
+]
+},
+"properties": {
+"naziv": "INA Bilje",
+"kategorija": "usluge",
+"vrsta": "benzinska postaja",
+"adresa": "Kralja Zvonimira 1C, Bilje",
+"radno_vrijeme": "Mo-Sa 06:00-20:00; Su 06:00-13:00",
+"telefon": "+385 91 4971 084",
+"web": null,
+"osm": "https://www.openstreetmap.org/way/324706111",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.743647,
+45.603658
+]
+},
+"properties": {
+"naziv": "Općina Bilje",
+"kategorija": "usluge",
+"vrsta": "općina",
+"adresa": "Ulica kralja Zvonimira 2, Bilje",
+"radno_vrijeme": null,
+"telefon": "+385 (0)31 751-400",
+"web": "https://www.bilje.hr/",
+"osm": "https://www.openstreetmap.org/node/14220066817",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.788405,
+45.599738
+]
+},
+"properties": {
+"naziv": "Reformatska kršćanska crkva",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1242785023",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.745202,
+45.603782
+]
+},
+"properties": {
+"naziv": "Reformirana crkva Bilje",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Ulica Šandora Petefija 4a, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559233830",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.774605,
+45.663702
+]
+},
+"properties": {
+"naziv": "Reformirana crkva Lug",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Crkvena ulica 6, Lug",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/237209385",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.773357,
+45.624797
+]
+},
+"properties": {
+"naziv": "Reformirana crkva Vardarac",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Ulica Lajoša Košuta 71A, Vardarac",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/1129678947",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74323,
+45.603894
+]
+},
+"properties": {
+"naziv": "crkva Bezgrešnog začeća Blažene Djevice Marije",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": "Trg Josipa bana Jelačića 1, Bilje",
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/97557564",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.834833,
+45.697111
+]
+},
+"properties": {
+"naziv": "kapela papinskog blagoslova",
+"kategorija": "vjera",
+"vrsta": "crkva / vjerski objekt",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/559267431",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.749941,
+45.606578
+]
+},
+"properties": {
+"naziv": "Ambulanta",
+"kategorija": "zdravlje",
+"vrsta": "ambulanta / liječnik",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/way/97557551",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+},
+{
+"type": "Feature",
+"geometry": {
+"type": "Point",
+"coordinates": [
+18.74973,
+45.606468
+]
+},
+"properties": {
+"naziv": "Ljekarna",
+"kategorija": "zdravlje",
+"vrsta": "ljekarna",
+"adresa": null,
+"radno_vrijeme": null,
+"telefon": null,
+"web": null,
+"osm": "https://www.openstreetmap.org/node/686562707",
+"pristup": "nije označeno",
+"wc_pristupacan": null
+}
+}
+]
+}

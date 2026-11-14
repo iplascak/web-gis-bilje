@@ -19,7 +19,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/relation/10068194"
+"osm": "https://www.openstreetmap.org/relation/10068194",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -39,7 +41,9 @@
 "radno_vrijeme": null,
 "telefon": "+385992636778",
 "web": null,
-"osm": "https://www.openstreetmap.org/way/559267438"
+"osm": "https://www.openstreetmap.org/way/559267438",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -59,7 +63,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/757869279"
+"osm": "https://www.openstreetmap.org/way/757869279",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -79,7 +85,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/559267433"
+"osm": "https://www.openstreetmap.org/way/559267433",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -99,7 +107,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/699870597"
+"osm": "https://www.openstreetmap.org/node/699870597",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -119,7 +129,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/699870603"
+"osm": "https://www.openstreetmap.org/node/699870603",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -139,7 +151,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/559200189"
+"osm": "https://www.openstreetmap.org/way/559200189",
+"pristup": "pristupačno",
+"wc_pristupacan": null
 }
 },
 {
@@ -159,7 +173,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/559217728"
+"osm": "https://www.openstreetmap.org/way/559217728",
+"pristup": "pristupačno",
+"wc_pristupacan": null
 }
 },
 {
@@ -179,7 +195,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/1344737729"
+"osm": "https://www.openstreetmap.org/node/1344737729",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -199,7 +217,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/559267444"
+"osm": "https://www.openstreetmap.org/way/559267444",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -219,7 +239,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/735333299"
+"osm": "https://www.openstreetmap.org/way/735333299",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -239,7 +261,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/559233823"
+"osm": "https://www.openstreetmap.org/way/559233823",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -259,7 +283,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/356908830"
+"osm": "https://www.openstreetmap.org/node/356908830",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -279,7 +305,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/5394065798"
+"osm": "https://www.openstreetmap.org/node/5394065798",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -299,7 +327,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/5394065799"
+"osm": "https://www.openstreetmap.org/node/5394065799",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -319,7 +349,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/5394065800"
+"osm": "https://www.openstreetmap.org/node/5394065800",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -339,7 +371,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/5394065801"
+"osm": "https://www.openstreetmap.org/node/5394065801",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -359,7 +393,9 @@
 "radno_vrijeme": null,
 "telefon": "+385 31 752 106",
 "web": "https://www.camping.hr/hr/kampovi/family-camper-stop",
-"osm": "https://www.openstreetmap.org/way/1408286455"
+"osm": "https://www.openstreetmap.org/way/1408286455",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -379,7 +415,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": "https://bts.hr/",
-"osm": "https://www.openstreetmap.org/way/381838242"
+"osm": "https://www.openstreetmap.org/way/381838242",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -399,7 +437,9 @@
 "radno_vrijeme": null,
 "telefon": "750-123",
 "web": null,
-"osm": "https://www.openstreetmap.org/way/529384254"
+"osm": "https://www.openstreetmap.org/way/529384254",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -419,7 +459,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/1999058502"
+"osm": "https://www.openstreetmap.org/node/1999058502",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -439,7 +481,9 @@
 "radno_vrijeme": null,
 "telefon": "750-850",
 "web": null,
-"osm": "https://www.openstreetmap.org/node/741564763"
+"osm": "https://www.openstreetmap.org/node/741564763",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -459,7 +503,9 @@
 "radno_vrijeme": null,
 "telefon": "750-827",
 "web": null,
-"osm": "https://www.openstreetmap.org/node/741588236"
+"osm": "https://www.openstreetmap.org/node/741588236",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -479,7 +525,9 @@
 "radno_vrijeme": null,
 "telefon": "+385 95 828 3921",
 "web": "http://www.capistro.hr/?page_id=2",
-"osm": "https://www.openstreetmap.org/way/727896044"
+"osm": "https://www.openstreetmap.org/way/727896044",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -499,7 +547,9 @@
 "radno_vrijeme": null,
 "telefon": "750-057",
 "web": null,
-"osm": "https://www.openstreetmap.org/node/741564761"
+"osm": "https://www.openstreetmap.org/node/741564761",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -519,7 +569,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/699870618"
+"osm": "https://www.openstreetmap.org/node/699870618",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -539,7 +591,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/741564762"
+"osm": "https://www.openstreetmap.org/node/741564762",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -559,7 +613,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/1583703925"
+"osm": "https://www.openstreetmap.org/node/1583703925",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -579,7 +635,9 @@
 "radno_vrijeme": "Mo-Th 07:00-23:00; Fr-Sa 07:00-02:00; Su 08:00-23:00",
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/695550166"
+"osm": "https://www.openstreetmap.org/node/695550166",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -599,7 +657,9 @@
 "radno_vrijeme": "08:00-21:00",
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/11980854117"
+"osm": "https://www.openstreetmap.org/node/11980854117",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -619,7 +679,9 @@
 "radno_vrijeme": null,
 "telefon": "+385 95 828 3921",
 "web": "http://www.capistro.hr/?page_id=36",
-"osm": "https://www.openstreetmap.org/node/1403855736"
+"osm": "https://www.openstreetmap.org/node/1403855736",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -639,7 +701,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/4081137289"
+"osm": "https://www.openstreetmap.org/node/4081137289",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -659,7 +723,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": "http://didinkonak.hr",
-"osm": "https://www.openstreetmap.org/node/7985863586"
+"osm": "https://www.openstreetmap.org/node/7985863586",
+"pristup": "pristupačno",
+"wc_pristupacan": null
 }
 },
 {
@@ -679,7 +745,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/12459284666"
+"osm": "https://www.openstreetmap.org/node/12459284666",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -699,7 +767,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": "https://kod-varge.hr/varga/",
-"osm": "https://www.openstreetmap.org/node/741578079"
+"osm": "https://www.openstreetmap.org/node/741578079",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -719,7 +789,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/356898791"
+"osm": "https://www.openstreetmap.org/node/356898791",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -739,7 +811,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/4309487626"
+"osm": "https://www.openstreetmap.org/node/4309487626",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -759,7 +833,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/695550623"
+"osm": "https://www.openstreetmap.org/node/695550623",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -779,7 +855,9 @@
 "radno_vrijeme": null,
 "telefon": "+385 31 753 113",
 "web": "https://darocz.com/",
-"osm": "https://www.openstreetmap.org/node/4145949590"
+"osm": "https://www.openstreetmap.org/node/4145949590",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -799,7 +877,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/node/908088879"
+"osm": "https://www.openstreetmap.org/node/908088879",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -819,7 +899,9 @@
 "radno_vrijeme": null,
 "telefon": null,
 "web": null,
-"osm": "https://www.openstreetmap.org/way/306938059"
+"osm": "https://www.openstreetmap.org/way/306938059",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 },
 {
@@ -839,7 +921,9 @@
 "radno_vrijeme": "Mo-Su 11:00-23:00",
 "telefon": "+385 31 281 700",
 "web": "https://cingilingicarda.hr",
-"osm": "https://www.openstreetmap.org/node/11771962877"
+"osm": "https://www.openstreetmap.org/node/11771962877",
+"pristup": "nije označeno",
+"wc_pristupacan": null
 }
 }
 ]
