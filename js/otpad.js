@@ -72,7 +72,7 @@
       id: 'mobilno_reciklazno', naziv: 'Mobilno reciklažno dvorište', grupa: 'svakodnevica', podgrupa: 'Otpad', tip: 'geojson',
       url: 'data/otpad/mobilno_reciklazno.geojson', vidljivo: false,
       stil: { geometrija: 'tocka', boja: '#287856', simbol: 'reciklaza', natpis: 'naselje', natpisMinZoom: 12 },
-      skocniProzor: { naslov: 'naziv', polja: [{ polje: 'termini', oznaka: 'Termini 2026.' }, { polje: 'vrijeme', oznaka: 'Vrijeme' }, { polje: 'napomena', oznaka: 'Napomena' }] },
+      skocniProzor: { naslov: 'naziv', polja: [{ polje: 'termini', oznaka: 'Termini 2026.' }, { polje: 'vrijeme', oznaka: 'Vrijeme dolaska' }, { polje: 'napomena', oznaka: 'Napomena' }] },
       opis: 'Gdje i kada dolazi mobilno reciklažno dvorište.',
       detaljno: 'Mobilno reciklažno dvorište Unikoma dolazi u naselja Općine Bilje četiri puta godišnje. Točna lokacija stajanja u naselju nije navedena u rasporedu – točka označava središte naselja dok općina ne potvrdi mjesto.',
       izvor: 'Unikom d.o.o.', azurirano: '2026.'

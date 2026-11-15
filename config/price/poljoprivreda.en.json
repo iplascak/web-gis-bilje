@@ -1,0 +1,117 @@
+{
+ "id": "poljoprivreda",
+ "naslov": "The farming year in Bilje Municipality",
+ "uvod": "A short story through maps: what our soil is like, what grows where, where water threatens and how the weather sets the work in the fields.",
+ "koraci": [
+  {
+   "naslov": "Between the Drava, the Danube and Kopački rit",
+   "tekst": "Bilje Municipality covers about 260 km², much of it farmland on the floodplain. The soils here are mostly deep and fertile, but water – too much or too little – shapes almost every season.",
+   "slojevi": [
+    "struktura_parcela"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "What the soil beneath us is like",
+   "tekst": "The soil map shows soil types. Click an area for the soil type and texture: heavier clay soils dry out more slowly in spring, while lighter soils warm up faster and allow earlier sowing.",
+   "slojevi": [
+    "pedoloska_karta"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Where the most valuable land is",
+   "tekst": "The soil value class shows how valuable the land is for farming. The best land should be kept for production – this matters when planning building and spatial plans.",
+   "slojevi": [
+    "bonitet"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "What is grown today",
+   "tekst": "ARKOD parcels show the declared areas by land use: arable land, meadows, pastures, orchards and vineyards. Zoom in to see individual parcels; data on land users are not shown.",
+   "slojevi": [
+    "arkod_uporaba"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.61
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "The view from space – every parcel, every season",
+   "tekst": "The European Sentinel-2 satellite images our fields every few days. For each parcel the portal compares this year's crop vigour with previous seasons and warns when the crop is weaker than usual or suffering from drought. Click a parcel for the curves of all seasons and advice.",
+   "slojevi": [
+    "stanje_usjeva"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.62
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Zones within parcels",
+   "tekst": "Some parts of a parcel give a weaker crop year after year – because of soil, water or compaction. Red zones are a good place for soil analysis and adjusted fertilisation; green ones are the strongest parts.",
+   "slojevi": [
+    "zone_parcela"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.62
+    ],
+    "zoom": 14
+   }
+  },
+  {
+   "naslov": "Canals and water in the fields",
+   "tekst": "The canal network drains excess water in spring, but in dry summers it can also be a source for irrigation. The rainfall and evaporation balance in the weather forecast shows whether the crops need water.",
+   "slojevi": [
+    "vodotoci_kanali",
+    "jezera_bare"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "When water becomes a threat",
+   "tekst": "The flood hazard map shows areas the Drava and the Danube can flood once in a hundred years. Embankments protect villages and fields; for damage from natural hazards the portal also shows satellite images of crop condition.",
+   "slojevi": [
+    "poplave_sv",
+    "nasipi",
+    "hidro_postaje"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "A crop with potential: paprika",
+   "tekst": "The suitability study shows where spice paprika grows best. Maps like this help decide what to sow and where – for paprika, and for other crops in the future.",
+   "slojevi": [
+    "paprika_pogodnost"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Nature as a neighbour",
+   "tekst": "Some fields border Kopački rit Nature Park and Natura 2000 sites. Special rules apply there, but also special support for nature-friendly farming.",
+   "slojevi": [
+    "zasticena_podrucja",
+    "natura_povs"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Weather sets the work",
+   "tekst": "The farm forecast turns numbers into advice: is the soil workable, is it warm enough to sow maize, when to top-dress, when to spray and when frost or disease threatens. Choose your crop.",
+   "slojevi": [],
+   "pogled": "opcina",
+   "akcija": "agro",
+   "gumb": "Open the farm weather"
+  }
+ ]
+}

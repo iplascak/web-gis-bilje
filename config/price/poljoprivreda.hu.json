@@ -1,0 +1,117 @@
+{
+ "id": "poljoprivreda",
+ "naslov": "Mezőgazdasági év Bellye községben",
+ "uvod": "Rövid történet térképeken: milyen a talajunk, mit hol termesztünk, hol fenyeget a víz, és hogyan szabja meg az időjárás a mezei munkát.",
+ "koraci": [
+  {
+   "naslov": "A Dráva, a Duna és a Kopácsi-rét között",
+   "tekst": "Bellye község mintegy 260 km²-es, nagy részét ártéri mezőgazdasági területek teszik ki. A talajok többnyire mélyek és termékenyek, de a víz – túl sok vagy túl kevés – szinte minden évszakot meghatároz.",
+   "slojevi": [
+    "struktura_parcela"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Milyen talaj van alattunk",
+   "tekst": "A talajtérkép a talajtípusokat mutatja. Kattintson egy területre a talajtípusért és -textúráért: a nehezebb, agyagos talajok tavasszal lassabban száradnak, a könnyebbek gyorsabban melegszenek és korábbi vetést tesznek lehetővé.",
+   "slojevi": [
+    "pedoloska_karta"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Hol a legértékesebb föld",
+   "tekst": "A talaj minőségi osztálya megmutatja, mennyire értékes a föld a mezőgazdaság számára. A legjobb földeket meg kell őrizni a termelésnek – ez fontos az építkezések és a rendezési tervek tervezésekor.",
+   "slojevi": [
+    "bonitet"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Mit termesztünk ma",
+   "tekst": "Az ARKOD-parcellák a bejelentett területeket mutatják földhasználat szerint: szántók, rétek, legelők, gyümölcsösök és szőlők. Nagyítson rá az egyes parcellák megtekintéséhez; a földhasználók adatai nem jelennek meg.",
+   "slojevi": [
+    "arkod_uporaba"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.61
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Kilátás a műholdról – minden parcella, minden évad",
+   "tekst": "Az európai Sentinel-2 műhold néhány naponta lefényképezi földjeinket. A portál minden parcellánál összeveti az idei növényzet dússágát a korábbi évadokkal, és figyelmeztet, ha a vetés a szokásosnál gyengébb vagy aszály sújtja. Kattintson egy parcellára az összes évad görbéiért és a tanácsokért.",
+   "slojevi": [
+    "stanje_usjeva"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.62
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Parcellán belüli zónák",
+   "tekst": "A parcella egyes részei évről évre gyengébb termést adnak – a talaj, a víz vagy a tömörödés miatt. A piros zónák jó helyek talajvizsgálatra és célzott tápanyag-utánpótlásra; a zöldek a legerősebb részek.",
+   "slojevi": [
+    "zone_parcela"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.62
+    ],
+    "zoom": 14
+   }
+  },
+  {
+   "naslov": "Csatornák és víz a földeken",
+   "tekst": "A csatornahálózat tavasszal elvezeti a felesleges vizet, aszályos nyarakon viszont öntözővíz-forrás is lehet. Az időjárás-előrejelzésben a csapadék és a párolgás mérlege mutatja, kell-e víz a növényeknek.",
+   "slojevi": [
+    "vodotoci_kanali",
+    "jezera_bare"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Amikor a víz fenyegetéssé válik",
+   "tekst": "Az árvízveszélyességi térkép azokat a területeket mutatja, amelyeket a Dráva és a Duna százévente egyszer elönthet. A gátak védik a falvakat és a földeket; elemi károk esetén a portál a vetések állapotáról készült műholdfelvételeket is megjeleníti.",
+   "slojevi": [
+    "poplave_sv",
+    "nasipi",
+    "hidro_postaje"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Ígéretes növény: a fűszerpaprika",
+   "tekst": "Az alkalmassági tanulmány megmutatja, hol terem legjobban a fűszerpaprika. Az ilyen térképek segítenek eldönteni, mit és hova vessünk – a paprikánál, de a jövőben más növényeknél is.",
+   "slojevi": [
+    "paprika_pogodnost"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "A természet mint szomszéd",
+   "tekst": "Egyes földek a Kopácsi-rét Természetparkkal és Natura 2000 területekkel határosak. Ott külön szabályok érvényesek, de külön támogatás is jár a természetbarát gazdálkodásért.",
+   "slojevi": [
+    "zasticena_podrucja",
+    "natura_povs"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Az időjárás szabja meg a munkát",
+   "tekst": "Az agrár-előrejelzés a számokat tanácsokká alakítja: járható-e a talaj, elég meleg van-e a kukoricavetéshez, mikor fejtrágyázzunk, mikor permetezzünk, és mikor fenyeget fagy vagy betegség. Válassza ki a növényét.",
+   "slojevi": [],
+   "pogled": "opcina",
+   "akcija": "agro",
+   "gumb": "Agrár-időjárás megnyitása"
+  }
+ ]
+}
