@@ -556,6 +556,28 @@
    "opis": "prijave, projekti, poljoprivreda, zrak i događanja u jednoj godini",
    "slojevi": [],
    "akcija": "izvjesce"
+  },
+  {
+   "pojmovi": [
+    "bastin",
+    "povijest",
+    "dvorac",
+    "eugen",
+    "savojsk",
+    "crkv",
+    "reformat",
+    "kalvin",
+    "arheolo",
+    "rimsk",
+    "gradina",
+    "tikves",
+    "zlatna greda",
+    "trscar",
+    "stari nazivi"
+   ],
+   "naslov": "Vođena priča: baština osam sela",
+   "opis": "od prapovijesnih gradina i rimske ceste do dvoraca i crkava",
+   "akcija": "prica_bastina"
   }
  ]
 }

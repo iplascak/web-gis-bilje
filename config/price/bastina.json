@@ -1,0 +1,170 @@
+{
+ "id": "bastina",
+ "naslov": "Baština osam sela – od gradina do dvoraca",
+ "koraci": [
+  {
+   "naslov": "Baština osam sela",
+   "tekst": "Općina Bilje nije samo Kopački rit. Na njezinu području registrirano je 18 kulturnih dobara – osam arheoloških nalazišta, dvorci, crkve, stara pustara i tradicijska kuća – a ispod polja leže tragovi naselja stari više od sedam tisuća godina. Krenimo redom kroz vrijeme.",
+   "slojevi": [
+    "kulturna_dobra",
+    "bastina_registar"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Prije Rimljana: gradine i idoli",
+   "tekst": "Najstariji tragovi su kod Vardarca: na nalazištu Kenderfeld ljudi su živjeli neprekidno od mlađeg kamenog doba (oko 5300. pr. Kr.) do kasne antike. Kod Luga je prapovijesna gradina okružena jarkom, a na nalazištu Utrina – Četevelđ pronađen je glineni ženski idol. Polja koja danas oremo bila su naseljena tisućljećima.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.765,
+     45.645
+    ],
+    "zoom": 12
+   }
+  },
+  {
+   "naslov": "Na rimskoj granici",
+   "tekst": "Za Rimljana ovuda je prolazila granica Carstva na Dunavu. Rimska cesta vodila je iz Murse (današnjeg Osijeka) preko mosta na Dravi prema sjeveru, a kod Malog Sakadaša bio je rimski vojni logor s grobljem. Na nalazištu Čorda kod Kopačeva nalazilo se naselje uz logor. Sva ta nalazišta su zaštićena – tlo ondje čuva ono što još nije istraženo.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.765,
+     45.598
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Dvorac Eugena Savojskog",
+   "tekst": "Nakon pobjede nad Osmanlijama kod Sente 1697. car Leopold I. darovao je Baranju vojskovođi Eugenu Savojskom. Do 1712. u Bilju mu je sagrađen utvrđeni dvorac s četiri krila i opkopom – najstariji dvorac u Slavoniji i Baranji, vjerojatno djelo arhitekta bečkog Belvedera. Odatle je upravljao golemim vlastelinstvom Belje, po kojem i danas nosi ime najveće poljoprivredno imanje u kraju. Dvorac čeka obnovu.",
+   "slojevi": [
+    "kulturna_dobra",
+    "institucije"
+   ],
+   "pogled": {
+    "centar": [
+     18.7529,
+     45.6106
+    ],
+    "zoom": 16
+   }
+  },
+  {
+   "naslov": "Barokna crkva i stari mlin",
+   "tekst": "U središtu Bilja stoji župna crkva Bezgrešnog začeća Blažene Djevice Marije, barokna građevina iz 1773.–1775. Njezin inventar – oltari, propovjedaonica i slike s prijelaza 18. u 19. stoljeće – zaštićen je kao cjelina. Iz novijeg doba zaštićena je i zgrada mlinskog skladišta s godinom 1921. iznad ulaza: svjedok vremena kada je Bilje bilo središte velikog imanja.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7529,
+     45.6106
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Reformacija u Baranji",
+   "tekst": "Sela uz rit – Kopačevo, Lug i Vardarac – prihvatila su reformaciju već u 16. stoljeću i do danas su središta reformirane (kalvinske) Crkve mađarske zajednice u Hrvatskoj. U Lugu je djelovao reformator Mihael Starin. Lugovska crkva ima srednjovjekovni toranj, zidove s puškarnicama i gotički portal – najstariji sačuvani dio graditeljske baštine u općini.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7735,
+     45.66
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Kopačevo – selo uz rit",
+   "tekst": "Kopačevo živi s vodom: rit ga plavi gotovo svake godine, a ribarstvo i život s poplavama oblikovali su selo. Reformirana crkva iz 1804. najveća je reformirana crkva u Baranji – ima 890 mjesta. U ratu je teško stradala i obnovljena je.",
+   "slojevi": [
+    "kulturna_dobra",
+    "posjetitelji_tocke"
+   ],
+   "pogled": {
+    "centar": [
+     18.7883,
+     45.5997
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Vardarac: crkva, škola i trščara",
+   "tekst": "U Vardarcu je zaštićen cijeli sklop: reformirana crkva građena 1812.–1829. s trokatnim zvonikom, župni stan i škola. Na području općine sačuvana je i trščara iz 1839. – kuća od naboja i nepečene opeke pokrivena trskom, primjer kako se nekad gradilo u Baranji.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7733,
+     45.6247
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Zlatna Greda – pustara imanja",
+   "tekst": "Zlatna Greda osnovana je oko 1870. kao planirano naselje radnika beljskog vlastelinstva, s upravnom zgradom od opeke. Danas je zaštićena kao kulturno-povijesna cjelina. U Kozjaku su evidentirane još četiri stare kuće.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.865,
+     45.7235
+    ],
+    "zoom": 14
+   }
+  },
+  {
+   "naslov": "Tikveš – lovište careva i predsjednika",
+   "tekst": "U drugoj polovici 19. stoljeća Habsburgovci teschenske loze sagradili su u tikveškim šumama lovački dvorac, lovačku kuću i kapelicu. Nadvojvotkinja Isabella ovdje je snimila stotine fotografija seoskog života – među prvim fotografkinjama u Europi. Poslije su ga koristili Karađorđevići, a zatim Tito. Nakon pustošenja u Domovinskom ratu obnovljen je kao centar za posjetitelje Parka prirode.",
+   "slojevi": [
+    "kulturna_dobra",
+    "posjetitelji_tocke"
+   ],
+   "pogled": {
+    "centar": [
+     18.8316,
+     45.6969
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Jedan kraj, više jezika",
+   "tekst": "Bilje je Bellye, Lug je Laskó, Kopačevo Kopács, Vardarac Várdaróc. U imenima polja, bara i šuma čuvaju se hrvatski, mađarski i njemački trag – svi koji su ovdje živjeli. Službena imena su na karti, a mnoga stara imena zna još samo nekolicina mještana.",
+   "slojevi": [
+    "toponimi_rgi",
+    "doprinosi"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.63
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Dodajte svoju priču",
+   "tekst": "Imate li staru fotografiju kuće, crkve, berbe ili poplave? Znate li kako se zvala bara iza sela? Dodajte je na kartu – nakon pregleda postaje dio zajedničkog pamćenja općine.",
+   "slojevi": [
+    "doprinosi",
+    "vizure"
+   ],
+   "pogled": "opcina",
+   "akcija": "sjecanje",
+   "gumb": "Dodaj svoje sjećanje"
+  }
+ ]
+}

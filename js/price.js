@@ -5,7 +5,7 @@
  */
 (function () {
   'use strict';
-  const PRICE = [{ id: 'poljoprivreda', naziv: 'Priča: poljoprivreda', ikona: 'traktor' }, { id: 'turizam', naziv: 'Priča: izlet u Kopački rit', ikona: 'lokacija' }];
+  const PRICE = [{ id: 'poljoprivreda', naziv: 'Priča: poljoprivreda', ikona: 'traktor' }, { id: 'turizam', naziv: 'Priča: izlet u Kopački rit', ikona: 'lokacija' }, { id: 'bastina', naziv: 'Priča: baština osam sela', ikona: 'stup' }];
   let stanje = null, el = null;
 
   async function pokreniPricu(id) {
@@ -53,6 +53,7 @@
     s.akcije.prica = pokreniPricu;
     s.akcije.prica_poljo = () => pokreniPricu('poljoprivreda');
     s.akcije.prica_turizam = () => pokreniPricu('turizam');
+    s.akcije.prica_bastina = () => pokreniPricu('bastina');
     const bp = document.getElementById('brziPrikazi');
     if (bp) for (const p of PRICE) bp.append(el('button', { class: 'brzi-prikaz', title: 'Vođena priča kroz karte', onclick: () => pokreniPricu(p.id) }, s.api.ikona(p.ikona, 16), el('span', {}, p.naziv)));
   }

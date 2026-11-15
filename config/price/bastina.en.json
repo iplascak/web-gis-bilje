@@ -1,0 +1,170 @@
+{
+ "id": "bastina",
+ "naslov": "Heritage of eight villages – from hill-forts to castles",
+ "koraci": [
+  {
+   "naslov": "Heritage of eight villages",
+   "tekst": "Bilje Municipality is more than Kopački rit. It has 18 registered cultural assets – eight archaeological sites, castles, churches, an old estate hamlet and a traditional house – and beneath the fields lie traces of settlements more than seven thousand years old. Let us travel through time.",
+   "slojevi": [
+    "kulturna_dobra",
+    "bastina_registar"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "Before the Romans: hill-forts and idols",
+   "tekst": "The oldest traces are near Vardarac: at Kenderfeld people lived continuously from the Neolithic (about 5300 BC) to late Antiquity. Near Lug there is a prehistoric hill-fort surrounded by a ditch, and at Utrina – Četevelđ a clay female figurine was found. The fields farmed today have been inhabited for millennia.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.765,
+     45.645
+    ],
+    "zoom": 12
+   }
+  },
+  {
+   "naslov": "On the Roman frontier",
+   "tekst": "In Roman times the frontier of the Empire ran along the Danube. A Roman road led from Mursa (today Osijek) across a bridge over the Drava to the north, and near Mali Sakadaš stood a Roman military camp with a cemetery. A settlement next to the camp lay at Čorda near Kopačevo. All these sites are protected.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.765,
+     45.598
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "The castle of Prince Eugene of Savoy",
+   "tekst": "After the victory over the Ottomans at Senta in 1697, Emperor Leopold I gave Baranja to the general Eugene of Savoy. By 1712 a fortified castle with four wings and a moat was built for him in Bilje – the oldest castle in Slavonia and Baranja, probably by the architect of Vienna's Belvedere. From here he ran the vast Belje estate, whose name the region's largest farm still carries. The castle is awaiting restoration.",
+   "slojevi": [
+    "kulturna_dobra",
+    "institucije"
+   ],
+   "pogled": {
+    "centar": [
+     18.7529,
+     45.6106
+    ],
+    "zoom": 16
+   }
+  },
+  {
+   "naslov": "A Baroque church and an old mill store",
+   "tekst": "In the centre of Bilje stands the parish church of the Immaculate Conception, a Baroque building of 1773–1775 whose altars, pulpit and paintings are protected as a whole. The mill storehouse with the year 1921 above its door is protected too – a witness of the time when Bilje was the centre of a great estate.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7529,
+     45.6106
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Reformation in Baranja",
+   "tekst": "The villages by the wetland – Kopačevo, Lug and Vardarac – adopted the Reformation in the 16th century and remain centres of the Reformed (Calvinist) Church of the Hungarian community in Croatia. The reformer Mihael Starin worked in Lug. The church in Lug has a medieval tower, walls with gun loops and a Gothic portal.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7735,
+     45.66
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Kopačevo – a village by the wetland",
+   "tekst": "Kopačevo lives with water: the wetland floods it almost every year, and fishing and life with floods shaped the village. Its Reformed church of 1804 is the largest Reformed church in Baranja, with 890 seats. It was badly damaged in the war and has been restored.",
+   "slojevi": [
+    "kulturna_dobra",
+    "posjetitelji_tocke"
+   ],
+   "pogled": {
+    "centar": [
+     18.7883,
+     45.5997
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Vardarac: church, school and a reed-thatched house",
+   "tekst": "In Vardarac a whole ensemble is protected: the Reformed church built 1812–1829 with a three-storey bell tower, the parsonage and the school. The municipality also preserves a reed-thatched house of 1839 built of rammed earth and mud brick – an example of traditional Baranja building.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7733,
+     45.6247
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Zlatna Greda – an estate hamlet",
+   "tekst": "Zlatna Greda was founded around 1870 as a planned settlement for workers of the Belje estate, with a brick administrative building. It is protected as a cultural and historical ensemble. Four old houses are also recorded in Kozjak.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.865,
+     45.7235
+    ],
+    "zoom": 14
+   }
+  },
+  {
+   "naslov": "Tikveš – hunting ground of emperors and presidents",
+   "tekst": "In the second half of the 19th century the Teschen branch of the Habsburgs built a hunting castle, a hunting lodge and a chapel in the Tikveš forests. Archduchess Isabella took hundreds of photographs of village life here – one of the first women photographers in Europe. Later it was used by the Karađorđević kings and then by Tito. Looted in the 1990s war, it has been restored as a visitor centre of the Nature Park.",
+   "slojevi": [
+    "kulturna_dobra",
+    "posjetitelji_tocke"
+   ],
+   "pogled": {
+    "centar": [
+     18.8316,
+     45.6969
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "One land, many languages",
+   "tekst": "Bilje is Bellye, Lug is Laskó, Kopačevo is Kopács, Vardarac is Várdaróc. The names of fields, ponds and forests keep Croatian, Hungarian and German traces of everyone who lived here. Official names are on the map; many old names are known only to a few residents.",
+   "slojevi": [
+    "toponimi_rgi",
+    "doprinosi"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.63
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Add your story",
+   "tekst": "Do you have an old photo of a house, a church, the harvest or a flood? Do you know the name of the pond behind the village? Add it to the map – after review it becomes part of the shared memory of the municipality.",
+   "slojevi": [
+    "doprinosi",
+    "vizure"
+   ],
+   "pogled": "opcina",
+   "akcija": "sjecanje",
+   "gumb": "Add your memory"
+  }
+ ]
+}

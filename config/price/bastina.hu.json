@@ -1,0 +1,170 @@
+{
+ "id": "bastina",
+ "naslov": "Nyolc falu öröksége – a földváraktól a kastélyokig",
+ "koraci": [
+  {
+   "naslov": "Nyolc falu öröksége",
+   "tekst": "Bellye község nem csak a Kopácsi-rét. Területén 18 nyilvántartott kulturális érték található – nyolc régészeti lelőhely, kastélyok, templomok, egy régi uradalmi puszta és egy hagyományos ház –, a földek alatt pedig több mint hétezer éves települések nyomai rejlenek. Utazzunk az időben!",
+   "slojevi": [
+    "kulturna_dobra",
+    "bastina_registar"
+   ],
+   "pogled": "opcina"
+  },
+  {
+   "naslov": "A rómaiak előtt: földvárak és bálványok",
+   "tekst": "A legrégebbi nyomok Várdaróc mellett vannak: a Kenderfeld lelőhelyen az újkőkortól (kb. i. e. 5300) a késő ókorig folyamatosan éltek emberek. Laskó mellett árokkal övezett őskori földvár áll, az Utrina – Četevelđ lelőhelyen pedig agyag női bálványszobrot találtak.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.765,
+     45.645
+    ],
+    "zoom": 12
+   }
+  },
+  {
+   "naslov": "A római határon",
+   "tekst": "A római korban itt húzódott a Birodalom dunai határa. Római út vezetett Mursából (a mai Eszékből) a Dráván átívelő hídon észak felé, Kis-Szakadás mellett pedig római katonai tábor és temető volt. Kopács mellett, a Čorda lelőhelyen a tábor melletti település állt. Minden lelőhely védett.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.765,
+     45.598
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Savoyai Jenő kastélya",
+   "tekst": "Miután 1697-ben Zentánál legyőzte az oszmánokat, I. Lipót császár Baranyát Savoyai Jenő hadvezérnek adományozta. 1712-re Bellyén négyszárnyú, vizesárokkal övezett erődkastély épült számára – Szlavónia és Baranya legrégebbi kastélya, valószínűleg a bécsi Belvedere építészének műve. Innen irányította a hatalmas bellyei uradalmat. A kastély felújításra vár.",
+   "slojevi": [
+    "kulturna_dobra",
+    "institucije"
+   ],
+   "pogled": {
+    "centar": [
+     18.7529,
+     45.6106
+    ],
+    "zoom": 16
+   }
+  },
+  {
+   "naslov": "Barokk templom és régi malomraktár",
+   "tekst": "Bellye központjában áll a Szeplőtelen fogantatás plébániatemplom, 1773–1775 között épült barokk épület; oltárai, szószéke és festményei együtt védettek. Védett az 1921-es évszámot viselő malomraktár is – annak az időnek a tanúja, amikor Bellye egy nagy uradalom központja volt.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7529,
+     45.6106
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Reformáció Baranyában",
+   "tekst": "A rét menti falvak – Kopács, Laskó és Várdaróc – már a 16. században felvették a reformációt, és ma is a horvátországi magyar református egyház központjai. Laskón működött Sztárai Mihály reformátor. A laskói templom középkori tornyával, lőréses falaival és gótikus kapujával a község legrégebbi épített öröksége.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7735,
+     45.66
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Kopács – falu a rét szélén",
+   "tekst": "Kopács együtt él a vízzel: a rét szinte minden évben elönti, a halászat és az árvizekkel való élet formálta a falut. 1804-ben épült református temploma Baranya legnagyobb református temploma, 890 ülőhellyel. A háborúban súlyosan megrongálódott, majd felújították.",
+   "slojevi": [
+    "kulturna_dobra",
+    "posjetitelji_tocke"
+   ],
+   "pogled": {
+    "centar": [
+     18.7883,
+     45.5997
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Várdaróc: templom, iskola és nádfedeles ház",
+   "tekst": "Várdarócon egész épületegyüttes védett: az 1812–1829 között épült, háromszintes tornyú református templom, a parókia és az iskola. A községben fennmaradt egy 1839-es, döngölt földből és vályogból épült nádfedeles ház is – a hagyományos baranyai építkezés példája.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.7733,
+     45.6247
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Zlatna Greda – uradalmi puszta",
+   "tekst": "Zlatna Greda 1870 körül tervezett településként jött létre a bellyei uradalom munkásai számára, téglából épült igazgatási épülettel. Ma kultúrtörténeti együttesként védett. Kozjakon további négy régi házat tartanak nyilván.",
+   "slojevi": [
+    "kulturna_dobra"
+   ],
+   "pogled": {
+    "centar": [
+     18.865,
+     45.7235
+    ],
+    "zoom": 14
+   }
+  },
+  {
+   "naslov": "Tikves – császárok és elnökök vadászterülete",
+   "tekst": "A 19. század második felében a Habsburg-család tescheni ága vadászkastélyt, vadászházat és kápolnát épített a tikvesi erdőkben. Izabella főhercegnő itt több száz fényképet készített a falusi életről – Európa egyik első női fotósaként. Később a Karađorđevićek, majd Tito használták. A délszláv háborúban kifosztották; ma a természetpark látogatóközpontja.",
+   "slojevi": [
+    "kulturna_dobra",
+    "posjetitelji_tocke"
+   ],
+   "pogled": {
+    "centar": [
+     18.8316,
+     45.6969
+    ],
+    "zoom": 15
+   }
+  },
+  {
+   "naslov": "Egy vidék, sok nyelv",
+   "tekst": "Bilje Bellye, Lug Laskó, Kopačevo Kopács, Vardarac Várdaróc. A dűlők, tavak és erdők neveiben a horvát, magyar és német múlt nyoma él. A hivatalos nevek a térképen vannak; sok régi nevet már csak néhány helybéli ismer.",
+   "slojevi": [
+    "toponimi_rgi",
+    "doprinosi"
+   ],
+   "pogled": {
+    "centar": [
+     18.79,
+     45.63
+    ],
+    "zoom": 13
+   }
+  },
+  {
+   "naslov": "Ossza meg a történetét",
+   "tekst": "Van régi fényképe egy házról, templomról, aratásról vagy árvízről? Tudja, hogy hívták a falu mögötti tavat? Tegye fel a térképre – ellenőrzés után a község közös emlékezetének része lesz.",
+   "slojevi": [
+    "doprinosi",
+    "vizure"
+   ],
+   "pogled": "opcina",
+   "akcija": "sjecanje",
+   "gumb": "Emlék hozzáadása"
+  }
+ ]
+}
