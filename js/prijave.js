@@ -82,7 +82,7 @@
         { polje: 'odgovor', oznaka: 'Odgovor općine' },
         { polje: 'prijavljeno', oznaka: 'Prijavljeno' },
         { polje: 'azurirano', oznaka: 'Zadnja promjena' },
-        { polje: 'id', oznaka: 'Broj prijave' }] },
+        { polje: 'oznaka', oznaka: 'Broj prijave' }] },
       skocniDodatak: 'prijava',
       opis: 'Komunalni problemi koje su prijavili mještani, nakon pregleda općinskih službi.',
       detaljno: 'Mještani putem gumba "Prijavi problem" prijavljuju komunalne probleme (oštećenja ceste, rasvjetu, otpad, zelenilo...) s lokacijom i fotografijom. Prijavu najprije pregledaju općinske službe; na karti se prikazuje tek nakon pregleda, bez imena i kontakta prijavitelja.\n\nBoja točke pokazuje status: zaprimljeno, u obradi, riješeno ili odbijeno (npr. ako problem nije u nadležnosti općine).\n\nZa prijavu je potrebna samo e-adresa, na koju stiže jednokratni kod za prijavu. E-adresa se koristi isključivo za prijavu na portal i ne objavljuje se.',
@@ -144,6 +144,9 @@
     const z = stanje && stanje.slojevi.prijave;
     if (z) z.olSloj.getSource().refresh();
   }
+
+  // broj prijave za prikaz: „redni/godina” (migracija_8), inače interni broj
+  const br = (r) => (r && r.oznaka) || String(r && r.id);
 
   function poruka(tekst, vrsta) {
     return el('p', { class: 'poruka ' + (vrsta || '') }, tekst);
@@ -251,12 +254,14 @@
           adresa: adresa ? adresa.tekst : null, fotografija: putanja, kontakt_email: korisnik.email
         };
         if (objekt && objekt.id) zapis.objekt_id = objekt.id;
-        let { data, error } = await sb.from('prijave').insert(zapis).select('id').single();
-        if (error && /objekt_id/.test(error.message || '')) { delete zapis.objekt_id; ({ data, error } = await sb.from('prijave').insert(zapis).select('id').single()); }
+        const umetni = (z) => sb.from('prijave').insert(z).select('id, oznaka').single()
+          .then(o => o.error && /oznaka/.test(o.error.message || '') ? sb.from('prijave').insert(z).select('id').single() : o);
+        let { data, error } = await umetni(zapis);
+        if (error && /objekt_id/.test(error.message || '')) { delete zapis.objekt_id; ({ data, error } = await umetni(zapis)); }
         if (error) throw error;
         stanje.api.otvoriDijalog(
           el('h3', {}, 'Hvala! Prijava je zaprimljena.'),
-          el('p', {}, 'Broj prijave: ', el('strong', {}, String(data.id)), '.'),
+          el('p', {}, 'Broj prijave: ', el('strong', {}, br(data)), '.'),
           el('p', {}, 'Općinske službe pregledat će prijavu. Status možete pratiti pod "Moje prijave" u zaglavlju.'));
       } catch (g) {
         gumb.disabled = false;
@@ -331,10 +336,12 @@
   async function prikaziPopisPrijava(sadrzaj) {
     sadrzaj.replaceChildren(poruka('Učitavam…'));
 
-    let upit = sb.from('prijave').select('id, stvoreno, kategorija, opis, status, javno, odgovor, adresa, lon, lat')
-      .order('stvoreno', { ascending: false }).limit(300);
-    if (!jeOsoblje()) upit = upit.eq('prijavitelj', korisnik.id);
-    const { data, error } = await upit;
+    const upit = (stupci) => {
+      let u = sb.from('prijave').select(stupci).order('stvoreno', { ascending: false }).limit(300);
+      return jeOsoblje() ? u : u.eq('prijavitelj', korisnik.id);
+    };
+    let { data, error } = await upit('id, oznaka, stvoreno, kategorija, opis, status, javno, odgovor, adresa, lon, lat');
+    if (error && /oznaka/.test(error.message || '')) ({ data, error } = await upit('id, stvoreno, kategorija, opis, status, javno, odgovor, adresa, lon, lat'));
     if (error) { sadrzaj.replaceChildren(poruka('Greška: ' + error.message, 'greska')); return; }
     if (!data.length) { sadrzaj.replaceChildren(poruka('Još nema prijava.')); return; }
 
@@ -347,7 +354,7 @@
       tijelo.replaceChildren(...data
         .filter(r => !f || (f === 'neobjavljeno' ? !r.javno : r.status === f))
         .map(r => el('tr', {},
-          el('td', {}, String(r.id)),
+          el('td', {}, br(r)),
           el('td', {}, datum(r.stvoreno)),
           el('td', {}, KATEGORIJE[r.kategorija] || r.kategorija,
             el('div', { class: 'sitno-siva' }, (r.adresa || '') + (r.opis ? ' – ' + r.opis.slice(0, 80) : ''))),
@@ -419,7 +426,7 @@
     const { error } = await sb.from('prijave').delete().eq('id', r.id);
     if (error) return error;
     osvjeziSloj();
-    stanje.api.otvoriDijalog(el('h3', {}, 'Prijava br. ' + r.id + ' je obrisana.'));
+    stanje.api.otvoriDijalog(el('h3', {}, 'Prijava br. ' + br(r) + ' je obrisana.'));
     return null;
   }
 
@@ -449,7 +456,7 @@
     } },
       foto,
       el('p', { class: 'sitno-siva' }, 'Prijavljeno ' + datum(r.stvoreno) + (r.adresa ? ' · ' + r.adresa : '') +
-        (r.kontakt_email ? ' · kontakt: ' : ''), r.kontakt_email ? el('a', { href: 'mailto:' + r.kontakt_email + '?subject=' + encodeURIComponent('Vaša prijava br. ' + r.id) }, r.kontakt_email) : ''),
+        (r.kontakt_email ? ' · kontakt: ' : ''), r.kontakt_email ? el('a', { href: 'mailto:' + r.kontakt_email + '?subject=' + encodeURIComponent('Vaša prijava br. ' + br(r)) }, r.kontakt_email) : ''),
       el('label', { class: 'polje' }, el('span', {}, 'Opis (uklonite osobne podatke prije objave)'), opis),
       el('label', { class: 'polje' }, el('span', {}, 'Status'), status),
       el('label', { class: 'polje' }, el('span', {}, 'Odgovor općine'), odgovor),
@@ -462,7 +469,7 @@
         }) : ''),
       poruke);
     stanje.api.zatvoriSkocni();
-    stanje.api.otvoriDijalog(el('h3', {}, 'Prijava br. ' + r.id + ' – ' + (KATEGORIJE[r.kategorija] || r.kategorija)), obrazac);
+    stanje.api.otvoriDijalog(el('h3', {}, 'Prijava br. ' + br(r) + ' – ' + (KATEGORIJE[r.kategorija] || r.kategorija)), obrazac);
   }
 
   (window.webgisModuli = window.webgisModuli || []).push({ naziv: 'prijave', pripremi, pokreni });

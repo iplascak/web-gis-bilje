@@ -1331,7 +1331,7 @@
    "Layer “$1” is not loaded yet"
   ],
   [
-   "^Prijava br\\. (\\d+)$",
+   "^Prijava br\\. ([\\d/]+)$",
    "Report no. $1"
   ],
   [
@@ -1349,6 +1349,14 @@
   [
    "^Poslali smo kod na (\\S+)\\. Upišite ga ovdje \\(kod vrijedi sat vremena\\)\\.$",
    "We have sent a code to $1. Enter it here (the code is valid for one hour)."
+  ],
+  [
+   "^Prijava br\\. ([\\d/]+) je obrisana\\.$",
+   "Report no. $1 has been deleted."
+  ],
+  [
+   "^Prijava br\\. ([\\d/]+) – (.+)$",
+   "Report no. $1 – $2"
   ],
   [
    "^ned (\\d+\\.)$",

@@ -63,7 +63,13 @@ class Baza:
             raise
 
     def dohvati(self, tablica, **uvjeti):
-        return self.zahtjev("GET", tablica + "?" + urllib.parse.urlencode(uvjeti, safe="(),.*:"))
+        try:
+            return self.zahtjev("GET", tablica + "?" + urllib.parse.urlencode(uvjeti, safe="(),.*:"))
+        except urllib.error.HTTPError as g:
+            if g.code == 400 and ",oznaka" in uvjeti.get("select", ""):  # baza još bez migracije_8
+                uvjeti["select"] = uvjeti["select"].replace(",oznaka", "")
+                return self.zahtjev("GET", tablica + "?" + urllib.parse.urlencode(uvjeti, safe="(),.*:"))
+            raise
 
     def promijeni(self, tablica, uvjeti, podaci):
         return self.zahtjev("PATCH", tablica + "?" + urllib.parse.urlencode(uvjeti, safe="(),.*:"), podaci)
@@ -106,6 +112,10 @@ class Posta:
         return True
 
 
+def broj(p):
+    return p.get("oznaka") or str(p["id"])
+
+
 def poveznica(p):
     return f"{PORTAL}#v=18/{p['lon']:.5f}/{p['lat']:.5f}"
 
@@ -117,7 +127,7 @@ def primatelji(baza, polje):
 
 def nove(baza, posta):
     sada = dt.datetime.now(dt.timezone.utc)
-    prijave = baza.dohvati("prijave", select="id,stvoreno,kategorija,opis,adresa,lon,lat,fotografija",
+    prijave = baza.dohvati("prijave", select="id,stvoreno,kategorija,opis,adresa,lon,lat,fotografija,oznaka",
                            obavijest_poslana="eq.false", order="id")
     osoblje = primatelji(baza, "obavijesti_nove")
     if prijave and not osoblje:
@@ -125,9 +135,9 @@ def nove(baza, posta):
     for p in prijave:
         starost = sada - dt.datetime.fromisoformat(p["stvoreno"])
         kat = KATEGORIJE.get(p["kategorija"], p["kategorija"])
-        naslov = f"Nova prijava br. {p['id']}: {kat}" + (f" – {p['adresa']}" if p.get("adresa") else "")
+        naslov = f"Nova prijava br. {broj(p)}: {kat}" + (f" – {p['adresa']}" if p.get("adresa") else "")
         tekst = (f"Zaprimljena je nova prijava komunalnog problema.\n\n"
-                 f"Broj: {p['id']}\nVrsta: {kat}\nLokacija: {p.get('adresa') or 'vidi kartu'}\n"
+                 f"Broj: {broj(p)}\nVrsta: {kat}\nLokacija: {p.get('adresa') or 'vidi kartu'}\n"
                  f"Fotografija: {'da' if p.get('fotografija') else 'ne'}\n\nOpis:\n{p['opis']}\n\n"
                  f"Otvorite na karti (prijavite se i kliknite 'Općina'):\n{poveznica(p)}")
         poslano = bool(osoblje) and posta.posalji(osoblje, naslov, tekst)
@@ -139,18 +149,18 @@ def nove(baza, posta):
     for pr in promjene:
         oznaci = True
         if pr["status"] != pr.get("stari_status"):
-            p = (baza.dohvati("prijave", select="id,kategorija,odgovor,kontakt_email,lon,lat,adresa",
+            p = (baza.dohvati("prijave", select="id,kategorija,odgovor,kontakt_email,lon,lat,adresa,oznaka",
                               id=f"eq.{pr['prijava']}") or [None])[0]
             if p and p.get("kontakt_email"):
                 kat = KATEGORIJE.get(p["kategorija"], p["kategorija"])
-                tekst = (f"Poštovani,\n\nstatus vaše prijave br. {p['id']} ({kat}"
+                tekst = (f"Poštovani,\n\nstatus vaše prijave br. {broj(p)} ({kat}"
                          f"{', ' + p['adresa'] if p.get('adresa') else ''}) promijenjen je u: "
                          f"{STATUSI.get(pr['status'], pr['status']).upper()}.\n")
                 if p.get("odgovor"):
                     tekst += f"\nOdgovor Općine Bilje:\n{p['odgovor']}\n"
                 tekst += f"\nSvoje prijave možete pratiti na portalu (gumb 'Moje prijave'):\n{poveznica(p)}\n\nHvala što brinete o našoj općini!"
                 starost = dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(pr["vrijeme"])
-                oznaci = posta.posalji([p["kontakt_email"]], f"Vaša prijava br. {p['id']}: {STATUSI.get(pr['status'])}", tekst) \
+                oznaci = posta.posalji([p["kontakt_email"]], f"Vaša prijava br. {broj(p)}: {STATUSI.get(pr['status'])}", tekst) \
                     or starost > dt.timedelta(days=3)
         if oznaci:
             baza.promijeni("prijave_povijest", {"id": f"eq.{pr['id']}"}, {"obavijest_poslana": True})
@@ -164,7 +174,7 @@ def naselje(adresa):
 def tjedno(baza, posta):
     sada = dt.datetime.now(dt.timezone.utc)
     prije7 = sada - dt.timedelta(days=7)
-    sve = baza.dohvati("prijave", select="id,stvoreno,azurirano,kategorija,status,javno,adresa", order="id")
+    sve = baza.dohvati("prijave", select="id,stvoreno,azurirano,kategorija,status,javno,adresa,oznaka", order="id")
     povijest = baza.dohvati("prijave_povijest", select="prijava,status,vrijeme", status="eq.rijeseno", order="vrijeme")
     vrijeme = lambda t: dt.datetime.fromisoformat(t)
     nove_tj = [p for p in sve if vrijeme(p["stvoreno"]) >= prije7]
@@ -195,7 +205,7 @@ def tjedno(baza, posta):
     tekst += "\nNove prijave po vrsti:\n" + tablica(collections.Counter(KATEGORIJE.get(p["kategorija"], p["kategorija"]) for p in nove_tj))
     tekst += "\n\nNove prijave po naselju:\n" + tablica(collections.Counter(naselje(p.get("adresa")) for p in nove_tj))
     tekst += "\n\nOtvorene prijave starije od 14 dana:\n" + ("\n".join(
-        f"  br. {p['id']} – {KATEGORIJE.get(p['kategorija'], p['kategorija'])}, {p.get('adresa') or ''} "
+        f"  br. {broj(p)} – {KATEGORIJE.get(p['kategorija'], p['kategorija'])}, {p.get('adresa') or ''} "
         f"(prijavljeno {vrijeme(p['stvoreno']).strftime('%d.%m.%Y.')}, {STATUSI[p['status']]})" for p in stare[:30]) or "  nema")
     tekst += f"\n\nSve prijave na karti: {PORTAL}"
     osoblje = primatelji(baza, "obavijesti_tjedno")

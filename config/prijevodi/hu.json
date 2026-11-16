@@ -1331,7 +1331,7 @@
    "A(z) „$1” réteg még nincs betöltve"
   ],
   [
-   "^Prijava br\\. (\\d+)$",
+   "^Prijava br\\. ([\\d/]+)$",
    "$1. számú bejelentés"
   ],
   [
@@ -1349,6 +1349,14 @@
   [
    "^Poslali smo kod na (\\S+)\\. Upišite ga ovdje \\(kod vrijedi sat vremena\\)\\.$",
    "Kódot küldtünk ide: $1. Írja be itt (a kód egy óráig érvényes)."
+  ],
+  [
+   "^Prijava br\\. ([\\d/]+) je obrisana\\.$",
+   "A(z) $1. számú bejelentés törölve."
+  ],
+  [
+   "^Prijava br\\. ([\\d/]+) – (.+)$",
+   "$1. számú bejelentés – $2"
   ],
   [
    "^ned (\\d+\\.)$",

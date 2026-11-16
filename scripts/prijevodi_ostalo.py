@@ -80,7 +80,7 @@ T = {
 U = [
  [r'^Lokacija – (.+)$', 'Location – $1', 'Helyszín – $1'],
  [r'^Sloj „(.+)” još nije učitan', 'Layer “$1” is not loaded yet', 'A(z) „$1” réteg még nincs betöltve'],
- [r'^Prijava br\. (\d+)$', 'Report no. $1', '$1. számú bejelentés'],
+ [r'^Prijava br\. ([\d/]+)$', 'Report no. $1', '$1. számú bejelentés'],
 ]
 U.append([r'^U sljedeća 3 dana očekuje se ([\d,.]+) mm kiše – jaka kiša ispire dušik u dublje slojeve i kanale\.$',
           'In the next 3 days $1 mm of rain is expected – heavy rain washes nitrogen into deeper layers and ditches.',
@@ -101,3 +101,6 @@ T.update({
    ('An e-mail address is all you need: we send a sign-in code to it. No password required.', 'Elég egy e-mail-cím: erre küldjük a bejelentkezési kódot. Jelszó nem szükséges.'),
 })
 U.append([r'^Poslali smo kod na (\S+)\. Upišite ga ovdje \(kod vrijedi sat vremena\)\.$', 'We have sent a code to $1. Enter it here (the code is valid for one hour).', 'Kódot küldtünk ide: $1. Írja be itt (a kód egy óráig érvényes).'])
+
+U.append([r'^Prijava br\. ([\d/]+) je obrisana\.$', 'Report no. $1 has been deleted.', 'A(z) $1. számú bejelentés törölve.'])
+U.append([r'^Prijava br\. ([\d/]+) – (.+)$', 'Report no. $1 – $2', '$1. számú bejelentés – $2'])

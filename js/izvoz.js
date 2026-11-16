@@ -40,7 +40,8 @@
       const stavke = [];
       if (b.jeOsoblje()) {
         stavke.push(stavka('Prijave komunalnih problema', 'Sve prijave sa statusom, odgovorom i lokacijom. Bez imena i e-maila prijavitelja.', 'prijave',
-          () => b.sb.from('prijave').select('id, stvoreno, azurirano, kategorija, opis, adresa, status, javno, odgovor, lon, lat').order('stvoreno', { ascending: false })));
+          () => b.sb.from('prijave').select('oznaka, stvoreno, azurirano, kategorija, opis, adresa, status, javno, odgovor, lon, lat').order('stvoreno', { ascending: false })
+            .then(o => o.error && /oznaka/.test(o.error.message || '') ? b.sb.from('prijave').select('id, stvoreno, azurirano, kategorija, opis, adresa, status, javno, odgovor, lon, lat').order('stvoreno', { ascending: false }) : o)));
       }
       if (b.jeUrednik()) {
         stavke.push(stavka('Projekti općine', 'Svi projekti, uključujući neobjavljene – za izvješća i dopunu tablice.', 'projekti',
