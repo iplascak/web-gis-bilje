@@ -30,7 +30,7 @@ U SQL Editoru pokrenite i `supabase/migracija_2.sql` (jednom; smije se ponoviti)
 
 ## 1c. Daljnje dopune
 
-Redom pokrenite `supabase/migracija_3.sql`, `migracija_4.sql` i `migracija_5.sql` (galerija fotografija i više poveznica uz projekte). Svaka se smije ponoviti.
+Redom pokrenite `supabase/migracija_3.sql`, `migracija_4.sql` , `migracija_5.sql` (galerija fotografija i više poveznica uz projekte) i `migracija_6.sql` (sigurnosna dopuna). Svaka se smije ponoviti.
 
 ## 2. Uloge
 

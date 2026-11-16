@@ -129,17 +129,6 @@ drop trigger if exists na_promjenu_prijave on public.prijave;
 create trigger na_promjenu_prijave before update on public.prijave
   for each row execute function public.prijava_promijenjena();
 
--- ---------- javni pregled: samo odobrene prijave, bez osobnih podataka ----------
--- Lokacija se zaokružuje na ~10 m; opis se objavljuje tek nakon pregleda osoblja.
-create or replace view public.prijave_javno as
-  select id, stvoreno, azurirano, kategorija, opis,
-         round(lon::numeric, 4)::double precision as lon,
-         round(lat::numeric, 4)::double precision as lat,
-         status, odgovor, fotografija
-  from public.prijave
-  where javno = true;
-grant select on public.prijave_javno to anon, authenticated;
-
 -- isto kao GeoJSON za kartu (portal ga čita izravno kao sloj)
 create or replace function public.prijave_geojson() returns json
 language sql stable security definer set search_path = public as $$
