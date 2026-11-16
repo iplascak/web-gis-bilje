@@ -120,6 +120,8 @@ def nove(baza, posta):
     prijave = baza.dohvati("prijave", select="id,stvoreno,kategorija,opis,adresa,lon,lat,fotografija",
                            obavijest_poslana="eq.false", order="id")
     osoblje = primatelji(baza, "obavijesti_nove")
+    if prijave and not osoblje:
+        log("  Nitko od osoblja nema uključene obavijesti o novim prijavama (Korisnici i uloge) – ništa se ne šalje.")
     for p in prijave:
         starost = sada - dt.datetime.fromisoformat(p["stvoreno"])
         kat = KATEGORIJE.get(p["kategorija"], p["kategorija"])
