@@ -95,3 +95,9 @@ T.update({
 })
 U.append([r'^Prije (\d{4})$', 'Before $1', 'Előtte ($1)'])
 U.append([r'^Poslije (\d{4})$', 'After $1', 'Utána ($1)'])
+T.update({
+ 'Pošalji kod': ('Send code', 'Kód küldése'),
+ 'Za slanje prijave dovoljna je e-adresa: na nju šaljemo kod za prijavu. Lozinka nije potrebna.':
+   ('An e-mail address is all you need: we send a sign-in code to it. No password required.', 'Elég egy e-mail-cím: erre küldjük a bejelentkezési kódot. Jelszó nem szükséges.'),
+})
+U.append([r'^Poslali smo kod na (\S+)\. Upišite ga ovdje \(kod vrijedi sat vremena\)\.$', 'We have sent a code to $1. Enter it here (the code is valid for one hour).', 'Kódot küldtünk ide: $1. Írja be itt (a kód egy óráig érvényes).'])

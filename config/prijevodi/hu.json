@@ -1242,7 +1242,9 @@
   "Sljedeća": "Következő",
   "Usporedba prije i poslije": "Előtte–utána összehasonlítás",
   "Sufinancirano sredstvima Europske unije": "Az Európai Unió társfinanszírozásával",
-  "Zastava Europske unije": "Az Európai Unió zászlaja"
+  "Zastava Europske unije": "Az Európai Unió zászlaja",
+  "Pošalji kod": "Kód küldése",
+  "Za slanje prijave dovoljna je e-adresa: na nju šaljemo kod za prijavu. Lozinka nije potrebna.": "Elég egy e-mail-cím: erre küldjük a bejelentkezési kódot. Jelszó nem szükséges."
  },
  "podnaslov": "A Kopácsi-rét községe · térképadatok lakosoknak és látogatóknak",
  "korak": [
@@ -1343,6 +1345,10 @@
   [
    "^Poslije (\\d{4})$",
    "Utána ($1)"
+  ],
+  [
+   "^Poslali smo kod na (\\S+)\\. Upišite ga ovdje \\(kod vrijedi sat vremena\\)\\.$",
+   "Kódot küldtünk ide: $1. Írja be itt (a kód egy óráig érvényes)."
   ],
   [
    "^ned (\\d+\\.)$",

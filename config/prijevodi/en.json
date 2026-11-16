@@ -1242,7 +1242,9 @@
   "Sljedeća": "Next",
   "Usporedba prije i poslije": "Before and after comparison",
   "Sufinancirano sredstvima Europske unije": "Co-funded by the European Union",
-  "Zastava Europske unije": "Flag of the European Union"
+  "Zastava Europske unije": "Flag of the European Union",
+  "Pošalji kod": "Send code",
+  "Za slanje prijave dovoljna je e-adresa: na nju šaljemo kod za prijavu. Lozinka nije potrebna.": "An e-mail address is all you need: we send a sign-in code to it. No password required."
  },
  "podnaslov": "Kopački rit municipality · spatial data for residents and visitors",
  "korak": [
@@ -1343,6 +1345,10 @@
   [
    "^Poslije (\\d{4})$",
    "After $1"
+  ],
+  [
+   "^Poslali smo kod na (\\S+)\\. Upišite ga ovdje \\(kod vrijedi sat vremena\\)\\.$",
+   "We have sent a code to $1. Enter it here (the code is valid for one hour)."
   ],
   [
    "^ned (\\d+\\.)$",
