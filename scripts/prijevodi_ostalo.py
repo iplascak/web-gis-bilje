@@ -104,3 +104,4 @@ U.append([r'^Poslali smo kod na (\S+)\. Upišite ga ovdje \(kod vrijedi sat vrem
 
 U.append([r'^Prijava br\. ([\d/]+) je obrisana\.$', 'Report no. $1 has been deleted.', 'A(z) $1. számú bejelentés törölve.'])
 U.append([r'^Prijava br\. ([\d/]+) – (.+)$', 'Report no. $1 – $2', '$1. számú bejelentés – $2'])
+T['čeka pregled (vidi samo osoblje)'] = ('awaiting review (staff only)', 'ellenőrzésre vár (csak munkatársak látják)')

@@ -31,6 +31,7 @@
     odbijeno: { boja: '#b91c1c', oznaka: 'nije u nadležnosti / odbijeno' }
   };
   const OSOBLJE = ['zaposlenik', 'direktor', 'nacelnik', 'admin'];
+  let pristupniToken = null, osobljeKarta = false;
   const NAZIVI_ULOGA = {
     gost: 'mještanin', urednik: 'urednik (projekti, doprinosi)', zaposlenik: 'obrađuje prijave', direktor: 'direktor/ica (nadzor)',
     nacelnik: 'načelnik', admin: 'administrator'
@@ -69,10 +70,14 @@
     }
     const vrijednosti = {};
     for (const [k, v] of Object.entries(STATUSI)) vrijednosti[k] = { boja: v.boja, oznaka: v.oznaka, simbol: k };
+    vrijednosti.neobjavljeno = { boja: '#9ca3af', oznaka: 'čeka pregled (vidi samo osoblje)', simbol: 'zaprimljeno' };
+    const rpc = cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/rpc/';
+    const zaOsoblje = () => !!(pristupniToken && osobljeKarta && jeOsoblje());
     konfig.slojevi.push({
       id: 'prijave', naziv: 'Prijave komunalnih problema', grupa: 'prijave', tip: 'geojson',
-      url: cfg.supabaseUrl.replace(/\/$/, '') + '/rest/v1/rpc/prijave_geojson',
-      zaglavlja: { apikey: cfg.supabaseKljuc },
+      // osoblje (nakon prijave) vidi i neobjavljene prijave; javnost samo objavljene
+      get url() { return rpc + (zaOsoblje() ? 'prijave_osoblje_geojson' : 'prijave_geojson'); },
+      get zaglavlja() { return zaOsoblje() ? { apikey: cfg.supabaseKljuc, Authorization: 'Bearer ' + pristupniToken } : { apikey: cfg.supabaseKljuc }; },
       vidljivo: true,
       stil: { geometrija: 'tocka', velicina: 7, kategorije: { polje: 'status', vrijednosti } },
       skocniProzor: { naslov: 'kategorija_naziv', polja: [
@@ -125,11 +130,17 @@
   }
 
   async function postaviKorisnika(sesija) {
-    if (!sesija) { korisnik = null; azurirajGumbRacuna(); return; }
+    const bioToken = pristupniToken;
+    pristupniToken = sesija ? sesija.access_token : null;
+    if (!sesija) { korisnik = null; azurirajGumbRacuna(); if (bioToken) osvjeziSloj(); return; }
     if (korisnik && korisnik.id === sesija.user.id && korisnik.uloga) { azurirajGumbRacuna(); return; }
     korisnik = { id: sesija.user.id, email: sesija.user.email, uloga: 'gost' };
     const { data } = await sb.from('profili').select('uloga, ime').eq('id', korisnik.id).maybeSingle();
     if (data) Object.assign(korisnik, data);
+    if (jeOsoblje()) { // postoji li funkcija za osoblje (migracija_9)?
+      const { error } = await sb.rpc('prijave_osoblje_geojson');
+      osobljeKarta = !error;
+    }
     azurirajGumbRacuna();
     osvjeziSloj();
   }
