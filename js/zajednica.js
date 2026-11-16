@@ -35,7 +35,8 @@
         { polje: 'opis', oznaka: 'Opis' }, { polje: 'lokacija', oznaka: 'Lokacija' },
         { polje: 'vrijednost_eur', oznaka: 'Vrijednost', format: 'eur' }, { polje: 'bespovratno_eur', oznaka: 'Bespovratna sredstva', format: 'eur' },
         { polje: 'izvor_financiranja', oznaka: 'Izvor financiranja' }, { polje: 'program', oznaka: 'Program / natječaj' },
-        { polje: 'nositelj', oznaka: 'Nositelj' }, { polje: 'poveznica', oznaka: 'Više', format: 'poveznica' }] },
+        { polje: 'nositelj', oznaka: 'Nositelj' }, { polje: 'partneri', oznaka: 'Partneri' }] },
+      skocniDodatak: 'projekt',
       opis: 'Svi projekti općine od 2013. – provedeni, u provedbi i u pripremi.',
       detaljno: 'Projekti Općine Bilje i njezinih ustanova s lokacijom, vrijednošću, izvorom financiranja i statusom. Podatke unose ovlašteni urednici kroz portal, na temelju službenih glasnika, proračuna i ugovora.',
       izvor: 'Općina Bilje', azurirano: 'uživo'
@@ -162,6 +163,40 @@
     let lon = p.lon, lat = p.lat;
     const status = el('div');
     const red = (naziv, polje) => el('label', { class: 'polje' }, el('span', {}, naziv), polje);
+    // galerija fotografija i dodatne poveznice (migracija_5)
+    const fotke = niz(p.fotografije).map(x => Object.assign({}, x));
+    if (!fotke.length && p.fotografija) fotke.push({ putanja: p.fotografija });
+    const povez = niz(p.poveznice).map(x => Object.assign({}, x));
+    const uklonjene = [];
+    const popisFotki = el('div'), popisPoveznica = el('div');
+    const crtajFotke = () => popisFotki.replaceChildren(...fotke.map((x, i) => el('div', { class: 'ured-foto' },
+      el('img', { src: fotoUrl(x.putanja), alt: '' }),
+      el('div', {},
+        el('input', { type: 'text', value: x.opis || '', placeholder: 'Opis fotografije', oninput: (e) => { x.opis = e.target.value; } }),
+        el('div', { class: 'redak-gumba' },
+          el('input', { type: 'number', value: x.godina || '', placeholder: 'Godina', style: 'width:90px', oninput: (e) => { x.godina = e.target.value ? parseInt(e.target.value, 10) : null; } }),
+          el('select', { onchange: (e) => { x.vrsta = e.target.value || null; } }, ...[['', '—'], ['prije', 'prije'], ['poslije', 'poslije']].map(([v, o]) => el('option', { value: v, selected: (x.vrsta || '') === v }, o))),
+          i > 0 ? el('button', { type: 'button', class: 'gumb-mali', title: 'Pomakni naprijed', onclick: () => { fotke.splice(i - 1, 0, fotke.splice(i, 1)[0]); crtajFotke(); } }, '↑') : '',
+          el('button', { type: 'button', class: 'gumb-mali', onclick: () => { uklonjene.push(fotke.splice(i, 1)[0].putanja); crtajFotke(); } }, 'Ukloni'))))));
+    const crtajPoveznice = () => popisPoveznica.replaceChildren(...povez.map((x, i) => el('div', { class: 'ured-poveznica' },
+      el('input', { type: 'text', value: x.naziv || '', placeholder: 'Naziv (npr. Stranica projekta)', oninput: (e) => { x.naziv = e.target.value; } }),
+      el('input', { type: 'url', value: x.url || '', placeholder: 'https://…', oninput: (e) => { x.url = e.target.value; } }),
+      el('button', { type: 'button', class: 'gumb-mali', onclick: () => { povez.splice(i, 1); crtajPoveznice(); } }, '×'))));
+    crtajFotke(); crtajPoveznice();
+    const ucitaj = el('input', { type: 'file', accept: 'image/*', multiple: true, onchange: async (e) => {
+      const datoteke = [...e.target.files]; e.target.value = '';
+      for (const [n, d] of datoteke.entries()) {
+        status.replaceChildren(b.poruka('Učitavam fotografiju ' + (n + 1) + ' / ' + datoteke.length + '…'));
+        try {
+          const blob = await b.smanjiFotografiju(d, 2000);
+          const putanja = 'projekt-' + id + '/' + Date.now() + '-' + n + '.jpg';
+          const { error } = await b.sb.storage.from('projekti-foto').upload(putanja, blob, { contentType: 'image/jpeg' });
+          if (error) throw error;
+          fotke.push({ putanja }); crtajFotke();
+        } catch (g) { status.replaceChildren(b.poruka('Fotografija nije učitana: ' + g.message, 'greska')); return; }
+      }
+      status.replaceChildren(b.poruka('Fotografije su učitane – kliknite Spremi.', 'uspjeh'));
+    } });
     const obrazac = el('form', { class: 'obrazac', onsubmit: async (e) => {
       e.preventDefault();
       const zapis = {};
@@ -172,10 +207,19 @@
         zapis[k] = x;
       }
       zapis.lon = lon ?? null; zapis.lat = lat ?? null;
-      const { error } = id ? await b.sb.from('projekti').update(zapis).eq('id', id) : await b.sb.from('projekti').insert(zapis);
+      zapis.fotografije = fotke.map(x => Object.fromEntries(Object.entries({ putanja: x.putanja, opis: (x.opis || '').trim() || null, godina: x.godina || null, vrsta: x.vrsta || null }).filter(([, v]) => v !== null)));
+      zapis.poveznice = povez.filter(x => (x.url || '').trim()).map(x => ({ naziv: (x.naziv || '').trim() || null, url: x.url.trim() }));
+      zapis.fotografija = zapis.fotografije.length ? zapis.fotografije[0].putanja : null;
+      const spremi = (z) => id ? b.sb.from('projekti').update(z).eq('id', id).select('id').single() : b.sb.from('projekti').insert(z).select('id').single();
+      let { data: spremljeno, error } = await spremi(zapis);
+      if (error && /fotografije|poveznice/.test(error.message)) { // baza još bez migracije_5
+        delete zapis.fotografije; delete zapis.poveznice; ({ data: spremljeno, error } = await spremi(zapis));
+      }
       if (error) { status.replaceChildren(b.poruka('Spremanje nije uspjelo: ' + error.message, 'greska')); return; }
+      if (uklonjene.length) { await b.sb.storage.from('projekti-foto').remove(uklonjene.splice(0)); }
       status.replaceChildren(b.poruka('Spremljeno.', 'uspjeh'));
       const z = stanje.slojevi.projekti_baza; if (z) z.olSloj.getSource().refresh();
+      if (!id && spremljeno) obrazacProjekta(spremljeno.id); // novi projekt: odmah omogući dodavanje fotografija
     } },
       red('Naziv projekta *', unos('naziv', 'text', { required: true })), red('Opis', unos('opis', 'textarea', { rows: 3 })),
       el('div', { class: 'dva-stupca' }, red('Kategorija', odabir('kategorija', KATEGORIJE)), red('Status', odabir('status', STATUSI))),
@@ -189,7 +233,13 @@
       el('div', { class: 'dva-stupca' }, red('Ukupna vrijednost (EUR)', unos('vrijednost_eur')), red('Bespovratno (EUR)', unos('bespovratno_eur'))),
       el('div', { class: 'dva-stupca' }, red('Izvor financiranja', unos('izvor_financiranja', 'text', { placeholder: 'EU – EPFRR, ministarstvo, proračun…' })), red('Program / natječaj', unos('program_natjecaj'))),
       el('div', { class: 'dva-stupca' }, red('Nositelj', unos('nositelj')), red('Partneri', unos('partneri'))),
-      red('Poveznica (vijest, odluka)', unos('poveznica', 'url')), red('Izvor podatka', unos('izvor_podatka', 'text', { placeholder: 'npr. Službeni glasnik 11/2024' })),
+      red('Glavna poveznica (stranica projekta ili vijest)', unos('poveznica', 'url')),
+      el('div', { class: 'polje' }, el('span', {}, 'Dodatne poveznice (odluka, natječaj, vijesti…)'), popisPoveznica,
+        el('button', { type: 'button', class: 'gumb-mali', onclick: () => { povez.push({}); crtajPoveznice(); } }, '+ Dodaj poveznicu')),
+      el('div', { class: 'polje' }, el('span', {}, 'Fotografije'), popisFotki,
+        id ? el('label', { class: 'gumb-mali' }, '+ Dodaj fotografije', Object.assign(ucitaj, { hidden: true }))
+          : el('span', { class: 'sitno-siva' }, 'Fotografije se dodaju nakon prvog spremanja projekta.'),
+        el('div', { class: 'sitno-siva' }, 'Samo fotografije na koje Općina ima pravo objave; osobe na fotografiji samo uz njihov pristanak. Pri učitavanju se uklanjaju GPS i ostali skriveni podaci. Za usporedbu „prije – poslije” označite po jednu fotografiju.')), red('Izvor podatka', unos('izvor_podatka', 'text', { placeholder: 'npr. Službeni glasnik 11/2024' })),
       el('button', { class: 'gumb-primarni', type: 'submit' }, 'Spremi'), status);
     stanje.api.otvoriDijalog(el('h3', {}, id ? 'Uredi projekt' : 'Novi projekt'), obrazac);
   }
@@ -209,8 +259,65 @@
       b.poruka('Nema priloga.'));
   }
 
+  // ---------- skočni prozor projekta: galerija, prije/poslije, poveznice, oznaka EU ----------
+  const fotoUrl = (putanja) => cfg.supabaseUrl.replace(/\/$/, '') + '/storage/v1/object/public/projekti-foto/' + putanja.split('/').map(encodeURIComponent).join('/');
+  const niz = (v) => { if (!v) return []; if (typeof v === 'string') { try { v = JSON.parse(v); } catch (e) { return []; } } return Array.isArray(v) ? v : []; };
+  const EU_IZVOR = /\bEU\b|europsk|EPFRR|EFRR|\bESF|kohezij|NPOO|Interreg|LEADER|\bLAG\b|ITU/i;
+
+  function svjetlosnaKutija(fotke, i, naslov) {
+    let d = document.getElementById('galerijaDijalog');
+    if (!d) { d = el('dialog', { id: 'galerijaDijalog', class: 'galerija-dijalog' }); document.body.append(d); d.addEventListener('click', (e) => { if (e.target === d) d.close(); }); }
+    const prikazi = () => {
+      const f = fotke[i];
+      d.replaceChildren(
+        el('button', { class: 'galerija-zatvori', 'aria-label': 'Zatvori', onclick: () => d.close() }, '×'),
+        el('img', { src: fotoUrl(f.putanja), alt: f.opis || naslov }),
+        el('div', { class: 'galerija-opis' }, [f.vrsta === 'prije' ? 'Prije' : f.vrsta === 'poslije' ? 'Poslije' : '', f.opis, f.godina].filter(Boolean).join(' · '),
+          el('span', { class: 'sitno-siva' }, ' ' + (i + 1) + ' / ' + fotke.length)),
+        fotke.length > 1 ? el('button', { class: 'galerija-strelica lijevo', 'aria-label': 'Prethodna', onclick: () => { i = (i - 1 + fotke.length) % fotke.length; prikazi(); } }, '‹') : '',
+        fotke.length > 1 ? el('button', { class: 'galerija-strelica desno', 'aria-label': 'Sljedeća', onclick: () => { i = (i + 1) % fotke.length; prikazi(); } }, '›') : '');
+    };
+    d.onkeydown = (e) => { if (e.key === 'ArrowLeft') { i = (i - 1 + fotke.length) % fotke.length; prikazi(); } if (e.key === 'ArrowRight') { i = (i + 1) % fotke.length; prikazi(); } };
+    prikazi(); if (!d.open) d.showModal();
+  }
+
+  function priJePoslije(prije, poslije) {
+    const okvir = el('div', { class: 'prije-poslije' },
+      el('img', { src: fotoUrl(poslije.putanja), alt: 'Poslije' }),
+      el('div', { class: 'prije-sloj' }, el('img', { src: fotoUrl(prije.putanja), alt: 'Prije' })),
+      el('span', { class: 'pp-oznaka lijevo' }, 'Prije' + (prije.godina ? ' ' + prije.godina : '')),
+      el('span', { class: 'pp-oznaka desno' }, 'Poslije' + (poslije.godina ? ' ' + poslije.godina : '')));
+    const klizac = el('input', { type: 'range', min: 0, max: 100, value: 50, 'aria-label': 'Usporedba prije i poslije',
+      oninput: (e) => okvir.style.setProperty('--pp', e.target.value + '%') });
+    okvir.style.setProperty('--pp', '50%');
+    return el('div', {}, okvir, klizac);
+  }
+
+  function dodatakProjekta(f) {
+    const naslov = f.get('naziv');
+    const fotke = niz(f.get('fotografije')).filter(x => x && x.putanja);
+    if (!fotke.length && f.get('fotografija')) fotke.push({ putanja: f.get('fotografija') });
+    const poveznice = niz(f.get('poveznice')).filter(x => x && x.url);
+    if (f.get('poveznica') && !poveznice.some(x => x.url === f.get('poveznica'))) poveznice.unshift({ naziv: 'Više o projektu', url: f.get('poveznica') });
+    const dijelovi = [];
+    const prije = fotke.find(x => x.vrsta === 'prije'), poslije = fotke.find(x => x.vrsta === 'poslije');
+    if (prije && poslije) dijelovi.push(priJePoslije(prije, poslije));
+    if (fotke.length) {
+      const vidljive = fotke.slice(0, 6);
+      dijelovi.push(el('div', { class: 'galerija' }, ...vidljive.map((x, i) => el('button', { class: 'galerija-slicica', title: x.opis || naslov,
+        onclick: () => svjetlosnaKutija(fotke, i, naslov) }, el('img', { src: fotoUrl(x.putanja), alt: x.opis || naslov, loading: 'lazy' }),
+        i === 5 && fotke.length > 6 ? el('span', { class: 'galerija-jos' }, '+' + (fotke.length - 6)) : ''))));
+    }
+    if (poveznice.length) dijelovi.push(el('ul', { class: 'projekt-poveznice' }, ...poveznice.map(x =>
+      el('li', {}, el('a', { href: x.url, target: '_blank', rel: 'noopener' }, x.naziv || x.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0])))));
+    if (EU_IZVOR.test((f.get('izvor_financiranja') || '') + ' ' + (f.get('program') || ''))) dijelovi.push(el('div', { class: 'eu-oznaka' },
+      el('img', { src: 'img/eu-zastava.svg', alt: 'Zastava Europske unije', width: 36, height: 24 }), el('span', {}, 'Sufinancirano sredstvima Europske unije')));
+    return dijelovi;
+  }
+
   async function pokreni(s) {
     stanje = s; el = s.api.el;
+    if (cfg) s.skocniDodaci.projekt = dodatakProjekta;
     if (!cfg || !s.baza) return;
     s.akcije.pokojnik = () => trazilicaPokojnika();
     s.akcije.sjecanje = () => dodajDoprinos();

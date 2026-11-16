@@ -111,7 +111,7 @@
     s.baza = {
       sb, korisnik: () => korisnik, prijava: (nakon) => prijavaKorisnika(nakon),
       jeUrednik: () => korisnik && ['urednik', 'nacelnik', 'admin'].includes(korisnik.uloga),
-      jeOsoblje, poruka, kartice: [] // moduli dodaju kartice u dijalog računa: { naziv, vidljivo(), prikazi(sadrzaj) }
+      jeOsoblje, poruka, smanjiFotografiju: (d, n) => smanjiFotografiju(d, n), kartice: [] // moduli dodaju kartice u dijalog računa: { naziv, vidljivo(), prikazi(sadrzaj) }
     };
 
     document.getElementById('gumbPrijavi').addEventListener('click', zapocniPrijavu);

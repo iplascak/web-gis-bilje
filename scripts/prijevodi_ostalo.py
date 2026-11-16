@@ -86,3 +86,12 @@ U.append([r'^U sljedeća 3 dana očekuje se ([\d,.]+) mm kiše – jaka kiša is
           'In the next 3 days $1 mm of rain is expected – heavy rain washes nitrogen into deeper layers and ditches.',
           'A következő 3 napban $1 mm eső várható – a heves eső a nitrogént a mélyebb rétegekbe és az árkokba mossa.'])
 T['Krajobrazno područje nižih melioriranih područja Baranje'] = ('Landscape area of the lower reclaimed lands of Baranja', 'A baranyai alacsonyabb fekvésű meliorált területek tájvédelmi területe')
+T.update({
+ 'Partneri': ('Partners', 'Partnerek'), 'Prije': ('Before', 'Előtte'), 'Poslije': ('After', 'Utána'),
+ 'Više o projektu': ('More about the project', 'Bővebben a projektről'), 'Prethodna': ('Previous', 'Előző'), 'Sljedeća': ('Next', 'Következő'),
+ 'Usporedba prije i poslije': ('Before and after comparison', 'Előtte–utána összehasonlítás'),
+ 'Sufinancirano sredstvima Europske unije': ('Co-funded by the European Union', 'Az Európai Unió társfinanszírozásával'),
+ 'Zastava Europske unije': ('Flag of the European Union', 'Az Európai Unió zászlaja'),
+})
+U.append([r'^Prije (\d{4})$', 'Before $1', 'Előtte ($1)'])
+U.append([r'^Poslije (\d{4})$', 'After $1', 'Utána ($1)'])

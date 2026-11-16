@@ -1233,7 +1233,16 @@
   "Moje prijave": "My reports",
   "Još nema prijava.": "No reports yet.",
   "Ne svijetli svjetiljka": "Street light not working",
-  "Krajobrazno područje nižih melioriranih područja Baranje": "Landscape area of the lower reclaimed lands of Baranja"
+  "Krajobrazno područje nižih melioriranih područja Baranje": "Landscape area of the lower reclaimed lands of Baranja",
+  "Partneri": "Partners",
+  "Prije": "Before",
+  "Poslije": "After",
+  "Više o projektu": "More about the project",
+  "Prethodna": "Previous",
+  "Sljedeća": "Next",
+  "Usporedba prije i poslije": "Before and after comparison",
+  "Sufinancirano sredstvima Europske unije": "Co-funded by the European Union",
+  "Zastava Europske unije": "Flag of the European Union"
  },
  "podnaslov": "Kopački rit municipality · spatial data for residents and visitors",
  "korak": [
@@ -1243,7 +1252,8 @@
  "prefiksi": {
   "Više o sloju ": "More about the layer ",
   "Isključi sloj ": "Turn off layer ",
-  "Uključi sloj ": "Turn on layer "
+  "Uključi sloj ": "Turn on layer ",
+  "Sloj: ": "Layer: "
  },
  "uzorci": [
   [
@@ -1325,6 +1335,14 @@
   [
    "^U sljedeća 3 dana očekuje se ([\\d,.]+) mm kiše – jaka kiša ispire dušik u dublje slojeve i kanale\\.$",
    "In the next 3 days $1 mm of rain is expected – heavy rain washes nitrogen into deeper layers and ditches."
+  ],
+  [
+   "^Prije (\\d{4})$",
+   "Before $1"
+  ],
+  [
+   "^Poslije (\\d{4})$",
+   "After $1"
   ],
   [
    "^ned (\\d+\\.)$",

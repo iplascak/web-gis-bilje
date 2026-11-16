@@ -28,6 +28,10 @@ Besplatni paket je dovoljan za općinu: 500 MB baze, 1 GB fotografija, 50 000 ko
 
 U SQL Editoru pokrenite i `supabase/migracija_2.sql` (jednom; smije se ponoviti).
 
+## 1c. Daljnje dopune
+
+Redom pokrenite `supabase/migracija_3.sql`, `migracija_4.sql` i `migracija_5.sql` (galerija fotografija i više poveznica uz projekte). Svaka se smije ponoviti.
+
 ## 2. Uloge
 
 Nakon prve prijave na portal, u SQL Editoru sebi dodijelite ulogu admina:

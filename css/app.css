@@ -711,3 +711,31 @@ button { font-family: inherit; }
 .kvacica { display: flex; gap: 6px; align-items: center; margin: 6px 0; }
 .izbor-jezika { background: transparent; color: inherit; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 6px 8px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
 .izbor-jezika option { color: #111; }
+
+/* ---------- projekti: galerija, prije/poslije, poveznice, oznaka EU ---------- */
+.galerija { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin: 8px 0; }
+.galerija-slicica { position: relative; padding: 0; border: 0; background: #eee; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3; cursor: zoom-in; }
+.galerija-slicica img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.galerija-jos { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.55); color: #fff; font-weight: 700; font-size: 1.1rem; }
+.galerija-dijalog { max-width: min(96vw, 1200px); max-height: 94vh; padding: 0; border: 0; border-radius: 10px; background: #111; color: #fff; overflow: hidden; }
+.galerija-dijalog::backdrop { background: rgba(0,0,0,.8); }
+.galerija-dijalog img { display: block; max-width: 96vw; max-height: 84vh; margin: 0 auto; object-fit: contain; }
+.galerija-opis { padding: 8px 14px; font-size: .9rem; }
+.galerija-opis .sitno-siva { color: #bbb; }
+.galerija-zatvori { position: absolute; top: 6px; right: 8px; z-index: 2; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; font-size: 1.5rem; cursor: pointer; }
+.galerija-strelica { position: absolute; top: 45%; z-index: 2; width: 42px; height: 56px; border: 0; background: rgba(0,0,0,.45); color: #fff; font-size: 2rem; cursor: pointer; }
+.galerija-strelica.lijevo { left: 0; border-radius: 0 8px 8px 0; } .galerija-strelica.desno { right: 0; border-radius: 8px 0 0 8px; }
+.prije-poslije { position: relative; margin: 8px 0 2px; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3; background: #eee; }
+.prije-poslije img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.prije-sloj { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pp, 50%)) 0 0); border-right: 2px solid #fff; }
+.pp-oznaka { position: absolute; bottom: 6px; padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,.6); color: #fff; font-size: .75rem; }
+.pp-oznaka.lijevo { left: 6px; } .pp-oznaka.desno { right: 6px; }
+.prije-poslije + input[type=range] { width: 100%; margin: 0 0 6px; }
+.projekt-poveznice { margin: 6px 0; padding-left: 18px; }
+.projekt-poveznice li { margin: 2px 0; }
+.eu-oznaka { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; padding: 6px 8px; border-radius: 6px; background: #f1f5fb; font-size: .8rem; }
+.eu-oznaka img { flex-shrink: 0; }
+.ured-foto { display: grid; grid-template-columns: 64px 1fr; gap: 6px 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid #eee; }
+.ured-foto img { width: 64px; height: 48px; object-fit: cover; border-radius: 4px; }
+.ured-foto .dva-stupca { margin: 0; }
+.ured-poveznica { display: grid; grid-template-columns: 1fr 1.6fr auto; gap: 6px; margin: 4px 0; }

@@ -1233,7 +1233,16 @@
   "Moje prijave": "Bejelentéseim",
   "Još nema prijava.": "Még nincs bejelentés.",
   "Ne svijetli svjetiljka": "Nem világít a lámpa",
-  "Krajobrazno područje nižih melioriranih područja Baranje": "A baranyai alacsonyabb fekvésű meliorált területek tájvédelmi területe"
+  "Krajobrazno područje nižih melioriranih područja Baranje": "A baranyai alacsonyabb fekvésű meliorált területek tájvédelmi területe",
+  "Partneri": "Partnerek",
+  "Prije": "Előtte",
+  "Poslije": "Utána",
+  "Više o projektu": "Bővebben a projektről",
+  "Prethodna": "Előző",
+  "Sljedeća": "Következő",
+  "Usporedba prije i poslije": "Előtte–utána összehasonlítás",
+  "Sufinancirano sredstvima Europske unije": "Az Európai Unió társfinanszírozásával",
+  "Zastava Europske unije": "Az Európai Unió zászlaja"
  },
  "podnaslov": "A Kopácsi-rét községe · térképadatok lakosoknak és látogatóknak",
  "korak": [
@@ -1243,7 +1252,8 @@
  "prefiksi": {
   "Više o sloju ": "Bővebben: ",
   "Isključi sloj ": "Réteg kikapcsolása: ",
-  "Uključi sloj ": "Réteg bekapcsolása: "
+  "Uključi sloj ": "Réteg bekapcsolása: ",
+  "Sloj: ": "Réteg: "
  },
  "uzorci": [
   [
@@ -1325,6 +1335,14 @@
   [
    "^U sljedeća 3 dana očekuje se ([\\d,.]+) mm kiše – jaka kiša ispire dušik u dublje slojeve i kanale\\.$",
    "A következő 3 napban $1 mm eső várható – a heves eső a nitrogént a mélyebb rétegekbe és az árkokba mossa."
+  ],
+  [
+   "^Prije (\\d{4})$",
+   "Előtte ($1)"
+  ],
+  [
+   "^Poslije (\\d{4})$",
+   "Utána ($1)"
   ],
   [
    "^ned (\\d+\\.)$",

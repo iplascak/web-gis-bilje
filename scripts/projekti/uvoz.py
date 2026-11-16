@@ -8,7 +8,7 @@ KLJUC = os.environ["SUPABASE_SECRET_KEY"]
 H = {"apikey": KLJUC, "Authorization": "Bearer " + KLJUC, "Content-Type": "application/json"}
 POLJA = ["naziv", "opis", "kategorija", "status", "naselje", "lokacija_opis", "lon", "lat", "godina_pocetka", "godina_zavrsetka",
          "vrijednost_eur", "bespovratno_eur", "udio_opcine_eur", "izvor_financiranja", "program_natjecaj", "nositelj", "partneri",
-         "poveznica", "izvor_podatka", "javno"]
+         "poveznica", "poveznice", "izvor_podatka", "javno"]
 BROJ = {"lon", "lat", "vrijednost_eur", "bespovratno_eur", "udio_opcine_eur"}
 CIJELI = {"godina_pocetka", "godina_zavrsetka"}
 
@@ -33,6 +33,9 @@ def main(put):
             if p in BROJ: v = float(v.replace(".", "").replace(",", ".")) if p not in ("lon", "lat") else float(v.replace(",", "."))
             elif p in CIJELI: v = int(float(v))
             elif p == "javno": v = v.lower() in ("da", "true", "1")
+            elif p == "poveznice":  # "naziv | adresa ; naziv | adresa"
+                v = [{"naziv": (d.split("|", 1)[0].strip() if "|" in d else None) or None, "url": d.split("|", 1)[-1].strip()}
+                     for d in v.split(";") if d.split("|", 1)[-1].strip().startswith("http")]
             z[p] = v
         if z.get("status") == "odustalo": z["javno"] = False
         try:

@@ -150,6 +150,19 @@
       return s;
     }
 
+    function obuhvatStil(boja, simbol, g, tip) {
+      const linija = /Line/.test(tip);
+      const kljuc = 'obuhvat' + boja + (simbol || '') + linija;
+      if (!kesh[kljuc]) kesh[kljuc] = [
+        new ol.style.Style({ stroke: new ol.style.Stroke({ color: 'rgba(255,255,255,0.9)', width: linija ? 7 : 4 }) }),
+        new ol.style.Style({ stroke: new ol.style.Stroke({ color: boja, width: linija ? 4 : 2.5 }), fill: linija ? undefined : new ol.style.Fill({ color: hexURgba(boja, 0.25) }) })];
+      // oznaka u sredini obuhvata, da se projekt vidi i kad je umanjena karta
+      const sredina = linija ? (tip === 'LineString' ? g.getCoordinateAt(0.5) : g.getLineString(0).getCoordinateAt(0.5))
+        : (tip === 'Polygon' ? g.getInteriorPoint().getCoordinates() : g.getInteriorPoints().getCoordinates()[0]);
+      const tocka = osnovniStil(boja, simbol).clone(); tocka.setGeometry(new ol.geom.Point(sredina.slice(0, 2)));
+      return [...kesh[kljuc], tocka];
+    }
+
     // natpis (npr. naziv naselja ili ulice) – prikazuje se tek od zadanog zooma
     const natpisMaxRez = stil.natpisMinZoom !== undefined ? zoomURezoluciju(stil.natpisMinZoom) : Infinity;
     const natpisStil = stil.natpis ? new ol.style.Style({
@@ -174,10 +187,15 @@
         const k = stil.kategorije.vrijednosti[vrijednost];
         if (k) { boja = k.boja; simbol = k.simbol; }
       }
-      const osnovni = osnovniStil(boja, simbol || stil.simbol);
+      let osnovni = osnovniStil(boja, simbol || stil.simbol);
+      // točkasti sloj s ponekim obuhvatom (npr. projekt ceste kao linija, park kao površina)
+      if (geom === 'tocka') {
+        const g = f.getGeometry(), tip = g && g.getType();
+        if (tip && tip !== 'Point' && tip !== 'MultiPoint') osnovni = obuhvatStil(boja, simbol || stil.simbol, g, tip);
+      }
       if (!natpisStil || rezolucija > natpisMaxRez) return osnovni;
       natpisStil.getText().setText(String(f.get(stil.natpis) || ''));
-      return [osnovni, natpisStil];
+      return [].concat(osnovni, natpisStil);
     };
   }
 
