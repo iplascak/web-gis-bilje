@@ -23,6 +23,7 @@ import smtplib
 import ssl
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 from email.message import EmailMessage
 from email.utils import formataddr
@@ -53,9 +54,13 @@ class Baza:
     def zahtjev(self, metoda, putanja, tijelo=None):
         z = urllib.request.Request(self.url + putanja, method=metoda, headers=self.zaglavlja,
                                    data=None if tijelo is None else json.dumps(tijelo).encode())
-        with urllib.request.urlopen(z, timeout=60) as o:
-            t = o.read()
-            return json.loads(t) if t else None
+        try:
+            with urllib.request.urlopen(z, timeout=60) as o:
+                t = o.read()
+                return json.loads(t) if t else None
+        except urllib.error.HTTPError as g:  # ispiši razlog koji vraća Supabase (bez ključa)
+            log(f"Supabase {metoda} {putanja.split('?')[0]}: HTTP {g.code} {g.read()[:500].decode('utf-8', 'replace')}")
+            raise
 
     def dohvati(self, tablica, **uvjeti):
         return self.zahtjev("GET", tablica + "?" + urllib.parse.urlencode(uvjeti, safe="(),.*:"))
