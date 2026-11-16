@@ -34,7 +34,7 @@
   ],
   "institucije": [
    "A község és intézményei",
-   "A községháza, valamint a község intézményei és cége."
+   "A községháza, a község intézményei és cége, valamint a kultúrházak."
   ],
   "ulice": [
    "Utcák",
@@ -1245,7 +1245,14 @@
   "Zastava Europske unije": "Az Európai Unió zászlaja",
   "Pošalji kod": "Kód küldése",
   "Za slanje prijave dovoljna je e-adresa: na nju šaljemo kod za prijavu. Lozinka nije potrebna.": "Elég egy e-mail-cím: erre küldjük a bejelentkezési kódot. Jelszó nem szükséges.",
-  "čeka pregled (vidi samo osoblje)": "ellenőrzésre vár (csak munkatársak látják)"
+  "čeka pregled (vidi samo osoblje)": "ellenőrzésre vár (csak munkatársak látják)",
+  "Dom kulture (upravlja KRC)": "Kultúrház (a KRC kezeli)",
+  "Dom kulture Bilje": "Bellyei kultúrház",
+  "Dom kulture Vardarac": "Várdaróci kultúrház",
+  "Dom kulture Lug (Petefija 146)": "Laskói kultúrház (Petőfi u. 146)",
+  "Dom kulture Lug (Petefija 114B)": "Laskói kultúrház (Petőfi u. 114B)",
+  "Dom kulture Kozjak": "Kozjaki kultúrház",
+  "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u.": "A község tulajdonában lévő kultúrház, a KRC Bilje kezeli. A terem használatáért forduljon a KRC-hez."
  },
  "podnaslov": "A Kopácsi-rét községe · térképadatok lakosoknak és látogatóknak",
  "korak": [

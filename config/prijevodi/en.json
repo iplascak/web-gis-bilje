@@ -34,7 +34,7 @@
   ],
   "institucije": [
    "Municipality and its institutions",
-   "Municipal offices and the institutions and company it owns."
+   "Municipal offices, the institutions and company it owns, and the community centres."
   ],
   "ulice": [
    "Streets",
@@ -1245,7 +1245,14 @@
   "Zastava Europske unije": "Flag of the European Union",
   "Pošalji kod": "Send code",
   "Za slanje prijave dovoljna je e-adresa: na nju šaljemo kod za prijavu. Lozinka nije potrebna.": "An e-mail address is all you need: we send a sign-in code to it. No password required.",
-  "čeka pregled (vidi samo osoblje)": "awaiting review (staff only)"
+  "čeka pregled (vidi samo osoblje)": "awaiting review (staff only)",
+  "Dom kulture (upravlja KRC)": "Community centre (managed by KRC)",
+  "Dom kulture Bilje": "Bilje Community Centre",
+  "Dom kulture Vardarac": "Vardarac Community Centre",
+  "Dom kulture Lug (Petefija 146)": "Lug Community Centre (Petefija 146)",
+  "Dom kulture Lug (Petefija 114B)": "Lug Community Centre (Petefija 114B)",
+  "Dom kulture Kozjak": "Kozjak Community Centre",
+  "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u.": "Community centre owned by the municipality and managed by KRC Bilje. Contact KRC to use the premises."
  },
  "podnaslov": "Kopački rit municipality · spatial data for residents and visitors",
  "korak": [

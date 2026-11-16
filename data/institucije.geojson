@@ -95,6 +95,101 @@
     "web": "http://komunalno-bilje.hr/",
     "napomena": "Komunalno poduzeće u vlasništvu Općine Bilje"
    }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.743081,
+     45.603689
+    ]
+   },
+   "properties": {
+    "naziv": "Dom kulture Bilje",
+    "vrsta": "dom_kulture",
+    "adresa": "Kralja Zvonimira 2, 31327 Bilje",
+    "telefon": "+385 91 6114 565",
+    "email": "krc@bilje.hr",
+    "web": "https://krc.bilje.hr/",
+    "napomena": "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.770557,
+     45.62417
+    ]
+   },
+   "properties": {
+    "naziv": "Dom kulture Vardarac",
+    "vrsta": "dom_kulture",
+    "adresa": "Šandora Petefija 114, Vardarac",
+    "telefon": "+385 91 6114 565",
+    "email": "krc@bilje.hr",
+    "web": "https://krc.bilje.hr/",
+    "napomena": "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.777418,
+     45.661151
+    ]
+   },
+   "properties": {
+    "naziv": "Dom kulture Lug (Petefija 146)",
+    "vrsta": "dom_kulture",
+    "adresa": "Šandora Petefija 146, Lug",
+    "telefon": "+385 91 6114 565",
+    "email": "krc@bilje.hr",
+    "web": "https://krc.bilje.hr/",
+    "napomena": "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.774575,
+     45.663013
+    ]
+   },
+   "properties": {
+    "naziv": "Dom kulture Lug (Petefija 114B)",
+    "vrsta": "dom_kulture",
+    "adresa": "Šandora Petefija 114B, Lug",
+    "telefon": "+385 91 6114 565",
+    "email": "krc@bilje.hr",
+    "web": "https://krc.bilje.hr/",
+    "napomena": "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     18.812837,
+     45.675238
+    ]
+   },
+   "properties": {
+    "naziv": "Dom kulture Kozjak",
+    "vrsta": "dom_kulture",
+    "adresa": "Kozjak 16, Kozjak",
+    "telefon": "+385 91 6114 565",
+    "email": "krc@bilje.hr",
+    "web": "https://krc.bilje.hr/",
+    "napomena": "Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u."
+   }
   }
  ]
 }

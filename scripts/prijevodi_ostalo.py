@@ -105,3 +105,13 @@ U.append([r'^Poslali smo kod na (\S+)\. Upišite ga ovdje \(kod vrijedi sat vrem
 U.append([r'^Prijava br\. ([\d/]+) je obrisana\.$', 'Report no. $1 has been deleted.', 'A(z) $1. számú bejelentés törölve.'])
 U.append([r'^Prijava br\. ([\d/]+) – (.+)$', 'Report no. $1 – $2', '$1. számú bejelentés – $2'])
 T['čeka pregled (vidi samo osoblje)'] = ('awaiting review (staff only)', 'ellenőrzésre vár (csak munkatársak látják)')
+T.update({
+ 'Dom kulture (upravlja KRC)': ('Community centre (managed by KRC)', 'Kultúrház (a KRC kezeli)'),
+ 'Dom kulture Bilje': ('Bilje Community Centre', 'Bellyei kultúrház'),
+ 'Dom kulture Vardarac': ('Vardarac Community Centre', 'Várdaróci kultúrház'),
+ 'Dom kulture Lug (Petefija 146)': ('Lug Community Centre (Petefija 146)', 'Laskói kultúrház (Petőfi u. 146)'),
+ 'Dom kulture Lug (Petefija 114B)': ('Lug Community Centre (Petefija 114B)', 'Laskói kultúrház (Petőfi u. 114B)'),
+ 'Dom kulture Kozjak': ('Kozjak Community Centre', 'Kozjaki kultúrház'),
+ 'Dom kulture u vlasništvu Općine; njime upravlja KRC Bilje. Za korištenje prostora obratite se KRC-u.':
+   ('Community centre owned by the municipality and managed by KRC Bilje. Contact KRC to use the premises.', 'A község tulajdonában lévő kultúrház, a KRC Bilje kezeli. A terem használatáért forduljon a KRC-hez.'),
+})

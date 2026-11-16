@@ -142,6 +142,11 @@
               "boja": "#0284c7",
               "oznaka": "Turistička zajednica",
               "simbol": "turizam"
+            },
+            "dom_kulture": {
+              "boja": "#a855f7",
+              "oznaka": "Dom kulture (upravlja KRC)",
+              "simbol": "kultura"
             }
           }
         }
@@ -172,8 +177,8 @@
           }
         ]
       },
-      "opis": "Sjedište Općine Bilje i ustanove i trgovačko društvo u njezinom vlasništvu.",
-      "detaljno": "Općina Bilje, Kulturno razvojni centar Bilje, Turistička zajednica Općine Bilje, Dječji vrtić Grlica i komunalno poduzeće Komunalno - Bilje d.o.o., s adresama i kontaktima kako su objavljeni na službenoj stranici općine (bilje.hr, \"Naše institucije\" i \"Kontakt\"). Lokacija je određena prema kućnom broju iz registra prostornih jedinica DGU-a.",
+      "opis": "Sjedište Općine Bilje, ustanove i trgovačko društvo u njezinom vlasništvu te domovi kulture.",
+      "detaljno": "Općina Bilje, Kulturno razvojni centar Bilje, Turistička zajednica Općine Bilje, Dječji vrtić Grlica i komunalno poduzeće Komunalno - Bilje d.o.o., s adresama i kontaktima kako su objavljeni na službenoj stranici općine (bilje.hr, \"Naše institucije\" i \"Kontakt\"). Lokacija je određena prema kućnom broju iz registra prostornih jedinica DGU-a.\n\nDomovi kulture (Bilje, Vardarac, Lug, Kozjak) općinski su objekti u kulturno-društvenoj upotrebi kojima upravlja KRC Bilje. Položaj im je određen prema čestici iz Registra imovine Općine.",
       "izvor": "bilje.hr; adrese: DGU RPJ",
       "azurirano": "studeni 2026.",
       "podgrupa": "Ustanove"
