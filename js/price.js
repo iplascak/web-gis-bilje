@@ -10,6 +10,7 @@
 
   async function pokreniPricu(id) {
     let p;
+    if (window.webgisPosjete) window.webgisPosjete.biljezi('prica', id);
     const j = window.webgisJezik && window.webgisJezik !== 'hr' ? '.' + window.webgisJezik : '';
     try { p = await (await fetch('config/price/' + id + j + '.json')).json(); }
     catch (g) { try { p = await (await fetch('config/price/' + id + '.json')).json(); } catch (g2) { return; } }

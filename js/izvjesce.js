@@ -33,15 +33,22 @@
     }).join('') + '</svg>';
   }
 
+  const JEZICI = { hr: 'hrvatski', en: 'engleski', hu: 'mađarski' };
+  const UREDAJI = { mobitel: 'mobitel', tablet: 'tablet', racunalo: 'računalo' };
+  const PRICE = { poljoprivreda: 'Poljoprivreda', turizam: 'Izlet u Kopački rit', bastina: 'Baština osam sela' };
+  const SLOJEVI_DOD = { prijave: 'Prijave komunalnih problema', projekti_baza: 'Projekti općine', dogadjanja: 'Događanja', komunalni_objekti: 'Komunalni objekti', doprinosi: 'Sjećanja mještana' };
+
   let konfig, podaci = {};
   async function ucitajSve() {
     konfig = (await json('config/portal.json')).prijave || {};
-    const [ark, sat, sazSat, zrak, proj] = await Promise.allSettled([
+    const [ark, sat, sazSat, zrak, proj, slojevi] = await Promise.allSettled([
       json('data/poljoprivreda/arkod/sazetak.json'), json(SAT + 'stanje.geojson'), json(SAT + 'sazetak.json'), json(ZRAK),
       json(konfig.supabaseUrl + '/rest/v1/rpc/projekti_geojson', { method: 'POST', headers: { apikey: konfig.supabaseKljuc, 'Content-Type': 'application/json' }, body: '{}' })
         .then((d) => (d.features && d.features.length ? d : json('data/projekti/nacrt.geojson')))
-        .catch(() => json('data/projekti/nacrt.geojson'))]);
-    podaci = { ark: ark.value, sat: sat.value, sazSat: sazSat.value, zrak: zrak.value, proj: proj.value };
+        .catch(() => json('data/projekti/nacrt.geojson')),
+      json('config/layers.json')]);
+    podaci = { ark: ark.value, sat: sat.value, sazSat: sazSat.value, zrak: zrak.value, proj: proj.value,
+      nazivi: Object.assign({}, SLOJEVI_DOD, Object.fromEntries(((slojevi.value || {}).slojevi || []).map((l) => [l.id, l.naziv]))) };
   }
 
   async function prikazi(g) {
@@ -166,9 +173,33 @@
     }
     dijelovi.push(s + '</section>');
 
+    // 6. Korištenje portala
+    s = '<section><h2>6. Korištenje portala</h2>';
+    let pos = null;
+    try {
+      pos = await json(konfig.supabaseUrl + '/rest/v1/rpc/posjete_godine', { method: 'POST', headers: { apikey: konfig.supabaseKljuc, 'Content-Type': 'application/json' }, body: JSON.stringify({ godina: g }) });
+    } catch (e) { pos = null; }
+    if (!pos) s += '<div class="napomena">Mjerenje posjećenosti prikazat će se nakon što se u bazi pokrene <code>supabase/migracija_10.sql</code>.</div>';
+    else if (!pos.ukupno) s += '<p class="sitno">Za ovu godinu još nema zabilježenih posjeta.</p>';
+    else {
+      const prosjek = pos.dana ? pos.ukupno / pos.dana : 0;
+      const jez = pos.jezik || {}, ukJez = Object.values(jez).reduce((a, b) => a + b, 0);
+      const strani = ukJez ? ((jez.en || 0) + (jez.hu || 0)) / ukJez * 100 : 0;
+      s += `<div class="kartice">${kartica(br(pos.ukupno), 'otvaranja portala')}${kartica(br(prosjek, 1), 'prosječno dnevno')}${kartica(br(strani) + ' %', 'na engleskom ili mađarskom')}${kartica(br(Object.values(pos.price || {}).reduce((a, b) => a + b, 0)), 'pokrenutih priča')}</div>`;
+      s += '<h3 class="sitno">Po mjesecima</h3>' + stupci(MJ.map((_, i) => (pos.po_mjesecu || {})[i + 1] || null), MJ);
+      s += '<h3 class="sitno">Najčešće uključeni slojevi</h3>' + trake(Object.entries(pos.slojevi || {}).sort((a, b) => b[1] - a[1]).slice(0, 10), podaci.nazivi);
+      if (Object.keys(pos.price || {}).length) s += '<h3 class="sitno">Priče</h3>' + trake(Object.entries(pos.price).sort((a, b) => b[1] - a[1]), PRICE);
+      s += '<h3 class="sitno">Jezik</h3>' + trake(Object.entries(jez).sort((a, b) => b[1] - a[1]), JEZICI);
+      s += '<h3 class="sitno">Uređaj</h3>' + trake(Object.entries(pos.uredaj || {}).sort((a, b) => b[1] - a[1]), UREDAJI);
+      s += `<p class="sitno">Mjerenje bez kolačića i bez osobnih podataka: bilježe se samo zbirni dnevni brojači (otvaranje portala, jezik, vrsta uređaja, uključeni slojevi i priče)${pos.od ? ', od ' + new Date(pos.od).toLocaleDateString('hr-HR') : ''}. Jedna osoba koja portal otvori više puta broji se više puta; posjetitelji s uključenom opcijom „Do Not Track” ne broje se.</p>`;
+      const topSloj = Object.entries(pos.slojevi || {}).sort((a, b) => b[1] - a[1])[0];
+      kljucno.push(`Portal je otvoren <b>${br(pos.ukupno)}</b> puta${topSloj ? '; najtraženiji sloj: ' + esc(podaci.nazivi[topSloj[0]] || topSloj[0]).toLowerCase() : ''}.`);
+    }
+    dijelovi.push(s + '</section>');
+
     const sazetak = `<div class="zakljucak"><b>Ukratko</b><ul style="margin:6px 0 0;padding-left:20px">${kljucno.length ? kljucno.map((k) => '<li>' + k + '</li>').join('') : '<li>Za ovu godinu još nema dovoljno podataka.</li>'}</ul></div>`;
     dijelovi.splice(1, 0, sazetak);
-    dijelovi.push('<p class="sitno" style="margin-top:30px">Izvori: prijave i događanja s portala (Supabase), ARKOD – APPRRR (registri.nipp.hr), Copernicus Sentinel-2 (ESA), DHMZ, službeni glasnici Općine Bilje. Izvješće se može ispisati ili spremiti kao PDF gumbom „Ispis / PDF”.</p>');
+    dijelovi.push('<p class="sitno" style="margin-top:30px">Izvori: prijave, događanja i posjećenost s portala (Supabase), ARKOD – APPRRR (registri.nipp.hr), Copernicus Sentinel-2 (ESA), DHMZ, službeni glasnici Općine Bilje. Izvješće se može ispisati ili spremiti kao PDF gumbom „Ispis / PDF”.</p>');
     $('#sadrzaj').innerHTML = dijelovi.join('');
     document.title = `Općina Bilje ${g}. – godišnje izvješće iz podataka`;
   }
