@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Groblje Bilje – pokazni primjer</title>
+  <meta name="theme-color" content="#F5D654">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="stylesheet" href="lib/ol/ol.css">
+  <style>
+    @font-face { font-family: "Libre Franklin"; font-weight: 400; font-display: swap; src: url(lib/fonts/libre-franklin-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02AF; }
+    @font-face { font-family: "Libre Franklin"; font-weight: 400; font-display: swap; src: url(lib/fonts/libre-franklin-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+    @font-face { font-family: "Libre Franklin"; font-weight: 600; font-display: swap; src: url(lib/fonts/libre-franklin-latin-ext-600-normal.woff2) format("woff2"); unicode-range: U+0100-02AF; }
+    @font-face { font-family: "Libre Franklin"; font-weight: 600; font-display: swap; src: url(lib/fonts/libre-franklin-latin-600-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+    @font-face { font-family: "Libre Franklin"; font-weight: 700; font-display: swap; src: url(lib/fonts/libre-franklin-latin-ext-700-normal.woff2) format("woff2"); unicode-range: U+0100-02AF; }
+    @font-face { font-family: "Libre Franklin"; font-weight: 700; font-display: swap; src: url(lib/fonts/libre-franklin-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+
+    :root {
+      --zuta: #F5D654; --zuta-svijetla: #FDF6D8; --zelena: #1F7A3D; --zelena-svijetla: #E8F3EB;
+      --crvena: #DB545A; --tamna: #222; --tekst: #333; --tekst-2: #555C66; --rub: #E6E4DC;
+      --pozadina: #fff; --pozadina-2: #F7F6F1; --radijus: 12px;
+      --zauzeto: #9CA3AF; --rezervirano: #E0A100; --slobodno: #1F9D55; --odabrano: #DB545A;
+      font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; color: var(--tekst);
+      accent-color: var(--zelena);
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html, body { margin: 0; height: 100%; background: var(--pozadina-2); }
+    body { display: flex; flex-direction: column; }
+    button, input, select { font: inherit; }
+
+    .zaglavlje { display: flex; align-items: center; gap: 12px; padding: 0 16px; height: 60px; background: var(--zuta); color: var(--tamna); flex: none; }
+    .zaglavlje img { height: 40px; }
+    .zaglavlje h1 { margin: 0; font-size: 18px; line-height: 1.2; }
+    .zaglavlje p { margin: 0; font-size: 13px; color: #4a4a3a; }
+    .zaglavlje .razmak { flex: 1; }
+    .zaglavlje a.natrag { color: var(--tamna); font-weight: 600; font-size: 14px; text-decoration: none; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.55); white-space: nowrap; }
+    .zaglavlje a.natrag:hover { background: #fff; }
+
+    .demo-traka { flex: none; background: var(--tamna); color: #fff; font-size: 13px; padding: 7px 16px; display: flex; gap: 8px; align-items: center; }
+    .demo-traka b { background: var(--crvena); padding: 2px 8px; border-radius: 4px; letter-spacing: .04em; }
+
+    .sadrzaj { flex: 1; display: flex; min-height: 0; }
+    .panel { width: 360px; flex: none; background: var(--pozadina); border-right: 1px solid var(--rub); display: flex; flex-direction: column; min-height: 0; }
+    .panel-glava { padding: 14px 16px 10px; border-bottom: 1px solid var(--rub); }
+    .panel h2 { margin: 0 0 8px; font-size: 15px; }
+    .polje-pretrage { display: flex; gap: 6px; }
+    .polje-pretrage input { flex: 1; min-width: 0; padding: 10px 12px; border: 1px solid var(--rub); border-radius: 10px; background: var(--pozadina-2); }
+    .polje-pretrage input:focus { outline: 2px solid var(--zelena); outline-offset: -1px; background: #fff; }
+    .napredno { margin-top: 8px; font-size: 13px; color: var(--tekst-2); }
+    .napredno summary { cursor: pointer; }
+    .napredno .red { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
+    .napredno input, .napredno select { width: 100%; padding: 7px 8px; border: 1px solid var(--rub); border-radius: 8px; }
+    .savjet { font-size: 12px; color: var(--tekst-2); margin: 6px 0 0; }
+
+    .statusi { display: flex; gap: 6px; padding: 10px 16px; border-bottom: 1px solid var(--rub); flex-wrap: wrap; }
+    .cip { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--rub); background: #fff; cursor: pointer; }
+    .cip[aria-pressed="true"] { background: var(--zelena-svijetla); border-color: var(--zelena); }
+    .cip i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+    .rezultati { flex: 1; overflow: auto; margin: 0; padding: 0; list-style: none; }
+    .rezultati li { padding: 10px 16px; border-bottom: 1px solid var(--rub); cursor: pointer; }
+    .rezultati li:hover, .rezultati li:focus { background: var(--pozadina-2); outline: none; }
+    .rezultati .ime { font-weight: 600; }
+    .rezultati .meta { font-size: 13px; color: var(--tekst-2); }
+    .prazno { padding: 16px; color: var(--tekst-2); font-size: 14px; }
+    .podnozje { padding: 10px 16px; font-size: 12px; color: var(--tekst-2); border-top: 1px solid var(--rub); }
+
+    .karta-okvir { flex: 1; position: relative; }
+    #karta { position: absolute; inset: 0; }
+    .gumbi-karte { position: absolute; right: 12px; top: 12px; display: flex; flex-direction: column; gap: 8px; z-index: 5; }
+    .gumb { border: 0; background: #fff; border-radius: 10px; padding: 9px 12px; box-shadow: 0 2px 10px rgba(0,0,0,.15); cursor: pointer; font-weight: 600; font-size: 13px; color: var(--tamna); }
+    .gumb:hover { background: var(--zuta-svijetla); }
+    .gumb.primarni { background: var(--zelena); color: #fff; }
+    .gumb.primarni:hover { background: #17612f; }
+    .legenda { position: absolute; left: 12px; bottom: 28px; background: #fff; border-radius: 10px; padding: 8px 12px; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.15); z-index: 5; }
+    .legenda div { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+    .legenda i { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; }
+
+    .kartica { position: absolute; right: 12px; bottom: 28px; width: 340px; max-height: calc(100% - 120px); overflow: auto; background: #fff; border-radius: var(--radijus); box-shadow: 0 10px 40px rgba(0,0,0,.25); z-index: 6; }
+    .kartica header { display: flex; align-items: flex-start; gap: 8px; padding: 14px 16px 6px; }
+    .kartica h3 { margin: 0; font-size: 17px; flex: 1; }
+    .kartica .zatvori { border: 0; background: none; font-size: 22px; line-height: 1; cursor: pointer; color: var(--tekst-2); }
+    .kartica .tijelo { padding: 0 16px 14px; font-size: 14px; }
+    .oznaka-velika { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 6px 0 10px; }
+    .oznaka-velika div { background: var(--pozadina-2); border-radius: 8px; padding: 6px; text-align: center; }
+    .oznaka-velika small { display: block; font-size: 11px; color: var(--tekst-2); }
+    .oznaka-velika b { font-size: 18px; }
+    .znacka { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; color: #fff; }
+    .kartica ul { padding-left: 18px; margin: 6px 0 10px; }
+    .kartica .akcije { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .kartica .akcije .gumb { box-shadow: none; border: 1px solid var(--rub); }
+    .kartica .akcije .gumb.primarni { border-color: var(--zelena); }
+    .udaljenost { font-size: 13px; color: var(--zelena); font-weight: 600; margin-top: 8px; }
+
+    dialog { border: 0; border-radius: var(--radijus); padding: 0; width: min(92vw, 460px); box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+    dialog::backdrop { background: rgba(0,0,0,.35); }
+    dialog form { padding: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+    dialog h3 { margin: 0; }
+    dialog textarea, dialog input { width: 100%; padding: 9px 10px; border: 1px solid var(--rub); border-radius: 8px; font: inherit; }
+    dialog .akcije { display: flex; gap: 8px; justify-content: flex-end; }
+
+    .o-demou { font-size: 14px; line-height: 1.5; }
+    .o-demou li { margin-bottom: 4px; }
+
+    @media (max-width: 760px) {
+      .zaglavlje p { display: none; }
+      .zaglavlje h1 { font-size: 15px; }
+      .sadrzaj { flex-direction: column-reverse; }
+      .panel { width: auto; height: 42%; border-right: 0; border-top: 1px solid var(--rub); }
+      .panel { height: 40%; }
+      .kartica { left: 8px; right: 8px; width: auto; bottom: 8px; max-height: 62%; }
+      .kartica header { padding: 10px 12px 4px; }
+      .kartica .tijelo { padding: 0 12px 10px; }
+      .oznaka-velika b { font-size: 15px; }
+      .legenda { bottom: auto; top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="zaglavlje">
+    <img src="assets/grb.png" alt="Grb Općine Bilje">
+    <div>
+      <h1>Groblje Bilje</h1>
+      <p>Tražilica grobnih mjesta i položajni plan</p>
+    </div>
+    <span class="razmak"></span>
+    <a class="natrag" href="./">← Web GIS</a>
+  </header>
+  <div class="demo-traka" role="note">
+    <b>DEMO</b>
+    <span>Pokazni primjer na jednom dijelu groblja. Oznake grobova su automatski prijedlog, a sva imena i godine su izmišljeni.</span>
+    <button class="gumb" id="gumbODemou" style="margin-left:auto;padding:4px 10px">Više</button>
+  </div>
+
+  <main class="sadrzaj">
+    <aside class="panel" aria-label="Pretraga">
+      <div class="panel-glava">
+        <h2>Pronađite grobno mjesto</h2>
+        <div class="polje-pretrage">
+          <input id="upit" type="search" placeholder="Ime i prezime ili oznaka (npr. A-9-4)" autocomplete="off" aria-label="Ime, prezime ili oznaka grobnog mjesta">
+        </div>
+        <details class="napredno">
+          <summary>Napredna pretraga</summary>
+          <div class="red">
+            <input id="godOd" type="number" inputmode="numeric" placeholder="umro od godine" aria-label="Godina smrti od">
+            <input id="godDo" type="number" inputmode="numeric" placeholder="do godine" aria-label="Godina smrti do">
+          </div>
+          <div class="red">
+            <select id="red" aria-label="Red"><option value="">svi redovi</option></select>
+          </div>
+        </details>
+        <p class="savjet">Slova č, ć, đ, š i ž ne morate pisati. Znak * zamjenjuje dio imena (npr. Prim*).</p>
+      </div>
+      <div class="statusi" role="group" aria-label="Prikaz prema statusu">
+        <button class="cip" data-status="zauzeto" aria-pressed="false"><i style="background:var(--zauzeto)"></i>Zauzeto <span></span></button>
+        <button class="cip" data-status="rezervirano" aria-pressed="false"><i style="background:var(--rezervirano)"></i>Rezervirano <span></span></button>
+        <button class="cip" data-status="slobodno" aria-pressed="false"><i style="background:var(--slobodno)"></i>Slobodno <span></span></button>
+      </div>
+      <ul id="rezultati" class="rezultati" aria-live="polite"></ul>
+      <div class="podnozje">Polje A, groblje Bilje · <span id="brojMjesta"></span></div>
+    </aside>
+
+    <div class="karta-okvir">
+      <div id="karta" role="application" aria-label="Položajni plan groblja"></div>
+      <div class="gumbi-karte">
+        <button class="gumb" id="gumbCijelo">Cijelo polje</button>
+        <button class="gumb" id="gumbLokacija">Moja lokacija</button>
+      </div>
+      <div class="legenda" aria-label="Legenda">
+        <div><i style="border-color:var(--zauzeto);background:rgba(156,163,175,.25)"></i>zauzeto</div>
+        <div><i style="border-color:var(--rezervirano);background:rgba(224,161,0,.25)"></i>rezervirano</div>
+        <div><i style="border-color:var(--slobodno);background:rgba(31,157,85,.25)"></i>slobodno</div>
+      </div>
+      <section class="kartica" id="kartica" hidden aria-live="polite"></section>
+    </div>
+  </main>
+
+  <dialog id="dlgIspravak">
+    <form method="dialog" id="frmIspravak">
+      <h3>Prijedlog ispravka</h3>
+      <p style="margin:0;color:var(--tekst-2)">Grobno mjesto <b id="ispOznaka"></b>. Upravitelj groblja pregledava svaki prijedlog prije upisa u grobni očevidnik.</p>
+      <label>Što treba ispraviti?<textarea id="ispTekst" rows="4" required></textarea></label>
+      <label>Vaš e-mail ili telefon (za povratnu informaciju)<input id="ispKontakt" required></label>
+      <p style="margin:0;font-size:12px;color:var(--tekst-2)">U pokaznom primjeru prijedlog se otvara kao e-poruka; u stvarnom sustavu išao bi u tijek prijava portala.</p>
+      <div class="akcije">
+        <button class="gumb" value="odustani" formnovalidate>Odustani</button>
+        <button class="gumb primarni" value="posalji">Pošalji</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlgODemou">
+    <form method="dialog" style="gap:6px">
+      <h3>O pokaznom primjeru</h3>
+      <div class="o-demou">
+        <p>Primjer pokazuje kako bi javni dio grobnog očevidnika mogao izgledati na Web GIS-u Općine Bilje.</p>
+        <ul>
+          <li><b>Obrisi grobova</b> automatski su prepoznati na snimci groblja dronom; nisu provjereni na terenu.</li>
+          <li><b>Oznake</b> (polje, red, broj) automatski su predložene iz rasporeda grobova i ne odgovaraju stvarnim oznakama groblja.</li>
+          <li><b>Imena, godine, korisnici i statusi</b> su izmišljeni. Prezimena su namjerno očito nestvarna.</li>
+          <li>Stvarni podaci dolazili bi iz grobnog očevidnika upravitelja groblja (Komunalno Bilje d.o.o.), u opsegu koji propisuje čl. 24. Zakona o grobljima (NN 78/2025).</li>
+          <li>OIB, adrese, vjeroispovijest i uzrok smrti nikad se ne bi prikazivali javno.</li>
+        </ul>
+      </div>
+      <div class="akcije" style="display:flex;justify-content:flex-end"><button class="gumb primarni" value="ok">Razumijem</button></div>
+    </form>
+  </dialog>
+
+  <script src="lib/ol/ol.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const BOJE = { zauzeto: '#9CA3AF', rezervirano: '#E0A100', slobodno: '#1F9D55', odabrano: '#DB545A' };
+    const NAZIV = { zauzeto: 'Zauzeto', rezervirano: 'Rezervirano', slobodno: 'Slobodno' };
+    const DRON_EXTENT = [2085591.2, 5716885.7, 2085896.8, 5717210.0];
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const norm = s => String(s || '').toLowerCase().replace(/đ/g, 'd').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+    // ---------- karta ----------
+    const izvorGrobova = new ol.source.Vector();
+    const filtarStatusa = new Set();
+    let odabrani = null;
+    let pozicija = null;
+
+    function stil(f, res) {
+      const st = f.get('status');
+      const sakriven = filtarStatusa.size && !filtarStatusa.has(st);
+      if (sakriven && f !== odabrani) return null;
+      const je = f === odabrani;
+      const boja = je ? BOJE.odabrano : BOJE[st];
+      const stilovi = [new ol.style.Style({
+        stroke: new ol.style.Stroke({ color: boja, width: je ? 3.5 : 1.6 }),
+        fill: new ol.style.Fill({ color: ol.color.asString(ol.color.asArray(boja).slice(0, 3).concat(je ? 0.35 : 0.18)) }),
+        zIndex: je ? 10 : 1
+      })];
+      if (res < 0.09 || je) {
+        stilovi.push(new ol.style.Style({
+          text: new ol.style.Text({
+            text: f.get('red') + '-' + f.get('broj'), font: '600 11px "Libre Franklin", Arial, sans-serif',
+            fill: new ol.style.Fill({ color: '#fff' }), stroke: new ol.style.Stroke({ color: 'rgba(0,0,0,.8)', width: 3 })
+          }), zIndex: 11
+        }));
+      }
+      return stilovi;
+    }
+
+    const slojGrobova = new ol.layer.Vector({ source: izvorGrobova, style: stil, zIndex: 3 });
+    const izvorLokacije = new ol.source.Vector();
+    const slojLokacije = new ol.layer.Vector({
+      source: izvorLokacije, zIndex: 4,
+      style: f => f.getGeometry().getType() === 'Point'
+        ? new ol.style.Style({ image: new ol.style.Circle({ radius: 8, fill: new ol.style.Fill({ color: '#2563EB' }), stroke: new ol.style.Stroke({ color: '#fff', width: 3 }) }) })
+        : new ol.style.Style({ stroke: new ol.style.Stroke({ color: '#2563EB', width: 3, lineDash: [8, 6] }) })
+    });
+
+    const karta = new ol.Map({
+      target: 'karta',
+      layers: [
+        new ol.layer.Tile({ source: new ol.source.OSM({ maxZoom: 19 }) }),
+        new ol.layer.Tile({ extent: DRON_EXTENT, source: new ol.source.XYZ({ url: 'data/groblja/bilje/{z}/{x}/{y}.webp', maxZoom: 21, attributions: 'Snimka dronom: Općina Bilje' }) }),
+        slojGrobova, slojLokacije
+      ],
+      view: new ol.View({ center: ol.proj.fromLonLat([18.7372, 45.6029]), zoom: 19, maxZoom: 23, minZoom: 15 }),
+      controls: [new ol.control.Zoom(), new ol.control.Attribution({ collapsible: true }), new ol.control.ScaleLine()]
+    });
+
+    fetch('data/groblja/demo/bilje_polje_a_demo.geojson').then(r => r.json()).then(gj => {
+      const fs = new ol.format.GeoJSON().readFeatures(gj, { featureProjection: 'EPSG:3857' });
+      fs.forEach(f => {
+        const uk = f.get('ukopani') || [];
+        f.set('_trazi', norm(uk.map(u => u.ime + ' ' + u.prezime).join(' | ') + ' | ' + f.get('oznaka')));
+      });
+      izvorGrobova.addFeatures(fs);
+      const brojevi = { zauzeto: 0, rezervirano: 0, slobodno: 0 };
+      const redovi = new Set();
+      fs.forEach(f => { brojevi[f.get('status')]++; redovi.add(f.get('red')); });
+      document.querySelectorAll('.cip').forEach(b => { b.querySelector('span').textContent = brojevi[b.dataset.status]; });
+      $('brojMjesta').textContent = fs.length + ' grobnih mjesta';
+      [...redovi].sort((a, b) => a - b).forEach(r => $('red').insertAdjacentHTML('beforeend', `<option value="${r}">red ${r}</option>`));
+      cijeloPolje(0);
+      osvjeziRezultate();
+      otvoriIzPoveznice();
+    });
+
+    function cijeloPolje(trajanje) {
+      karta.getView().fit(izvorGrobova.getExtent(), { padding: [40, 40, 40, 40], duration: trajanje == null ? 400 : trajanje, maxZoom: 21 });
+    }
+
+    // ---------- pretraga ----------
+    function uzorak(upit) {
+      const dijelovi = norm(upit).split(/\s+/).filter(Boolean);
+      return dijelovi.map(d => new RegExp(d.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/[*%]/g, '.*')));
+    }
+
+    function osvjeziRezultate() {
+      const upit = $('upit').value;
+      const od = parseInt($('godOd').value, 10), doG = parseInt($('godDo').value, 10);
+      const red = $('red').value;
+      const regexi = uzorak(upit);
+      const lista = $('rezultati');
+      lista.innerHTML = '';
+      const pogodci = [];
+      izvorGrobova.getFeatures().forEach(f => {
+        if (filtarStatusa.size && !filtarStatusa.has(f.get('status'))) return;
+        if (red && String(f.get('red')) !== red) return;
+        const uk = f.get('ukopani') || [];
+        const oznakaPogodak = regexi.length && regexi.every(r => r.test(norm(f.get('oznaka'))));
+        if (oznakaPogodak) { pogodci.push({ f, osoba: null }); return; }
+        if (!regexi.length && !(od || doG)) { pogodci.push({ f, osoba: null }); return; }
+        uk.forEach(u => {
+          const tekst = norm(u.ime + ' ' + u.prezime);
+          if (regexi.length && !regexi.every(r => r.test(tekst))) return;
+          if (od && u.umro < od) return;
+          if (doG && u.umro > doG) return;
+          pogodci.push({ f, osoba: u });
+        });
+      });
+      pogodci.sort((a, b) => a.osoba && b.osoba
+        ? (norm(a.osoba.prezime) + norm(a.osoba.ime)).localeCompare(norm(b.osoba.prezime) + norm(b.osoba.ime))
+        : (a.f.get('red') - b.f.get('red')) || (a.f.get('broj') - b.f.get('broj')));
+      if (!pogodci.length) { lista.innerHTML = '<li class="prazno" tabindex="-1">Nema rezultata. Provjerite upis ili pokušajte samo prezime.</li>'; return; }
+      pogodci.slice(0, 300).forEach(({ f, osoba }) => {
+        const li = document.createElement('li');
+        li.tabIndex = 0;
+        li.innerHTML = osoba
+          ? `<div class="ime">${esc(osoba.ime)} ${esc(osoba.prezime)}</div><div class="meta">${osoba.rodjen}. – ${osoba.umro}. · grobno mjesto ${esc(f.get('oznaka'))}</div>`
+          : `<div class="ime">Grobno mjesto ${esc(f.get('oznaka'))}</div><div class="meta">${NAZIV[f.get('status')]}${(f.get('ukopani') || []).length ? ' · ' + f.get('ukopani').map(u => esc(u.prezime.split(' ')[0])).filter((v, i, a) => a.indexOf(v) === i).join(', ') : ''}</div>`;
+        const otvori = () => odaberi(f, true);
+        li.addEventListener('click', otvori);
+        li.addEventListener('keydown', e => { if (e.key === 'Enter') otvori(); });
+        lista.appendChild(li);
+      });
+      if (pogodci.length > 300) lista.insertAdjacentHTML('beforeend', `<li class="prazno">Prikazano prvih 300 od ${pogodci.length}. Suzite pretragu.</li>`);
+    }
+
+    let tajmer;
+    ['upit', 'godOd', 'godDo', 'red'].forEach(id => $(id).addEventListener('input', () => { clearTimeout(tajmer); tajmer = setTimeout(osvjeziRezultate, 150); }));
+    document.querySelectorAll('.cip').forEach(b => b.addEventListener('click', () => {
+      const st = b.dataset.status;
+      if (filtarStatusa.has(st)) filtarStatusa.delete(st); else filtarStatusa.add(st);
+      b.setAttribute('aria-pressed', filtarStatusa.has(st));
+      slojGrobova.changed(); osvjeziRezultate();
+    }));
+
+    // ---------- kartica grobnog mjesta ----------
+    function odaberi(f, priblizi) {
+      odabrani = f;
+      slojGrobova.changed();
+      if (!f) { $('kartica').hidden = true; history.replaceState(null, '', location.pathname); return; }
+      history.replaceState(null, '', '#' + encodeURIComponent(f.get('oznaka')));
+      const uk = f.get('ukopani') || [];
+      const st = f.get('status');
+      $('kartica').innerHTML = `
+        <header><h3>Grobno mjesto ${esc(f.get('oznaka'))}</h3><button class="zatvori" aria-label="Zatvori">×</button></header>
+        <div class="tijelo">
+          <div class="oznaka-velika">
+            <div><small>Groblje</small><b style="font-size:14px">${esc(f.get('groblje'))}</b></div>
+            <div><small>Polje</small><b>${esc(f.get('polje'))}</b></div>
+            <div><small>Red</small><b>${esc(f.get('red'))}</b></div>
+            <div><small>Broj</small><b>${esc(f.get('broj'))}</b></div>
+          </div>
+          <span class="znacka" style="background:${BOJE[st]}">${NAZIV[st]}</span>
+          <span style="font-size:13px;color:var(--tekst-2);margin-left:6px">${f.get('vrsta') === 'grobnica' ? 'grobnica' : 'grob'}</span>
+          ${uk.length ? `<div style="margin-top:10px;font-weight:600">Ukopani</div><ul>${uk.map(u => `<li>${esc(u.ime)} ${esc(u.prezime)} <span style="color:var(--tekst-2)">(${u.rodjen}. – ${u.umro}.)</span></li>`).join('')}</ul>` : ''}
+          ${f.get('korisnik') ? `<div style="font-size:13px"><span style="color:var(--tekst-2)">Korisnik grobnog mjesta:</span> ${esc(f.get('korisnik'))}</div>` : ''}
+          ${st === 'slobodno' ? '<p style="font-size:13px;margin:8px 0 0">Za dodjelu grobnog mjesta obratite se upravitelju groblja, Komunalnom Bilje d.o.o.</p>' : ''}
+          <div class="udaljenost" id="udaljenost"></div>
+          <div class="akcije">
+            <button class="gumb primarni" id="gumbPovedi">Povedi me do groba</button>
+            <button class="gumb" id="gumbIspravak">Predloži ispravak</button>
+            <button class="gumb" id="gumbPoveznica">Kopiraj poveznicu</button>
+          </div>
+        </div>`;
+      $('kartica').hidden = false;
+      if (priblizi) {
+        const mob = window.innerWidth < 760, k = $('kartica');
+        const pad = mob ? [60, 30, k.offsetHeight + 30, 30] : [80, k.offsetWidth + 60, 80, 80];
+        karta.getView().fit(f.getGeometry().getExtent(), { padding: pad, maxZoom: 22, duration: 500 });
+      }
+      $('kartica').querySelector('.zatvori').onclick = () => odaberi(null);
+      $('gumbPovedi').onclick = () => povedi(f);
+      $('gumbIspravak').onclick = () => { $('ispOznaka').textContent = f.get('oznaka'); $('ispTekst').value = ''; $('dlgIspravak').showModal(); };
+      $('gumbPoveznica').onclick = () => {
+        navigator.clipboard.writeText(location.href).then(() => { $('gumbPoveznica').textContent = 'Kopirano ✓'; }, () => prompt('Kopirajte poveznicu:', location.href));
+      };
+      osvjeziUdaljenost();
+    }
+
+    karta.on('singleclick', e => {
+      const f = karta.forEachFeatureAtPixel(e.pixel, x => x, { layerFilter: l => l === slojGrobova, hitTolerance: 3 });
+      odaberi(f || null, false);
+    });
+    karta.on('pointermove', e => {
+      if (e.dragging) return;
+      karta.getTargetElement().style.cursor = karta.hasFeatureAtPixel(e.pixel, { layerFilter: l => l === slojGrobova }) ? 'pointer' : '';
+    });
+
+    function sredisteGroba(f) {
+      return ol.proj.toLonLat(ol.extent.getCenter(f.getGeometry().getExtent()));
+    }
+
+    function povedi(f) {
+      const [lon, lat] = sredisteGroba(f);
+      if (pozicija) {
+        const d = ol.sphere.getDistance(pozicija, [lon, lat]);
+        if (d < 400) { // već ste na groblju ili blizu: pokaži smjer na karti
+          prikaziPut(f);
+          karta.getView().fit(ol.extent.boundingExtent([ol.proj.fromLonLat(pozicija), ol.proj.fromLonLat([lon, lat])]), { padding: [80, 80, 280, 80], maxZoom: 21, duration: 500 });
+          return;
+        }
+      }
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat.toFixed(6)},${lon.toFixed(6)}&travelmode=walking`, '_blank', 'noopener');
+    }
+
+    function prikaziPut(f) {
+      izvorLokacije.getFeatures().filter(x => x.getGeometry().getType() === 'LineString').forEach(x => izvorLokacije.removeFeature(x));
+      if (!pozicija || !f) return;
+      izvorLokacije.addFeature(new ol.Feature(new ol.geom.LineString([ol.proj.fromLonLat(pozicija), ol.proj.fromLonLat(sredisteGroba(f))])));
+    }
+
+    function osvjeziUdaljenost() {
+      const el = $('udaljenost');
+      if (!el || !odabrani || !pozicija) { if (el) el.textContent = ''; return; }
+      const d = ol.sphere.getDistance(pozicija, sredisteGroba(odabrani));
+      el.textContent = d < 1000 ? `Udaljeni ste oko ${Math.round(d)} m` : `Udaljeni ste oko ${(d / 1000).toFixed(1)} km`;
+      if (d < 400) prikaziPut(odabrani);
+    }
+
+    // ---------- moja lokacija ----------
+    let pratim = null;
+    $('gumbLokacija').onclick = () => {
+      if (!navigator.geolocation) { alert('Vaš preglednik ne podržava određivanje lokacije.'); return; }
+      if (pratim !== null) { navigator.geolocation.clearWatch(pratim); pratim = null; pozicija = null; izvorLokacije.clear(); $('gumbLokacija').textContent = 'Moja lokacija'; osvjeziUdaljenost(); return; }
+      $('gumbLokacija').textContent = 'Tražim…';
+      let prvi = true;
+      pratim = navigator.geolocation.watchPosition(p => {
+        pozicija = [p.coords.longitude, p.coords.latitude];
+        izvorLokacije.getFeatures().filter(x => x.getGeometry().getType() === 'Point').forEach(x => izvorLokacije.removeFeature(x));
+        izvorLokacije.addFeature(new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat(pozicija))));
+        $('gumbLokacija').textContent = 'Isključi lokaciju';
+        if (prvi) { karta.getView().animate({ center: ol.proj.fromLonLat(pozicija), duration: 500 }); prvi = false; }
+        osvjeziUdaljenost();
+      }, () => { alert('Lokaciju nije moguće odrediti. Provjerite dopuštenje u pregledniku.'); $('gumbLokacija').textContent = 'Moja lokacija'; pratim = null; },
+      { enableHighAccuracy: true, maximumAge: 5000 });
+    };
+    $('gumbCijelo').onclick = () => cijeloPolje();
+
+    // ---------- prijedlog ispravka ----------
+    $('dlgIspravak').addEventListener('close', () => {
+      if ($('dlgIspravak').returnValue !== 'posalji') return;
+      const predmet = `Prijedlog ispravka – grobno mjesto ${$('ispOznaka').textContent} (DEMO)`;
+      const tijelo = `${$('ispTekst').value}\n\nKontakt: ${$('ispKontakt').value}\nPoveznica: ${location.href}`;
+      location.href = `mailto:gis.portal@bilje.hr?subject=${encodeURIComponent(predmet)}&body=${encodeURIComponent(tijelo)}`;
+    });
+
+    // ---------- o demou, poveznica ----------
+    $('gumbODemou').onclick = () => $('dlgODemou').showModal();
+    try { if (!sessionStorage.getItem('demoGroblja')) { $('dlgODemou').showModal(); sessionStorage.setItem('demoGroblja', '1'); } } catch (e) { /* bez spremanja */ }
+
+    function otvoriIzPoveznice() {
+      const h = decodeURIComponent(location.hash.slice(1));
+      if (!h) return;
+      const f = izvorGrobova.getFeatures().find(x => x.get('oznaka') === h);
+      if (f) odaberi(f, true);
+    }
+    window.addEventListener('hashchange', otvoriIzPoveznice);
+  })();
+  </script>
+</body>
+</html>
